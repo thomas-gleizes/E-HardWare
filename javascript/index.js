@@ -155,11 +155,13 @@ $(document).ready(() => {
                 if (j - 5 < 0 ){
                     j -= 5;
                     var l = 5;
-                    for(j; j < 0;j++){
+                    for(j; j <= -1;j++){
                         var el = '#select3 option[value=\''+l+'\']';
-                        $(el).remove();
+                        $(el).css("display","none");
                         l--;
                     }
+                } else {
+                    $('#select3 option').css("display","block")
                 }
             });
         });
