@@ -1,5 +1,5 @@
 <?php
-require_once 'config/Conf.php';
+require_once '../config/Conf.php';
 
 class Model
 {
