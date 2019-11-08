@@ -64,8 +64,8 @@
                         <i class="material-icons categorie-icon">
                             arrow_drop_down
                         </i>
-                        <input id="prix" type="hidden" name="prix" value="0">
-                        <input id="marque" type="hidden" name="marque[]" value="0">
+                        <input id="prix" type="hidden" name="prix" value="">
+                        <input id="marque" type="hidden" name="marque[]" value="">
                     </div>
                     <div id="choix-catégorie">
                         <p id="c-text" class="categorie-text">toutes catégories</p>
@@ -73,7 +73,7 @@
                             arrow_drop_down
                         </i>
                         <select id="select" name="catégorie">
-                            <option value="0">toutes catégories</option>
+                            <option value="">toutes catégories</option>
                             <option value="Processeur">Processeur</option>
                             <option value="CarteMere">Carte mère</option>
                             <option value="Memoire">Mémoire</option>
@@ -117,6 +117,8 @@
         <input class="check2" type="checkbox" id="decroissant" >
         <label for="decroissant"><p>Prix par ordre décroissant</p></label>
         <p id="marque-p">Trier par marque:</p>
+    </div>
+    <div class="result">
     </div>
     <div id="buy" class="buy open">
         <div class="img2-container">

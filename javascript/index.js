@@ -5,7 +5,13 @@ $(document).ready(() => {
     var check2 = false;
     var containerSize = 9.5;
     var marque = [];
+    var resultSize = 0;
+
     $('#reseach').bind('input', function() {
+        $(".result").children().remove();
+        resultSize = 0;
+        $(".result").css('height', "0rem");
+        $(".result").css('display', "none");
         if ($(this).val() != ""){
             $('#clear-icon').css("visibility", "visible");
             $('#clear-icon').removeClass("clear");
@@ -15,6 +21,25 @@ $(document).ready(() => {
                 $('#clear-icon').css("visibility", "hidden");
             },250);
         }
+
+        if ($(this).val().length >= 2) {
+            getResult($(this).val()).then(function (value) {
+                var produit = value;
+                var tabProduit = produit.split(',');
+                for (var i = 0; i < tabProduit.length - 1; i++){
+                    $('.result').append( '<form  method="get" action="PHP/view/Participant/preLobby.php"><button type="submit" class="result-bar"><p>' + tabProduit[i] + '</p></button><input type="hidden" name="id_produit" value="' + tabProduit[i+1] + '"> </form>');
+                    resultSize += 2;
+                    $(".result").css('display', "block");
+                    $(".result").css('height', resultSize + "rem");
+                    $('.result').width($('#reseach').width());
+                    $('.result').offset($('#reseach').offset());
+                    $('.result').css("top", 31.5 + $('.result').offset().top) + "px";
+                    if( i + 1 < tabProduit.length - 1){
+                        i++;
+                    }
+                }
+            });
+        }
     });
 
     $('#clear-icon').click(function () {
@@ -23,6 +48,9 @@ $(document).ready(() => {
         setTimeout(function () {
             $('#clear-icon').css("visibility", "hidden");
         },250);
+        resultSize = 0;
+        $(".result").css('height', "0rem");
+        $(".result").css('display', "none");
     });
 
     $('#nav-bar-btn').click(function () {
@@ -58,7 +86,7 @@ $(document).ready(() => {
 
     $(".check1").click(function () {
         if (check1){
-            $('#prix').prop("value", "0");
+            $('#prix').prop("value", "");
             check1 = false;
         } else {
             $('#prix').prop("value", "1");
@@ -70,7 +98,7 @@ $(document).ready(() => {
 
     $(".check2").click(function () {
         if (check2){
-            $('#prix').prop("value", "0");
+            $('#prix').prop("value", "");
             check2 = false;
         } else {
             $('#prix').prop("value", "2");
@@ -99,11 +127,10 @@ $(document).ready(() => {
             ' <p class="prix">1500 €<p/> <p><i class="add-icon material-icons buy-icon">add_shopping_cart</i></p> </div>\n </div>\n' );
     }
 
-    var marque;
-    var tabMarque
+
     getMarque().then(function (value) {
-        marque = value;
-        tabMarque = marque.split(' ');
+        var marque = value;
+        var tabMarque = marque.split(' ');
         for (var i = 0; i < tabMarque.length - 1; i++){
             $('.filtre-container').append( '<div class="div-marque" id="marque'+i+'"><p>'+tabMarque[i]+'</p> <i class="material-icons open"> check </i></div>');
             containerSize += 1.9;
@@ -137,5 +164,7 @@ $(document).ready(() => {
         $("#buy").toggleClass('open');
         $('#buy-comp').toggleClass("navcomp");
     });
+
+
 
 });
