@@ -139,6 +139,7 @@ $(document).ready(() => {
             }
         }
         $('.buy-icon').click(function () {
+            $(".img2-container").css('background-image',"");
             $("#buy").toggleClass('open');
             $('#buy-comp').toggleClass("navcomp");
             var id = $(this).siblings(".id").val();
