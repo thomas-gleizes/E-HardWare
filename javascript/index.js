@@ -99,10 +99,6 @@ $(document).ready(() => {
             ' <p class="prix">1500 €<p/> <p><i class="add-icon material-icons buy-icon">add_shopping_cart</i></p> </div>\n </div>\n' );
     }
 
-    for (var i = 0; i < 4; i++){
-        $('#nav-bar').append( '<div class=\"section under\"> <p>'+ i + '</p> <i  class="material-icons navbaricons"> chevron_right </i> </div>' );
-        categorieSize += 4;
-    }
 
     for (var i = 1; i < 7; i++){
         $('.filtre-container').append( '<div class="div-marque" id="marque'+i+'"><p>marque'+i+'</p> <i class="material-icons open"> check </i></div>');
