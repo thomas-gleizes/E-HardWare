@@ -1,9 +1,11 @@
 <?php
 require_once '../model/Model.php';
-$rep = Model::$pdo->query("SELECT nomMarque FROM porduits GROUP BY (nomMarque);");
+$rep = Model::$pdo->query("SELECT nomMarque FROM Produits GROUP BY (nomMarque);");
 $rep -> setFetchMode(PDO::FETCH_CLASS, 'nomMarque');
 $tab = $rep->fetchAll(PDO::FETCH_ASSOC);
 foreach ($tab as $value){
-    echo $value;
+    foreach ($value as $val){
+        echo $val." ";
+    }
 }
 ?>

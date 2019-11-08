@@ -10,6 +10,6 @@ async function getMarque(){
             retour = text;
         },
     });
-
     console.log(retour);
+    return retour;
 }

@@ -99,23 +99,29 @@ $(document).ready(() => {
             ' <p class="prix">1500 €<p/> <p><i class="add-icon material-icons buy-icon">add_shopping_cart</i></p> </div>\n </div>\n' );
     }
 
-    getMarque();
-
-    for (var i = 1; i < 7; i++){
-        $('.filtre-container').append( '<div class="div-marque" id="marque'+i+'"><p>marque'+i+'</p> <i class="material-icons open"> check </i></div>');
-        containerSize += 1.9;
-        $(".filtre-container").css('height', containerSize + "rem");
-    }
-
-    $('.div-marque').click(function () {
-        jQuery(this).children("i").toggleClass('open');
-        $(this).toggleClass('true');
-        marque = [];
-        $( ".true" ).each(function(index) {
-            marque.push(jQuery(this).children("p").html());
+    var marque;
+    var tabMarque
+    getMarque().then(function (value) {
+        marque = value;
+        tabMarque = marque.split(' ');
+        for (var i = 0; i < tabMarque.length - 1; i++){
+            $('.filtre-container').append( '<div class="div-marque" id="marque'+i+'"><p>'+tabMarque[i]+'</p> <i class="material-icons open"> check </i></div>');
+            containerSize += 1.9;
+            $(".filtre-container").css('height', containerSize + "rem");
+        }
+        $('.div-marque').click(function () {
+            jQuery(this).children("i").toggleClass('open');
+            $(this).toggleClass('true');
+            marque = [];
+            $( ".true" ).each(function(index) {
+                marque.push(jQuery(this).children("p").html());
+            });
+            $("#marque").val(marque);
         });
-        $("#marque").val(marque);
     });
+
+
+
 
     $('.buy-icon').click(function () {
         $("#buy").toggleClass('open');
