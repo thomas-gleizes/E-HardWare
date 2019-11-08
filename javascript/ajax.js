@@ -27,3 +27,33 @@ async function getResult(result){
     });
     return retour;
 }
+
+async function getCardInfo(){
+    var retour;
+
+    await $.ajax({
+        url : 'php/controller/card-ajax.php',
+        type : 'GET',
+        data : '',
+        dataType : 'text',
+        success : function(text, statut){
+            retour = text;
+        },
+    });
+    return retour;
+}
+
+async function getAchatInfo(id){
+    var retour;
+
+    await $.ajax({
+        url : 'php/controller/add-ajax.php',
+        type : 'GET',
+        data : 'id=' + id,
+        dataType : 'text',
+        success : function(text, statut){
+            retour = text;
+        },
+    });
+    return retour;
+}
