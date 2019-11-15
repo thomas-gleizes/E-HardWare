@@ -15,13 +15,24 @@ class ModelRecherche{
         $rec_prep->execute($valeur);
         $rec_prep->setFetchMode(PDO::FETCH_COLUMN,0);
         $tab = $rec_prep->fetchAll();
-        var_dump($tab);
+        //var_dump($tab);
         if(empty($tab))
             return null;
         return $tab;
     }
 
-    public static function requeteComplexe($categorie,$marque,$prix){
-        $sql = "";
+    public static function getAllInfo($ref){
+        $tab= [];
+        foreach ($ref as $value){
+            $sql = "SELECT * FROM Produits where refProduit = :ref";
+            $valeur = array(
+                "ref"=> $value
+            );
+            $rec_prep = Model::$pdo->prepare($sql);
+            $rec_prep->execute($valeur);
+            $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+            $tab = array_merge($tab,$rec_prep->fetchAll());
+        }
+        return $tab;
     }
 }

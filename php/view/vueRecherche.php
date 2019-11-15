@@ -150,20 +150,26 @@
 <div class="padding-container">
     <div class="container">
         <?php
-        foreach ($tab as $val) {
+        $u = "Url";
+        $r ="refProduit";
+        $n = "nom";
+        $nm = "nomMarque";
+        $p = "prix";
+        //var_dump($tabvaleur);
+        foreach ($tabvaleur as $v) {
             echo("<div class=\"card\">
             <form  class=\"card-form\"  method=\"get\" action=\"PHP/view/Participant/preLobby.php\">
-                <input type=\"hidden\" name=\"id_produit\" value=\"$url\">
+                <input type=\"hidden\" name=\"id_produit\" value=\"$v[$u]\">
                 <button type=\"submit\" class=\"img-container\">
-                    <input type=\"hidden\" name=\"id_produit\" value=\"$refproduit\">
+                    <input type=\"hidden\" name=\"id_produit\" value=\"$v[$r]\">
                 </button></form>
             <div class=\"description-container\">
-                <p class=\"marque\">$marque<p/>
-                <p class=\"description\">$nom<p/>
-                <p class=\"prix\">$prix<p/>
+                <p class=\"marque\">$v[$nm]<p/>
+                <p class=\"description\">$v[$n]<p/>
+                <p class=\"prix\">$v[$p]<p/>
                 <div class=\"rond\">
                     <p>
-                        <input class=\"id\" type=\"hidden\" name=\"id_produit\" value=\"$refproduit\">
+                        <input class=\"id\" type=\"hidden\" name=\"id_produit\" value=\"$v[$u]\">
                         <i class=\"add-icon material-icons buy-icon\">add_shopping_cart</i>
                     </p>
                 </div>

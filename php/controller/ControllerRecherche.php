@@ -5,8 +5,7 @@ class ControllerRecherche{
     public static function afficherRecherche(){
         //var_dump($_GET);
         $tab = ModelRecherche::afficherRecherche($_GET["research"]);
-        $url = "";
-
+        $tabvaleur = ModelRecherche::getAllinfo($tab);
         require_once ("../view/vueRecherche.php");
     }
 }
