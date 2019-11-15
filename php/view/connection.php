@@ -7,14 +7,13 @@
     <link href="../../css/connection.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto+Condensed&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../../javascript/connection.js"></script>
 </head>
 <body>
     <div class="container">
         <form method="post" action="../controller/routeur.php">
-            <imput type="hidden" name="action" value="connection"
+            <input type="hidden" name="action" value="connection">
             <div class="under-container1">
                 <div class="i-container">
                     <i class="material-icons i">

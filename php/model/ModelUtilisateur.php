@@ -26,7 +26,7 @@ class ModelUtilisateur{
         $res = $rep->fetchAll(PDO::FETCH_ASSOC);
         $mdp = $tab['mot de passe'];
 
-        $mdp = chiffrer($mdp);
+        $mdp = chiffrer($mdp).Security::getSeed();
         if ($res == $mdp){
             return true;
         } else {
