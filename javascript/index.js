@@ -121,51 +121,56 @@ $(document).ready(() => {
     });
 
     getCardInfo().then(function (value) {
-        var produit = value;
-        var tabProduit = produit.split(',');
-        for (var i = 0; i < tabProduit.length - 1; i++){
-            nbcard++;
-            $('.container').append( '<div class="card"> <form  class="card-form"  method="get" action="PHP/view/Participant/preLobby.php"> <button id="card'+nbcard+'" type="submit" class="img-container">' +
-                ' <input type="hidden" name="id_produit" value="' + tabProduit[i] + '"></button></form> <div class="description-container"><p class="marque">' + tabProduit[i+2] + '<p/>' +
-                '<p class="description">' + tabProduit[i+1] + '<p/>' +
-                ' <p class="prix">' + tabProduit[i+3] + ' €<p/><div class="rond"><p><input class="id" type="hidden" name="id_produit" value="' + tabProduit[i] + '"><i class="add-icon material-icons buy-icon">add_shopping_cart</i></p></div></div></div>');
-            var el = "#card" + nbcard;
-            $(el).css('background-image',"url(" +tabProduit[i+4]+")");
+        if(window.location.href.includes('php')){
 
-            if( i + 5 < tabProduit.length - 1){
-                i = i+4;
-            } else {
-                break;
-            }
-        }
-        $('.buy-icon').click(function () {
-            $(".img2-container").css('background-image',"");
-            $("#buy").toggleClass('open');
-            $('#buy-comp').toggleClass("navcomp");
-            var id = $(this).siblings(".id").val();
-            getAchatInfo(id).then(function (value) {
-                var produit = value;
-                var tabProduit = produit.split(',');
-                $(".img2-container").css('background-image',"url(" +tabProduit[3]+")");
-                $(".produit").html(tabProduit[0]);
-                $(".disponibilite").html('en stock ('+tabProduit[1]+' disponible)');
-                currentPrice = tabProduit[2];
-                $(".prix-total").html(tabProduit[2]+'€');
-                $("#id_produit").val(id);
-                var j = parseInt(tabProduit[1], 10);
-                if (j - 5 < 0 ){
-                    j -= 5;
-                    var l = 5;
-                    for(j; j <= -1;j++){
-                        var el = '#select3 option[value=\''+l+'\']';
-                        $(el).css("display","none");
-                        l--;
-                    }
+        } else {
+            var produit = value;
+            var tabProduit = produit.split(',');
+            for (var i = 0; i < tabProduit.length - 1; i++){
+                nbcard++;
+                $('.container').append( '<div class="card"> <form  class="card-form"  method="get" action="PHP/view/Participant/preLobby.php"> <button id="card'+nbcard+'" type="submit" class="img-container">' +
+                    ' <input type="hidden" name="id_produit" value="' + tabProduit[i] + '"></button></form> <div class="description-container"><p class="marque">' + tabProduit[i+2] + '<p/>' +
+                    '<p class="description">' + tabProduit[i+1] + '<p/>' +
+                    ' <p class="prix">' + tabProduit[i+3] + ' €<p/><div class="rond"><p><input class="id" type="hidden" name="id_produit" value="' + tabProduit[i] + '"><i class="add-icon material-icons buy-icon">add_shopping_cart</i></p></div></div></div>');
+                var el = "#card" + nbcard;
+                $(el).css('background-image',"url(" +tabProduit[i+4]+")");
+
+                if( i + 5 < tabProduit.length - 1){
+                    i = i+4;
                 } else {
-                    $('#select3 option').css("display","block")
+                    break;
                 }
+            }
+            $('.buy-icon').click(function () {
+                $(".img2-container").css('background-image',"");
+                $("#buy").toggleClass('open');
+                $('#buy-comp').toggleClass("navcomp");
+                var id = $(this).siblings(".id").val();
+                getAchatInfo(id).then(function (value) {
+                    var produit = value;
+                    var tabProduit = produit.split(',');
+                    $(".img2-container").css('background-image',"url(" +tabProduit[3]+")");
+                    $(".produit").html(tabProduit[0]);
+                    $(".disponibilite").html('en stock ('+tabProduit[1]+' disponible)');
+                    currentPrice = tabProduit[2];
+                    $(".prix-total").html(tabProduit[2]+'€');
+                    $("#id_produit").val(id);
+                    var j = parseInt(tabProduit[1], 10);
+                    if (j - 5 < 0 ){
+                        j -= 5;
+                        var l = 5;
+                        for(j; j <= -1;j++){
+                            var el = '#select3 option[value=\''+l+'\']';
+                            $(el).css("display","none");
+                            l--;
+                        }
+                    } else {
+                        $('#select3 option').css("display","block")
+                    }
+                });
             });
-        });
+        }
+
     });
 
 
