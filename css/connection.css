@@ -8,7 +8,7 @@ body {
 
 .container {
     width: 60%;
-    height: 25rem;
+    height: 35rem;
     margin-left: 20%;
     margin-top: 10%;
     border-radius: 1rem;
@@ -20,7 +20,7 @@ body {
     height: 3rem;
     margin-left: 10%;
     margin-top: 4rem;
-    border-bottom: #d9d9d9 2px solid;
+    border-bottom: #d1d1d1 2px solid;
 }
 
 .under-container2{
@@ -28,13 +28,17 @@ body {
     height: 3rem;
     margin-left: 10%;
     margin-top: 2rem;
-    border-bottom: #d9d9d9 2px solid;
+    border-bottom: #d1d1d1 2px solid;
 }
 
-i {
-    color: #d9d9d9;
+.i {
+    color: #d1d1d1;
     text-align: center;
-    font-size: 30px;
+    font-size: 50px !important;
+}
+
+#account{
+    font-size: 55px !important;
 }
 
 .i-container {
@@ -49,17 +53,54 @@ input {
     float: right;
     height: 100%;
     background-color: transparent;
+    font-size: 1.2rem;
+    font-family: 'Oswald', sans-serif;
+    margin-top: 0.5rem;
 }
 
 button {
     background-color: transparent;
     border: #06bcc7 2px solid;
     border-radius:0.2rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #06bcc7;
+}
+
+button:hover p {
+    color: white;
+}
+
+.mdp {
+    margin: auto;
+    margin-top: 2rem;
 }
 
 #ok {
-    width:20%;
-    height: 2rem;
-    margin-left: 40%;
-    margin-top: 3rem;
+    width:5%;
+    height: 1.7rem;
+    margin-left: 47.5%;
+    margin-top: 4rem;
+}
+
+#new {
+    width:30%;
+    height: 2.5rem;
+    margin-left: 35%;
+    margin-top: 4rem;
+}
+
+a {
+    display: inline;
+    text-decoration: none;
+}
+
+p{
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 0rem;
+    margin-bottom: 0;
+    font-family: 'Oswald', sans-serif;
 }
