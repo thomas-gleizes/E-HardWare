@@ -27,15 +27,12 @@ class ModelRecherche{
         if ($prix == 1){
             if($marque==null && $categorie==null){
                 return $tab;
-            }
-            if($marque==null && $categorie!=null){
-                $requete = "SELECT * FROM $categorie c JOIN Produits p on p.refProduit = crefProduit  where p.nom like %.$nom.%";
-            }
-            if($marque!=null && $categorie == null){
+            } else if($marque==null && $categorie!=null){
+                $requete = "SELECT * FROM $categorie c JOIN Produits p on p.refProduit = c.refProduit where p.nom like %.$nom.%";
+            }  else if($marque!=null && $categorie == null){
                 $requete = "SELECT * FROM Produit where marque =$marque and  nom like %.$nom.%";
-            }
-            if($marque!=null && $categorie != null){
-                $requete = "SELECT * FROM $marque c JOIN Produits p on p.refProduit = c.refProduit JOIN $categorie ca on p.refProduit = ca.refCM  where p.nom like %.$nom.%";
+            } else if($marque!=null && $categorie != null){
+                $requete = "SELECT * FROM Produit p JOIN $categorie ca ON ca.refProduit = p.refProduit WHERE p.nomMarque = $marque AND p.nom like %.$nom.%";
             }
             $sql=$requete."GROUP BY(y) , ORDER BY ASC";
         }elseif ($prix == 2){
