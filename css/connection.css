@@ -55,5 +55,11 @@ button {
     background-color: transparent;
     border: #06bcc7 2px solid;
     border-radius:0.2rem;
+}
 
+#ok {
+    width:20%;
+    height: 2rem;
+    margin-left: 40%;
+    margin-top: 10%;
 }
