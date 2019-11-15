@@ -13,14 +13,15 @@
 </head>
 <body>
     <div class="container">
-        <form method="post">
+        <form method="post" action="../controller/routeur.php">
+            <imput type="hidden" name="action" value="connection"
             <div class="under-container1">
                 <div class="i-container">
                     <i class="material-icons i">
                         mail_outline
                     </i>
                 </div>
-                <input type="text" name="identifiant">
+                <input type="text" placeholder="RTX.TITAN@E.HardWare.fr" name="mail">
             </div>
             <div class="under-container2">
                 <div class="i-container">
@@ -30,8 +31,8 @@
                 </div>
                 <input type="password" name="mot de passe">
             </div>
+            <button id="ok" type="submit"><p>Connection</p></button>
         </form>
-        <button id="ok"><p>ok</p></button>
         <div class="mdp">
             <a href="#"><p>Mot de passe oublié ?</p></a>
         </div>
