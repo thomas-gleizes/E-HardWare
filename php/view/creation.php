@@ -14,14 +14,14 @@
 <body>
     <div id="container-spe" class="container">
         <form method="post" action="../controller/routeur.php">
-            <input type="hidden" name="action" value="creation">
+            <input type="hidden" name="action" value="creation" required>
             <div class="under-container1">
                 <div class="i-container">
                     <i class="material-icons i">
                         mail_outline
                     </i>
                 </div>
-                <input type="text" placeholder="Mail" name="mail">
+                <input type="text" placeholder="Mail" name="mail" required>
             </div>
             <div class="under-container2">
                 <div class="i-container">
@@ -29,7 +29,7 @@
                         perm_identity
                     </i>
                 </div>
-                <input placeholder="Nom" name="nom">
+                <input placeholder="Nom" name="nom" required>
             </div>
             <div class="under-container2">
                 <div class="i-container">
@@ -37,7 +37,7 @@
                         perm_identity
                     </i>
                 </div>
-                <input placeholder="Prénom" name="prenom">
+                <input placeholder="Prénom" name="prenom" required>
             </div>
             <div class="under-container2">
                 <div class="i-container">
@@ -45,7 +45,7 @@
                         lock_open
                     </i>
                 </div>
-                <input type="password" placeholder="Mot de passe">
+                <input type="password" placeholder="Mot de passe" required>
             </div>
             <div class="under-container2">
                 <div class="i-container">
@@ -53,7 +53,7 @@
                         lock_open
                     </i>
                 </div>
-                <input type="password" name="mot de passe" placeholder="Mot de passe">
+                <input type="password" name="mdp" placeholder="Mot de passe" required>
             </div>
             <div class="under-container2">
                 <div class="i-container">
@@ -61,7 +61,7 @@
                         map
                     </i>
                 </div>
-                <input name="adresse" placeholder="Adresse">
+                <input name="adresse" placeholder="Adresse" required>
             </div>
             <button id="ok" type="submit"><p>Inscription</p></button>
         </form>
