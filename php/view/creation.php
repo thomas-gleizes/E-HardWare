@@ -13,14 +13,15 @@
 </head>
 <body>
     <div id="container-spe" class="container">
-        <form method="post">
+        <form method="post" action="../controller/routeur.php">
+            <input type="hidden" name="action" value="creation">
             <div class="under-container1">
                 <div class="i-container">
                     <i class="material-icons i">
                         mail_outline
                     </i>
                 </div>
-                <input type="text" placeholder="Mail" name="identifiant">
+                <input type="text" placeholder="Mail" name="mail">
             </div>
             <div class="under-container2">
                 <div class="i-container">
@@ -62,8 +63,9 @@
                 </div>
                 <input name="adresse" placeholder="Adresse">
             </div>
+            <button id="ok" type="submit"><p>Inscription</p></button>
         </form>
-        <button id="ok"><p>ok</p></button>
+
         <button id="new"><p>se connecter</p></button>
     </div>
 </body>
