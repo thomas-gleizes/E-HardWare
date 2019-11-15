@@ -29,13 +29,13 @@ class ModelRecherche{
                 return $tab;
             }
             if($marque==null && $categorie!=null){
-                $requete = "SELECT * FROM $categorie c JOIN Produits p on p.refProduit = refCM  where p.nom like %.$nom.%";
+                $requete = "SELECT * FROM $categorie c JOIN Produits p on p.refProduit = crefProduit  where p.nom like %.$nom.%";
             }
             if($marque!=null && $categorie == null){
                 $requete = "SELECT * FROM Produit where marque =$marque and  nom like %.$nom.%";
             }
             if($marque!=null && $categorie != null){
-                $requete = "SELECT * FROM $marque c JOIN Produits p on p.refProduit = refCM JOIN $categorie ca on p.refProduit = ca.refCM  where p.nom like %.$nom.%";
+                $requete = "SELECT * FROM $marque c JOIN Produits p on p.refProduit = c.refProduit JOIN $categorie ca on p.refProduit = ca.refCM  where p.nom like %.$nom.%";
             }
             $sql=$requete."GROUP BY(y) , ORDER BY ASC";
         }elseif ($prix == 2){
