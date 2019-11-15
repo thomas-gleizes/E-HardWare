@@ -13,11 +13,11 @@
 </head>
 <body>
     <div class="container">
-        <form>
+        <form method="post">
             <div class="under-container1">
                 <div class="i-container">
-                    <i id="account" class="material-icons i">
-                        perm_identity
+                    <i class="material-icons i">
+                        mail_outline
                     </i>
                 </div>
                 <input type="text" name="identifiant">
