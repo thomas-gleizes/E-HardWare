@@ -63,6 +63,14 @@
                 </div>
                 <input name="adresse" placeholder="Adresse" required>
             </div>
+            <div class="under-container2">
+                <div class="i-container">
+                    <i class="material-icons i">
+                        location_city
+                    </i>
+                </div>
+                <input name="ville" placeholder="Ville" required>
+            </div>
             <button id="ok" type="submit"><p>Inscription</p></button>
         </form>
 
