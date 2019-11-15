@@ -128,7 +128,7 @@ $(document).ready(() => {
             $('.container').append( '<div class="card"> <form  class="card-form"  method="get" action="PHP/view/Participant/preLobby.php"> <button id="card'+nbcard+'" type="submit" class="img-container">' +
                 ' <input type="hidden" name="id_produit" value="' + tabProduit[i] + '"></button></form> <div class="description-container"><p class="marque">' + tabProduit[i+2] + '<p/>' +
                 '<p class="description">' + tabProduit[i+1] + '<p/>' +
-                ' <p class="prix">' + tabProduit[i+3] + ' €<p/> <p><input class="id" type="hidden" name="id_produit" value="' + tabProduit[i] + '"><i class="add-icon material-icons buy-icon">add_shopping_cart</i></p> </div></div>');
+                ' <p class="prix">' + tabProduit[i+3] + ' €<p/><div class="rond"><p><input class="id" type="hidden" name="id_produit" value="' + tabProduit[i] + '"><i class="add-icon material-icons buy-icon">add_shopping_cart</i></p></div></div></div>');
             var el = "#card" + nbcard;
             $(el).css('background-image',"url(" +tabProduit[i+4]+")");
 
@@ -176,7 +176,11 @@ $(document).ready(() => {
         for (var i = 0; i < tabMarque.length - 1; i++){
             $('.filtre-container').append( '<div class="div-marque" id="marque'+i+'"><p>'+tabMarque[i]+'</p> <i class="material-icons open"> check </i></div>');
             containerSize += 1.9;
-            $(".filtre-container").css('height', containerSize + "rem");
+            if (containerSize > 30){
+                $(".filtre-container").css('height', "30rem");
+            } else {
+                $(".filtre-container").css('height', containerSize + "rem");
+            }
         }
         $('.div-marque').click(function () {
             jQuery(this).children("i").toggleClass('open');
@@ -200,6 +204,8 @@ $(document).ready(() => {
         $('#buy-comp').toggleClass("navcomp");
     });
 
-
+    $("#account-button").click(function () {
+        window.location = "./php/view/connection.php";
+    });
 
 });

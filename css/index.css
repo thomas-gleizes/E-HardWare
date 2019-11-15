@@ -5,10 +5,6 @@ body {
 * {
     outline-width: 0;
 }
-main {
-    padding-left:20px;
-    padding-right:20px;
-}    
 
 header{
     position: fixed;
@@ -77,6 +73,7 @@ p{
     cursor: pointer;
     z-index: 0;
     transition: .2s ease-in-out;
+    overflow: auto;
 }
 
 #nav-bar-btn:hover {
@@ -156,6 +153,7 @@ p{
     background-color: white;
     border-radius: 0.2rem;
     border: 2px solid #06bcc7;
+    overflow: auto;
 }
 
 .open {
@@ -379,8 +377,14 @@ label p {
     justify-content: space-around;
     flex-wrap: wrap;
     background-color: white;
-    padding-top: 2rem;
     padding-bottom: 2rem;
+}
+
+.padding-container {
+    position:relative;
+    padding-left:1rem;
+    padding-right: 1rem;
+    top:0rem;
 }
 
 .card {
@@ -391,6 +395,9 @@ label p {
     -moz-box-shadow: 5px 8px 3px 0px rgba(84,84,84,1);
     box-shadow: 5px 8px 3px 0px rgba(84,84,84,1);
     transition: .15s ease-in-out;
+    border: 1px solid #545454;
+    margin-left: .5rem;
+    margin-right: .5rem;
 }
 
 .card:hover {
@@ -412,6 +419,26 @@ label p {
     background-color: transparent;
 }
 
+.rond {
+    margin: auto;
+    width:3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: #0398a1;
+    -webkit-box-shadow: 4px 4px 3px 0px rgba(84,84,84,1);
+    -moz-box-shadow: 4px 4px 3px 0px rgba(84,84,84,1);
+    box-shadow: 4px 4px 3px 0px rgba(84,84,84,1);
+    transition: .15s ease-in-out;
+    cursor: pointer;
+}
+
+.rond:hover {
+    -webkit-box-shadow: 7px 7px 5px 0px rgba(84,84,84,1);
+    -moz-box-shadow: 7px 7px 5px 0px rgba(84,84,84,1);
+    box-shadow: 7px 7px 5px 0px rgba(84,84,84,1);
+    transform: scale(1.02);
+}
+
 .card-form {
     width: 100%;
     height: 60%;
@@ -419,9 +446,9 @@ label p {
 }
 
 .description-container{
-    width: 99%;
+    width: 100%;
     height: 40%;
-    border:2px solid #06bcc7;
+    border-top: .2px solid #545454;
     background-color: white;
 }
 
@@ -431,11 +458,11 @@ label p {
 
 .add-icon {
     font-size: 35px !important;
-    color: #06bcc7;
+    color: white;
     cursor:pointer;
     margin: auto;
     text-align: center;
-    margin-top: 1rem;
+    margin-top: .5rem;
 }
 
 .marque {
