@@ -92,6 +92,13 @@ button:hover p {
     margin-top: 4rem;
 }
 
+#connect {
+    width:30%;
+    height: 2.5rem;
+    margin-left: 35%;
+    margin-top: 4rem;
+}
+
 #container-spe {
     height:55rem ;
     margin-top: 3%;
@@ -108,4 +115,11 @@ p{
     margin-top: 0rem;
     margin-bottom: 0;
     font-family: 'Oswald', sans-serif;
+}
+
+#error {
+    color:red;
+    display:none;
+    margin-top: 2rem;
+    font-size: 25px;
 }

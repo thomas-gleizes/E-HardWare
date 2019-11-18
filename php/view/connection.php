@@ -20,7 +20,7 @@
                         mail_outline
                     </i>
                 </div>
-                <input type="text" placeholder="RTX.TITAN@E.HardWare.fr" name="mail" required>
+                <input type="text" placeholder="Votre mail" name="mail" required>
             </div>
             <div class="under-container2">
                 <div class="i-container">
@@ -28,7 +28,7 @@
                         lock_open
                     </i>
                 </div>
-                <input type="password" name="mdp" required>
+                <input type="password" placeholder="Votre mot de passe" name="mdp" required>
             </div>
             <button id="ok" type="submit"><p>Connection</p></button>
         </form>

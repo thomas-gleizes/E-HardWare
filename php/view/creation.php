@@ -45,7 +45,7 @@
                         lock_open
                     </i>
                 </div>
-                <input type="password" placeholder="Mot de passe" required>
+                <input type="password" id="mdp1" placeholder="Mot de passe" required>
             </div>
             <div class="under-container2">
                 <div class="i-container">
@@ -53,7 +53,7 @@
                         lock_open
                     </i>
                 </div>
-                <input type="password" name="mdp" placeholder="Mot de passe" required>
+                <input type="password" id="mdp2" name="mdp" placeholder="Mot de passe" required>
             </div>
             <div class="under-container2">
                 <div class="i-container">
@@ -72,9 +72,10 @@
                 <input name="ville" placeholder="Ville" required>
             </div>
             <button id="ok" type="submit"><p>Inscription</p></button>
+            <p id="error">Les mots de passes ne sont pas les mêmes !</p>
         </form>
 
-        <button id="new"><p>se connecter</p></button>
+        <button id="connect"><p>se connecter</p></button>
     </div>
 </body>
 </html>

@@ -121,9 +121,7 @@ $(document).ready(() => {
     });
 
     getCardInfo().then(function (value) {
-        if(window.location.href.includes('php')){
-
-        } else {
+        if(!window.location.href.includes('Recherche')){
             var produit = value;
             var tabProduit = produit.split(',');
             for (var i = 0; i < tabProduit.length - 1; i++){
@@ -170,7 +168,6 @@ $(document).ready(() => {
                 });
             });
         }
-
     });
 
 
@@ -212,5 +209,15 @@ $(document).ready(() => {
     $("#account-button").click(function () {
         window.location = "./php/view/connection.php";
     });
+
+    if(window.location.href.includes('Recherche')){
+        $(".card").each(function () {
+            var url = $(this).children(".url").val();
+            console.log(url);
+            $(this).children(".img-container").css('background-image',"url(" +url+")");
+        })
+    };
+
+
 
 });

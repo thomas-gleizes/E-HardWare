@@ -159,7 +159,7 @@
         foreach ($tabvaleur as $v) {
             echo("<div class=\"card\">
             <form  class=\"card-form\"  method=\"get\" action=\"PHP/view/Participant/preLobby.php\">
-                <input type=\"hidden\" name=\"id_produit\" value=\"$v[$u]\">
+                <input type=\"hidden\" class=\"url\" name=\"id_produit\" value=\"$v[$u]\">
                 <button type=\"submit\" class=\"img-container\">
                     <input type=\"hidden\" name=\"id_produit\" value=\"$v[$r]\">
                 </button></form>

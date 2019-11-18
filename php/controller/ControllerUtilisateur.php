@@ -14,7 +14,7 @@ class ControllerUtilisateur{
         $tab['ville'] = $_POST['ville'];
 
         ModelUtilisateur::creationCompte($tab);
-        header('Location:../view/vueRecherche.php');
+        header('Location:../../index.php');
     }
 
     public static function connection(){
@@ -23,9 +23,9 @@ class ControllerUtilisateur{
         $tab['mdp'] = $_POST['mdp'];
 
         if (ModelUtilisateur::connectionCompte($tab)) {
-            echo "mdp bon";
+            header('Location:../../index.php');
         } else {
-            echo 'mdp pas bon';
+            require("../view/creation.php");
         }
 
     }
