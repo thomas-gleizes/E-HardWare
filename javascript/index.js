@@ -212,9 +212,8 @@ $(document).ready(() => {
 
     if(window.location.href.includes('Recherche')){
         $(".card").each(function () {
-            var url = $(this).children(".url").val();
-            console.log(url);
-            $(this).children(".img-container").css('background-image',"url(" +url+")");
+            var url = $(this).children(".card-form").children(".url").val();
+            $(this).children(".card-form").children(".img-container").css('background-image',"url(" +url+")");
         })
     };
 
