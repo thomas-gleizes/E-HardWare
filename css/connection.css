@@ -1,5 +1,6 @@
 body {
     margin:0;
+    padding-bottom: 2rem;
 }
 
 * {
@@ -8,7 +9,7 @@ body {
 
 .container {
     width: 60%;
-    height: 35rem;
+    height: 37rem;
     margin-left: 20%;
     margin-top: 10%;
     border-radius: 1rem;
@@ -99,8 +100,15 @@ button:hover p {
     margin-top: 4rem;
 }
 
+#revenir {
+    width:30%;
+    height: 2.5rem;
+    margin-left: 35%;
+    margin-top: 4rem;
+}
+
 #container-spe {
-    height:55rem ;
+    height:58rem ;
     margin-top: 3%;
 }
 
@@ -121,5 +129,10 @@ p{
     color:red;
     display:none;
     margin-top: 2rem;
+    font-size: 25px;
+}
+
+#info {
+    margin-top: 10rem;
     font-size: 25px;
 }

@@ -19,7 +19,7 @@
                 clear
             </i>
         </div>
-        <div class="section">
+        <div class="section" id="moncompte">
             <p>Mon compte</p>
             <i  class="material-icons navbaricons">
                 account_circle

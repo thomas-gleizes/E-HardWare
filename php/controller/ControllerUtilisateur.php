@@ -14,7 +14,7 @@ class ControllerUtilisateur{
         $tab['ville'] = $_POST['ville'];
 
         ModelUtilisateur::creationCompte($tab);
-        header('Location:../../index.php');
+        header('Location:../view/compteCréé.php');
     }
 
     public static function connection(){
@@ -25,7 +25,7 @@ class ControllerUtilisateur{
         if (ModelUtilisateur::connectionCompte($tab)) {
             header('Location:../../index.php');
         } else {
-            require("../view/creation.php");
+            require("../view/connection.php");
         }
 
     }

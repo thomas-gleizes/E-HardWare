@@ -7,6 +7,10 @@ $(document).ready(() => {
         window.location = "./connection.php";
     });
 
+    $("#revenir").click(function () {
+        window.location = "../../index.php";
+    });
+
     $('#mdp2').bind('input', function() {
         if ($(this).val() != $("#mdp1").val() && $(this).val() != ''){
             $("#ok").css('display','none');

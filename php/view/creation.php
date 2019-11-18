@@ -76,6 +76,7 @@
         </form>
 
         <button id="connect"><p>se connecter</p></button>
+        <button id="revenir"><p>revenir à l'acceuil</p></button>
     </div>
 </body>
 </html>

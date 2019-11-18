@@ -36,6 +36,7 @@
             <a href="#"><p>Mot de passe oublié ?</p></a>
         </div>
         <button id="new"><p>créer un nouveau compte</p></button>
+        <button id="revenir"><p>revenir à l'acceuil</p></button>
     </div>
 </body>
 </html>
