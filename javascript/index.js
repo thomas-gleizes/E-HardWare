@@ -8,6 +8,7 @@ $(document).ready(() => {
     var resultSize = 0;
     var nbcard = 0;
     var currentPrice = 0;
+    var toolsopen = false;
 
     $('#reseach').bind('input', function() {
         $(".result").children().remove();
@@ -254,6 +255,14 @@ $(document).ready(() => {
         })
     };
 
-
+    $('#tools').click(function(){
+        if (toolsopen){
+            $('#tools1').css('display','none');
+            toolsopen = false;
+        } else {
+            $('#tools1').css('display','block');
+            toolsopen = true;
+        }
+    });
 
 });

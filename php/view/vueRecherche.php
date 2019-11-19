@@ -1,3 +1,18 @@
+<?php
+require_once ('../model/Model.php');
+session_start();
+
+if (isset($_SESSION['login'])) {
+    $mail = $_SESSION['login'];
+    $rep = Model::$pdo->query("SELECT prioriter FROM Clients WHERE Email = '$mail'");
+    $rep -> setFetchMode(PDO::FETCH_CLASS, 'Client');
+    $res = $rep->fetchAll(PDO::FETCH_ASSOC);
+    if ($res[0]['prioriter'] == 1){
+        $_SESSION['admin'] = 1;
+    }
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +53,6 @@
             <i  id="expand-icon" class="material-icons navbaricons">
                 expand_more
             </i>
-
         </div>
     </div>
     <div class="section under"> <p>Processeur</p> <i  class="material-icons navbaricons"> chevron_right </i> </div>
@@ -178,6 +192,44 @@
         ?>
     </div>
 </div>
+
+<?php
+
+if ($_SESSION['admin'] = 1) {
+    echo '
+        <div id="tools">
+            <i class="material-icons" id="tool-icon">
+                build
+            </i>
+        </div>
+        <div id="p-container">
+            <p id="p-tool">Vous êtes connecté en tant qu\'administrateur <br> Et avez donc accès à des outils supplémentaires</p>
+        </div>
+        <div id="tools1">
+            <i class="material-icons" id="tool-icon1">
+                add
+            </i>
+        </div>
+        <div id="p-container1">
+            <p id="p-tool1">Ajouter un produit à la vente</p>
+        </div>
+        <form method="post" action="./ajout"
+        <div class="ajout-container open">
+            <form method="post" action="../controller/routeur.php">
+                <input type="hidden" class="ajout-input" name="action" value="creation" required>
+                <input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>
+                <input type="text" class="ajout-input" placeholder="Marque du produit" name="marque" required>
+                <input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>
+                <input type="text" class="ajout-input" placeholder="Url de l\'image du produit" name="url" required>
+                <button id="ok" type="submit"><p>Ajout</p></button>
+            </form>
+        </div>
+        ';
+}
+?>
+
+
+
 </body>
 </html>
 
