@@ -73,7 +73,7 @@
                         <i class="material-icons categorie-icon">
                             arrow_drop_down
                         </i>
-                        <select id="select" name="catégorie">
+                        <select id="select" name="categorie">
                             <option value="">toutes catégories</option>
                             <option value="Processeur">Processeur</option>
                             <option value="CarteMere">Carte mère</option>

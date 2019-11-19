@@ -23,6 +23,7 @@ class ModelRecherche{
 
     public static function afficheRechercheComplexe($nom,$prix,$marque,$categorie){
         $tab = self::afficherRecherche($nom);
+        $sql ="";
         $requete = "";
         if ($prix == 1){
             if($marque==null && $categorie==null){
@@ -34,12 +35,36 @@ class ModelRecherche{
             } else if($marque!=null && $categorie != null){
                 $requete = "SELECT * FROM Produit p JOIN $categorie ca ON ca.refProduit = p.refProduit WHERE p.nomMarque = $marque AND p.nom like %.$nom.%";
             }
+            echo "prix = 1".$categorie;
             $sql = $requete."GROUP BY(refProduit), ORDER BY ASC";
         } else if ($prix == 2){
-            $sql = "SELECT * FROM Produits WHERE $requete GROUP BY(refProduit), ORDER BY DESC";
+            if($marque==null && $categorie==null){
+                return $tab;
+            } else if($marque==null && $categorie!=null){
+                $requete = "SELECT * FROM $categorie c JOIN Produits p on p.refProduit = c.refProduit where p.nom like %.$nom.%";
+            } else if($marque!=null && $categorie == null){
+                $requete = "SELECT * FROM Produit where marque =$marque and  nom like %.$nom.%";
+            } else if($marque!=null && $categorie != null){
+                $requete = "SELECT * FROM Produit p JOIN $categorie ca ON ca.refProduit = p.refProduit WHERE p.nomMarque = $marque AND p.nom like %.$nom.%";
+            }
+            echo "prix = 2".$categorie;
+            $sql = $requete."GROUP BY(refProduit), ORDER BY DESC";
         } else {
-            $sql = "SELECT * FROM Produits WHERE requete = x";
+            if($marque==null && $categorie==null){
+                return $tab;
+            } else if($marque==null && $categorie!=null){
+                $requete = "SELECT * FROM $categorie c JOIN Produits p on p.refProduit = c.refProduit where p.nom like %.$nom.%";
+            } else if($marque!=null && $categorie == null){
+                $requete = "SELECT * FROM Produit where marque =$marque and  nom like %.$nom.%";
+            } else if($marque!=null && $categorie != null){
+                $requete = "SELECT * FROM Produit p JOIN $categorie ca ON ca.refProduit = p.refProduit WHERE p.nomMarque = $marque AND p.nom like %.$nom.%";
+            }
         }
+        echo  "prix = 0".$categorie;
+        $rep = Model::$pdo->query($requete);
+        $rep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rep->fectAll();
+        return $tab;
     }
 
     public static function getAllInfo($ref){
