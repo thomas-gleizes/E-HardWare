@@ -28,9 +28,6 @@ class ModelRecherche{
             if($marque==null && $categorie==null){
                 return $tab;
             }
-            if($marque==null && $categorie!=null){
-                $requete = "SELECT * FROM $categorie c JOIN Produits p on p.refProduit = refCM  where p.nom like %.$nom.%";
-            }
             if($marque!=null && $categorie == null){
             } else if($marque==null && $categorie!=null){
                 $requete = "SELECT * FROM $categorie c JOIN Produits p on p.refProduit = c.refProduit where p.nom like %.$nom.%";

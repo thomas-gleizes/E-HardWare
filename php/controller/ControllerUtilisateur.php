@@ -7,6 +7,7 @@ class ControllerUtilisateur{
     public static function creation(){
 
 
+
         $tab = [];
         $tab['mail'] = $_POST['mail'];
         $tab['nom'] = $_POST['nom'];
@@ -14,8 +15,6 @@ class ControllerUtilisateur{
         $tab['mdp'] = $_POST['mdp'];
         $tab['adresse'] = $_POST['adresse'];
         $tab['ville'] = $_POST['ville'];
-
-
 
         ModelUtilisateur::creationCompte($tab);
         //mail(tab['mail'],'Demande de confirmation de compte E-HardComerce.');
