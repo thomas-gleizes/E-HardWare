@@ -39,11 +39,11 @@ class ModelRecherche{
             } else if($marque!=null && $categorie != null){
                 $requete = "SELECT * FROM Produit p JOIN $categorie ca ON ca.refProduit = p.refProduit WHERE p.nomMarque = $marque AND p.nom like %.$nom.%";
             }
-            $sql=$requete."GROUP BY(y) , ORDER BY ASC";
+            $sql = $requete."GROUP BY(refProduit), ORDER BY ASC";
         } else if ($prix == 2){
-            $sql="SELECT * FROM Produits WHERE $requete GROUP BY(y) , ORDER BY DESC";
-        } else{
-            $sql="SELECT * FROM Produits WHERE requete = x";
+            $sql = "SELECT * FROM Produits WHERE $requete GROUP BY(refProduit), ORDER BY DESC";
+        } else {
+            $sql = "SELECT * FROM Produits WHERE requete = x";
         }
     }
 

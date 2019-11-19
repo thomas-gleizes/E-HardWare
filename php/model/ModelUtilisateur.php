@@ -17,6 +17,11 @@ class ModelUtilisateur{
         );
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($valeur);
+        $mail = tab['mail'];
+        $sql = "CALL GenereCodeConfirmation('$mail')";
+        $rep = Model::$pdo->prepare($sql);
+
+
     }
 
     public static function connectionCompte($tab){
