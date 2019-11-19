@@ -18,9 +18,16 @@ class ModelUtilisateur{
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($valeur);
         $mail = tab['mail'];
-        $sql = "CALL GenereCodeConfirmation('$mail')";
-        $rep = Model::$pdo->prepare($sql);
 
+
+        $sql = "CALL GenereCodeConfirmation(?)";
+        $stmt = Model::$pdo->prepare($sql);
+
+
+        $stmt->bindParam(1, $mail, PDO::PARAM_STR, 32);
+
+
+        $stmt->execute();
 
     }
 
