@@ -51,4 +51,12 @@ class ModelUtilisateur{
         return $mdp_chiffre;
     }
 
+    public static function  getCodeConf($mail){
+        $rep = Model::$pdo->query("SELECT codeConfirmation FROM Clients Where Email = '$mail'");
+        $rep -> setFetchMode(PDO::FETCH_CLASS, 'Client');
+        $res = $rep->fetchAll(PDO::FETCH_ASSOC);
+        echo $res[0]['codeConfirmation'];
+        return $res[0]['codeConfirmation'];
+    }
+
 }
