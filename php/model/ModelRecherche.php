@@ -27,8 +27,6 @@ class ModelRecherche{
         if ($prix == 1){
             if($marque==null && $categorie==null){
                 return $tab;
-            }
-            if($marque!=null && $categorie == null){
             } else if($marque==null && $categorie!=null){
                 $requete = "SELECT * FROM $categorie c JOIN Produits p on p.refProduit = c.refProduit where p.nom like %.$nom.%";
             } else if($marque!=null && $categorie == null){
