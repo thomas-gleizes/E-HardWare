@@ -32,7 +32,7 @@ async function getCardInfo(){
     var retour;
 
     await $.ajax({
-        url : '../controller/card-ajax.php',
+        url : './card-ajax.php',
         type : 'GET',
         data : '',
         dataType : 'text',

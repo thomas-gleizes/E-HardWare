@@ -6,8 +6,6 @@ class ControllerUtilisateur{
 
     public static function creation(){
 
-
-
         $tab = [];
         $tab['mail'] = $_POST['mail'];
         $tab['nom'] = $_POST['nom'];

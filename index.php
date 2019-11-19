@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -146,9 +154,12 @@
             </form>
         </div>
     </div>
+    <div></div>
     <div class="padding-container">
         <div class="container">
         </div>
     </div>
 </body>
 </html>
+
+

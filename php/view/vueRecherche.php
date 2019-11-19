@@ -155,7 +155,6 @@
         $n = "nom";
         $nm = "nomMarque";
         $p = "prix";
-        //var_dump($tabvaleur);
         foreach ($tabvaleur as $v) {
             echo("<div class=\"card\">
             <form  class=\"card-form\"  method=\"get\" action=\"PHP/view/Participant/preLobby.php\">
@@ -169,7 +168,7 @@
                 <p class=\"prix\">$v[$p]<p/>
                 <div class=\"rond\">
                     <p>
-                        <input class=\"id\" type=\"hidden\" name=\"id_produit\" value=\"$v[$u]\">
+                        <input class=\"id\" type=\"hidden\" name=\"id_produit\" value=\"$v[$r]\">
                         <i class=\"add-icon material-icons buy-icon\">add_shopping_cart</i>
                     </p>
                 </div>

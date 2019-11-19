@@ -17,18 +17,14 @@ class ModelUtilisateur{
         );
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($valeur);
-        $mail = tab['mail'];
-
-
-        $sql = "CALL GenereCodeConfirmation(?)";
+        $mail = $tab['mail'];
+        $sql = "CALL GenereCodeConfirmation('$mail')";
         $stmt = Model::$pdo->prepare($sql);
-
-
-        $stmt->bindParam(1, $mail, PDO::PARAM_STR, 32);
-
-
         $stmt->execute();
 
+        session_start();
+        $_SESSION['login'] = $mail;
+        $_SESSION['admin'] = 0;
     }
 
     public static function connectionCompte($tab){
