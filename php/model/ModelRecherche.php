@@ -26,59 +26,80 @@ class ModelRecherche{
         $sql ="";
         $requete = "";
         if ($prix == 1){
+            echo"1";
             if($marque==null && $categorie==null){
-                return $tab;
-            } else if($marque==null && $categorie!=null){
-                $requete = "SELECT * FROM $categorie c JOIN Produits p on p.refProduit = c.refProduit where p.nom like '%$nom%'";
-            } else if($marque!=null && $categorie == null){
-                $requete = "SELECT * FROM Produit where marque =$marque and  nom like '%$nom%'";
-            } else if($marque!=null && $categorie != null){
-                $requete = "SELECT * FROM Produit p JOIN $categorie ca ON ca.refProduit = p.refProduit WHERE p.nomMarque = $marque AND p.nom like '%$nom%'";
+                $requete = "SELECT * FROM Produits where nom like '%$nom%' ";
             }
-            //echo "prix = 1".$categorie;
+            if($marque==null && $categorie!=null){
+                $requete = "SELECT * FROM $categorie c JOIN Produits p on p.refProduit = c.refProduit where p.nom like '%$nom%'";
+            }
+            if($marque!=null && $categorie == null){
+                $requete = "SELECT * FROM Produits where nomMarque ='$marque' and  nom like '%$nom%'";
+            }
+            if($marque!=null && $categorie != null){
+                $requete = "SELECT * FROM Produits p JOIN $categorie ca ON ca.refProduit = p.refProduit WHERE p.nomMarque = '$marque' AND p.nom like '%$nom%'";
+            }
             $sql = $requete." GROUP BY(p.refProduit) ORDER BY p.prix ASC";
-        } else if ($prix == 2){
-            if($marque==null && $categorie==null){
-                return $tab;
-            } else if($marque==null && $categorie!=null){
-                $requete = "SELECT * FROM $categorie c JOIN Produits p on p.refProduit = c.refProduit where p.nom like '%$nom%'";
-            } else if($marque!=null && $categorie == null){
-                $requete = "SELECT * FROM Produit where marque =$marque and  nom like '%$nom%'";
-            } else if($marque!=null && $categorie != null){
-                $requete = "SELECT * FROM Produit p JOIN $categorie ca ON ca.refProduit = p.refProduit WHERE p.nomMarque = $marque AND p.nom like '%$nom%'";
-            }
-            //echo "prix = 2".$categorie;
-            $sql = $requete." GROUP BY(p.refProduit) ORDER BY p.prix DESC";
-        } else {
-            if($marque==null && $categorie==null){
-                return $tab;
-            } else if($marque==null && $categorie!=null){
-                $requete = "SELECT * FROM $categorie c JOIN Produits p on p.refProduit = c.refProduit where p.nom like '%$nom%'";
-            } else if($marque!=null && $categorie == null){
-                $requete = "SELECT * FROM Produit where marque =$marque and  nom like '%$nom%'";
-            } else if($marque!=null && $categorie != null){
-                $requete = "SELECT * FROM Produit p JOIN $categorie ca ON ca.refProduit = p.refProduit WHERE p.nomMarque = $marque AND p.nom like '%$nom%'";
-            }
+
         }
-        echo $sql;
-        //echo  "prix = 0".$categorie;
+        if ($prix == 2){
+            //echo"2";
+            if($marque==null && $categorie==null){
+                $requete = "SELECT * FROM Produits where nom like '%$nom%' ";
+            }
+            if($marque==null && $categorie!=null){
+                $requete = "SELECT * FROM $categorie c JOIN Produits p on p.refProduit = c.refProduit where p.nom like '%$nom%'";
+            }
+            if($marque!=null && $categorie == null){
+                $requete = "SELECT * FROM Produits where nomMarque ='$marque' and  nom like '%$nom%'";
+            }
+            if($marque!=null && $categorie != null){
+                $requete = "SELECT * FROM Produits p JOIN $categorie ca ON ca.refProduit = p.refProduit WHERE p.nomMarque = '$marque 'AND p.nom like '%$nom%'";
+            }
+            $sql = $requete." GROUP BY(p.refProduit) ORDER BY p.prix DESC";
+
+        } if($prix == null) {
+
+            if($marque==null && $categorie==null){
+                //echo"3.1";
+                $requete = "SELECT * FROM Produits where nom like '%$nom%' ";
+            }
+            if($marque==null && $categorie!=null){
+               // echo"3.2";
+                $requete = "SELECT * FROM $categorie c JOIN Produits p on p.refProduit = c.refProduit where p.nom like '%$nom%'";
+            }
+            if($marque!=null && $categorie == null){
+                //echo"3.3";
+                $requete = "SELECT * FROM Produits where nomMarque ='$marque' and  nom like '%$nom%'";
+            }
+            if($marque!=null && $categorie != null){
+                //echo"3.4";
+                $requete = "SELECT * FROM Produits p JOIN $categorie ca ON ca.refProduit = p.refProduit WHERE p.nomMarque = '$marque' AND p.nom like '%$nom%'";
+            }
+            $sql=$requete;
+            //echo $sql;
+        }
+        //echo "$sql <br>";
         $rep = Model::$pdo->query($requete);
         $rep->setFetchMode(PDO::FETCH_ASSOC);
-        $tab = $rep->fectAll();
+        $tab = $rep->fetchAll();
+        //var_dump($tab);
         return $tab;
     }
 
     public static function getAllInfo($ref){
         $tab= [];
         foreach ($ref as $value){
-            $sql = "SELECT * FROM Produits where refProduit = :ref";
-            $valeur = array(
-                "ref"=> $value
-            );
-            $rec_prep = Model::$pdo->prepare($sql);
-            $rec_prep->execute($valeur);
-            $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
-            $tab = array_merge($tab,$rec_prep->fetchAll());
+            foreach ($value as $v) {
+                $sql = "SELECT * FROM Produits where refProduit = :ref";
+                $valeur = array(
+                    "ref" => $v
+                );
+                $rec_prep = Model::$pdo->prepare($sql);
+                $rec_prep->execute($valeur);
+                $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+                $tab = array_merge($tab, $rec_prep->fetchAll());
+            }
         }
         return $tab;
     }
