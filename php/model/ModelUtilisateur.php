@@ -33,6 +33,12 @@ class ModelUtilisateur{
         $rep -> setFetchMode(PDO::FETCH_CLASS, 'Client');
         $res = $rep->fetchAll(PDO::FETCH_ASSOC);
         $mdp = ModelUtilisateur::chiffrer($tab['mdp'].Security::getSeed());
+        $rep1 = Model::$pdo->query("SELECT prioriter FROM Clients WHERE Email = '$mail'");
+        $rep1 -> setFetchMode(PDO::FETCH_CLASS, 'Client');
+        $res1 = $rep1->fetchAll(PDO::FETCH_ASSOC);
+        session_start();
+        $_SESSION['login'] = $mail;
+        $_SESSION['admin'] = $res1[0]['prioriter'];
         if ($res[0]['mdp'] == $mdp){
             return true;
         } else {

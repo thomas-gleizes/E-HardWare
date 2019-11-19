@@ -121,7 +121,7 @@ $(document).ready(() => {
     });
 
     getCardInfo().then(function (value) {
-        if(!window.location.href.includes('Recherche')){
+        if(!window.location.href.includes('routeur')){
             var produit = value;
             var tabProduit = produit.split(',');
             for (var i = 0; i < tabProduit.length - 1; i++){
