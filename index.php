@@ -1,3 +1,21 @@
+<?php
+require_once ('./Model.php');
+session_start();
+
+if (isset($_SESSION['login'])) {
+    $mail = $_SESSION['login'];
+    $rep = Model::$pdo->query("SELECT prioriter FROM Clients WHERE Email = '$mail'");
+    $rep -> setFetchMode(PDO::FETCH_CLASS, 'Client');
+    $res = $rep->fetchAll(PDO::FETCH_ASSOC);
+    if ($_SESSION['admin'] == 1 || $res[0]['prioriter'] == 1){
+        $_SESSION['admin'] = 1;
+        header('Location:./php/controller/routeur.php?action=rechercheVide');
+    }
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -146,9 +164,12 @@
             </form>
         </div>
     </div>
+    <div></div>
     <div class="padding-container">
         <div class="container">
         </div>
     </div>
 </body>
 </html>
+
+

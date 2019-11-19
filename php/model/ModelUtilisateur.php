@@ -17,18 +17,14 @@ class ModelUtilisateur{
         );
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($valeur);
-        $mail = tab['mail'];
-
-
-        $sql = "CALL GenereCodeConfirmation(?)";
+        $mail = $tab['mail'];
+        $sql = "CALL GenereCodeConfirmation('$mail')";
         $stmt = Model::$pdo->prepare($sql);
-
-
-        $stmt->bindParam(1, $mail, PDO::PARAM_STR, 32);
-
-
         $stmt->execute();
 
+        session_start();
+        $_SESSION['login'] = $mail;
+        $_SESSION['admin'] = 0;
     }
 
     public static function connectionCompte($tab){
@@ -37,6 +33,12 @@ class ModelUtilisateur{
         $rep -> setFetchMode(PDO::FETCH_CLASS, 'Client');
         $res = $rep->fetchAll(PDO::FETCH_ASSOC);
         $mdp = ModelUtilisateur::chiffrer($tab['mdp'].Security::getSeed());
+        $rep1 = Model::$pdo->query("SELECT prioriter FROM Clients WHERE Email = '$mail'");
+        $rep1 -> setFetchMode(PDO::FETCH_CLASS, 'Client');
+        $res1 = $rep1->fetchAll(PDO::FETCH_ASSOC);
+        session_start();
+        $_SESSION['login'] = $mail;
+        $_SESSION['admin'] = $res1[0]['prioriter'];
         if ($res[0]['mdp'] == $mdp){
             return true;
         } else {
@@ -47,6 +49,14 @@ class ModelUtilisateur{
     public static function chiffrer($mdp){
         $mdp_chiffre = hash('sha256', $mdp);
         return $mdp_chiffre;
+    }
+
+    public static function  getCodeConf($mail){
+        $rep = Model::$pdo->query("SELECT codeConfirmation FROM Clients Where Email = '$mail'");
+        $rep -> setFetchMode(PDO::FETCH_CLASS, 'Client');
+        $res = $rep->fetchAll(PDO::FETCH_ASSOC);
+        echo $res[0]['codeConfirmation'];
+        return $res[0]['codeConfirmation'];
     }
 
 }
