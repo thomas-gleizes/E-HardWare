@@ -53,7 +53,7 @@
                         lock_open
                     </i>
                 </div>
-                <input type="password" id="mdp2" name="mdp" placeholder="Mot de passe" required>
+                <input type="password" id="mdp2" name="mdp" placeholder="Confirmez Mot de passe" required>
             </div>
             <div class="under-container2">
                 <div class="i-container">
