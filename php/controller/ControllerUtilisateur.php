@@ -15,9 +15,12 @@ class ControllerUtilisateur{
         $tab['ville'] = $_POST['ville'];
 
         ModelUtilisateur::creationCompte($tab);
-        $code = ModelUtilisateur::getCodeConf(tab['mail']);
+        $mail = $tab['mail'];
+
+        $code = ModelUtilisateur::getCodeConf($mail);
         $message = "Veuillez confirmer votre inscription sur E-HardWare sur le lien suivant vue.php,  avec le code suivant : $code .\n Merci de votre Inscription.";
-        mail(tab['mail'],'Demande de confirmation de confirmation E-HardWare.', $message);
+        $header = "From : " . "thomas.gleizes@etu.umontpellier.fr";
+        mail($mail,'Demande de confirmation de confirmation E-HardWare.', $message, $header);
         header('Location:../view/compteCréé.php');
     }
 
