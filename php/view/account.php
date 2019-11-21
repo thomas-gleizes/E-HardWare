@@ -30,7 +30,18 @@ $res = $rep->fetchAll(PDO::FETCH_ASSOC);
 <div id="container-spe" class="container">
     <?php
     $prenom = $res[0]['prenomClient'];
-     echo '<p id="bonjour">Bonjour '.$prenom.' !</p>'
+     echo '<p id="bonjour">Bonjour '.$prenom.' !</p>';
+    ?>
+    <?php
+    if ($res[0]['codeConfirmation'] != 0){
+        echo '<form method="post" action="../controller/routeur.php">
+        <p class="p-code">Code de validation reçu par mail :</p>
+        <input type="hidden" name="action" value="validation" >
+        <input id="code-input" type="text" name="code" >
+        <button id="ok1" ><p>Ok</p></button>
+    </form>';
+    }
+
     ?>
     <form method="post" action="../controller/routeur.php">
         <input type="hidden" name="action" value="edit" >

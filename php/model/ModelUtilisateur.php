@@ -56,6 +56,7 @@ class ModelUtilisateur{
         );
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($valeur);
+        session_start();
         $_SESSION['login'] = $tab['mail'];
     }
 
