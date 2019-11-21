@@ -39,8 +39,9 @@ class ControllerUtilisateur{
 
     public static function Valider(){
 
+        session_start();
         $tab['codeConf'] = $_POST['codeConf'];
-        $tab['mail'] = $_POST['mail'];
+        $tab['mail'] = $_SESSION['login'];
 
         ModelUtilisateur::validerCompte($tab);
     }
