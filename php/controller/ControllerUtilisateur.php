@@ -64,7 +64,14 @@ class ControllerUtilisateur{
         session_destroy();
 
         header('Location:../../index.php');
+    }
 
+    public static function reValiderMail($mail){
+        $code = ModelUtilisateur::getCodeConf($mail);
+        $lien = 'http://webinfo.iutmontp.univ-montp2.fr/~gleizest/Cours/php/ProjetPHP/php/view/account.php';
+        $message = "Veuillez confirmez votre changement de mail en entrant le code suivant : $code dans le liens suivant $lien";
+        $header = 'From : " . "thomas.gleizes@etu.umontpellier.fr';
+        mail($mail, 'Demande de reConfirmation de Email suite a un chengement de celui-ci',$message,$header);
     }
 
     public static function validation(){
@@ -76,6 +83,26 @@ class ControllerUtilisateur{
         }
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -56,7 +56,17 @@ class ModelUtilisateur{
         );
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($valeur);
+
         session_start();
+
+        $mail = $tab['mail'];
+        if ($mail != $_SESSION['login']){
+            $sqll = "CALL GenereCodeConfirmation('$mail')";
+            $stmt = Model::$pdo->prepare($sqll);
+            $stmt->execute();
+            ControllerUtilisateur::reValiderMail($mail);
+        }
+
         $_SESSION['login'] = $tab['mail'];
     }
 
@@ -88,8 +98,9 @@ class ModelUtilisateur{
         } else {
             return false;
         }
-
     }
+
+
 
 
 
