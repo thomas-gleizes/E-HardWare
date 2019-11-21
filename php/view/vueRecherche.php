@@ -28,6 +28,7 @@ if (isset($_SESSION['login'])) {
     <script src="../../javascript/index.js"></script>
 </head>
 <body>
+<div class="cache-ajout open"></div>
 <div id="nav-bar" class="nav">
     <div id="fermer" class="section">
         <p>Fermer</p>
@@ -219,6 +220,7 @@ if ($_SESSION['admin'] = 1) {
                 <input type="hidden" class="ajout-input" name="action" value="creation" required>
                 <input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>
                 <input type="text" class="ajout-input" placeholder="Marque du produit" name="marque" required>
+                <input type="text" class="ajout-input" placeholder="Catégorie du produit" name="categorie" required>
                 <input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>
                 <input type="text" class="ajout-input" placeholder="Url de l\'image du produit" name="url" required>
                 <button id="ok" type="submit"><p>Ajout</p></button>

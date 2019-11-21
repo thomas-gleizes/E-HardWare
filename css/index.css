@@ -676,6 +676,7 @@ label p {
     width: 80vw;
     z-index:3;
     background-color: white;
+    overflow: auto;
 }
 
 #ok {
@@ -712,6 +713,17 @@ label p {
     font-size: 1.2rem;
     font-family: 'Oswald', sans-serif;
     margin-top: 3.5rem;
+}
+
+.cache-ajout {
+    position: fixed;
+    z-index: 2;
+    background-color: #545454;
+    opacity: 0.9;
+    cursor: pointer;
+    width: 100vw;
+    height: 100vh;
+    margin:0;
 }
 
 

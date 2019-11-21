@@ -265,4 +265,16 @@ $(document).ready(() => {
         }
     });
 
+    $('#tools1').click(function(){
+        $(".ajout-container").toggleClass('open');
+        $(".cache-ajout").toggleClass('open');
+    });
+
+    $('.cache-ajout').click(function(){
+        $(".ajout-container").toggleClass('open');
+        $(".cache-ajout").toggleClass('open');
+    });
+
+
+
 });
