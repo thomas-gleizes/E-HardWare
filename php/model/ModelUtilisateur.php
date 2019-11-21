@@ -51,12 +51,32 @@ class ModelUtilisateur{
         return $mdp_chiffre;
     }
 
-    public static function  getCodeConf($mail){
+    public static function getCodeConf($mail){
         $rep = Model::$pdo->query("SELECT codeConfirmation FROM Clients Where Email = '$mail'");
         $rep -> setFetchMode(PDO::FETCH_CLASS, 'Client');
         $res = $rep->fetchAll(PDO::FETCH_ASSOC);
-        echo $res[0]['codeConfirmation'];
         return $res[0]['codeConfirmation'];
     }
+
+    public static function validerCompte($tab){
+
+        $mail = tab['mail'];
+        $code = self::getCodeConf($mail);
+
+        if ($code[0]['codeConfirmation'] == tab['codeConf']){
+            return true;
+            $sql = 'UPDATE Clients SET codeConfirmation = 1 WHERE Email = $mail';
+            $valeur  = array(
+                "mail" => $tab['mail']
+            );
+            $rec_prep = Model::$pdo->prepare($sql);
+            $rec_prep->execute($valeur);
+        } else {
+            return false;
+        }
+
+    }
+
+
 
 }

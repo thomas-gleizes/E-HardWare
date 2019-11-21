@@ -21,6 +21,7 @@ class ControllerUtilisateur{
         $message = "Veuillez confirmer votre inscription sur E-HardWare sur le lien suivant vue.php,  avec le code suivant : $code .\n Merci de votre Inscription.";
         $header = "From : " . "thomas.gleizes@etu.umontpellier.fr";
         mail($mail,'Demande de confirmation de confirmation E-HardWare.', $message, $header);
+
         header('Location:../view/compteCréé.php');
     }
 
@@ -34,6 +35,14 @@ class ControllerUtilisateur{
         } else {
             require("../view/connection.php");
         }
+    }
+
+    public static function Valider(){
+
+        $tab['codeConf'] = $_POST['codeConf'];
+        $tab['mail'] = $_POST['mail'];
+
+        ModelUtilisateur::validerCompte($tab);
     }
 
 
