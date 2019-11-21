@@ -718,7 +718,7 @@ label p {
 .cache-ajout {
     position: fixed;
     z-index: 2;
-    background-color: #545454;
+    background-color: black;
     opacity: 0.9;
     cursor: pointer;
     width: 100vw;

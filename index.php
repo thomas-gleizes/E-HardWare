@@ -114,11 +114,25 @@ if (isset($_SESSION['login'])) {
                 </div>
             </form>
         </div>
-            <button type="submit" id="account-button">
-                <i id="account-icon" class="material-icons">
-                    account_circle
-                </i>
-            </button>
+        <?php
+        if (isset($_SESSION['login'])) {
+            echo '<form  method="Post" action="./php/view/account.php">
+                <button type="submit" id="account-button">
+                    <i id="account-icon" class="material-icons">
+                        account_circle
+                    </i>
+                </button>
+            </form>';
+        } else {
+            echo '<form  method="Post" action="./php/view/connection.php">
+                <button type="submit" id="account-button">
+                    <i id="account-icon" class="material-icons">
+                        account_circle
+                    </i>
+                </button>
+            </form>';
+        }
+        ?>
         <form  method="Post" action="PHP/view/Participant/preLobby.php">
             <button type="submit" id="cart-button">
                 <i id="cart-icon" class="material-icons">

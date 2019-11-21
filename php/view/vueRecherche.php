@@ -112,11 +112,26 @@ if (isset($_SESSION['login'])) {
             </div>
         </form>
     </div>
-    <button type="submit" id="account-button">
-        <i id="account-icon" class="material-icons">
-            account_circle
-        </i>
-    </button>
+    <?php
+    if (isset($_SESSION['login'])) {
+        echo '<form  method="Post" action="../view/account.php">
+                <button type="submit" id="account-button">
+                    <i id="account-icon" class="material-icons">
+                        account_circle
+                    </i>
+                </button>
+            </form>';
+    } else {
+        echo '<form  method="Post" action="../view/connection.php">
+                <button type="submit" id="account-button">
+                    <i id="account-icon" class="material-icons">
+                        account_circle
+                    </i>
+                </button>
+            </form>';
+    }
+    ?>
+
     <form  method="Post" action="PHP/view/Participant/preLobby.php">
         <button type="submit" id="cart-button">
             <i id="cart-icon" class="material-icons">
@@ -222,7 +237,7 @@ if ($_SESSION['admin'] = 1) {
                 <input type="text" class="ajout-input" placeholder="Marque du produit" name="marque" required>
                 <input type="text" class="ajout-input" placeholder="Catégorie du produit" name="categorie" required>
                 <input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>
-                <input type="text" class="ajout-input" placeholder="Url de l\'image du produit" name="url" required>
+                <input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="url" required>
                 <button id="ok" type="submit"><p>Ajout</p></button>
             </form>
         </div>

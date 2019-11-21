@@ -20,7 +20,7 @@
                         mail_outline
                     </i>
                 </div>
-                <input type="text" placeholder="Votre mail" name="mail" required>
+                <input type="email" placeholder="Votre mail" name="mail" required>
             </div>
             <div class="under-container2">
                 <div class="i-container">

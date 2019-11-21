@@ -234,13 +234,6 @@ $(document).ready(() => {
         $('#buy-comp').toggleClass("navcomp");
     });
 
-    $("#account-button").click(function () {
-        window.location = "./php/view/connection.php";
-        if(window.location.href.includes('Recherche')){
-            window.location = "../view/connection.php";
-        }
-    });
-
     $("#moncompte").click(function () {
         window.location = "./php/view/connection.php";
         if(window.location.href.includes('Recherche')){

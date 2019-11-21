@@ -21,7 +21,7 @@
                         mail_outline
                     </i>
                 </div>
-                <input type="text" placeholder="Mail" name="mail" required>
+                <input type="email" placeholder="Mail" name="mail" required>
             </div>
             <div class="under-container2">
                 <div class="i-container">
