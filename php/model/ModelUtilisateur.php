@@ -46,6 +46,19 @@ class ModelUtilisateur{
         }
     }
 
+    public static function editCompte($tab){
+        $sql = "UPDATE Clients SET Email = :mail, villeClient = :ville, adresseClient = :adresse where idClient = :id";
+        $valeur  =array(
+            "mail" => $tab['mail'],
+            "ville" => $tab['ville'],
+            "adresse" => $tab['adresse'],
+            "id" => $tab['id']
+        );
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($valeur);
+        $_SESSION['login'] = $tab['mail'];
+    }
+
     public static function chiffrer($mdp){
         $mdp_chiffre = hash('sha256', $mdp);
         return $mdp_chiffre;

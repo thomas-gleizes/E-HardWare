@@ -80,9 +80,9 @@ button:hover p {
 }
 
 #ok {
-    width:20%;
-    height: 1.7rem;
-    margin-left: 40%;
+    width:30%;
+    height: 2.5rem;
+    margin-left: 35%;
     margin-top: 4rem;
 }
 
@@ -132,7 +132,38 @@ p{
     font-size: 25px;
 }
 
+#error1 {
+    color:red;
+    margin-top: 1rem;
+    margin-bottom: -3rem;
+    font-size: 25px;
+}
+
 #info {
     margin-top: 10rem;
     font-size: 25px;
+}
+
+#bonjour {
+    font-size:30px;
+    margin-top: 10%;
+}
+
+.edit {
+    margin-left: 5%;
+    margin-top: 15%;
+    font-size:30px !important;
+}
+
+.edit-div:hover {
+    background-color: #d9d9d9;
+    cursor: pointer;
+}
+
+.edit-div:hover i {
+    color:white;
+}
+
+.edit-div:hover input {
+    color:white;
 }

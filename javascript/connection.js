@@ -20,4 +20,13 @@ $(document).ready(() => {
             $("#error").css('display','none');
         }
     });
+
+    $(".edit-div").click(function () {
+        $(this).children(".changeable").prop("readonly", false);
+        $(this).children(".changeable").prop("required", true);
+        $(this).children(".changeable").val('');
+        $("#ok").prop('type', 'submit');
+    });
+
+    if()
 });

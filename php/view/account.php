@@ -1,4 +1,5 @@
 <?php
+require_once ('../model/Model.php');
 session_start();
 
 if (!isset($_SESSION['login'])) {
@@ -28,44 +29,59 @@ $res = $rep->fetchAll(PDO::FETCH_ASSOC);
 <body>
 <div id="container-spe" class="container">
     <?php
-    $nom = $res[0]['nom'];
-    $prenom = $res[0]['prenom'];
-     echo '<p>Bonjour '.$nom.' '.$prenom.' !</p>'
+    $prenom = $res[0]['prenomClient'];
+     echo '<p id="bonjour">Bonjour '.$prenom.' !</p>'
     ?>
-
     <form method="post" action="../controller/routeur.php">
-        <input type="hidden" name="action" value="creation" >
-        <div class="under-container1">
+        <input type="hidden" name="action" value="edit" >
+        <?php
+        $id = $res[0]['idClient'];
+        echo '<input type="hidden" name="id" value="'.$id.'" >';
+        ?>
+        <div class="under-container1 edit-div">
             <div class="i-container">
-                <i class="material-icons i">
+                <i class="material-icons i edit">
                     edit
                 </i>
             </div>
-            <input type="email" name="mail" value="exemple@gmail.com"readonly>
+            <?php
+            $mail = $res[0]['Email'];
+            echo '<input class="changeable" type="email" name="mail" value="'.$mail.'"readonly>';
+            ?>
         </div>
-        <div class="under-container2">
+        <div class="under-container2 edit-div">
             <div class="i-container">
-                <i class="material-icons i">
+                <i class="material-icons i edit">
                     edit
                 </i>
             </div>
-            <input name="adresse" value="2 rue Patrice Montreuil" readonly>
+            <?php
+            $adresse = $res[0]['adresseClient'];
+            echo '<input class="changeable" name="adresse" value="'.$adresse.'" readonly>';
+            ?>
         </div>
-        <div class="under-container2">
+        <div  class="under-container2 edit-div">
             <div class="i-container">
-                <i class="material-icons i">
+                <i class="material-icons i edit">
                     edit
                 </i>
             </div>
-            <input name="ville" value="Montpellier" readonly>
+            <?php
+            $ville = $res[0]['villeClient'];
+            echo '<input class="changeable" name="ville" value="'.$ville.'" readonly>';
+            ?>
+
         </div>
-        <button id="ok" type="submit"><p>Changer</p></button>
+        <button id="ok" ><p>Changer</p></button>
     </form>
     <div class="mdp">
         <a href="#"><p>Changer de mot de passe</p></a>
     </div>
-    <button id="connect"><p>se déconnecter</p></button>
-    <button id="revenir"><p>revenir à l'acceuil</p></button>
+    <form method="post" action="../controller/routeur.php">
+        <input type="hidden" name="action" value="disconnect" >
+        <button id="connect" type="submit"><p>se déconnecter</p></button>
+    </form>
+    <button id="revenir" ><p>revenir à l'acceuil</p></button>
 </div>
 </body>
 </html>

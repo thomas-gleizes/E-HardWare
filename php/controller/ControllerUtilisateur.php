@@ -31,9 +31,9 @@ class ControllerUtilisateur{
         $tab['mdp'] = $_POST['mdp'];
 
         if (ModelUtilisateur::connectionCompte($tab)) {
-            header('Location:../../index.php');
+            header('Location:../view/account.php');
         } else {
-            require("../view/connection.php");
+            header("Location:../view/connection.php?mail=".$tab['mail']);
         }
     }
 
@@ -45,6 +45,28 @@ class ControllerUtilisateur{
 
         ModelUtilisateur::validerCompte($tab);
     }
+
+    public static function edit(){
+        $tab = [];
+        $tab['id'] = $_POST['id'];
+        $tab['mail'] = $_POST['mail'];
+        $tab['adresse'] = $_POST['adresse'];
+        $tab['ville'] = $_POST['ville'];
+
+        ModelUtilisateur::editCompte($tab);
+
+        header('Location:../view/account.php');
+
+    }
+
+    public static function disconnect(){
+        session_start();
+        session_destroy();
+
+        header('Location:../../index.php');
+
+    }
+
 
 
 }
