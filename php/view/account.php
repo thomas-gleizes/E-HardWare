@@ -46,7 +46,7 @@ $res = $rep->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <?php
             $mail = $res[0]['Email'];
-            echo '<input class="changeable" type="email" name="mail" value="'.$mail.'"readonly>';
+            echo '<input class="changeable" type="email" name="mail" value="'.$mail.'"required>';
             ?>
         </div>
         <div class="under-container2 edit-div">
@@ -57,7 +57,7 @@ $res = $rep->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <?php
             $adresse = $res[0]['adresseClient'];
-            echo '<input class="changeable" name="adresse" value="'.$adresse.'" readonly>';
+            echo '<input class="changeable" name="adresse" value="'.$adresse.'" required>';
             ?>
         </div>
         <div  class="under-container2 edit-div">
@@ -68,7 +68,7 @@ $res = $rep->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <?php
             $ville = $res[0]['villeClient'];
-            echo '<input class="changeable" name="ville" value="'.$ville.'" readonly>';
+            echo '<input class="changeable" name="ville" value="'.$ville.'" required>';
             ?>
 
         </div>
