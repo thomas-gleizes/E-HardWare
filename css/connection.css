@@ -139,6 +139,12 @@ p{
     font-size: 25px;
 }
 
+#error2 {
+    color:red;
+    margin-top: 1rem;
+    font-size: 25px;
+}
+
 #info {
     margin-top: 10rem;
     font-size: 25px;

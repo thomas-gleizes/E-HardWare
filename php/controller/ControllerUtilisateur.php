@@ -67,6 +67,16 @@ class ControllerUtilisateur{
 
     }
 
+    public static function validation(){
+        $code = $_POST['code'];
+        if(ModelUtilisateur::validerCompte($code)){
+            header('Location:../view/account.php');
+        } else {
+            header('Location:../view/account.php?error=1');
+        }
+
+    }
+
 
 
 }

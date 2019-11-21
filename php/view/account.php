@@ -33,6 +33,11 @@ $res = $rep->fetchAll(PDO::FETCH_ASSOC);
      echo '<p id="bonjour">Bonjour '.$prenom.' !</p>';
     ?>
     <?php
+    if(!$_GET==null){
+        echo "<p id=\"error2\">Ce code n'est pas bon !</p>";
+    }
+    ?>
+    <?php
     if ($res[0]['codeConfirmation'] != 0){
         echo '<form method="post" action="../controller/routeur.php">
         <p class="p-code">Code de validation reçu par mail :</p>

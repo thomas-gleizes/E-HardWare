@@ -72,19 +72,19 @@ class ModelUtilisateur{
         return $res[0]['codeConfirmation'];
     }
 
-    public static function validerCompte($tab){
-
-        $mail = tab['mail'];
+    public static function validerCompte($codeValid){
+        session_start();
+        $mail = $_SESSION['login'];
         $code = self::getCodeConf($mail);
-
-        if ($code[0]['codeConfirmation'] == tab['codeConf']){
-            return true;
-            $sql = 'UPDATE Clients SET codeConfirmation = 1 WHERE Email = $mail';
+        if ($code == $codeValid){
+            $sql = 'UPDATE Clients SET codeConfirmation = 0 WHERE Email = :mail';
             $valeur  = array(
-                "mail" => $tab['mail']
+                "mail" => $mail
             );
             $rec_prep = Model::$pdo->prepare($sql);
             $rec_prep->execute($valeur);
+
+            return true;
         } else {
             return false;
         }
