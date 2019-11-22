@@ -2,8 +2,9 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Connexion</title>
+    <title>Création</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="./image/Logo.png"/>
     <link href="../../css/connection.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto+Condensed&display=swap" rel="stylesheet">
@@ -21,7 +22,7 @@
                         mail_outline
                     </i>
                 </div>
-                <input type="text" placeholder="Mail" name="mail" required>
+                <input type="email" placeholder="Mail" name="mail" required>
             </div>
             <div class="under-container2">
                 <div class="i-container">
@@ -53,7 +54,7 @@
                         lock_open
                     </i>
                 </div>
-                <input type="password" id="mdp2" name="mdp" placeholder="Mot de passe" required>
+                <input type="password" id="mdp2" name="mdp" placeholder="Confirmez Mot de passe" required>
             </div>
             <div class="under-container2">
                 <div class="i-container">

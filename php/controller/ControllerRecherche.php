@@ -9,4 +9,8 @@ class ControllerRecherche{
         //var_dump($tabvaleur);
         require_once ("../view/vueRecherche.php");
     }
+
+    public static function rechercheVide(){
+        require_once ("../view/vueRecherche.php");
+    }
 }

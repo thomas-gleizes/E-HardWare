@@ -8,6 +8,7 @@ $(document).ready(() => {
     var resultSize = 0;
     var nbcard = 0;
     var currentPrice = 0;
+    var toolsopen = false;
 
     $('#reseach').bind('input', function() {
         $(".result").children().remove();
@@ -121,7 +122,7 @@ $(document).ready(() => {
     });
 
     getCardInfo().then(function (value) {
-        if(!window.location.href.includes('Recherche')){
+        if(!window.location.href.includes('routeur')){
             var produit = value;
             var tabProduit = produit.split(',');
             for (var i = 0; i < tabProduit.length - 1; i++){
@@ -170,7 +171,34 @@ $(document).ready(() => {
         }
     });
 
-
+    $('.buy-icon').click(function () {
+        $(".img2-container").css('background-image',"");
+        $("#buy").toggleClass('open');
+        $('#buy-comp').toggleClass("navcomp");
+        var id = $(this).siblings(".id").val();
+        getAchatInfo(id).then(function (value) {
+            var produit = value;
+            var tabProduit = produit.split(',');
+            $(".img2-container").css('background-image',"url(" +tabProduit[3]+")");
+            $(".produit").html(tabProduit[0]);
+            $(".disponibilite").html('en stock ('+tabProduit[1]+' disponible)');
+            currentPrice = tabProduit[2];
+            $(".prix-total").html(tabProduit[2]+'€');
+            $("#id_produit").val(id);
+            var j = parseInt(tabProduit[1], 10);
+            if (j - 5 < 0 ){
+                j -= 5;
+                var l = 5;
+                for(j; j <= -1;j++){
+                    var el = '#select3 option[value=\''+l+'\']';
+                    $(el).css("display","none");
+                    l--;
+                }
+            } else {
+                $('#select3 option').css("display","block")
+            }
+        });
+    });
 
     getMarque().then(function (value) {
         var marque = value;
@@ -206,13 +234,6 @@ $(document).ready(() => {
         $('#buy-comp').toggleClass("navcomp");
     });
 
-    $("#account-button").click(function () {
-        window.location = "./php/view/connection.php";
-        if(window.location.href.includes('Recherche')){
-            window.location = "../view/connection.php";
-        }
-    });
-
     $("#moncompte").click(function () {
         window.location = "./php/view/connection.php";
         if(window.location.href.includes('Recherche')){
@@ -226,6 +247,26 @@ $(document).ready(() => {
             $(this).children(".card-form").children(".img-container").css('background-image',"url(" +url+")");
         })
     };
+
+    $('#tools').click(function(){
+        if (toolsopen){
+            $('#tools1').css('display','none');
+            toolsopen = false;
+        } else {
+            $('#tools1').css('display','block');
+            toolsopen = true;
+        }
+    });
+
+    $('#tools1').click(function(){
+        $(".ajout-container").toggleClass('open');
+        $(".cache-ajout").toggleClass('open');
+    });
+
+    $('.cache-ajout').click(function(){
+        $(".ajout-container").toggleClass('open');
+        $(".cache-ajout").toggleClass('open');
+    });
 
 
 

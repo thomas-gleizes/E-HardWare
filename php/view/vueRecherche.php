@@ -1,3 +1,19 @@
+<?php
+require_once ('../model/Model.php');
+session_start();
+
+if (isset($_SESSION['login'])) {
+    $mail = $_SESSION['login'];
+    $rep = Model::$pdo->query("SELECT prioriter FROM Clients WHERE Email = '$mail'");
+    $rep -> setFetchMode(PDO::FETCH_CLASS, 'Client');
+    $res = $rep->fetchAll(PDO::FETCH_ASSOC);
+    echo $_SESSION['admin'];
+    if ($res[0]['prioriter'] == 1){
+        $_SESSION['admin'] = 1;
+    }
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,6 +22,7 @@
     <title>E-HardWare</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=no">
     <link href="../../css/index.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" href="./image/Logo.png"/>
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto+Condensed&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -13,6 +30,7 @@
     <script src="../../javascript/index.js"></script>
 </head>
 <body>
+<div class="cache-ajout open"></div>
 <div id="nav-bar" class="nav">
     <div id="fermer" class="section">
         <p>Fermer</p>
@@ -38,7 +56,6 @@
             <i  id="expand-icon" class="material-icons navbaricons">
                 expand_more
             </i>
-
         </div>
     </div>
     <div class="section under"> <p>Processeur</p> <i  class="material-icons navbaricons"> chevron_right </i> </div>
@@ -97,11 +114,26 @@
             </div>
         </form>
     </div>
-    <button type="submit" id="account-button">
-        <i id="account-icon" class="material-icons">
-            account_circle
-        </i>
-    </button>
+    <?php
+    if (isset($_SESSION['login'])) {
+        echo '<form  method="Post" action="../view/account.php">
+                <button type="submit" id="account-button">
+                    <i id="account-icon" class="material-icons">
+                        account_circle
+                    </i>
+                </button>
+            </form>';
+    } else {
+        echo '<form  method="Post" action="../view/connection.php">
+                <button type="submit" id="account-button">
+                    <i id="account-icon" class="material-icons">
+                        account_circle
+                    </i>
+                </button>
+            </form>';
+    }
+    ?>
+
     <form  method="Post" action="PHP/view/Participant/preLobby.php">
         <button type="submit" id="cart-button">
             <i id="cart-icon" class="material-icons">
@@ -155,7 +187,6 @@
         $n = "nom";
         $nm = "nomMarque";
         $p = "prix";
-        //var_dump($tabvaleur);
         foreach ($tabvaleur as $v) {
             echo("<div class=\"card\">
             <form  class=\"card-form\"  method=\"get\" action=\"PHP/view/Participant/preLobby.php\">
@@ -169,16 +200,57 @@
                 <p class=\"prix\">$v[$p]<p/>
                 <div class=\"rond\">
                     <p>
-                        <input class=\"id\" type=\"hidden\" name=\"id_produit\" value=\"$v[$u]\">
+                        <input class=\"id\" type=\"hidden\" name=\"id_produit\" value=\"$v[$r]\">
                         <i class=\"add-icon material-icons buy-icon\">add_shopping_cart</i>
                     </p>
-                </div>
-            </div>
-        </div>");
+                </div> ");
+            if ($_SESSION['admin'] = 1){
+                echo "<form method='post' action=''><button id='mod'><p>Modifier le produit</p></button></form>";
+            }
+            echo "</div></div>";
         }
         ?>
     </div>
 </div>
+
+<?php
+
+if ($_SESSION['admin'] = 1) {
+    echo '
+        <div id="tools">
+            <i class="material-icons" id="tool-icon">
+                build
+            </i>
+        </div>
+        <div id="p-container">
+            <p id="p-tool">Vous êtes connecté en tant qu\'administrateur <br> Et avez donc accès à des outils supplémentaires</p>
+        </div>
+        <div id="tools1">
+            <i class="material-icons" id="tool-icon1">
+                add
+            </i>
+        </div>
+        <div id="p-container1">
+            <p id="p-tool1">Ajouter un produit à la vente</p>
+        </div>
+        <form method="post" action="./ajout"
+        <div class="ajout-container open">
+            <form method="post" action="../controller/routeur.php">
+                <input type="hidden" class="ajout-input" name="action" value="creation" required>
+                <input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>
+                <input type="text" class="ajout-input" placeholder="Marque du produit" name="marque" required>
+                <input type="text" class="ajout-input" placeholder="Catégorie du produit" name="categorie" required>
+                <input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>
+                <input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="url" required>
+                <button id="ok" type="submit"><p>Ajout</p></button>
+            </form>
+        </div>
+        ';
+}
+?>
+
+
+
 </body>
 </html>
 

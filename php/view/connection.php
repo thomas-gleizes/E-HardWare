@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Connexion</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="./image/Logo.png"/>
     <link href="../../css/connection.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto+Condensed&display=swap" rel="stylesheet">
@@ -12,6 +13,11 @@
 </head>
 <body>
     <div class="container">
+        <?php
+        if(!$_GET==null){
+            echo "<p id=\"error1\">Cette combinaison Login - Mot de passe n'éxiste pas !</p>";
+        }
+        ?>
         <form method="post" action="../controller/routeur.php">
             <input type="hidden" name="action" value="connection">
             <div class="under-container1">
@@ -20,7 +26,13 @@
                         mail_outline
                     </i>
                 </div>
-                <input type="text" placeholder="Votre mail" name="mail" required>
+                <?php
+                if(!$_GET==null){
+                    echo "<input type=\"email\" placeholder=\"Votre mail\" name=\"mail\" value=\"".$_GET['mail']."\" required>";
+                } else {
+                    echo'<input type="email" placeholder="Votre mail" name="mail" required>';
+                }
+                ?>
             </div>
             <div class="under-container2">
                 <div class="i-container">
@@ -31,6 +43,8 @@
                 <input type="password" placeholder="Votre mot de passe" name="mdp" required>
             </div>
             <button id="ok" type="submit"><p>Connection</p></button>
+
+
         </form>
         <div class="mdp">
             <a href="#"><p>Mot de passe oublié ?</p></a>

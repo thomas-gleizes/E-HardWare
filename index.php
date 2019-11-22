@@ -1,9 +1,28 @@
+<?php
+require_once ('./Model.php');
+session_start();
+
+if (isset($_SESSION['login'])) {
+    $mail = $_SESSION['login'];
+    $rep = Model::$pdo->query("SELECT prioriter FROM Clients WHERE Email = '$mail'");
+    $rep -> setFetchMode(PDO::FETCH_CLASS, 'Client');
+    $res = $rep->fetchAll(PDO::FETCH_ASSOC);
+    if ($_SESSION['admin'] == 1 || $res[0]['prioriter'] == 1){
+        $_SESSION['admin'] = 1;
+        header('Location:./php/controller/routeur.php?action=rechercheVide');
+    }
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>E-HardWare</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="./image/Logo.png"/>
     <link href="css/index.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto+Condensed&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -96,11 +115,25 @@
                 </div>
             </form>
         </div>
-            <button type="submit" id="account-button">
-                <i id="account-icon" class="material-icons">
-                    account_circle
-                </i>
-            </button>
+        <?php
+        if (isset($_SESSION['login'])) {
+            echo '<form  method="Post" action="./php/view/account.php">
+                <button type="submit" id="account-button">
+                    <i id="account-icon" class="material-icons">
+                        account_circle
+                    </i>
+                </button>
+            </form>';
+        } else {
+            echo '<form  method="Post" action="./php/view/connection.php">
+                <button type="submit" id="account-button">
+                    <i id="account-icon" class="material-icons">
+                        account_circle
+                    </i>
+                </button>
+            </form>';
+        }
+        ?>
         <form  method="Post" action="PHP/view/Participant/preLobby.php">
             <button type="submit" id="cart-button">
                 <i id="cart-icon" class="material-icons">
@@ -146,9 +179,12 @@
             </form>
         </div>
     </div>
+    <div></div>
     <div class="padding-container">
         <div class="container">
         </div>
     </div>
 </body>
 </html>
+
+

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,8 +13,15 @@
 </head>
 <body>
 <div class="container">
-    <p id="info">Merci d'avoir créé un compte, <br> Un email de confirmation vous a été envoyé !</p>
-    <button id="revenir"><p>revenir à l'acceuil</p></button>
+    <p id="info">Veuillez entrer votre code de confirmation reçu par Email !</p>
+    <form method="post" action="../controller/routeur.php">
+        <input type="hidden" name="action" value="connection">
+        <div class="under-container1">
+            <input type="text" placeholder="Votre code de confirmation" name="codeConf" required>
+        </div>
+    </form>
+    <button id="Confirmer"><p>Confirmez</p></button>
+    <button id="revenir"><p>Revenir à l'acceuil</p></button>
 </div>
 </body>
 </html>
