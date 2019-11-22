@@ -39,19 +39,19 @@ class ModelRecherche{
             if($marque!=null && $categorie != null){
                 $requete = "SELECT * FROM Produits p JOIN $categorie ca ON ca.refProduit = p.refProduit WHERE p.nomMarque = '$marque' AND p.nom like '%$nom%'";
             }
-            $sql = $requete." GROUP BY(p.refProduit) ORDER BY p.prix ASC";
+            $sql = $requete." GROUP BY(Produits.refProduit) ORDER BY Produits.prix ASC";
 
         }
         if ($prix == 2){
             //echo"2";
             if($marque==null && $categorie==null){
-                $requete = "SELECT * FROM Produits where nom like '%$nom%' ";
+                $requete = "SELECT * FROM Produits p where nom like '%$nom%' ";
             }
             if($marque==null && $categorie!=null){
                 $requete = "SELECT * FROM $categorie c JOIN Produits p on p.refProduit = c.refProduit where p.nom like '%$nom%'";
             }
             if($marque!=null && $categorie == null){
-                $requete = "SELECT * FROM Produits where nomMarque ='$marque' and  nom like '%$nom%'";
+                $requete = "SELECT * FROM Produits p where nomMarque ='$marque' and  nom like '%$nom%'";
             }
             if($marque!=null && $categorie != null){
                 $requete = "SELECT * FROM Produits p JOIN $categorie ca ON ca.refProduit = p.refProduit WHERE p.nomMarque = '$marque 'AND p.nom like '%$nom%'";
@@ -81,7 +81,7 @@ class ModelRecherche{
         }
         //echo "$sql <br>";
         $rep = Model::$pdo->query($requete);
-        $rep->setFetchMode(PDO::FETCH_ASSOC);
+        $rep->setFetchMode(PDO::FETCH_CLASS,"ModelRecherche");
         $tab = $rep->fetchAll();
         //var_dump($tab);
         return $tab;
@@ -102,5 +102,20 @@ class ModelRecherche{
             }
         }
         return $tab;
+    }
+
+    public static function trie($indicetri,$tab){
+        $trie = [];
+        if ($indicetri ==1){
+            foreach ($tab as $value){
+                $trie = array_merge($trie, sort($value, 0));
+            }
+        }
+        if ($indicetri ==2){
+            foreach ($tab as $value){
+                $trie = array_merge($trie, rsort($value, 0));
+            }
+        }
+        return $trie;
     }
 }
