@@ -1,18 +1,5 @@
 <?php
-require_once ('../model/Model.php');
 session_start();
-
-if (isset($_SESSION['login'])) {
-    $mail = $_SESSION['login'];
-    $rep = Model::$pdo->query("SELECT prioriter FROM Clients WHERE Email = '$mail'");
-    $rep -> setFetchMode(PDO::FETCH_CLASS, 'Client');
-    $res = $rep->fetchAll(PDO::FETCH_ASSOC);
-    echo $_SESSION['admin'];
-    if ($res[0]['prioriter'] == 1){
-        $_SESSION['admin'] = 1;
-    }
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -204,8 +191,11 @@ if (isset($_SESSION['login'])) {
                         <i class=\"add-icon material-icons buy-icon\">add_shopping_cart</i>
                     </p>
                 </div> ");
-            if ($_SESSION['admin'] = 1){
-                echo "<form method='post' action=''><button id='mod'><p>Modifier le produit</p></button></form>";
+            if (isset($_SESSION['admin'])){
+                if ($_SESSION['admin'] == 1){
+                    echo "<form method='post' action=''><button id='mod'><p>Modifier le produit</p></button></form>";
+                }
+
             }
             echo "</div></div>";
         }
@@ -214,9 +204,9 @@ if (isset($_SESSION['login'])) {
 </div>
 
 <?php
-
-if ($_SESSION['admin'] = 1) {
-    echo '
+if (isset($_SESSION['admin'])){
+    if ($_SESSION['admin'] == 1){
+        echo '
         <div id="tools">
             <i class="material-icons" id="tool-icon">
                 build
@@ -246,6 +236,8 @@ if ($_SESSION['admin'] = 1) {
             </form>
         </div>
         ';
+    }
+
 }
 ?>
 

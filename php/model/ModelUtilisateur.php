@@ -46,6 +46,17 @@ class ModelUtilisateur{
         }
     }
 
+    public static function myaccount(){
+        if (!isset($_SESSION['login'])) {
+            session_start();
+        }
+        $mail = $_SESSION['login'];
+        $rep = Model::$pdo->query("SELECT * FROM Clients WHERE Email = '$mail'");
+        $rep -> setFetchMode(PDO::FETCH_CLASS, 'Client');
+        $resClient = $rep->fetchAll(PDO::FETCH_ASSOC);
+        return $resClient;
+    }
+
     public static function editCompte($tab){
         $sql = "UPDATE Clients SET Email = :mail, villeClient = :ville, adresseClient = :adresse where idClient = :id";
         $valeur  =array(
