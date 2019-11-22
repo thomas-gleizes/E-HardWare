@@ -10,19 +10,25 @@ class ControllerUtilisateur{
         $tab['mail'] = $_POST['mail'];
         $tab['nom'] = $_POST['nom'];
         $tab['prenom'] = $_POST['prenom'];
-        $tab['mdp'] = $_POST['mdp'];
+        $tab['mdp1'] = $_POST['mdp1'];
+        $tab['mdp2'] = $_POST['mdp2'];
         $tab['adresse'] = $_POST['adresse'];
         $tab['ville'] = $_POST['ville'];
 
-        ModelUtilisateur::creationCompte($tab);
 
-        $mail = $tab['mail'];
-        $code = ModelUtilisateur::getCodeConf($mail);
-        $message = "Veuillez confirmer votre inscription sur E-HardWare sur le lien suivant vue.php,  avec le code suivant : $code .\n Merci de votre Inscription.";
-        $header = "From : " . "thomas.gleizes@etu.umontpellier.fr";
-        mail($mail,'Demande de confirmation de confirmation E-HardWare.', $message, $header);
+        if ($tab['mdp1'] == $tab['mdp2']){
+            ModelUtilisateur::creationCompte($tab);
+            $mail = $tab['mail'];
+            $code = ModelUtilisateur::getCodeConf($mail);
+            $message = "Veuillez confirmer votre inscription sur E-HardWare sur le lien suivant vue.php,  avec le code suivant : $code .\n Merci de votre Inscription.";
+            $header = "From : " . "thomas.gleizes@etu.umontpellier.fr";
+            mail($mail,'Demande de confirmation de confirmation E-HardWare.', $message, $header);
 
-        header('Location:../view/compteCréé.php');
+            header('Location:../view/compteCréé.php');
+        } else {
+            header("Location:../view/creation.php?mail=".$tab['mail']."&nom=".$tab['nom']."&prenom=".$tab['prenom']."&adresse=".$tab['adresse']."&ville=".$tab['ville']);
+        }
+
     }
 
     public static function connection(){

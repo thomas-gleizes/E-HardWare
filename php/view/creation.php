@@ -22,7 +22,13 @@
                         mail_outline
                     </i>
                 </div>
-                <input type="email" placeholder="Mail" name="mail" required>
+                <?php
+                    if (!$_GET == null) {
+                        echo "<input type=\"email\" placeholder=\"Votre mail\" name=\"mail\" value=\"".$_GET['mail']."\" required>";
+                    } else {
+                        echo '<input type="email" placeholder="Mail" name="mail" required>';
+                    }
+                ?>
             </div>
             <div class="under-container2">
                 <div class="i-container">
@@ -30,7 +36,13 @@
                         perm_identity
                     </i>
                 </div>
-                <input placeholder="Nom" name="nom" required>
+                <?php
+                    if (!$_GET == null) {
+                        echo "<input type=\"nom\" placeholder=\"Nom\" name=\"nom\" value=\"".$_GET['nom']."\" required>";
+                    } else {
+                        echo '<input placeholder="Nom" name="nom" required>';
+                    }
+                ?>
             </div>
             <div class="under-container2">
                 <div class="i-container">
@@ -38,7 +50,13 @@
                         perm_identity
                     </i>
                 </div>
-                <input placeholder="Prénom" name="prenom" required>
+                <?php
+                    if (!$_GET == null) {
+                        echo "<input type=\"prenom\" placeholder=\"Prénom\" name=\"nom\" value=\"".$_GET['prenom']."\" required>";
+                    } else {
+                        echo '<input placeholder="Prénom" name="prenom" required>';
+                    }
+                ?>
             </div>
             <div class="under-container2">
                 <div class="i-container">
@@ -46,15 +64,15 @@
                         lock_open
                     </i>
                 </div>
-                <input type="password" id="mdp1" placeholder="Mot de passe" required>
+                <input type="password" id="mdp1" name="mdp1" placeholder="Mot de passe" required>
             </div>
             <div class="under-container2">
                 <div class="i-container">
                     <i class="material-icons i">
-                        lock_open
+                        lock
                     </i>
                 </div>
-                <input type="password" id="mdp2" name="mdp" placeholder="Confirmez Mot de passe" required>
+                <input type="password" id="mdp2" name="mdp2" placeholder="Confirmez Mot de passe" required>
             </div>
             <div class="under-container2">
                 <div class="i-container">
@@ -62,7 +80,13 @@
                         map
                     </i>
                 </div>
-                <input name="adresse" placeholder="Adresse" required>
+                <?php
+                    if (!$_GET == null) {
+                        echo "<input type=\"adresse\" placeholder=\"Adresse\" name=\"nom\" value=\"".$_GET['adresse']."\" required>";
+                    } else {
+                        echo '<input name="adresse" placeholder="Adresse" required>';
+                    }
+                ?>
             </div>
             <div class="under-container2">
                 <div class="i-container">
@@ -70,7 +94,14 @@
                         location_city
                     </i>
                 </div>
-                <input name="ville" placeholder="Ville" required>
+                <?php
+                    if (!$_GET == null) {
+                        echo "<input type=\"ville\" placeholder=\"Ville\" name=\"nom\" value=\"".$_GET['ville']."\" required>";
+                    } else {
+                        echo '<input name="ville" placeholder="Ville" required>>';
+                    }
+                ?>
+            </div>
             </div>
             <button id="ok" type="submit"><p>Inscription</p></button>
             <p id="error">Les mots de passes ne sont pas les mêmes !</p>

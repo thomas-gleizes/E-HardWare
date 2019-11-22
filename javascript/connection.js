@@ -12,13 +12,13 @@ $(document).ready(() => {
     });
 
     $('#mdp2').bind('input', function() {
-        if ($(this).val() != $("#mdp1").val() && $(this).val() != ''){
+        /*if ($(this).val() != $("#mdp1").val() && $(this).val() != ''){
             $("#ok").css('display','none');
             $("#error").css('display','block');
         } else {
             $("#ok").css('display','block');
             $("#error").css('display','none');
-        }
+        }*/
     });
 
     $(".edit-div").click(function () {
