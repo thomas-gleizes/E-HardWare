@@ -26,7 +26,7 @@ class ModelRecherche{
         $sql ="";
         $requete = "";
         if ($prix == 1){
-            echo"1";
+            //echo"1";
             if($marque==null && $categorie==null){
                 $requete = "SELECT * FROM Produits where nom like '%$nom%' ";
             }
@@ -80,7 +80,7 @@ class ModelRecherche{
             //echo $sql;
         }
         //echo "$sql <br>";
-        $rep = Model::$pdo->query($requete);
+        $rep = Model::$pdo->query($sql);
         $rep->setFetchMode(PDO::FETCH_CLASS,"ModelRecherche");
         $tab = $rep->fetchAll();
         //var_dump($tab);

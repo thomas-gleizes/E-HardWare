@@ -45,13 +45,13 @@ session_start();
             </i>
         </div>
     </div>
-    <div class="section under"> <p>Processeur</p> <i  class="material-icons navbaricons"> chevron_right </i> </div>
-    <div class="section under"> <p>Carte mère</p> <i  class="material-icons navbaricons"> chevron_right </i> </div>
-    <div class="section under"> <p>Mémoire</p> <i  class="material-icons navbaricons"> chevron_right </i> </div>
-    <div class="section under"> <p>Carte graphique</p> <i  class="material-icons navbaricons"> chevron_right </i> </div>
-    <div class="section under"> <p>SSD</p> <i  class="material-icons navbaricons"> chevron_right </i> </div>
-    <div class="section under"> <p>Disque Dur</p> <i  class="material-icons navbaricons"> chevron_right </i> </div>
-    <div class="section under"> <p>Alimentation</p> <i  class="material-icons navbaricons"> chevron_right </i> </div>
+        <button class="section under"> <p>Processeur</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
+        <button class="section under"> <p>Carte mère</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
+        <button class="section under"> <p>Mémoire</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
+        <button class="section under"> <p>Carte graphique</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
+        <button class="section under"> <p>SSD</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
+        <button class="section under"> <p>Disque Dur</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
+        <button class="section under"> <p>Alimentation</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
 </div>
 <div id="nav-bar-comp" class="navcomp">
 </div>
