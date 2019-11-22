@@ -102,7 +102,7 @@ if (isset($_SESSION['login'])) {
                         <option value="Alimentation">Alimentation</option>
                     </select>
                 </div>
-                <input id="reseach" type="text" name="research" autocomplete="off" required/>
+                <input id="reseach" type="text" name="research" autocomplete="off"/>
                 <i id="clear-icon" class="material-icons clear">
                     clear
                 </i>
