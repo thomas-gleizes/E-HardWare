@@ -5,8 +5,8 @@
         $action = $_GET["action"];
         ControllerRecherche::$action();
     }
-if(!$_POST==null){
-    $action = $_POST["action"];
-    ControllerUtilisateur::$action();
-}
+    if(!$_POST==null){
+        $action = $_POST["action"];
+        ControllerUtilisateur::$action();
+    }
 ?>
