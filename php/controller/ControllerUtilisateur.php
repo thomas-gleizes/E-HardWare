@@ -82,8 +82,17 @@ class ControllerUtilisateur{
         } else {
             header('Location:../view/account.php?error=1');
         }
-
     }
+
+    public static function changerMdp(){
+        $tab = [];
+        $tab['id'] = $_POST['id'];
+        $tab['mail'] = $_POST['mail'];
+
+        ModelUtilisateur::mailMdp($tab);
+    }
+
+
 
 
 

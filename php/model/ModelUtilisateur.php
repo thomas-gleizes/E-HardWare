@@ -100,6 +100,10 @@ class ModelUtilisateur{
         }
     }
 
+    public static function mailMdp($tab){
+        $id = ModelUtilisateur::chiffrer($tab['id'].Security::getSeedMail());
+    }
+
 
 
 

@@ -22,6 +22,7 @@ if (isset($_SESSION['login'])) {
     <meta charset="UTF-8">
     <title>E-HardWare</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="./image/Logo.png"/>
     <link href="css/index.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto+Condensed&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
