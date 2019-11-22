@@ -80,7 +80,7 @@ class ModelRecherche{
             //echo $sql;
         }
         //echo "$sql <br>";
-        $rep = Model::$pdo->query($requete);
+        $rep = Model::$pdo->query($sql);
         $rep->setFetchMode(PDO::FETCH_CLASS,"ModelRecherche");
         $tab = $rep->fetchAll();
         //var_dump($tab);
