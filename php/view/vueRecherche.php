@@ -7,6 +7,7 @@ if (isset($_SESSION['login'])) {
     $rep = Model::$pdo->query("SELECT prioriter FROM Clients WHERE Email = '$mail'");
     $rep -> setFetchMode(PDO::FETCH_CLASS, 'Client');
     $res = $rep->fetchAll(PDO::FETCH_ASSOC);
+    echo $_SESSION['admin'];
     if ($res[0]['prioriter'] == 1){
         $_SESSION['admin'] = 1;
     }
@@ -201,9 +202,11 @@ if (isset($_SESSION['login'])) {
                         <input class=\"id\" type=\"hidden\" name=\"id_produit\" value=\"$v[$r]\">
                         <i class=\"add-icon material-icons buy-icon\">add_shopping_cart</i>
                     </p>
-                </div>
-            </div>
-        </div>");
+                </div> ");
+            if ($_SESSION['admin'] = 1){
+                echo "<form method='post' action=''><button id='mod'><p>Modifier le produit</p></button></form>";
+            }
+            echo "</div></div>";
         }
         ?>
     </div>

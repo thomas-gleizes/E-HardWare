@@ -27,6 +27,4 @@ $(document).ready(() => {
         $(this).children(".changeable").val('');
         $("#ok").prop('type', 'submit');
     });
-
-    if()
 });

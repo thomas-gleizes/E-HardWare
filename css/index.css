@@ -726,6 +726,28 @@ label p {
     margin:0;
 }
 
+#mod {
+    float: right;
+    margin-right: 0.3rem;
+    margin-top: -2rem;
+    width: 33%;
+    border: #06bcc7 2px solid;
+    border-radius: 0.2rem;
+    cursor: pointer;
+}
+
+#mod p {
+    font-size:10px;
+    margin:0;
+}
+
+#mod:hover {
+    background-color: #06bcc7;
+}
+
+#mod:hover p {
+    color:white;
+}
 
 @keyframes animate-pulse{
     0%{
