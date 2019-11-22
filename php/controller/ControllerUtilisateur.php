@@ -31,7 +31,8 @@ class ControllerUtilisateur{
         $tab['mdp'] = $_POST['mdp'];
 
         if (ModelUtilisateur::connectionCompte($tab)) {
-            header('Location:../view/account.php');
+            $resClient = ModelUtilisateur::myaccount();
+            require ("../view/account.php");
         } else {
             header("Location:../view/connection.php?mail=".$tab['mail']);
         }
@@ -92,6 +93,13 @@ class ControllerUtilisateur{
         ModelUtilisateur::mailMdp($tab);
     }
 
+    public static function myaccount(){
+
+
+        $resClient = ModelUtilisateur::myaccount();
+
+        require_once ("../view/account.php");
+    }
 
 
 

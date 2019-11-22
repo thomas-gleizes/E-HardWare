@@ -1,14 +1,8 @@
 <?php
-require_once ('./Model.php');
 session_start();
 
 if (isset($_SESSION['login'])) {
-    $mail = $_SESSION['login'];
-    $rep = Model::$pdo->query("SELECT prioriter FROM Clients WHERE Email = '$mail'");
-    $rep -> setFetchMode(PDO::FETCH_CLASS, 'Client');
-    $res = $rep->fetchAll(PDO::FETCH_ASSOC);
-    if ($_SESSION['admin'] == 1 || $res[0]['prioriter'] == 1){
-        $_SESSION['admin'] = 1;
+    if ($_SESSION['admin'] == 1){
         header('Location:./php/controller/routeur.php?action=rechercheVide');
     }
 }
@@ -117,7 +111,8 @@ if (isset($_SESSION['login'])) {
         </div>
         <?php
         if (isset($_SESSION['login'])) {
-            echo '<form  method="Post" action="./php/view/account.php">
+            echo '<form  method="Post" action="./php/controller/routeur.php">
+                <input type="hidden" name="action" value="myaccount">
                 <button type="submit" id="account-button">
                     <i id="account-icon" class="material-icons">
                         account_circle

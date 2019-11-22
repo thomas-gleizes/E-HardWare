@@ -1,14 +1,17 @@
 <?php
-require_once ('../model/Model.php');
-session_start();
 
 if (!isset($_SESSION['login'])) {
-    header('Location:./connection.php');
+    session_start();
+    if (!isset($_SESSION['login'])) {
+        if (!isset($resClient)) {
+            header('Location:./connection.php');
+        }
+    }
 }
-$mail = $_SESSION['login'];
-$rep = Model::$pdo->query("SELECT * FROM Clients WHERE Email = '$mail'");
-$rep -> setFetchMode(PDO::FETCH_CLASS, 'Client');
-$res = $rep->fetchAll(PDO::FETCH_ASSOC);
+if (!isset($resClient)) {
+    header('Location:../controller/routeur.php?action=actionExt');
+}
+
 
 ?>
 
@@ -30,16 +33,16 @@ $res = $rep->fetchAll(PDO::FETCH_ASSOC);
 <body>
 <div id="container-spe" class="container">
     <?php
-    $prenom = $res[0]['prenomClient'];
+    $prenom = $resClient[0]['prenomClient'];
      echo '<p id="bonjour">Bonjour '.$prenom.' !</p>';
     ?>
     <?php
-    if(!$_GET==null){
+    if($_GET=="error"){
         echo "<p id=\"error2\">Ce code n'est pas bon !</p>";
     }
     ?>
     <?php
-    if ($res[0]['codeConfirmation'] != 0){
+    if ($resClient[0]['codeConfirmation'] != 0){
         echo '<form method="post" action="../controller/routeur.php">
         <p class="p-code">Code de validation reçu par mail :</p>
         <input type="hidden" name="action" value="validation" >
@@ -52,7 +55,7 @@ $res = $rep->fetchAll(PDO::FETCH_ASSOC);
     <form method="post" action="../controller/routeur.php">
         <input type="hidden" name="action" value="edit" >
         <?php
-        $id = $res[0]['idClient'];
+        $id = $resClient[0]['idClient'];
         echo '<input type="hidden" name="id" value="'.$id.'" >';
         ?>
         <div class="under-container1 edit-div">
@@ -62,7 +65,7 @@ $res = $rep->fetchAll(PDO::FETCH_ASSOC);
                 </i>
             </div>
             <?php
-            $mail = $res[0]['Email'];
+            $mail = $resClient[0]['Email'];
             echo '<input class="changeable" type="email" name="mail" value="'.$mail.'"required>';
             ?>
         </div>
@@ -73,7 +76,7 @@ $res = $rep->fetchAll(PDO::FETCH_ASSOC);
                 </i>
             </div>
             <?php
-            $adresse = $res[0]['adresseClient'];
+            $adresse = $resClient[0]['adresseClient'];
             echo '<input class="changeable" name="adresse" value="'.$adresse.'" required>';
             ?>
         </div>
@@ -84,7 +87,7 @@ $res = $rep->fetchAll(PDO::FETCH_ASSOC);
                 </i>
             </div>
             <?php
-            $ville = $res[0]['villeClient'];
+            $ville = $resClient[0]['villeClient'];
             echo '<input class="changeable" name="ville" value="'.$ville.'" required>';
             ?>
 
