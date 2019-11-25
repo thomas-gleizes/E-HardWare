@@ -127,6 +127,18 @@ class ModelUtilisateur{
         return $res[0]['idClient'];
     }
 
+    public static function modifMdp($tab){
+        $mdp = tab['mdp'];
+        $mdp = ModelUtilisateur::chiffrer($tab['mdp'].Security::getSeed());
+        $sql = "UPDATE Clients SET mdp = :mdp WHERE Email = :mail";
+        $valeur = array(
+            "mdp" => $mdp,
+            "mail" => tab['mail']
+        );
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($valeur);
+    }
+
 
 
 
