@@ -24,5 +24,10 @@ class ControllerProduit{
         ModelProduit::supProdPanier($tab);
     }
 
+    public static function supprAllProdPanier (){
+        $id = ControllerUtilisateur::getId();
+        ModelProduit::supprAllProdPanier($id);
+    }
+
 
 }

@@ -25,6 +25,15 @@ class ModelProduit {
         $rec_prep->execute($valeur);
     }
 
+    public static function supprAllProdPanier ($id){
+        $sql = "DELETE FROM PANIER WHERE idClient = :idClient";
+        $valeur = array(
+            "idClient" => $id,
+        );
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($valeur);
+    }
+
 
 
 
