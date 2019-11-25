@@ -115,6 +115,18 @@ class ModelUtilisateur{
         $id = ModelUtilisateur::chiffrer($tab['id'].Security::getSeedMail());
     }
 
+    public static function getIdUti($mail){
+        $sql = "SELECT idClient FROM Clients WHERE Email = :mail";
+        $valeur = array(
+            "mail" => $mail,
+        );
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($valeur);
+        $rec_prep->setFetchMode(PDO::FETCH_CLASS,'Client');
+        $res = $rec_prep->fetchAll(PDO::FETCH_ASSOC);
+        return res[0]['idClient'];
+    }
+
 
 
 

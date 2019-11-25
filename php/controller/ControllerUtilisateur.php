@@ -100,11 +100,15 @@ class ControllerUtilisateur{
     }
 
     public static function myaccount(){
-
-
         $resClient = ModelUtilisateur::myaccount();
 
         require_once ("../view/account.php");
+    }
+
+    public static function getId(){
+        session_start();
+        $mail = $_SESSION['login'];
+        return ModelUtilisateur::getIdUti($mail);
     }
 
 
