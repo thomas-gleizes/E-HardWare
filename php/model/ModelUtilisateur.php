@@ -124,7 +124,7 @@ class ModelUtilisateur{
         $rec_prep->execute($valeur);
         $rec_prep->setFetchMode(PDO::FETCH_CLASS,'Client');
         $res = $rec_prep->fetchAll(PDO::FETCH_ASSOC);
-        return res[0]['idClient'];
+        return $res[0]['idClient'];
     }
 
 

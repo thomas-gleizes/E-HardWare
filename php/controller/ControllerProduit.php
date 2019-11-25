@@ -15,4 +15,14 @@ class ControllerProduit{
 
     }
 
+    public static function supprimemrPanier(){
+
+        $tab = [];
+        $tab['ref'] = $_POST['ref'];
+        $tab['id'] = ControllerUtilisateur::getId();
+
+        ModelProduit::supProdPanier($tab);
+    }
+
+
 }
