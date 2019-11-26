@@ -16,7 +16,7 @@ class ModelProduit {
     }
 
     public static function supProdPanier ($tab){
-        $sql = "DELETE FROM PANIER WHERE idClient = :idClient AND idProduit = :idProduit";
+        $sql = "DELETE FROM Panier WHERE idClient = :idClient AND idProduit = :idProduit";
         $valeur = array(
             "idClient" => $tab['id'],
             "idProduit" => $tab['ref'],
@@ -26,7 +26,7 @@ class ModelProduit {
     }
 
     public static function supprAllProdPanier ($id){
-        $sql = "DELETE FROM PANIER WHERE idClient = :idClient";
+        $sql = "DELETE FROM Panier WHERE idClient = :idClient";
         $valeur = array(
             "idClient" => $id,
         );
