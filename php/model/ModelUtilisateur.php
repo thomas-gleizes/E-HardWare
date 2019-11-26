@@ -5,7 +5,7 @@ require_once ('../lib/Security.php');
 class ModelUtilisateur{
 
     public static function creationCompte($tab){
-        $mdp = ModelUtilisateur::chiffrer($tab['mdp'].Security::getSeed());
+        $mdp = ModelUtilisateur::chiffrer($tab['mdp1'].Security::getSeed());
         $sql = "INSERT INTO Clients values( '',:mail,:nom,:prenom,:ville,:adresse,0,0,0,:mdp,0) ";
         $valeur  =array(
             "mail" => $tab['mail'],

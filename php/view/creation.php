@@ -98,11 +98,11 @@
                     if (!$_GET == null) {
                         echo "<input type=\"ville\" placeholder=\"Ville\" name=\"nom\" value=\"".$_GET['ville']."\" required>";
                     } else {
-                        echo '<input name="ville" placeholder="Ville" required>>';
+                        echo '<input name="ville" placeholder="Ville" required>';
                     }
                 ?>
             </div>
-            </div>
+
             <button id="ok" type="submit"><p>Inscription</p></button>
             <p id="error">Les mots de passes ne sont pas les mêmes !</p>
         </form>
