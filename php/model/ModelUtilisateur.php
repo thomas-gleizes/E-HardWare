@@ -139,6 +139,25 @@ class ModelUtilisateur{
         $rec_prep->execute($valeur);
     }
 
+    public static function ajoutPanier($ref,$quantiter){
+        session_start();
+        if(isset($_SESSION["login"])){
+            $login = $_SESSION["login"];
+            $sql = "INSERT INTO Panier VALUES(:login,:ref,:quantitier)";
+            $value = array(
+                "ref" => $ref,
+                "quantitier" => $quantiter,
+                "login" => $login
+            );
+            $rec_prep = Model::$pdo->prepare($sql);
+            $rec_prep->execute($value);
+            $panier["reference"] = $ref;
+            $panier["quantiter"] += 1;
+            $_SESSION["panier"] = $panier;
+            var_dump($_SESSION);
+        }
+    }
+
 
 
 

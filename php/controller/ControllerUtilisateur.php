@@ -114,6 +114,12 @@ class ControllerUtilisateur{
         return ModelUtilisateur::getIdUti($mail);
     }
 
+    public static function ajoutPanier(){
+        ModelUtilisateur::ajoutPanier($_POST["id_produit"],$_POST["nombre"]);
+
+
+    }
+
 
 
 

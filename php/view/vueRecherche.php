@@ -192,7 +192,7 @@ session_start();
         <i id="achat-icon" class="material-icons categorie-icon">
             arrow_drop_down
         </i>
-        <form  method="Post" action="PHP/view/Participant/preLobby.php">
+        <form  method="Post" action="../controller/routeur.php">
             <select id="select3" name="nombre">
                 <option id="option1" value="1">1</option>
                 <option id="option2" value="2">2</option>
@@ -201,6 +201,7 @@ session_start();
                 <option id="option5" value="5">5</option>
             </select>
             <input type="hidden" id="id_produit" name="id_produit" value="1">
+            <input type="hidden" name="action" value="ajoutPanier">
             <button id="achat-btn" type="submit"><p>Ajouter</p></button>
         </form>
     </div>
@@ -223,7 +224,7 @@ session_start();
             <div class=\"description-container\">
                 <p class=\"marque\">$v[$nm]<p/>
                 <p class=\"description\">$v[$n]<p/>
-                <p class=\"prix\">$v[$p]<p/>
+                <p class=\"prix\">$v[$p] €<p/>
                 <div class=\"rond\">
                     <p>
                         <input class=\"id\" type=\"hidden\" name=\"id_produit\" value=\"$v[$r]\">
