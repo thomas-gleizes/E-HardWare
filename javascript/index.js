@@ -241,7 +241,7 @@ $(document).ready(() => {
         }
     });
 
-    if(window.location.href.includes('Recherche')){
+    if(window.location.href.includes('Recherche') || window.location.href.includes('recherche') ){
         $(".card").each(function () {
             var url = $(this).children(".card-form").children(".url").val();
             $(this).children(".card-form").children(".img-container").css('background-image',"url(" +url+")");

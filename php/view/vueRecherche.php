@@ -45,46 +45,46 @@ session_start();
             </i>
         </div>
     </div>
-        <form method="get" action="../controller/routeur.php">
-            <input type="hidden" name="action" value="afficherRecherche" >
-            <button type="submit" name="categorie" value="Processeur" class="section under"> <p>Processeur</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
-        </form>
+    <form method="get" action="../controller/routeur.php">
+        <input type="hidden" name="action" value="rechercherSidebar" >
+        <button type="submit" name="categorie" value="Processeur" class="section under"> <p>Processeur</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
+    </form>
 
 
-        <form method="get" action="../controller/routeur.php">
-            <input type="hidden" name="action" value="afficherRecherche" >
-            <button type="submit" name="categorie" value="CarteMere" class="section under"> <p>Carte mère</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
-        </form>
+    <form method="get" action="../controller/routeur.php">
+        <input type="hidden" name="action" value="rechercherSidebar" >
+        <button type="submit" name="categorie" value="CarteMere" class="section under"> <p>Carte mère</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
+    </form>
 
 
-        <form method="get" action="../controller/routeur.php">
-            <input type="hidden" name="action" value="afficherRecherche" >
-            <button type="submit" name="categorie" value="Memoire" class="section under"> <p>Mémoire</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
-        </form>
+    <form method="get" action="../controller/routeur.php">
+        <input type="hidden" name="action" value="rechercherSidebar" >
+        <button type="submit" name="categorie" value="Memoire" class="section under"> <p>Mémoire</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
+    </form>
 
 
-        <form method="get" action="../controller/routeur.php">
-            <input type="hidden" name="action" value="afficherRecherche" >
-            <button type="submit" name="categorie" value="CarteGraphique" class="section under"> <p>Carte graphique</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
-        </form>
+    <form method="get" action="../controller/routeur.php">
+        <input type="hidden" name="action" value="rechercherSidebar" >
+        <button type="submit" name="categorie" value="CarteGraphique" class="section under"> <p>Carte graphique</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
+    </form>
 
 
-        <form method="get" action="../controller/routeur.php">
-            <input type="hidden" name="action" value="afficherRecherche" >
-            <button type="submit" name="categorie" value="SSD" class="section under"> <p>SSD</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
-        </form>
+    <form method="get" action="../controller/routeur.php">
+        <input type="hidden" name="action" value="rechercherSidebar" >
+        <button type="submit" name="categorie" value="SSD" class="section under"> <p>SSD</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
+    </form>
 
 
-        <form method="get" action="../controller/routeur.php">
-            <input type="hidden" name="action" value="afficherRecherche" >
-            <button type="submit" name="categorie" value="DisqueDur" class="section under"> <p>Disque Dur</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
-        </form>
+    <form method="get" action="../controller/routeur.php">
+        <input type="hidden" name="action" value="rechercherSidebar" >
+        <button type="submit" name="categorie" value="DisqueDur" class="section under"> <p>Disque Dur</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
+    </form>
 
 
-        <form method="get" action="../controller/routeur.php">
-            <input type="hidden" name="action" value="afficherRecherche" >
-            <button type="submit" name="categorie" value="Alimentation" class="section under"> <p>Alimentation</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
-        </form>
+    <form method="get" action="../controller/routeur.php">
+        <input type="hidden" name="action" value="rechercherSidebar" >
+        <button type="submit" name="categorie" value="Alimentation" class="section under"> <p>Alimentation</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
+    </form>
 
 
 

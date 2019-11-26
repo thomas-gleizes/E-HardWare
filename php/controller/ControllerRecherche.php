@@ -13,4 +13,10 @@ class ControllerRecherche{
     public static function rechercheVide(){
         require_once ("../view/vueRecherche.php");
     }
+
+    public static function rechercherSidebar(){
+        $tab = ModelRecherche::infoSidebar($_GET["categorie"]);
+        $tabvaleur = ModelRecherche::getAllInfo($tab);
+        require_once ("../view/vueRecherche.php");
+    }
 }
