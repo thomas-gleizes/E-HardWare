@@ -92,20 +92,28 @@ class ControllerUtilisateur{
     }
 
     public static function changerMdp(){
+        Session_start();
+
         $tab = [];
         $tab['id'] = $_POST['id'];
-        $tab['mail'] = $_POST['mail'];
+        $tab['mail'] = $_SESSION['login'];
 
-        ModelUtilisateur::mailMdp($tab);
+        //ModelUtilisateur::mailMdp($tab);
+        ModelUtilisateur::modifMdp($tab);
     }
 
     public static function myaccount(){
-
-
         $resClient = ModelUtilisateur::myaccount();
 
         require_once ("../view/account.php");
     }
+
+    public static function getId(){
+        session_start();
+        $mail = $_SESSION['login'];
+        return ModelUtilisateur::getIdUti($mail);
+    }
+
 
 
 
