@@ -121,7 +121,7 @@ $(document).ready(() => {
         $(".prix-total").html(currentPrice*val + "€");
     });
 
-    getCardInfo().then(function (value) {
+    /*getCardInfo().then(function (value) {
         if(!window.location.href.includes('routeur')){
             var produit = value;
             var tabProduit = produit.split(',');
@@ -169,7 +169,7 @@ $(document).ready(() => {
                 });
             });
         }
-    });
+    });*/
 
     $('.buy-icon').click(function () {
         $(".img2-container").css('background-image',"");
