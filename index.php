@@ -162,14 +162,19 @@ require ("php/lib/File.php");
             </form>';
         }
         ?>
+        <?php
+        $val = $_SESSION["panier"]["quantiter"];
+        echo'
         <form  method="Post" action="PHP/view/Participant/preLobby.php">
-            <button type="submit" id="cart-button">
-                <i id="cart-icon" class="material-icons">
-                    shopping_cart
-                </i>
-                <p>0</p>
-            </button>
-        </form>
+        <button type="submit" id="cart-button">
+            <i id="cart-icon" class="material-icons">
+                shopping_cart
+            </i>
+            <p>'.$val.'</p>
+        </button>
+    </form>
+    ';
+        ?>
     </header>
     <div class="filtre-container open">
         <input class="check1" type="checkbox" id="croissant" >
