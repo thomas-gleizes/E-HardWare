@@ -147,14 +147,18 @@ class ModelUtilisateur{
             $value = array(
                 "ref" => $ref,
                 "quantitier" => $quantiter,
-                "login" => $login
+                "login" => 77
             );
+            $valeur["login"] = $login;
+            //$rec_prep = Model::$pdo->prepare($sql2);
+            //$rec_prep->execute($valeur);
             $rec_prep = Model::$pdo->prepare($sql);
             $rec_prep->execute($value);
             $panier["reference"] = $ref;
-            $panier["quantiter"] += 1;
+            $panier["quantiter"] = 0+($quantiter/$quantiter);
             $_SESSION["panier"] = $panier;
             var_dump($_SESSION);
+            //var_dump($_SESSION);
         }
     }
 
