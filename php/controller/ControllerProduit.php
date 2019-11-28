@@ -29,5 +29,73 @@ class ControllerProduit{
         ModelProduit::supprAllProdPanier($id);
     }
 
+    public static function ajoutProduit (){
+
+        $categorie = $_POST['categorie'];
+
+        $tabProd = [];
+        $tabProd['nom'] = $_POST['nom'];
+        $tabProd['nomMarque'] = $_POST['nomMarque'];
+        $tabProd['categorie'] = $categorie;
+        $tabProd['prix'] = $_POST['prix'];
+        $tabProd['stock'] = $_POST['stock'];
+        $tabProd['Url'] = $_POST['Url'];
+
+        ModelProduit::insertProduit($tabProd);
+
+        $tab = [];
+        $tab['refProduit'] = ModelProduit::getIdProduit($tabProd['nom'],$tabProd['categorie']);
+
+        if ($categorie == 'Processeur'){
+            $tab['nbCoeur'] = $_POST['nbCoeur'];
+            $tab['nbThreads'] = $_POST['nbThreads'];
+            $tab['socket'] = $_POST['socket'];
+            $tab['frequence'] = $_POST['frequence'];
+            $tab['boost'] = $_POST['boost'];
+            $tab['cache'] = $_POST['cache'];
+            ModelProduit::insertProcesseur($tab);
+
+        } else if ($categorie == 'CarteGraphique'){
+            $tab['chipset'] = $_POST['chipset'];
+            $tab['memoire'] = $_POST['memoire'];
+            $tab['arcgitecture'] = $_POST['architecture'];
+            $tab['bus'] = $_POST['bus'];
+            ModelProduit::insertCarteGraphique($tab);
+
+        } else if ($categorie == 'CarteMere'){
+            $tab['chipset'] = $_POST['chipset'];
+            $tab['socket'] = $_POST['socket'];
+            $tab['format'] = $_POST['format'];
+            ModelProduit::insertCarteMere($tab);
+
+        } else if ($categorie == 'DisqueDur'){
+            $tab['capacite'] = $_POST['capacite'];
+            $tab['interface'] = $_POST['interface'];
+            $tab['vitesseRotation'] = $_POST['vitesseRotation'];
+            ModelProduit::insertDisqueDur($tab);
+
+        } else if ($categorie == 'Memoire'){
+            $tab['capacite'] = $_POST['capacite'];
+            $tab['frequence'] = $_POST['frequence'];
+            $tab['CAS'] = $_POST['CAS'];
+            $tab['nbBarrette'] = $_POST['nbBarrette'];
+            ModelProduit::insertMemoire($tab);
+
+        } else if ($categorie == 'SSD'){
+            $tab['format'] = $_POST['format'];
+            $tab['capacite'] = $_POST['capacite'];
+            $tab['interface'] = $_POST['interface'];
+            $tab['lecture'] = $_POST['lecture'];
+            $tab['ecriture'] = $_POST['ecriture'];
+            ModelProduit::insertSSD($tab);
+
+        } else {
+            echo "<h2>Erreur d'insertion</h2><br>";
+        }
+
+
+
+    }
+
 
 }
