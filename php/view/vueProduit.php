@@ -188,10 +188,18 @@ session_start();
 
 <div class="commentaire-container">
     <div class="average-container">
+        <div class="rate">2.38
+            </div>
     </div>
     <div class="com">
-        <img src="https://img.icons8.com/ultraviolet/40/000000/guest-male.png">
+        <img class="user-icon" src="https://img.icons8.com/ultraviolet/40/000000/guest-male.png">
         <p class="name">Benjamin</p>
+        <div class="rate personnal">5
+        </div>
+        <p class="note">(5)</p>
+        <div class="message-container">
+            <p class="message">Ce produit c'est le feu j'arrive à faire tourner adibou en 12fps</p>
+        </div>
     </div>
 </div>
 </body>
