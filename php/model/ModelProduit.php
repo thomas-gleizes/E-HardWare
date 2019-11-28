@@ -106,7 +106,7 @@ class ModelProduit {
             "type" => $tab['type'],
             "capacite" => $tab['capacite'],
             "frequence" => $tab['frequence'],
-            "cas" => $tab['cas'],
+            "CAS" => $tab['CAS'],
             "nbBarrette" => $tab['nbBarrette'],
             "refProduit" => $tab['refProduit'],
         );
@@ -126,6 +126,17 @@ class ModelProduit {
         );
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($valeur);
+    }
+
+    public static function getIdProduit($nom, $categorie){
+        $sql = "SELECT refProduit FROM Produits WHERE nom = :nom AND categorie = :categorie";
+        $valeur['nom'] = $nom;
+        $valeur['categorie'] = $categorie;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($valeur);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        return (int)$tab;
     }
 
 
