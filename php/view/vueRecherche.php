@@ -292,9 +292,7 @@ if (isset($_SESSION['admin'])){
                 <input type="text" class="ajout-input" placeholder="Mémoire vidéo" name="memoire" required>
                 <input type="text" class="ajout-input" placeholder="Architecture" name="architecture" required>
                 <input type="text" class="ajout-input" placeholder="Bus" name="bus" required>
-            <form>
-            
-</form>
+            </form>
             <form method="post" action="" class="CarteMere">
                 <input type="text" class="ajout-input" placeholder="Chipset" name="chipset" required>
                 <input type="text" class="ajout-input" placeholder="Socket" name="socket" required>
@@ -318,7 +316,7 @@ if (isset($_SESSION['admin'])){
                 <input type="text" class="ajout-input" placeholder="Interface SSD" name="interface" required>
                 <input type="text" class="ajout-input" placeholder="Vitesse de lecture" name="lecture" required>
                 <input type="text" class="ajout-input" placeholder="Vitesse d\'écriture" name="ecriture" required>
-           </form>
+            </form>
         </div>
         ';
     }
