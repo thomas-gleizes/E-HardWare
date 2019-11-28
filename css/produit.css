@@ -122,3 +122,12 @@
     margin-top: 0.7rem;
 }
 
+#num{
+    width:10%;
+    margin-left: 45%;
+    border-radius: 0.1rem;
+    border: none;
+    border-bottom: #d1d1d1 solid 1px;
+    overflow: hidden;
+}
+

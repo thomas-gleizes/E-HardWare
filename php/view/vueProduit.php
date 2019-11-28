@@ -181,9 +181,16 @@ session_start();
 <div class="desc-container">
     <p class="produit">Nvidia Rtx 2080<p/>
     <p class="marque">Nvidia<p/>
+    <p class="categorie">Carte Graphique<p/>
     <p class="disponibilite">en stock (20 disponible)<p/>
     <p class="prix-total">1500 €<p/>
     <p class="choix1">combien voulez vous en ajoutez à votre panier?</p>
+    <form  method="Post" action="../controller/routeur.php">
+        <input type="number" id="num" name="nombre" required>
+        <input type="hidden" id="id_produit" name="id_produit" value="1">
+        <input type="hidden" name="action" value="ajoutPanier">
+        <button id="achat-btn" type="submit"><p>Ajouter</p></button>
+    </form>
 </div>
 
 <div class="commentaire-container">
