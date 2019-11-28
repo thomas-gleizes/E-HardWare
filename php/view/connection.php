@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Connexion</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=no">
-    <link rel="icon" type="image/png" href="./image/Logo.png"/>
+    <link rel="icon" type="image/png" href="../../image/Logo.png"/>
     <link href="../../css/connection.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto+Condensed&display=swap" rel="stylesheet">
@@ -46,7 +46,7 @@
                 </div>
                 <input type="password" placeholder="Votre mot de passe" name="mdp" required>
             </div>
-            <button id="ok" type="submit"><p>Connection</p></button>
+            <button id="ok" type="submit"><p>Connexion</p></button>
         </form>
         <div class="mdp">
             <a href="#"><p>Mot de passe oublié ?</p></a>
