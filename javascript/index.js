@@ -124,7 +124,6 @@ $(document).ready(() => {
     getCardInfo().then(function (value) {
         if(!window.location.href.includes('routeur')){
             var produit = value;
-            console.log(produit);
             var tabProduit = produit.split('-');
             for (var i = 0; i < tabProduit.length - 1; i++){
                 nbcard++;
@@ -148,7 +147,7 @@ $(document).ready(() => {
                 var id = $(this).siblings(".id").val();
                 getAchatInfo(id).then(function (value) {
                     var produit = value;
-                    var tabProduit = produit.split(',');
+                    var tabProduit = produit.split('-');
                     $(".img2-container").css('background-image',"url(" +tabProduit[3]+")");
                     $(".produit").html(tabProduit[0]);
                     $(".disponibilite").html('en stock ('+tabProduit[1]+' disponible)');

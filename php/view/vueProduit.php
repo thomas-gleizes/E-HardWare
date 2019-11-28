@@ -184,26 +184,15 @@ session_start();
     <p class="disponibilite">en stock (20 disponible)<p/>
     <p class="prix-total">1500 €<p/>
     <p class="choix1">combien voulez vous en ajoutez à votre panier?</p>
-    <select id="select4" name="nombre">
-        <option id="option1" value="1">1</option>
-        <option id="option2" value="2">2</option>
-        <option id="option3" value="3">3</option>
-        <option id="option4" value="4">4</option>
-        <option id="option5" value="5">5</option>
-    </select>
 </div>
 
 <div class="commentaire-container">
     <div class="average-container">
-        <div class="average">
-            <span  class="span-etoile"></span>
-            <span  class="span-etoile"></span>
-            <span  class="span-etoile"></span>
-            <span  class="span-etoile"></span>
-            <span  class="span-etoile"></span>
-        </div>
     </div>
-    <div class="com"></div>
+    <div class="com">
+        <img src="https://img.icons8.com/ultraviolet/40/000000/guest-male.png">
+        <p class="name">Benjamin</p>
+    </div>
 </div>
 </body>
 </html>
