@@ -274,9 +274,10 @@ if (isset($_SESSION['admin'])){
             <form method="post" action="../controller/routeur.php">
                 <input type="hidden" class="ajout-input" name="action" value="creation" required>
                 <input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>
-                <input type="text" class="ajout-input" placeholder="Marque du produit" name="marque" required>
+                <input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>
                 <input type="text" class="ajout-input" placeholder="Catégorie du produit" name="categorie" required>
                 <input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>
+                <input type="text" class="ajout-input" placeholder="Quantité de stock" name="stock" required>
                 <input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="url" required>
                 <button id="ok" type="submit"><p>Ajout</p></button>
             </form>
