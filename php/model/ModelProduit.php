@@ -16,7 +16,7 @@ class ModelProduit {
     }
 
     public static function supProdPanier ($tab){
-        $sql = "DELETE FROM Panier WHERE idClient = :idClient AND idProduit = :idProduit";
+        $sql = "DELETE FROM Panier WHERE idClient = :idClient AND refProduit = :idProduit";
         $valeur = array(
             "idClient" => $tab['id'],
             "idProduit" => $tab['ref'],
@@ -29,6 +29,100 @@ class ModelProduit {
         $sql = "DELETE FROM Panier WHERE idClient = :idClient";
         $valeur = array(
             "idClient" => $id,
+        );
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($valeur);
+    }
+
+    public static function insertProduit($tabProd){
+        $sql = "INSERT INTO Produit VALUES ('', :nom, :nomMarque, :categorie, :prix, :stock, :Url)";
+        $valeur = array(
+            "nom" => $tabProd['nom'],
+            "nomMarque" => $tabProd['nomMarque'],
+            "categorie" => $tabProd['categorie'],
+            "prix" => $tabProd['prix'],
+            "stock" => $tabProd['stock'],
+            "Url" => $tabProd['Url'],
+        );
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($valeur);
+    }
+
+    public static function insertProcesseur($tab){
+        $sql = "INSERT INTO Processeur VALUES ('', :nbCoeur, :nbThreads, :socket, :frequence, :boost, :cache, :refProduit)";
+        $valeur = array(
+            "nbCoeur" => $tab['nbCoeur'],
+            "nbThreads" => $tab['nbThreads'],
+            "socket" => $tab['socket'],
+            "frequence" => $tab['frequence'],
+            "boost" => $tab['boost'],
+            "cache" => $tab['cache'],
+            "refProduit" => $tab['refProduit'],
+        );
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($valeur);
+    }
+
+    public static function insertCarteGraphique($tab){
+        $sql = "INSERT INTO CarteGraphique VALUES ('', :chipset, :memoire, :architecture, :bus, :refProduit)";
+        $valeur = array(
+            "chipset" => $tab['chipset'],
+            "memoire" => $tab['memoire'],
+            "architecture" => $tab['architecture'],
+            "bus" => $tab['bus'],
+            "refProduit" => $tab['refProduit'],
+        );
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($valeur);
+    }
+
+    public static function insertCarteMere($tab){
+        $sql = "INSERT INTO CarteMere VALUES ('', :chipset, :socket, :format, :refProduit)";
+        $valeur = array(
+            "chipset" => $tab['chipset'],
+            "socket" => $tab['socket'],
+            "format" => $tab['format'],
+            "refProduit" => $tab['refProduit'],
+        );
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($valeur);
+    }
+
+    public static function insertDisqueDur($tab){
+        $sql = "INSERT INTO DisqueDur VALUES ('', :capacite, :interface, :vitesseRotation, :refProduit)";
+        $valeur = array(
+            "capacite" => $tab['capacite'],
+            "interface" => $tab['interface'],
+            "vitesseRotation" => $tab['vitesseRotation'],
+            "refProduit" => $tab['refProduit'],
+        );
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($valeur);
+    }
+
+    public static function insertMemoire($tab){
+        $sql = "INSERT INTO Memoire VALUES ('', :type, :capacite, :frequence, :cas, :nbBarrette, :refProduit)";
+        $valeur = array(
+            "type" => $tab['type'],
+            "capacite" => $tab['capacite'],
+            "frequence" => $tab['frequence'],
+            "cas" => $tab['cas'],
+            "nbBarrette" => $tab['nbBarrette'],
+            "refProduit" => $tab['refProduit'],
+        );
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($valeur);
+    }
+
+    public static function insertSSD($tab){
+        $sql = "INSERT INTO SSD VALUES ('', :format, :capacite, :interface, :lecture, :ecriture, :refProduit)";
+        $valeur = array(
+            "format" => $tab['format'],
+            "capacite" => $tab['capacite'],
+            "interface" => $tab['interface'],
+            "lecture" => $tab['lecture'],
+            "ecriture" => $tab['ecriture'],
+            "refProduit" => $tab['refProduit'],
         );
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($valeur);
