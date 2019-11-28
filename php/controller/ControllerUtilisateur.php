@@ -115,7 +115,8 @@ class ControllerUtilisateur{
     }
 
     public static function ajoutPanier(){
-        ModelUtilisateur::ajoutPanier($_POST["id_produit"],$_POST["nombre"]);
+        $id = ControllerUtilisateur::getId();
+        ModelUtilisateur::ajoutPanier($_POST["id_produit"],$_POST["nombre"],$id);
 
 
     }

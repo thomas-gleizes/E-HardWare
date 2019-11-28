@@ -24,6 +24,8 @@ class ModelUtilisateur{
 
         session_start();
         $_SESSION['login'] = $mail;
+        $panier["quantiter"]=0;
+        $_SESSION["panier"] = $panier;
         $_SESSION['admin'] = 0;
     }
 
@@ -139,15 +141,15 @@ class ModelUtilisateur{
         $rec_prep->execute($valeur);
     }
 
-    public static function ajoutPanier($ref,$quantiter){
-        session_start();
+    public static function ajoutPanier($ref,$quantiter,$id){
         if(isset($_SESSION["login"])){
             $login = $_SESSION["login"];
-            $sql = "INSERT INTO Panier VALUES(:login,:ref,:quantitier)";
+            $sql = "INSERT INTO Panier  (idClient,refProduit,quantiteProduit) VALUES (:login,:ref,:quantitier)";
+            echo $sql;
             $value = array(
                 "ref" => $ref,
                 "quantitier" => $quantiter,
-                "login" => 77
+                "login" => $id
             );
             $valeur["login"] = $login;
             //$rec_prep = Model::$pdo->prepare($sql2);
@@ -155,8 +157,7 @@ class ModelUtilisateur{
             $rec_prep = Model::$pdo->prepare($sql);
             $rec_prep->execute($value);
             $panier["reference"] = $ref;
-            $panier["quantiter"] = 0+($quantiter/$quantiter);
-            $_SESSION["panier"] = $panier;
+            $_SESSION["panier"]["quantiter"] +=1;
             var_dump($_SESSION);
             //var_dump($_SESSION);
         }

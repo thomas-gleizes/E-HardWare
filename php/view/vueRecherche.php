@@ -9,7 +9,7 @@ session_start();
     <title>E-HardWare</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=no">
     <link href="../../css/index.css" rel="stylesheet" type="text/css">
-    <link rel="icon" type="image/png" href="./image/Logo.png"/>
+    <link rel="icon" type="image/png" href="../../image/Logo.png"/>
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto+Condensed&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
