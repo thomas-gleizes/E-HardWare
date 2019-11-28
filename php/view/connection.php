@@ -42,7 +42,7 @@
                 </div>
                 <input type="password" placeholder="Votre mot de passe" name="mdp" required>
             </div>
-            <button id="ok" type="submit"><p>Connection</p></button>
+            <button id="ok" type="submit"><p>Connexion</p></button>
         </form>
         <div class="mdp">
             <a href="#"><p>Mot de passe oublié ?</p></a>
