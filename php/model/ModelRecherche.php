@@ -29,22 +29,21 @@ class ModelRecherche{
         if ($prix == 1){
             //echo"1";
             if($marque==null && $categorie==null){
-                echo"1.1";
-                $requete = "SELECT * FROM Produits where nom like :nom ";
+                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits where nom like :nom ";
             }
             if($marque==null && $categorie!=null){
                 echo"1.2";
-                $requete = "SELECT * FROM Produits where categorie = :categorie AND nom like :nom";
+                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits where categorie = :categorie AND nom like :nom";
                 $valeur["categorie"] = $categorie;
             }
             if($marque!=null && $categorie == null){
                 echo"1.3";
-                $requete = "SELECT * FROM Produits where nomMarque = :marque and nom like :nom";
+                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits where nomMarque = :marque and nom like :nom";
                 $valeur["marque"] = $marque;
             }
             if($marque!=null && $categorie != null){
                 echo"1.4";
-                $requete = "SELECT * FROM Produits WHERE categorie = :categorie AND nomMarque = :marque AND nom like :nom";
+                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE categorie = :categorie AND nomMarque = :marque AND nom like :nom";
                 $valeur["marque"] = $marque;
                 $valeur["categorie"] = $categorie;
             }
@@ -55,45 +54,44 @@ class ModelRecherche{
             //echo"2";
             if($marque==null && $categorie==null){
                 echo"2.1";
-                $requete = "SELECT * FROM Produits WHERE nom like :nom ";
+                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE nom like :nom ";
             }
             if($marque==null && $categorie!=null){
                 echo"2.2";
-                $requete = "SELECT * FROM Produits WHERE categorie = :categorie AND nom like :nom";
+                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE categorie = :categorie AND nom like :nom";
             }
             if($marque!=null && $categorie == null){
                 echo"2.3";
-                $requete = "SELECT * FROM Produits WHERE nomMarque =:marque and nom like :nom";
+                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE nomMarque =:marque and nom like :nom";
                 $valeur["marque"] = $marque;
             }
             if($marque!=null && $categorie != null){
                 echo"2.4";
-                $requete = "SELECT * FROM Produits WHERE nomMarque = :marque AND categorie = :categorie AND p.nom like :nom";
+                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE nomMarque = :marque AND categorie = :categorie AND p.nom like :nom";
                 $valeur["marque"] = $marque;
                 $valeur["categorie"] = $categorie;
             }
             $sql = $requete." GROUP BY(p.refProduit) ORDER BY p.prix DESC";
 
-        }
-        if($prix == null) {
+        } if($prix == null) {
 
             if($marque==null && $categorie==null){
                 echo"3.1";
-                $requete = "SELECT * FROM Produits WHERE nom like :nom ";
+                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE nom like :nom ";
             }
             if($marque==null && $categorie!=null){
                 echo"3.2";
-                $requete = "SELECT * FROM Produits WHERE categorie = :categorie AND nom like :nom";
+                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE categorie = :categorie AND nom like :nom";
                 $valeur["categorie"] = $categorie;
             }
             if($marque!=null && $categorie == null){
                 echo"3.3";
-                $requete = "SELECT * FROM Produits WHERE nomMarque =:marque AND nom like :nom";
+                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE nomMarque =:marque AND nom like :nom";
                 $valeur["marque"] = $marque;
             }
             if($marque!=null && $categorie != null){
                 echo"3.4";
-                $requete = "SELECT * FROM Produits WHERE categorie = :categorie AND nomMarque = :marque AND nom like :nom";
+                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE categorie = :categorie AND nomMarque = :marque AND nom like :nom";
                 $valeur["marque"] = $marque;
                 $valeur["categorie"] = $categorie;
             }
@@ -115,7 +113,7 @@ class ModelRecherche{
         //var_dump($ref);
         foreach ($ref as $value){
             foreach ($value as $v) {
-                $sql = "SELECT * FROM Produits WHERE refProduit = :ref";
+                $sql = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits where refProduit = :ref";
                 $valeur = array(
                     "ref" => $v
                 );
@@ -146,9 +144,14 @@ class ModelRecherche{
 
     public static function infoSidebar($categorie){
         //$sql = "SELECT * FROM :categorie c JOIN Produits p on p.refProduit = c.refProduit where p.nom like %%";
-        $sql = "SELECT * FROM Produits WHERE categorie = $categorie";
+        $sql = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE categorie = :categorie";
+        $value["categorie"] = $categorie;
+        //echo $categorie;
+        //echo $sql;
         //var_dump($sql);
-        $rec_prep = Model::$pdo->query($sql);
+
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
         $tab = $rec_prep->fetchAll();
         if(empty($tab))

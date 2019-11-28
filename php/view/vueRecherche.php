@@ -214,6 +214,7 @@ session_start();
         $n = "nom";
         $nm = "nomMarque";
         $p = "prix";
+
         foreach ($tabvaleur as $v) {
             echo("<div class=\"card\">
             <form  class=\"card-form\"  method=\"get\" action=\"PHP/view/Participant/preLobby.php\">
