@@ -23,7 +23,7 @@ if (!isset($resClient)) {
     <title>Création</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=no">
     <link href="../../css/connection.css" rel="stylesheet" type="text/css">
-    <link rel="icon" type="image/png" href="./image/Logo.png"/>
+    <link rel="icon" type="image/png" href="../../image/Logo.png"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto+Condensed&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
