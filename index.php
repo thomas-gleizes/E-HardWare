@@ -162,14 +162,19 @@ require ("php/lib/File.php");
             </form>';
         }
         ?>
+        <?php
+        $val = $_SESSION["panier"]["quantiter"];
+        echo'
         <form  method="Post" action="PHP/view/Participant/preLobby.php">
-            <button type="submit" id="cart-button">
-                <i id="cart-icon" class="material-icons">
-                    shopping_cart
-                </i>
-                <p>0</p>
-            </button>
-        </form>
+        <button type="submit" id="cart-button">
+            <i id="cart-icon" class="material-icons">
+                shopping_cart
+            </i>
+            <p>'.$val.'</p>
+        </button>
+    </form>
+    ';
+        ?>
     </header>
     <div class="filtre-container open">
         <input class="check1" type="checkbox" id="croissant" >
@@ -194,7 +199,7 @@ require ("php/lib/File.php");
             <i id="achat-icon" class="material-icons categorie-icon">
                 arrow_drop_down
             </i>
-            <form  method="Post" action="PHP/view/Participant/preLobby.php">
+            <form  method="Post" action="php/controller/routeur.php">
                 <select id="select3" name="nombre">
                     <option id="option1" value="1">1</option>
                     <option id="option2" value="2">2</option>
@@ -203,6 +208,7 @@ require ("php/lib/File.php");
                     <option id="option5" value="5">5</option>
                 </select>
                 <input type="hidden" id="id_produit" name="id_produit" value="1">
+                <input type="hidden" name="action" value="ajoutPanier">
                 <button id="achat-btn" type="submit"><p>Ajouter</p></button>
             </form>
         </div>
