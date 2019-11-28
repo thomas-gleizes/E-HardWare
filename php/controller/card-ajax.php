@@ -5,7 +5,7 @@ $rep -> setFetchMode(PDO::FETCH_CLASS, 'nomMarque');
 $tab = $rep->fetchAll(PDO::FETCH_ASSOC);
 foreach ($tab as $value){
     foreach ($value as $val){
-        echo $val.",";
+        echo $val."-";
     }
 }
 ?>

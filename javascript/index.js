@@ -121,10 +121,11 @@ $(document).ready(() => {
         $(".prix-total").html(currentPrice*val + "€");
     });
 
-    /*getCardInfo().then(function (value) {
+    getCardInfo().then(function (value) {
         if(!window.location.href.includes('routeur')){
             var produit = value;
-            var tabProduit = produit.split(',');
+            console.log(produit);
+            var tabProduit = produit.split('-');
             for (var i = 0; i < tabProduit.length - 1; i++){
                 nbcard++;
                 $('.container').append( '<div class="card"> <form  class="card-form"  method="get" action="PHP/view/Participant/preLobby.php"> <button id="card'+nbcard+'" type="submit" class="img-container">' +
@@ -169,7 +170,7 @@ $(document).ready(() => {
                 });
             });
         }
-    });*/
+    });
 
     $('.buy-icon').click(function () {
         $(".img2-container").css('background-image',"");
