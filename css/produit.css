@@ -50,8 +50,9 @@
 .rate {
     width: 6rem;
     height: 1rem;
-    margin-top: 2rem;
-    margin-left: 20%;
+    float: left;
+    margin-left:0.6rem;
+    margin-top: 0.6rem;
 }
 
 .star {
@@ -100,10 +101,19 @@
     margin:0;
 }
 
-.personnal {
+.average {
     float: left;
-    margin-left:0.6rem;
-    margin-top: 0.6rem;
+    margin-left: 10%;
+}
+
+#global {
+    margin-top: 1.6rem;
+}
+
+.noteA {
+    float: left;
+    margin-left:0.3rem;
+    margin-top: 1.7rem;
 }
 
 .note {

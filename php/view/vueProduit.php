@@ -188,13 +188,15 @@ session_start();
 
 <div class="commentaire-container">
     <div class="average-container">
-        <div class="rate">2.38
+        <p class="average">Note moyenne des utilisateurs:</p>
+        <div id="global" class="rate">2.38
             </div>
+        <p class="noteA ">(2.38)</p>
     </div>
     <div class="com">
         <img class="user-icon" src="https://img.icons8.com/ultraviolet/40/000000/guest-male.png">
         <p class="name">Benjamin</p>
-        <div class="rate personnal">5
+        <div  class="rate">5
         </div>
         <p class="note">(5)</p>
         <div class="message-container">
