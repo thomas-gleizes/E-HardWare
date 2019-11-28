@@ -17,6 +17,10 @@
         if(!$_GET==null){
             echo "<p id=\"error1\">Cette combinaison Login - Mot de passe n'éxiste pas !</p>";
         }
+        if(!isset($panier)){
+            $panier["quantiter"] = 0;
+            $_SESSION["panier"] = $panier;
+        }
         ?>
         <form method="post" action="../controller/routeur.php">
             <input type="hidden" name="action" value="connection">
