@@ -280,7 +280,7 @@ if (isset($_SESSION['admin'])){
                 <input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="url" required>
                 <button id="ok" type="submit"><p>Ajout</p></button>
             </form>
-            <<form method="post" action="." class="Processeur">
+            <form method="post" action="." class="Processeur">
                 <input type="text" class="ajout-input" placeholder="Nombre de coeur" name="nbCoeur" required>
                 <input type="text" class="ajout-input" placeholder="Nombre de threads" name="nbThreads" required>
                 <input type="text" class="ajout-input" placeholder="Socket" name="socket" required>
