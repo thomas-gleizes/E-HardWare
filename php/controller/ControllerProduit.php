@@ -1,6 +1,6 @@
 <?php
 
-require_once ("../model/ModelPrduit.php");
+require_once ("../model/ModelProduit.php");
 class ControllerProduit{
 
 
@@ -45,6 +45,7 @@ class ControllerProduit{
 
         $tab = [];
         $tab['refProduit'] = ModelProduit::getIdProduit($tabProd['nom'],$tabProd['categorie']);
+        echo $tab['refProduit'];
 
         if ($categorie == 'Processeur'){
             $tab['nbCoeur'] = $_POST['nbCoeur'];
@@ -64,6 +65,7 @@ class ControllerProduit{
 
         } else if ($categorie == 'CarteMere'){
             $tab['chipset'] = $_POST['chipset'];
+            $tab['architecture'] = $_POST['architecture'];
             $tab['socket'] = $_POST['socket'];
             $tab['format'] = $_POST['format'];
             ModelProduit::insertCarteMere($tab);
@@ -75,6 +77,7 @@ class ControllerProduit{
             ModelProduit::insertDisqueDur($tab);
 
         } else if ($categorie == 'Memoire'){
+            $tab['typ'] = $_POST['typ'];
             $tab['capacite'] = $_POST['capacite'];
             $tab['frequence'] = $_POST['frequence'];
             $tab['CAS'] = $_POST['CAS'];
@@ -99,7 +102,7 @@ class ControllerProduit{
         }
 
 
-
+        header('Location:../view/vueRecherche.php?action=rechercheVide');
     }
 
 

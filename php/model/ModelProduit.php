@@ -35,7 +35,7 @@ class ModelProduit {
     }
 
     public static function insertProduit($tabProd){
-        $sql = "INSERT INTO Produit VALUES ('', :nom, :nomMarque, :categorie, :prix, :stock, :Url)";
+        $sql = "INSERT INTO Produits VALUES ('', :nom, :nomMarque, :categorie, :prix, :stock, :Url)";
         $valeur = array(
             "nom" => $tabProd['nom'],
             "nomMarque" => $tabProd['nomMarque'],
@@ -101,9 +101,9 @@ class ModelProduit {
     }
 
     public static function insertMemoire($tab){
-        $sql = "INSERT INTO Memoire VALUES ('', :type, :capacite, :frequence, :cas, :nbBarrette, :refProduit)";
+        $sql = "INSERT INTO Memoire VALUES ('', :typ, :capacite, :frequence, :cas, :nbBarrette, :refProduit)";
         $valeur = array(
-            "type" => $tab['type'],
+            "typ" => $tab['typ'],
             "capacite" => $tab['capacite'],
             "frequence" => $tab['frequence'],
             "CAS" => $tab['CAS'],
@@ -129,24 +129,25 @@ class ModelProduit {
     }
 
     public static function insertAlimentation($tab){
-        $sql = "INSERT INTO SSD VALUES ('', :format, :capacite, :interface, :lecture, :ecriture, :refProduit)";
+        $sql = "INSERT INTO Alimentation VALUES ('', :puissance, :modularite, :refProduit)";
         $valeur = array(
             "puissance" => $tab['puissance'],
             "modularite" => $tab['modularite'],
+            "refProduit" => $tab['refProduit'],
         );
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($valeur);
     }
 
-    public static function getIdProduit($nom, $categorie){
-        $sql = "SELECT refProduit FROM Produits WHERE nom = :nom AND categorie = :categorie";
+    public static function getIdProduit($nom){
+        $sql = "SELECT refProduit FROM Produits WHERE nom = :nom";
         $valeur['nom'] = $nom;
-        $valeur['categorie'] = $categorie;
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($valeur);
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
         $tab = $rec_prep->fetchAll();
-        return (int)$tab;
+
+        return (int)$tab[0]["refProduit"];
     }
 
 
