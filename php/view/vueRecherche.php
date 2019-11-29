@@ -1,7 +1,7 @@
 <?php
 session_start();
 setcookie("panier",$_SESSION["panier"]["quantiter"],time()+31570000)  ;
-echo "<br>".$_SESSION["panier"]["quantiter"];
+//echo "<br>".$_SESSION["panier"]["quantiter"];
 ?>
 
 <!DOCTYPE html>
