@@ -1,6 +1,7 @@
 <?php
     require_once ('ControllerRecherche.php');
     require_once ('ControllerUtilisateur.php');
+    require_once ('ControllerProduit.php');
     if(!$_GET==null){
         if ($_GET['action'] == "actionExt"){
             ControllerUtilisateur::myaccount();

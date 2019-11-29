@@ -229,6 +229,7 @@ $(document).ready(() => {
     getCardInfo().then(function (value) {
         if(!window.location.href.includes('routeur')){
             var produit = value;
+            console.log(produit);
             var tabProduit = produit.split('~');
             for (var i = 0; i < tabProduit.length - 1; i++){
                 nbcard++;
@@ -250,8 +251,11 @@ $(document).ready(() => {
                 $("#buy").toggleClass('open');
                 $('#buy-comp').toggleClass("navcomp");
                 var id = $(this).siblings(".id").val();
+                console.log(id);
                 getAchatInfo(id).then(function (value) {
-                    var tabProduit = value.split('$');
+                    var produit = value;
+                    console.log(produit);
+                    var tabProduit = produit.split('~');
                     $(".img2-container").css('background-image',"url(" +tabProduit[3]+")");
                     $(".produit").html(tabProduit[0]);
                     $(".disponibilite").html('en stock ('+tabProduit[1]+' disponible)');
@@ -372,7 +376,8 @@ $(document).ready(() => {
     $('.cache-ajout').click(function(){
         $(".ajout-container").toggleClass('open');
         $(".cache-ajout").toggleClass('open');
-        $("#cat").css('display','block');
-        $(".ajout-container").children("form").remove();
     });
+
+
+
 });
