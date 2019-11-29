@@ -186,13 +186,27 @@
     width: 60%;
     height: 10rem;
     float: left;
-    margin-left: 20%;
-    margin-top: 5%;
+    margin-left: 3%;
+    margin-top: 3%;
     -webkit-box-shadow: inset 0px 0px 5px 0px rgba(97, 97, 97, 1);
     -moz-box-shadow: inset 0px 0px 5px 0px rgba(97, 97, 97, 1);
     box-shadow: inset 0px 0px 5px 0px rgba(97, 97, 97, 1);
     overflow: auto;
     padding: 0.5rem;
+}
+
+.mynote {
+    float: left;
+    text-align: left;
+    margin-top: 3%;
+    margin-left:10%;
+}
+
+#select7 {
+    float: left;
+    width: 3rem;
+    margin-top: 3.2%;
+    margin-left:0.5rem;
 }
 
 

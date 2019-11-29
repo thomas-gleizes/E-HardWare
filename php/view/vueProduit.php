@@ -219,7 +219,22 @@ session_start();
 
 <div class="write-commentaire open">
     <form method="post" action="../controller/routeur.php">
+        <p class="mynote">votre note:</p>
+        <select id="select7" name="note">
+            <option value="0">0</option>
+            <option value="0.5">0.5</option>
+            <option value="1">1</option>
+            <option value="1.5">1.5</option>
+            <option value="2">2</option>
+            <option value="2.5">2.5</option>
+            <option value="3">3</option>
+            <option value="3.5">3.5</option>
+            <option value="4">4</option>
+            <option value="4.5">4.5</option>
+            <option value="5">5</option>
+        </select>
         <textarea id="mycom" name="commentaire" placeholder="écrivez un commentaire"></textarea>
+        <button id="achat-btn" type="submit"><p>Envoyer</p></button>
     </form>
 </div>
 </body>
