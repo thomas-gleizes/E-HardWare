@@ -67,11 +67,11 @@ class ModelRecherche{
             }
             if($marque!=null && $categorie != null){
                 echo"2.4";
-                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE nomMarque = :marque AND categorie = :categorie AND p.nom like :nom";
+                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE nomMarque = :marque AND categorie = :categorie AND nom like :nom";
                 $valeur["marque"] = $marque;
                 $valeur["categorie"] = $categorie;
             }
-            $sql = $requete." GROUP BY(p.refProduit) ORDER BY p.prix DESC";
+            $sql = $requete." GROUP BY(Produits.refProduit) ORDER BY Produits.prix DESC";
 
         } if($prix == null) {
 
