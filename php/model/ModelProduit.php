@@ -156,6 +156,17 @@ class ModelProduit {
         return $tab;
     }
 
+    public static function getInfoCate($refProduit, $categorie){
+        $sql = "SELECT * FROM :categorie WHERE refProduit = :refProduit";
+        $value['categorie'] = $categorie;
+        $value['refPorduit'] = $refProduit;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        return $tab;
+    }
+
 
 
 
