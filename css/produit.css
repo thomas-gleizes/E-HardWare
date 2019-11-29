@@ -1,12 +1,12 @@
 .image-container {
     float: left;
     width: 50%;
-    margin-top:10rem;
-    height: 20rem;
+    margin-top:5rem;
+    height: 28rem;
     background-position:center center;
     background-repeat:no-repeat;
-    background-size: 800px;
-    background-image: url("../image/rtx 2080.jpg");
+    background-size: 50vw;
+    background-image: url("https://www.topachat.com/boutique/img/in/in1011/in10117193/in1011719302@2x.jpg");
 }
 .desc-container {
     float: right;
@@ -30,6 +30,14 @@
 }
 
 .commentaire-container {
+    position: absolute;
+    margin-top: 35rem;
+    width: 100%;
+    height:auto;
+    border-top: #0398a1 2px solid;
+}
+
+.write-commentaire{
     position: absolute;
     margin-top: 35rem;
     width: 100%;
@@ -83,7 +91,6 @@
 
 .message-container {
     background-color: #e8f4ff;
-
     border-radius: 0.3rem;
     width: 60%;
     height: 10rem;
@@ -130,6 +137,68 @@
     border-bottom: #d1d1d1 solid 1px;
     overflow: hidden;
 }
+
+.left {
+    position: relative;
+    text-align: left;
+    margin-left: 5%;
+}
+
+#info {
+    float:right;
+    margin-right: 20%;
+    text-align: left;
+}
+
+#select6 {
+    position:absolute;
+    width:3rem;
+    margin-top:-1.2rem;
+    margin-left: 9.5%;
+}
+
+.onglet {
+    position: absolute;
+    z-index: 1;
+    width:12rem;
+    height: 2rem;
+    float: left;
+    margin-left: 0.5rem;
+    top: 33rem;
+    border: #0398a1 2px solid;
+    border-bottom: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.onglet p {
+    margin: 0;
+}
+
+#onglet2 {
+    z-index: -1;
+    margin-left: 12.7rem;
+}
+
+#mycom {
+    background-color: #e8f4ff;
+    border-radius: 0.3rem;
+    width: 60%;
+    height: 10rem;
+    float: left;
+    margin-left: 20%;
+    margin-top: 5%;
+    -webkit-box-shadow: inset 0px 0px 5px 0px rgba(97, 97, 97, 1);
+    -moz-box-shadow: inset 0px 0px 5px 0px rgba(97, 97, 97, 1);
+    box-shadow: inset 0px 0px 5px 0px rgba(97, 97, 97, 1);
+    overflow: auto;
+    padding: 0.5rem;
+}
+
+
+
+
+
 
 
 

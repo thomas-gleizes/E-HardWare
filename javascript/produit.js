@@ -25,4 +25,31 @@ $(document).ready(()=>{
             i++;
         }
     });
+
+    var val = $("#stock").val();
+    val = parseFloat(val);
+    if (val > 20){
+        for (var i = 0; i < 21; i++){
+            $("#select6").append(new Option(i, i));
+        }
+    } else {
+        for (var i = 0; i < (val + 1); i++){
+            $("#select6").append(new Option(i, i));
+        }
+    }
+
+    $("#onglet1").click(function () {
+        $(".commentaire-container").toggleClass("open");
+        $(".write-commentaire").toggleClass("open");
+        $("#onglet1").css('z-index', '1');
+        $("#onglet2").css('z-index', '-1');
+    });
+
+    $("#onglet2").click(function () {
+        $(".commentaire-container").toggleClass("open");
+        $(".write-commentaire").toggleClass("open");
+        $("#onglet2").css('z-index', '1');
+        $("#onglet1").css('z-index', '-1');
+    });
+
 });
