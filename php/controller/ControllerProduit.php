@@ -59,7 +59,7 @@ class ControllerProduit{
         } else if ($categorie == 'CarteGraphique'){
             $tab['chipset'] = $_POST['chipset'];
             $tab['memoire'] = $_POST['memoire'];
-            $tab['arcgitecture'] = $_POST['architecture'];
+            $tab['architecture'] = $_POST['architecture'];
             $tab['bus'] = $_POST['bus'];
             ModelProduit::insertCarteGraphique($tab);
 
