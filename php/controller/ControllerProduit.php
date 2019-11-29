@@ -81,13 +81,18 @@ class ControllerProduit{
             $tab['nbBarrette'] = $_POST['nbBarrette'];
             ModelProduit::insertMemoire($tab);
 
-        } else if ($categorie == 'SSD'){
+        } else if ($categorie == 'SSD') {
             $tab['format'] = $_POST['format'];
             $tab['capacite'] = $_POST['capacite'];
             $tab['interface'] = $_POST['interface'];
             $tab['lecture'] = $_POST['lecture'];
             $tab['ecriture'] = $_POST['ecriture'];
             ModelProduit::insertSSD($tab);
+
+        } else if ($categorie == "Alimentation"){
+            $tab['puissance'] = $_POST['puissance'];
+            $tab['modularite'] = $_POST['modularite'];
+            ModelProduit::insertAlimentation($tab);
 
         } else {
             echo "<h2>Erreur d'insertion</h2><br>";

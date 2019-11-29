@@ -128,6 +128,16 @@ class ModelProduit {
         $rec_prep->execute($valeur);
     }
 
+    public static function insertAlimentation($tab){
+        $sql = "INSERT INTO SSD VALUES ('', :format, :capacite, :interface, :lecture, :ecriture, :refProduit)";
+        $valeur = array(
+            "puissance" => $tab['puissance'],
+            "modularite" => $tab['modularite'],
+        );
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($valeur);
+    }
+
     public static function getIdProduit($nom, $categorie){
         $sql = "SELECT refProduit FROM Produits WHERE nom = :nom AND categorie = :categorie";
         $valeur['nom'] = $nom;

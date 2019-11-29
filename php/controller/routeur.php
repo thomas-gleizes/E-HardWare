@@ -11,7 +11,12 @@
 
     }
     if(!$_POST==null){
-        $action = $_POST["action"];
-        ControllerUtilisateur::$action();
+        if ($_POST['action'] == "ajoutProduit") {
+            $action = $_POST["action"];
+            ControllerProduit::ajoutProduit();
+        } else {
+            $action = $_POST["action"];
+            ControllerUtilisateur::$action();
+        }
     }
 ?>

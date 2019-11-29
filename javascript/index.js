@@ -122,7 +122,8 @@ $(document).ready(() => {
         console.log(val);
         if (val == "Processeur"){
             $(".ajout-container").append('<form method="post" action="../controller/routeur.php">' +
-                '<input type="hidden" class="ajout-input" name="action" value="creation" required>' +
+                '<input type="hidden" class="ajout-input" name="action" value="ajoutProduit" required>' +
+                '<input type="hidden" class="ajout-input" name="categorie" value="Processeur" required>' +
                 '<input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>' +
                 '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
                 '<input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
@@ -137,7 +138,8 @@ $(document).ready(() => {
                 '<button id="ok" type="submit"><p>Ajout</p></button> </form>')
         } else if (val == "CarteMere"){
             $(".ajout-container").append('<form method="post" action="../controller/routeur.php">' +
-                '<input type="hidden" class="ajout-input" name="action" value="creation" required>' +
+                '<input type="hidden" class="ajout-input" name="action" value="ajoutProduit" required>' +
+                '<input type="hidden" class="ajout-input" name="categorie" value="CarteMere" required>' +
                 '<input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>' +
                 '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
                 '<input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
@@ -149,7 +151,8 @@ $(document).ready(() => {
                 '<button id="ok" type="submit"><p>Ajout</p></button> </form>')
         } else if (val == "Memoire"){
             $(".ajout-container").append('<form method="post" action="../controller/routeur.php">' +
-                '<input type="hidden" class="ajout-input" name="action" value="creation" required>' +
+                '<input type="hidden" class="ajout-input" name="action" value="ajoutProduit" required>' +
+                '<input type="hidden" class="ajout-input" name="categorie" value="Memoire" required>' +
                 '<input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>' +
                 '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
                 '<input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
@@ -163,7 +166,8 @@ $(document).ready(() => {
                 '<button id="ok" type="submit"><p>Ajout</p></button> </form>')
         } else if (val == "CarteGraphique"){
             $(".ajout-container").append('<form method="post" action="../controller/routeur.php">' +
-                '<input type="hidden" class="ajout-input" name="action" value="creation" required>' +
+                '<input type="hidden" class="ajout-input" name="action" value="ajoutProduit" required>' +
+                '<input type="hidden" class="ajout-input" name="categorie" value="CarteGraphique" required>' +
                 '<input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>' +
                 '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
                 '<input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
@@ -176,7 +180,8 @@ $(document).ready(() => {
                 '<button id="ok" type="submit"><p>Ajout</p></button> </form>')
         } else if (val == "SSD"){
             $(".ajout-container").append('<form method="post" action="../controller/routeur.php">' +
-                '<input type="hidden" class="ajout-input" name="action" value="creation" required>' +
+                '<input type="hidden" class="ajout-input" name="action" value="ajoutProduit" required>' +
+                '<input type="hidden" class="ajout-input" name="categorie" value="SSD" required>' +
                 '<input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>' +
                 '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
                 '<input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
@@ -188,7 +193,8 @@ $(document).ready(() => {
                 '<button id="ok" type="submit"><p>Ajout</p></button> </form>')
         } else if (val == "DisqueDur"){
             $(".ajout-container").append('<form method="post" action="../controller/routeur.php">' +
-                '<input type="hidden" class="ajout-input" name="action" value="creation" required>' +
+                '<input type="hidden" class="ajout-input" name="action" value="ajoutProduit" required>' +
+                '<input type="hidden" class="ajout-input" name="categorie" value="DisqueDur" required>' +
                 '<input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>' +
                 '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
                 '<input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
@@ -199,6 +205,18 @@ $(document).ready(() => {
                 '<input type="text" class="ajout-input" placeholder="Interface SSD" name="interface" required>' +
                 '<input type="text" class="ajout-input" placeholder="Vitesse de lecture" name="lecture" required>' +
                 '<input type="text" class="ajout-input" placeholder="Vitesse d\'écriture" name="ecriture" required>' +
+                '<button id="ok" type="submit"><p>Ajout</p></button> </form>')
+        } else if (val == "Alimentation"){
+            $(".ajout-container").append('<form method="post" action="../controller/routeur.php">' +
+                '<input type="hidden" class="ajout-input" name="action" value="ajoutProduit" required>' +
+                '<input type="hidden" class="ajout-input" name="categorie" value="Alimentation" required>' +
+                '<input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>' +
+                '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
+                '<input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
+                '<input type="text" class="ajout-input" placeholder="Quantité de stock" name="stock" required>' +
+                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="url" required>' +
+                '<input type="text" class="ajout-input" placeholder="Puissance" name="puissance" required>' +
+                '<input type="text" class="ajout-input" placeholder="Modularité" name="modularite" required>' +
                 '<button id="ok" type="submit"><p>Ajout</p></button> </form>')
         }
     });
