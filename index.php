@@ -1,9 +1,13 @@
 <?php
 session_start();
-
+setcookie("panier","0",time()+31570000);
+echo $_COOKIE["panier"];
 if (isset($_SESSION['login'])) {
     if ($_SESSION['admin'] == 1){
         header('Location:./php/controller/routeur.php?action=rechercheVide');
+    }
+    if(isset($_SESSION["panier"])){
+       setcookie("panier",$_SESSION["panier"]["quantiter"],time()+31570000) ;
     }
 }
 require ("php/lib/File.php");
@@ -163,17 +167,32 @@ require ("php/lib/File.php");
         }
         ?>
         <?php
-        $val = $_SESSION["panier"]["quantiter"];
-        echo'
-        <form  method="Post" action="PHP/view/Participant/preLobby.php">
-        <button type="submit" id="cart-button">
-            <i id="cart-icon" class="material-icons">
-                shopping_cart
-            </i>
-            <p>'.$val.'</p>
-        </button>
-    </form>
-    ';
+        $val = 0;
+        if(isset($_SESSION["panier"])){
+            $val = $_SESSION["panier"]["quantiter"];
+            echo'
+            <form  method="Post" action="PHP/view/Participant/preLobby.php">
+                <button type="submit" id="cart-button">
+                    <i id="cart-icon" class="material-icons">
+                        shopping_cart
+                    </i>
+                    <p>'.$val.'</p>
+                </button>
+            </form>
+        ';
+        }else {
+            echo'
+                <form  method="Post" action="PHP/view/Participant/preLobby.php">
+                    <button type="submit" id="cart-button">
+                        <i id="cart-icon" class="material-icons">
+                            shopping_cart
+                        </i>
+                        <p>'.$_COOKIE["panier"].'</p>
+                    </button>
+             </form>
+            ';
+        }
+
         ?>
     </header>
     <div class="filtre-container open">

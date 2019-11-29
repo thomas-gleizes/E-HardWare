@@ -179,20 +179,25 @@ session_start();
 </div>
 <div class="image-container"></div>
 <div class="desc-container">
-    <p class="produit">Nvidia Rtx 2080<p/>
-    <p class="marque">Nvidia<p/>
-    <p class="categorie">Carte Graphique<p/>
-    <p class="disponibilite">en stock (20 disponible)<p/>
-    <p class="prix-total">1500 €<p/>
-    <p class="choix1">combien voulez vous en ajoutez à votre panier?</p>
+    <p id="produit" class="left">Nvidia Titan rtx<p/>
+    <p id="info">Mémoire vidéo: 24 Go <br>achitecture : Turing <br>bus: PCI express 3.0<p/>
+    <p id="marque" class="left">Nvidia<p/>
+    <p id="categorie" class="left">Carte Graphique<p/>
+    <p id="disponibilite" class="left">en stock (20 disponible)<p/>
+    <input type="hidden" id="stock" value="7">
+    <p id="prix-total" class="left">1500 €<p/>
+    <p id="quantity" class="left">quantité :</p>
     <form  method="Post" action="../controller/routeur.php">
-        <input type="number" id="num" name="nombre" required>
+        <select id="select6" name="quantite">
+        </select>
         <input type="hidden" id="id_produit" name="id_produit" value="1">
         <input type="hidden" name="action" value="ajoutPanier">
         <button id="achat-btn" type="submit"><p>Ajouter</p></button>
     </form>
 </div>
 
+<div class="onglet" id="onglet1"><p>Commentaires des utilisateurs</p></div>
+<div class="onglet" id="onglet2"><p>écrire un commentaire</p></div>
 <div class="commentaire-container">
     <div class="average-container">
         <p class="average">Note moyenne des utilisateurs:</p>
@@ -210,6 +215,12 @@ session_start();
             <p class="message">Ce produit c'est le feu j'arrive à faire tourner adibou en 12fps</p>
         </div>
     </div>
+</div>
+
+<div class="write-commentaire open">
+    <form method="post" action="../controller/routeur.php">
+        <textarea id="mycom" name="commentaire" placeholder="écrivez un commentaire"></textarea>
+    </form>
 </div>
 </body>
 </html>
