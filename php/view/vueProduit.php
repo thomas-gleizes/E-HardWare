@@ -177,25 +177,42 @@ session_start();
     <label for="decroissant"><p>Prix par ordre décroissant</p></label>
     <p id="marque-p">Trier par marque:</p>
 </div>
-<div class="image-container"></div>
-<div class="desc-container">
-    <p id="produit" class="left">Nvidia Titan rtx<p/>
-    <p id="info">Mémoire vidéo: 24 Go <br>achitecture : Turing <br>bus: PCI express 3.0<p/>
-    <p id="marque" class="left">Nvidia<p/>
-    <p id="categorie" class="left">Carte Graphique<p/>
-    <p id="disponibilite" class="left">en stock (20 disponible)<p/>
-    <input type="hidden" id="stock" value="7">
-    <p id="prix-total" class="left">1500 €<p/>
-    <p id="quantity" class="left">quantité :</p>
-    <form  method="Post" action="../controller/routeur.php">
-        <select id="select6" name="quantite">
-        </select>
-        <input type="hidden" id="id_produit" name="id_produit" value="1">
-        <input type="hidden" name="action" value="ajoutPanier">
-        <button id="achat-btn" type="submit"><p>Ajouter</p></button>
-    </form>
-</div>
 
+
+<?php
+$tab;
+$u = "Url";
+$r ="refProduit";
+$n = "nom";
+$nm = "nomMarque";
+$p = "prix";
+$s = "stock";
+$c = "categorie";
+foreach ($tab as $tav){
+    echo '
+    <div class="image-container">
+        <input type="hidden" id="url" value="'.$tav[$u].'">
+    </div>
+        <div class="desc-container">
+        <p id="produit" class="left">'.$tav[$n].'<p/>
+        <p id="info">Mémoire vidéo: 24 Go <br>achitecture : Turing <br>bus: PCI express 3.0<p/>
+        <p id="marque" class="left">'.$tav[$nm].'<p/>
+        <p id="categorie" class="left">'.$tav[$c].'<p/>
+        <p id="disponibilite" class="left">en stock ('.$tav[$s].' disponible)<p/>
+        <input type="hidden" id="stock" value="'.$tav[$s].'">
+        <p id="prix-total" class="left">'.$tav[$p].' €<p/>
+        <p id="quantity" class="left">quantité :</p>
+        <form  method="Post" action="../controller/routeur.php">
+            <select id="select6" name="quantite">
+            </select>
+            <input type="hidden" id="id_produit" name="id_produit" value="'.$tav[$r].'">
+            <input type="hidden" name="action" value="ajoutPanier">
+            <button id="achat-btn" type="submit"><p>Ajouter</p></button>
+        </form>
+    </div>
+';
+}
+echo '
 <div class="onglet" id="onglet1"><p>Commentaires des utilisateurs</p></div>
 <div class="onglet" id="onglet2"><p>écrire un commentaire</p></div>
 <div class="commentaire-container">
@@ -212,7 +229,7 @@ session_start();
         </div>
         <p class="note">(5)</p>
         <div class="message-container">
-            <p class="message">Ce produit c'est le feu j'arrive à faire tourner adibou en 12fps</p>
+            <p class="message">Ce produit c\'est le feu j\'arrive à faire tourner adibou en 12fps</p>
         </div>
     </div>
 </div>
@@ -237,6 +254,15 @@ session_start();
         <button id="achat-btn" type="submit"><p>Envoyer</p></button>
     </form>
 </div>
+';
+
+?>
+
+
+
+
+
+
 </body>
 </html>
 
