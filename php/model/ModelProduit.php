@@ -101,7 +101,7 @@ class ModelProduit {
     }
 
     public static function insertMemoire($tab){
-        $sql = "INSERT INTO Memoire VALUES ('', :typ, :capacite, :frequence, :cas, :nbBarrette, :refProduit)";
+        $sql = "INSERT INTO Memoire VALUES ('', :typ, :capacite, :frequence, :CAS, :nbBarrette, :refProduit)";
         $valeur = array(
             "typ" => $tab['typ'],
             "capacite" => $tab['capacite'],
