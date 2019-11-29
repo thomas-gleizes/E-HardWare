@@ -1,9 +1,6 @@
 <?php
 session_start();
-setcookie("panier",$_SESSION["panier"]["quantiter"],time()+31570000)  ;
-//echo "<br>".$_SESSION["panier"]["quantiter"];
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -161,35 +158,15 @@ setcookie("panier",$_SESSION["panier"]["quantiter"],time()+31570000)  ;
             </form>';
     }
     ?>
-    <?php
-    if(isset($_SESSION["panier"])){
-        $val = $_SESSION["panier"]["quantiter"];
-        echo'
-        <form  method="Post" action="PHP/view/Participant/preLobby.php">
+
+    <form  method="Post" action="PHP/view/Participant/preLobby.php">
         <button type="submit" id="cart-button">
             <i id="cart-icon" class="material-icons">
                 shopping_cart
             </i>
-            <p>'.$val.'</p>
+            <p>0</p>
         </button>
     </form>
-    ';
-    }else{
-        echo'
-        <form  method="Post" action="PHP/view/Participant/preLobby.php">
-        <button type="submit" id="cart-button">
-            <i id="cart-icon" class="material-icons">
-                shopping_cart
-            </i>
-            <p>'.$_COOKIE["panier"].'</p>
-        </button>
-    </form>
-    ';
-    }
-
-
-    ?>
-
 </header>
 <div class="filtre-container open">
     <input class="check1" type="checkbox" id="croissant" >
@@ -198,36 +175,7 @@ setcookie("panier",$_SESSION["panier"]["quantiter"],time()+31570000)  ;
     <label for="decroissant"><p>Prix par ordre décroissant</p></label>
     <p id="marque-p">Trier par marque:</p>
 </div>
-<div class="result">
-</div>
-<div id="buy" class="buy open">
-    <div class="img2-container">
-        <i id="clear-icon2" class="material-icons">
-            clear
-        </i>
-    </div>
-    <div class="achat-container">
-        <p class="produit">Nvidia Rtx 2080<p/>
-        <p class="disponibilite">en stock (20 disponible)<p/>
-        <p class="prix-total">1500 €<p/>
-        <p class="choix">combien voulez vous en ajoutez à votre panier?</p>
-        <i id="achat-icon" class="material-icons categorie-icon">
-            arrow_drop_down
-        </i>
-        <form  method="Post" action="../controller/routeur.php">
-            <select id="select3" name="nombre">
-                <option id="option1" value="1">1</option>
-                <option id="option2" value="2">2</option>
-                <option id="option3" value="3">3</option>
-                <option id="option4" value="4">4</option>
-                <option id="option5" value="5">5</option>
-            </select>
-            <input type="hidden" id="id_produit" name="id_produit" value="1">
-            <input type="hidden" name="action" value="ajoutPanier">
-            <button id="achat-btn" type="submit"><p>Ajouter</p></button>
-        </form>
-    </div>
-</div>
+
 <div class="padding-container">
     <div class="container">
         <?php
@@ -251,7 +199,7 @@ setcookie("panier",$_SESSION["panier"]["quantiter"],time()+31570000)  ;
                 <div class=\"rond\">
                     <p>
                         <input class=\"id\" type=\"hidden\" name=\"id_produit\" value=\"$v[$r]\">
-                        <i class=\"add-icon material-icons remove-icon\">add_shopping_cart</i>
+                        <i class=\"add-icon material-icons buy-icon\">add_shopping_cart</i>
                     </p>
                 </div> ");
             if (isset($_SESSION['admin'])){
@@ -308,9 +256,12 @@ if (isset($_SESSION['admin'])){
     }
 }
 ?>
-
-
+<form method="post" action="../controller/routeur.php">
+    <input type="hidden" name="action" value="">
+    <button id="command-btn" type="submit"><p>commander</p></button>
+</form>
 
 </body>
 </html>
+
 
