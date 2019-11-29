@@ -104,9 +104,8 @@ class ControllerProduit{
 
     public static function infoVueProduit(){
         $tab = ModelProduit::infoVueProduit($_POST['id_produit']);
-        $tab += ModelProduit::getInfoCate($_POST['id_produit'],$tab[0]['categorie']);
+        //$tab += ModelProduit::getInfoCate($_POST['id_produit'],$tab[0]['categorie']);
         require_once ('../view/vueProduit.php');
-        //return $tab;
     }
 
 

@@ -188,6 +188,7 @@ $nm = "nomMarque";
 $p = "prix";
 $s = "stock";
 $c = "categorie";
+
 foreach ($tab as $tav){
     echo '
     <div class="image-container">
