@@ -1,7 +1,7 @@
 <?php
 session_start();
 setcookie("panier","0",time()+31570000);
-echo $_COOKIE["panier"];
+//echo $_COOKIE["panier"];
 if (isset($_SESSION['login'])) {
     if ($_SESSION['admin'] == 1){
         header('Location:./php/controller/routeur.php?action=rechercheVide');
