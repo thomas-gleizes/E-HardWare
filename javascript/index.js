@@ -127,15 +127,15 @@ $(document).ready(() => {
                 '<input type="hidden" class="ajout-input" name="categorie" value="Processeur" required>' +
                 '<input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>' +
                 '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
-                '<input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
-                '<input type="text" class="ajout-input" placeholder="Quantité de stock" name="stock" required>' +
+                '<input type="number" min="0" step="any" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
+                '<input type="number" min="0" class="ajout-input" placeholder="Quantité de stock" name="stock" required>' +
                 '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="Url" required>' +
-                '<input type="text" class="ajout-input" placeholder="Nombre de coeur" name="nbCoeur" required>' +
-                '<input type="text" class="ajout-input" placeholder="Nombre de threads" name="nbThreads" required>' +
+                '<input type="number" min="0" class="ajout-input" placeholder="Nombre de coeur" name="nbCoeur" required>' +
+                '<input type="number" min="0" class="ajout-input" placeholder="Nombre de threads" name="nbThreads" required>' +
                 '<input type="text" class="ajout-input" placeholder="Socket" name="socket" required>' +
-                '<input type="text" class="ajout-input" placeholder="Frequence CPU" name="frequence" required>' +
-                '<input type="text" class="ajout-input" placeholder="Boost CPU" name="boost" required>' +
-                '<input type="text" class="ajout-input" placeholder="Cache" name="cache" required>' +
+                '<input type="number" min="0" step="any" class="ajout-input" placeholder="Frequence CPU" name="frequence" required>' +
+                '<input type="number" min="0" step="any" class="ajout-input" placeholder="Boost CPU" name="boost" required>' +
+                '<input type="number" min="0" class="ajout-input" placeholder="Cache" name="cache" required>' +
                 '<button id="ok" type="submit"><p>Ajout</p></button> </form>')
         } else if (val == "CarteMere"){
             $(".ajout-container").append('<form method="post" action="../controller/routeur.php">' +
@@ -143,8 +143,8 @@ $(document).ready(() => {
                 '<input type="hidden" class="ajout-input" name="action" value="ajoutProduit" required>' +
                 '<input type="hidden" class="ajout-input" name="categorie" value="CarteMere" required>' +
                 '<input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>' +
-                '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
-                '<input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
+                '<input type="number" min="1" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
+                '<input type="number" min="1" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
                 '<input type="text" class="ajout-input" placeholder="Quantité de stock" name="stock" required>' +
                 '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="Url" required>' +
                 '<input type="text" class="ajout-input" placeholder="Chipset" name="chipset" required>' +
