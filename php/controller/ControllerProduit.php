@@ -97,12 +97,17 @@ class ControllerProduit{
             $tab['modularite'] = $_POST['modularite'];
             ModelProduit::insertAlimentation($tab);
 
-        } else {
-            echo "<h2>Erreur d'insertion</h2><br>";
         }
 
 
         header('Location:../view/vueRecherche.php?action=rechercheVide');
+    }
+
+
+    public static function infoVueProduit(){
+        $tab = ModelProduit::infoVueProduit($_POST['id_produit']);
+        require_once ('../view/vueProduit.php');
+
     }
 
 

@@ -1,5 +1,6 @@
 <?php
 require_once ('../model/Model.php');
+require_once ('../model/ModelRecherche.php');
 
 class ModelProduit {
 
@@ -148,6 +149,11 @@ class ModelProduit {
         $tab = $rec_prep->fetchAll();
 
         return (int)$tab[0]["refProduit"];
+    }
+
+    public static function infoVueProduit($ref){
+        $tab = ModelRecherche::getAllInformation($ref);
+        return $tab;
     }
 
 

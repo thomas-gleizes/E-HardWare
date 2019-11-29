@@ -32,17 +32,17 @@ class ModelRecherche{
                 $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits where nom like :nom ";
             }
             if($marque==null && $categorie!=null){
-                echo"1.2";
+                //echo"1.2";
                 $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits where categorie = :categorie AND nom like :nom";
                 $valeur["categorie"] = $categorie;
             }
             if($marque!=null && $categorie == null){
-                echo"1.3";
+                //echo"1.3";
                 $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits where nomMarque = :marque and nom like :nom";
                 $valeur["marque"] = $marque;
             }
             if($marque!=null && $categorie != null){
-                echo"1.4";
+                //echo"1.4";
                 $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE categorie = :categorie AND nomMarque = :marque AND nom like :nom";
                 $valeur["marque"] = $marque;
                 $valeur["categorie"] = $categorie;
@@ -53,20 +53,20 @@ class ModelRecherche{
         if ($prix == 2){
             //echo"2";
             if($marque==null && $categorie==null){
-                echo"2.1";
+                //echo"2.1";
                 $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE nom like :nom ";
             }
             if($marque==null && $categorie!=null){
-                echo"2.2";
+                //echo"2.2";
                 $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE categorie = :categorie AND nom like :nom";
             }
             if($marque!=null && $categorie == null){
-                echo"2.3";
+                //echo"2.3";
                 $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE nomMarque =:marque and nom like :nom";
                 $valeur["marque"] = $marque;
             }
             if($marque!=null && $categorie != null){
-                echo"2.4";
+                //echo"2.4";
                 $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE nomMarque = :marque AND categorie = :categorie AND nom like :nom";
                 $valeur["marque"] = $marque;
                 $valeur["categorie"] = $categorie;
@@ -76,21 +76,21 @@ class ModelRecherche{
         } if($prix == null) {
 
             if($marque==null && $categorie==null){
-                echo"3.1";
+                //echo"3.1";
                 $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE nom like :nom ";
             }
             if($marque==null && $categorie!=null){
-                echo"3.2";
+                //echo"3.2";
                 $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE categorie = :categorie AND nom like :nom";
                 $valeur["categorie"] = $categorie;
             }
             if($marque!=null && $categorie == null){
-                echo"3.3";
+                //echo"3.3";
                 $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE nomMarque =:marque AND nom like :nom";
                 $valeur["marque"] = $marque;
             }
             if($marque!=null && $categorie != null){
-                echo"3.4";
+                //echo"3.4";
                 $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE categorie = :categorie AND nomMarque = :marque AND nom like :nom";
                 $valeur["marque"] = $marque;
                 $valeur["categorie"] = $categorie;
@@ -126,6 +126,20 @@ class ModelRecherche{
         //var_dump($tab);
         return $tab;
     }
+
+    public static function getAllInformation($ref){
+        $tab= [];
+            $sql = "SELECT * FROM Produits where refProduit = :ref";
+            $valeur = array(
+                "ref" => $ref
+            );
+            $rec_prep = Model::$pdo->prepare($sql);
+            $rec_prep->execute($valeur);
+            $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+            $tab = array_merge($tab, $rec_prep->fetchAll());
+        return $tab;
+    }
+
 
     public static function trie($indicetri,$tab){
         $trie = [];

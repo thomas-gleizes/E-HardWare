@@ -239,7 +239,8 @@ setcookie("panier",$_SESSION["panier"]["quantiter"],time()+31570000)  ;
 
         foreach ($tabvaleur as $v) {
             echo("<div class=\"card\">
-            <form  class=\"card-form\"  method=\"get\" action=\"PHP/view/Participant/preLobby.php\">
+            <form  class=\"card-form\"  method=\"post\" action=\"../controller/routeur.php\">
+                <input type=\"hidden\" name=\"produit\" value=\"infoVueProduit\" > 
                 <input type=\"hidden\" class=\"url\" name=\"id_produit\" value=\"$v[$u]\">
                 <button type=\"submit\" class=\"img-container\">
                     <input type=\"hidden\" name=\"id_produit\" value=\"$v[$r]\">
