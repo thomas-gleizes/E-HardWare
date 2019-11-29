@@ -146,7 +146,7 @@ $(document).ready(() => {
                 '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
                 '<input type="number" min="0" step="any" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
                 '<input type="number" min="0" class="ajout-input" placeholder="Quantité de stock" name="stock" required>' +
-                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="url" required>' +
+                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="Url" required>' +
                 '<input type="text" class="ajout-input" placeholder="Chipset" name="chipset" required>' +
                 '<input type="text" class="ajout-input" placeholder="Socket" name="socket" required>' +
                 '<input type="text" class="ajout-input" placeholder="Format" name="format" required>' +
@@ -159,8 +159,8 @@ $(document).ready(() => {
                 '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
                 '<input type="number" min="0" step="any"" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
                 '<input type="number" min="0" class="ajout-input" placeholder="Quantité de stock" name="stock" required>' +
-                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="url" required>' +
-                '<input type="text" class="ajout-input" placeholder="Type de RAM" name="type" required>' +
+                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="Url" required>' +
+                '<input type="text" class="ajout-input" placeholder="Type de RAM" name="typ" required>' +
                 '<input type="number" min="0" class="ajout-input" placeholder="Capacite RAM" name="capacite" required>' +
                 '<input type="number" min="0" class="ajout-input" placeholder="Frequence RAM" name="frequence" required>' +
                 '<input type="number" min="0" class="ajout-input" placeholder="CAS" name="CAS" required>' +
