@@ -116,7 +116,7 @@ $(document).ready(() => {
         $('#c-text').html(val);
     });
 
-    $('#select5').change(function() {
+    $('#select5').click(function() {
         var val = $("#select5").val();
         $("#cat").css('display','none');
         console.log(val);
@@ -268,7 +268,9 @@ $(document).ready(() => {
         var id = $(this).siblings(".id").val();
         getAchatInfo(id).then(function (value) {
             var produit = value;
+
             var tabProduit = produit.split('-');
+            console.log(tabProduit);
             $(".img2-container").css('background-image',"url(" +tabProduit[3]+")");
             $(".produit").html(tabProduit[0]);
             $(".disponibilite").html('en stock ('+tabProduit[1]+' disponible)');

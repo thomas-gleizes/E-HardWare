@@ -277,13 +277,13 @@ if (isset($_SESSION['admin'])){
                     arrow_drop_down
                 </i>
                 <select id="select5" name="categorie">
-                    <option value="Processeur">Processeur</option>
-                    <option value="CarteMere">Carte mère</option>
-                    <option value="Memoire">Mémoire</option>
-                    <option value="CarteGraphique">Carte graphique</option>
-                    <option value="SSD">SSD</option>
-                    <option value="DisqueDur">Disque Dur</option>
-                    <option value="Alimentation">Alimentation</option>
+                    <option class="val" value="Processeur">Processeur</option>
+                    <option class="val" value="CarteMere">Carte mère</option>
+                    <option class="val" value="Memoire">Mémoire</option>
+                    <option class="val" value="CarteGraphique">Carte graphique</option>
+                    <option class="val" value="SSD">SSD</option>
+                    <option class="val" value="DisqueDur">Disque Dur</option>
+                    <option class="val" value="Alimentation">Alimentation</option>
                 </select>
             </div>
         </div>
