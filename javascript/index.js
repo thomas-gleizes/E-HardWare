@@ -122,43 +122,46 @@ $(document).ready(() => {
         console.log(val);
         if (val == "Processeur"){
             $(".ajout-container").append('<form method="post" action="../controller/routeur.php">' +
+                '<h3> Processeur <h3>' +
                 '<input type="hidden" class="ajout-input" name="action" value="ajoutProduit" required>' +
                 '<input type="hidden" class="ajout-input" name="categorie" value="Processeur" required>' +
                 '<input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>' +
                 '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
                 '<input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
                 '<input type="text" class="ajout-input" placeholder="Quantité de stock" name="stock" required>' +
-                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="url" required>' +
+                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="Url" required>' +
                 '<input type="text" class="ajout-input" placeholder="Nombre de coeur" name="nbCoeur" required>' +
                 '<input type="text" class="ajout-input" placeholder="Nombre de threads" name="nbThreads" required>' +
                 '<input type="text" class="ajout-input" placeholder="Socket" name="socket" required>' +
                 '<input type="text" class="ajout-input" placeholder="Frequence CPU" name="frequence" required>' +
-                '<input type="text" class="ajout-input" placeholder="Boost CPU" name="Boost" required>' +
+                '<input type="text" class="ajout-input" placeholder="Boost CPU" name="boost" required>' +
                 '<input type="text" class="ajout-input" placeholder="Cache" name="cache" required>' +
                 '<button id="ok" type="submit"><p>Ajout</p></button> </form>')
         } else if (val == "CarteMere"){
             $(".ajout-container").append('<form method="post" action="../controller/routeur.php">' +
+                '<h3> Carte Mère <h3>' +
                 '<input type="hidden" class="ajout-input" name="action" value="ajoutProduit" required>' +
                 '<input type="hidden" class="ajout-input" name="categorie" value="CarteMere" required>' +
                 '<input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>' +
                 '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
                 '<input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
                 '<input type="text" class="ajout-input" placeholder="Quantité de stock" name="stock" required>' +
-                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="url" required>' +
+                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="Url" required>' +
                 '<input type="text" class="ajout-input" placeholder="Chipset" name="chipset" required>' +
                 '<input type="text" class="ajout-input" placeholder="Socket" name="socket" required>' +
                 '<input type="text" class="ajout-input" placeholder="Format" name="format" required>' +
                 '<button id="ok" type="submit"><p>Ajout</p></button> </form>')
         } else if (val == "Memoire"){
             $(".ajout-container").append('<form method="post" action="../controller/routeur.php">' +
+                '<h3> RAM <h3>' +
                 '<input type="hidden" class="ajout-input" name="action" value="ajoutProduit" required>' +
                 '<input type="hidden" class="ajout-input" name="categorie" value="Memoire" required>' +
                 '<input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>' +
                 '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
                 '<input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
                 '<input type="text" class="ajout-input" placeholder="Quantité de stock" name="stock" required>' +
-                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="url" required>' +
-                '<input type="text" class="ajout-input" placeholder="Type de RAM" name="type" required>' +
+                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="Url" required>' +
+                '<input type="text" class="ajout-input" placeholder="Type de RAM" name="typ" required>' +
                 '<input type="text" class="ajout-input" placeholder="Capacite RAM" name="capacite" required>' +
                 '<input type="text" class="ajout-input" placeholder="Frequence RAM" name="frequence" required>' +
                 '<input type="text" class="ajout-input" placeholder="CAS" name="CAS" required>' +
@@ -166,40 +169,43 @@ $(document).ready(() => {
                 '<button id="ok" type="submit"><p>Ajout</p></button> </form>')
         } else if (val == "CarteGraphique"){
             $(".ajout-container").append('<form method="post" action="../controller/routeur.php">' +
+                '<h3> Carte Graphique <h3>' +
                 '<input type="hidden" class="ajout-input" name="action" value="ajoutProduit" required>' +
                 '<input type="hidden" class="ajout-input" name="categorie" value="CarteGraphique" required>' +
                 '<input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>' +
                 '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
-                '<input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
-                '<input type="text" class="ajout-input" placeholder="Quantité de stock" name="stock" required>' +
-                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="url" required>' +
+                '<input type="number" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
+                '<input type="number" class="ajout-input" placeholder="Quantité de stock" name="stock" required>' +
+                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="Url" required>' +
                 '<input type="text" class="ajout-input" placeholder="Chipset Graphique" name="chipset" required>' +
-                '<input type="text" class="ajout-input" placeholder="Mémoire vidéo" name="memoire" required>' +
+                '<input type="number" class="ajout-input" placeholder="Mémoire vidéo" name="memoire" required>' +
                 '<input type="text" class="ajout-input" placeholder="Architecture" name="architecture" required>' +
                 '<input type="text" class="ajout-input" placeholder="Bus" name="bus" required>' +
                 '<button id="ok" type="submit"><p>Ajout</p></button> </form>')
-        } else if (val == "SSD"){
-            $(".ajout-container").append('<form method="post" action="../controller/routeur.php">' +
-                '<input type="hidden" class="ajout-input" name="action" value="ajoutProduit" required>' +
-                '<input type="hidden" class="ajout-input" name="categorie" value="SSD" required>' +
-                '<input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>' +
-                '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
-                '<input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
-                '<input type="text" class="ajout-input" placeholder="Quantité de stock" name="stock" required>' +
-                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="url" required>' +
-                '<input type="text" class="ajout-input" placeholder="Capacite HDD" name="capacite" required>' +
-                '<input type="text" class="ajout-input" placeholder="Interface" name="interface" required>' +
-                '<input type="text" class="ajout-input" placeholder="Vitesse de rotation" name="vitesseRotation" required>' +
-                '<button id="ok" type="submit"><p>Ajout</p></button> </form>')
         } else if (val == "DisqueDur"){
             $(".ajout-container").append('<form method="post" action="../controller/routeur.php">' +
+                '<h3> Disque Dur <h3>' +
                 '<input type="hidden" class="ajout-input" name="action" value="ajoutProduit" required>' +
                 '<input type="hidden" class="ajout-input" name="categorie" value="DisqueDur" required>' +
                 '<input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>' +
                 '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
                 '<input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
                 '<input type="text" class="ajout-input" placeholder="Quantité de stock" name="stock" required>' +
-                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="url" required>' +
+                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="Url" required>' +
+                '<input type="text" class="ajout-input" placeholder="Capacite HDD" name="capacite" required>' +
+                '<input type="text" class="ajout-input" placeholder="Interface" name="interface" required>' +
+                '<input type="text" class="ajout-input" placeholder="Vitesse de rotation" name="vitesseRotation" required>' +
+                '<button id="ok" type="submit"><p>Ajout</p></button> </form>')
+        } else if (val == "SSD"){
+            $(".ajout-container").append('<form method="post" action="../controller/routeur.php">' +
+                '<h3> Solide State Drive <h3>' +
+                '<input type="hidden" class="ajout-input" name="action" value="ajoutProduit" required>' +
+                '<input type="hidden" class="ajout-input" name="categorie" value="SSD" required>' +
+                '<input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>' +
+                '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
+                '<input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
+                '<input type="text" class="ajout-input" placeholder="Quantité de stock" name="stock" required>' +
+                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="Url" required>' +
                 '<input type="text" class="ajout-input" placeholder="Format SSD" name="format" required>' +
                 '<input type="text" class="ajout-input" placeholder="Capacite SSD" name="capacite" required>' +
                 '<input type="text" class="ajout-input" placeholder="Interface SSD" name="interface" required>' +
@@ -208,13 +214,14 @@ $(document).ready(() => {
                 '<button id="ok" type="submit"><p>Ajout</p></button> </form>')
         } else if (val == "Alimentation"){
             $(".ajout-container").append('<form method="post" action="../controller/routeur.php">' +
+                '<h3> Alimentation <h3>' +
                 '<input type="hidden" class="ajout-input" name="action" value="ajoutProduit" required>' +
                 '<input type="hidden" class="ajout-input" name="categorie" value="Alimentation" required>' +
                 '<input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>' +
                 '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
                 '<input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
                 '<input type="text" class="ajout-input" placeholder="Quantité de stock" name="stock" required>' +
-                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="url" required>' +
+                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="Url" required>' +
                 '<input type="text" class="ajout-input" placeholder="Puissance" name="puissance" required>' +
                 '<input type="text" class="ajout-input" placeholder="Modularité" name="modularite" required>' +
                 '<button id="ok" type="submit"><p>Ajout</p></button> </form>')
@@ -230,7 +237,7 @@ $(document).ready(() => {
         if(!window.location.href.includes('routeur')){
             var produit = value;
             console.log(produit);
-            var tabProduit = produit.split('~');
+            var tabProduit = produit.split('£');
             for (var i = 0; i < tabProduit.length - 1; i++){
                 nbcard++;
                 $('.container').append( '<div class="card"> <form  class="card-form"  method="get" action="PHP/view/Participant/preLobby.php"> <button id="card'+nbcard+'" type="submit" class="img-container">' +
@@ -255,7 +262,7 @@ $(document).ready(() => {
                 getAchatInfo(id).then(function (value) {
                     var produit = value;
                     console.log(produit);
-                    var tabProduit = produit.split('~');
+                    var tabProduit = produit.split('£');
                     $(".img2-container").css('background-image',"url(" +tabProduit[3]+")");
                     $(".produit").html(tabProduit[0]);
                     $(".disponibilite").html('en stock ('+tabProduit[1]+' disponible)');
