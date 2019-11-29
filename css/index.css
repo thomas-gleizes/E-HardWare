@@ -702,6 +702,7 @@ form {
     width:10%;
     height:2rem;
     margin-top: 3rem;
+    margin-bottom: 2rem;
     margin-left:45% ;
     display:block;
 }
@@ -762,6 +763,22 @@ form {
 
 #mod:hover p {
     color:white;
+}
+
+#cat{
+    width:13rem;
+    margin: auto;
+    height:3rem
+}
+
+#select5 {
+    position: relative;
+    margin:0;
+    top: -1.4rem;
+    height: 1.3rem;
+    opacity:0;
+    width: 85%;
+    cursor: pointer;
 }
 
 @keyframes animate-pulse{

@@ -116,6 +116,93 @@ $(document).ready(() => {
         $('#c-text').html(val);
     });
 
+    $('#select5').change(function() {
+        var val = $("#select5").val();
+        $("#cat").css('display','none');
+        console.log(val);
+        if (val == "Processeur"){
+            $(".ajout-container").append('<form method="post" action="../controller/routeur.php">' +
+                '<input type="hidden" class="ajout-input" name="action" value="creation" required>' +
+                '<input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>' +
+                '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
+                '<input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
+                '<input type="text" class="ajout-input" placeholder="Quantité de stock" name="stock" required>' +
+                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="url" required>' +
+                '<input type="text" class="ajout-input" placeholder="Nombre de coeur" name="nbCoeur" required>' +
+                '<input type="text" class="ajout-input" placeholder="Nombre de threads" name="nbThreads" required>' +
+                '<input type="text" class="ajout-input" placeholder="Socket" name="socket" required>' +
+                '<input type="text" class="ajout-input" placeholder="Frequence CPU" name="frequence" required>' +
+                '<input type="text" class="ajout-input" placeholder="Boost CPU" name="Boost" required>' +
+                '<input type="text" class="ajout-input" placeholder="Cache" name="cache" required>' +
+                '<button id="ok" type="submit"><p>Ajout</p></button> </form>')
+        } else if (val == "CarteMere"){
+            $(".ajout-container").append('<form method="post" action="../controller/routeur.php">' +
+                '<input type="hidden" class="ajout-input" name="action" value="creation" required>' +
+                '<input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>' +
+                '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
+                '<input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
+                '<input type="text" class="ajout-input" placeholder="Quantité de stock" name="stock" required>' +
+                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="url" required>' +
+                '<input type="text" class="ajout-input" placeholder="Chipset" name="chipset" required>' +
+                '<input type="text" class="ajout-input" placeholder="Socket" name="socket" required>' +
+                '<input type="text" class="ajout-input" placeholder="Format" name="format" required>' +
+                '<button id="ok" type="submit"><p>Ajout</p></button> </form>')
+        } else if (val == "Memoire"){
+            $(".ajout-container").append('<form method="post" action="../controller/routeur.php">' +
+                '<input type="hidden" class="ajout-input" name="action" value="creation" required>' +
+                '<input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>' +
+                '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
+                '<input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
+                '<input type="text" class="ajout-input" placeholder="Quantité de stock" name="stock" required>' +
+                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="url" required>' +
+                '<input type="text" class="ajout-input" placeholder="Type de RAM" name="type" required>' +
+                '<input type="text" class="ajout-input" placeholder="Capacite RAM" name="capacite" required>' +
+                '<input type="text" class="ajout-input" placeholder="Frequence RAM" name="frequence" required>' +
+                '<input type="text" class="ajout-input" placeholder="CAS" name="CAS" required>' +
+                '<input type="text" class="ajout-input" placeholder="Nombre de barrrette" name="nbBarrette" required>  ' +
+                '<button id="ok" type="submit"><p>Ajout</p></button> </form>')
+        } else if (val == "CarteGraphique"){
+            $(".ajout-container").append('<form method="post" action="../controller/routeur.php">' +
+                '<input type="hidden" class="ajout-input" name="action" value="creation" required>' +
+                '<input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>' +
+                '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
+                '<input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
+                '<input type="text" class="ajout-input" placeholder="Quantité de stock" name="stock" required>' +
+                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="url" required>' +
+                '<input type="text" class="ajout-input" placeholder="Chipset Graphique" name="chipset" required>' +
+                '<input type="text" class="ajout-input" placeholder="Mémoire vidéo" name="memoire" required>' +
+                '<input type="text" class="ajout-input" placeholder="Architecture" name="architecture" required>' +
+                '<input type="text" class="ajout-input" placeholder="Bus" name="bus" required>' +
+                '<button id="ok" type="submit"><p>Ajout</p></button> </form>')
+        } else if (val == "SSD"){
+            $(".ajout-container").append('<form method="post" action="../controller/routeur.php">' +
+                '<input type="hidden" class="ajout-input" name="action" value="creation" required>' +
+                '<input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>' +
+                '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
+                '<input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
+                '<input type="text" class="ajout-input" placeholder="Quantité de stock" name="stock" required>' +
+                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="url" required>' +
+                '<input type="text" class="ajout-input" placeholder="Capacite HDD" name="capacite" required>' +
+                '<input type="text" class="ajout-input" placeholder="Interface" name="interface" required>' +
+                '<input type="text" class="ajout-input" placeholder="Vitesse de rotation" name="vitesseRotation" required>' +
+                '<button id="ok" type="submit"><p>Ajout</p></button> </form>')
+        } else if (val == "DisqueDur"){
+            $(".ajout-container").append('<form method="post" action="../controller/routeur.php">' +
+                '<input type="hidden" class="ajout-input" name="action" value="creation" required>' +
+                '<input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>' +
+                '<input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>' +
+                '<input type="text" class="ajout-input" placeholder="Prix du produit" name="prix" required>' +
+                '<input type="text" class="ajout-input" placeholder="Quantité de stock" name="stock" required>' +
+                '<input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="url" required>' +
+                '<input type="text" class="ajout-input" placeholder="Format SSD" name="format" required>' +
+                '<input type="text" class="ajout-input" placeholder="Capacite SSD" name="capacite" required>' +
+                '<input type="text" class="ajout-input" placeholder="Interface SSD" name="interface" required>' +
+                '<input type="text" class="ajout-input" placeholder="Vitesse de lecture" name="lecture" required>' +
+                '<input type="text" class="ajout-input" placeholder="Vitesse d\'écriture" name="ecriture" required>' +
+                '<button id="ok" type="submit"><p>Ajout</p></button> </form>')
+        }
+    });
+
     $('#select3').change(function() {
         var val = $("#select3 option:selected").text();
         $(".prix-total").html(currentPrice*val + "€");
@@ -146,8 +233,10 @@ $(document).ready(() => {
                 $("#buy").toggleClass('open');
                 $('#buy-comp').toggleClass("navcomp");
                 var id = $(this).siblings(".id").val();
+                console.log(id);
                 getAchatInfo(id).then(function (value) {
                     var produit = value;
+                    console.log(produit);
                     var tabProduit = produit.split('~');
                     $(".img2-container").css('background-image',"url(" +tabProduit[3]+")");
                     $(".produit").html(tabProduit[0]);
