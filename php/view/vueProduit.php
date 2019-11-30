@@ -241,27 +241,16 @@ echo '
         <p class="mynote">votre note:</p>
         <select id="select7" name="note">
             <option value="0">0</option>
-            <input type="hidden" name="note" value="0">
             <option value="0.5">0.5</option>
-            <input type="hidden" name="note" value="0".5>
             <option value="1">1</option>
-            <input type="hidden" name="note" value="1">
             <option value="1.5">1.5</option>
-            <input type="hidden" name="note" value="1.5">
             <option value="2">2</option>
-            <input type="hidden" name="note" value="2">
             <option value="2.5">2.5</option>
-            <input type="hidden" name="note" value="2.5">
             <option value="3">3</option>
-            <input type="hidden" name="note" value="3">
             <option value="3.5">3.5</option>
-            <input type="hidden" name="note" value="3.5">
             <option value="4">4</option>
-            <input type="hidden" name="note" value="4">
             <option value="4.5">4.5</option>
-            <input type="hidden" name="note" value="4.5">
             <option value="5">5</option>
-            <input type="hidden" name="note" value="5">
         </select>
         <textarea id="mycom" name="commentaire" placeholder="écrivez un commentaire"></textarea>
         <button id="achat-btn" type="submit"><p>Envoyer</p></button>
@@ -270,6 +259,9 @@ echo '
 ';
 
 ?>
+
+
+
 
 
 
