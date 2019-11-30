@@ -108,5 +108,17 @@ class ControllerProduit{
         require_once ('../view/vueProduit.php');
     }
 
+    public static function addReview (){
+        session_start();
+        $tab = [];
+        $tab['idClient'] = $_SESSION['login'];
+        $tab['refProduit'] = $_POST['refProduit'];
+        $tab['note'] = $_POST['note'];
+        $tab['commentaire'] = $_POST['commentaire'];
+        $tab['date'] = date("o-n-t");
+        ModelProduit::insertReview($tab);
+    }
+
+
 
 }

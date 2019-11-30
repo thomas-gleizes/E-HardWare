@@ -167,6 +167,27 @@ class ModelProduit {
         return $tab;
     }
 
+    public static function getReview($refProduit){
+        $sql = "SELECT Clients.prenomClient, Avis.note, Avis.commentaire, Avis.date FROM Avis, Clients WHERE Avis.idClient = Clients.idClient AND Avis.refProduit = :refProduit)";
+        $value['refProduit'] = $refProduit;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        return $rec_prep->fetchAll();
+    }
+
+    public static function insertReview($tab){
+        $sql = "INSERT INTO Avis VALUES (:idClient, :refProduit, :note, :commentaire, :date)";
+        $value = array(
+            'idClient' => $tab['idClient'],
+            'refProduit' => $tab['refProduit'],
+            'note' => $tab['note'],
+            'date' => $tab['date'],
+        );
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+    }
+
 
 
 
