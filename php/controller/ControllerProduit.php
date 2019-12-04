@@ -98,8 +98,6 @@ class ControllerProduit{
             ModelProduit::insertAlimentation($tab);
 
         }
-
-
         header('Location:../view/vueRecherche.php?action=rechercheVide');
     }
 

@@ -243,8 +243,7 @@ session_start();
 
     foreach ($tabProd as $tai){
         if ($cat == 'Processeur'){
-            echo'<p id="info">Nombre de Coeur : '. $tai[$nbCoeur] .'<br> Nombre de threads : '. $tai[$nbThreads] .'<br> Socket : '. $tai[$socket] .'<br> Fréquence : '. $tai[$frequence] .'GHz<br> 
-                    Fréquence boost: '. $tai[$boost] .'GHz<br> Cache : '. $tai[$cache] .'Mo<br></p>';
+            echo'<p id="info">Nombre de Coeur : '. $tai[$nbCoeur] .'<br> Nombre de threads : '. $tai[$nbThreads] .'<br> Socket : '. $tai[$socket] .'<br> Fréquence : '. $tai[$frequence] .'GHz<br> Fréquence boost: '. $tai[$boost] .'GHz<br> Cache : '. $tai[$cache] .'Mo<br></p>';
         } else if($cat == 'CarteGraphique'){
             echo'<p id="info">Chipset Graphique : '. $tai[$chipset].' <br>Memoire vidéo : '. $tai[$memore].'Go <br>Architecture : '. $tai[$architecture].'<br> Bus : '. $tai[$bus].'</p>';
         } else if ($cat == 'CarteMere'){
@@ -252,8 +251,7 @@ session_start();
         } else if ($cat == 'Memoire'){
             echo '<p id="info"> Type : '. $tai[$type].'<br> Capacité : '. $tai[$capacite].'Go <br> Fréquence : '. $tai[$frequence].'MHz<br> CAS : '. $tai[$CAS].' </p>';
         } else if ($cat == 'SSD'){
-            echo'<p id="info"> Format : '. $tai[$format].'<br> Capacité : '. $tai[$capacite].'Go <br> Interface : '. $tai[$interface].' <br> Vitesse de Lecture : '. $tai[$lecture].'Mo/s<br>
-                 Vitesse d\'écriture : '. $tai[$ecriture].'Mo/s</p>';
+            echo'<p id="info"> Format : '. $tai[$format].'<br> Capacité : '. $tai[$capacite].'Go <br> Interface : '. $tai[$interface].' <br> Vitesse de Lecture : '. $tai[$lecture].'Mo/s<br> Vitesse d\'écriture : '. $tai[$ecriture].'Mo/s</p>';
         } else if ($cat == 'DisqueDur'){
             echo '<p id="info"> Capacité : '. $tai[$capacite].'Go <br> Interface : '. $tai[$interface].' <br> Vitesse de rotation : '. $tai[$vitesse].'t/m</p>';
         } else if ($cat == 'Alimentation'){
@@ -292,6 +290,7 @@ session_start();
                         </div>
                     <p class="noteA ">'.$avr.'</p>
                 </div>';
+    if (!empty($tabReview)){
                 foreach ($tabReview as $value){
                     echo '
                 <div class="com">
@@ -305,7 +304,10 @@ session_start();
                     </div>
                     </div>
                     ';
-                     }
+                }
+    } else {
+        echo "<h2> Soyez le premier à donnée votre avis !</h2>";
+    }
                     echo  '
             </div>
             

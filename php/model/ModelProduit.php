@@ -174,8 +174,6 @@ class ModelProduit {
         $rec_prep->execute($value);
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
         $tab = $rec_prep->fetchAll();
-        if(empty($tab))
-            return null;
         return $tab;
     }
 
@@ -212,9 +210,6 @@ class ModelProduit {
         $rec_prep->execute($value);
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
         $tab = $rec_prep->fetchAll();
-        if(empty($tab)){
-            return null;
-        }
         return $tab;
     }
 
@@ -230,9 +225,6 @@ class ModelProduit {
         $rec_prep->execute($value);
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
         $tab = $rec_prep->fetchAll();
-        if(empty($tab)){
-            return null;
-        }
         return $tab;
     }
     public static function getProcesseur($refProduit){
@@ -242,9 +234,6 @@ class ModelProduit {
         $rec_prep->execute($value);
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
         $tab = $rec_prep->fetchAll();
-        if(empty($tab)){
-            return null;
-        }
         return $tab;
     }
     public static function getCarteGraphique($refProduit){
@@ -254,9 +243,6 @@ class ModelProduit {
         $rec_prep->execute($value);
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
         $tab = $rec_prep->fetchAll();
-        if(empty($tab)){
-            return null;
-        }
         return $tab;
     }
     public static function getCarteMere($refProduit){
@@ -266,9 +252,6 @@ class ModelProduit {
         $rec_prep->execute($value);
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
         $tab = $rec_prep->fetchAll();
-        if(empty($tab)){
-            return null;
-        }
         return $tab;
     }
     public static function getMemoire($refProduit){
@@ -278,9 +261,6 @@ class ModelProduit {
         $rec_prep->execute($value);
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
         $tab = $rec_prep->fetchAll();
-        if(empty($tab)){
-            return null;
-        }
         return $tab;
     }
     public static function getDisqueDur($refProduit){
@@ -290,9 +270,6 @@ class ModelProduit {
         $rec_prep->execute($value);
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
         $tab = $rec_prep->fetchAll();
-        if(empty($tab)){
-            return null;
-        }
         return $tab;
     }
     public static function getSSD($refProduit){
@@ -302,9 +279,6 @@ class ModelProduit {
         $rec_prep->execute($value);
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
         $tab = $rec_prep->fetchAll();
-        if(empty($tab)){
-            return null;
-        }
         return $tab;
     }
     public static function getAlimentation($refProduit){
@@ -314,9 +288,6 @@ class ModelProduit {
         $rec_prep->execute($value);
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
         $tab = $rec_prep->fetchAll();
-        if(empty($tab)){
-            return null;
-        }
         return $tab;
     }
 
