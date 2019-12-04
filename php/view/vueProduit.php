@@ -311,6 +311,7 @@ session_start();
             
             <div class="write-commentaire open">
                 <form method="post" action="../controller/routeur.php">
+                    <input type="hidden" name="action" value="ajoutReview">
                     <input type="hidden" name="refProduit" value="'.$r.'">
                     <p class="mynote">votre note:</p>
                     <select id="select7" name="note">

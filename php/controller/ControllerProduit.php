@@ -130,7 +130,7 @@ class ControllerProduit{
 
     public static function displayReview(){
         $ref = $_POST['refProduit'];
-        $tab = ModelProduit::review();
+        $tab = ModelProduit::review($ref);
     }
 
     public static function addReview (){

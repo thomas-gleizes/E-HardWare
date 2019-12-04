@@ -180,21 +180,14 @@ class ModelProduit {
     }
 
     public static function markAverage($refProduit){
-        $sql = "SELECT note FROM Avis WHERE refProduit = :ref";
+        $sql = "SELECT AVG(note) AS MOY FROM Avis WHERE refProduit = :ref";
         $value['ref'] = $refProduit;
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($value);
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
         $tab = $rec_prep->fetchAll();
-        $avr = 0;
-        $total = 0;
-        foreach ($tab as $value){
-            $avr += floatval($value);
-            $total += 1;
-        }
-        $avr = $avr/$total;
         //var_dump($avr);
-        return $avr;
+        return $tab[0]['MOY'];
 
 
     }
@@ -205,6 +198,7 @@ class ModelProduit {
             'idClient' => $tab['idClient'],
             'refProduit' => $tab['refProduit'],
             'note' => $tab['note'],
+            'commentaire' => $tab['commentaire'],
             'date' => $tab['date'],
         );
         $rec_prep = Model::$pdo->prepare($sql);

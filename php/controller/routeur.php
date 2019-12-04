@@ -14,12 +14,14 @@
     }
     if(!$_POST==null){
         if (isset($_POST['action']["ajoutProduit"])) {
-            $action = $_POST["action"];
             ControllerProduit::ajoutProduit();
-        } else if (isset($_POST['action']["createOrder"])){
+        } else if (isset($_POST['action']["createOrder"])) {
             $action = $_POST['action'];
             ControllerCommande::createOrder();
-        }  if ($_POST['produit']!=null){
+        } else if (isset($_POST['action']['ajoutReview'])){
+            ControllerProduit::addReview();
+        }
+        if ($_POST['produit']!=null){
             $action = $_POST['produit'];
             ControllerProduit::$action();
         } else {
