@@ -788,8 +788,8 @@ form {
     border: 2px solid #06bcc7;
     width:20%;
     height: 2rem;
-    margin-bottom: 3rem;
-    margin-left: 40%;
+    bottom: 3rem;
+    left: 40%;
     cursor: pointer;
 }
 
