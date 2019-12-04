@@ -167,7 +167,7 @@ require ("php/lib/File.php");
         }
         ?>
         <?php
-        $val = 0;
+        $val = $_COOKIE["panier"];
         if(isset($_SESSION["panier"])){
             $val = $_SESSION["panier"]["quantiter"];
             echo'
@@ -187,7 +187,7 @@ require ("php/lib/File.php");
                         <i id="cart-icon" class="material-icons">
                             shopping_cart
                         </i>
-                        <p>'.$_COOKIE["panier"].'</p>
+                        <p>'.$val.'</p>
                     </button>
              </form>
             ';

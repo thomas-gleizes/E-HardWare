@@ -141,19 +141,16 @@ class ModelRecherche{
     }
 
 
-    public static function trie($indicetri,$tab){
-        $trie = [];
-        if ($indicetri ==1){
-            foreach ($tab as $value){
-                $trie = array_merge($trie, sort($value, 0));
-            }
-        }
-        if ($indicetri ==2){
-            foreach ($tab as $value){
-                $trie = array_merge($trie, rsort($value, 0));
-            }
-        }
-        return $trie;
+    public static function infoProduit($ref){
+        $sql = "SELECT * FROM Produits WHERE refProduit = :ref";
+        $valeur["ref"] = $ref;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($valeur);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        if(empty($tab))
+            return null;
+        return $tab;
     }
 
     public static function infoSidebar($categorie){

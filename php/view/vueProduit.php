@@ -180,83 +180,148 @@ session_start();
 
 
 <?php
-$tab;
-$u = "Url";
-$r ="refProduit";
-$n = "nom";
-$nm = "nomMarque";
-$p = "prix";
-$s = "stock";
-$c = "categorie";
 
-foreach ($tab as $tav){
-    echo '
-    <div class="image-container">
-        <input type="hidden" id="url" value="'.$tav[$u].'">
-    </div>
-        <div class="desc-container">
-        <p id="produit" class="left">'.$tav[$n].'<p/>
-        <p id="info">Mémoire vidéo: 24 Go <br>achitecture : Turing <br>bus: PCI express 3.0<p/>
-        <p id="marque" class="left">'.$tav[$nm].'<p/>
-        <p id="categorie" class="left">'.$tav[$c].'<p/>
-        <p id="disponibilite" class="left">en stock ('.$tav[$s].' disponible)<p/>
-        <input type="hidden" id="stock" value="'.$tav[$s].'">
-        <p id="prix-total" class="left">'.$tav[$p].' €<p/>
-        <p id="quantity" class="left">quantité :</p>
-        <form  method="Post" action="../controller/routeur.php">
-            <select id="select6" name="quantite">
-            </select>
-            <input type="hidden" id="id_produit" name="id_produit" value="'.$tav[$r].'">
-            <input type="hidden" name="action" value="ajoutPanier">
-            <button id="achat-btn" type="submit"><p>Ajouter</p></button>
-        </form>
-    </div>
-';
-}
-echo '
-<div class="onglet" id="onglet1"><p>Commentaires des utilisateurs</p></div>
-<div class="onglet" id="onglet2"><p>écrire un commentaire</p></div>
-<div class="commentaire-container">
-    <div class="average-container">
-        <p class="average">Note moyenne des utilisateurs:</p>
-        <div id="global" class="rate">2.38
+    $u = "Url";
+    $r ="refProduit";
+    $n = "nom";
+    $nm = "nomMarque";
+    $p = "prix";
+    $s = "stock";
+    $c = "categorie";
+    $prenom = "prenomClient";
+    $note = "note";
+    $com = "commentaire";
+    $date = "date";
+
+    foreach ($tab as $tav){
+        $cat = $tav[$c];
+        echo '
+        <div class="image-container">
+            <input type="hidden" id="url" value="'.$tav[$u].'">
+        </div>
+            <div class="desc-container">
+            <p id="produit" class="left">'.$tav[$n].'<p/>
+            ';
+    }
+
+    if ($cat == 'Processeur'){
+        $nbCoeur = "nbCoeur";
+        $nbThreads = "nbThreads";
+        $socket = "socket";
+        $frequence = "frequence";
+        $boost = "boost";
+        $cache = "cache";
+    } else if ($cat == 'CarteGraphique'){
+        $chipset = "chipset";
+        $memore = "memoire";
+        $architecture = "architecture";
+        $bus = "bus";
+    } else if ($cat == 'CarteMere'){
+        $chipset = "chipset";
+        $socket = "socket";
+        $format = "format";
+    } else if ($cat == 'Memoire'){
+        $type = "type";
+        $capacite = "capacite";
+        $frequence = "frequence";
+        $CAS = "CAS";
+        $nbBarrette = "nbBarrette";
+    } else if ($cat == "SSD"){
+        $format = "format";
+        $capacite = "capacite";
+        $interface = "interface";
+        $lecture = "lecture";
+        $ecriture = "ecriture";
+    } else if ($cat == 'DisqueDur'){
+        $capacite = "capacite";
+        $interface = "initerface";
+        $vitesse = "vitesseRotation";
+    } else if ($cat == 'Alimentation'){
+        $puissance = "puissance";
+        $modularite = "modularite";
+    }
+
+    foreach ($tabProd as $tai){
+        if ($cat == 'Processeur'){
+            echo'<p id="info">Nombre de Coeur : '. $tai[$nbCoeur] .'<br> Nombre de threads : '. $tai[$nbThreads] .'<br> Socket : '. $tai[$socket] .'<br> Fréquence : '. $tai[$frequence] .'GHz<br> 
+                    Fréquence boost: '. $tai[$boost] .'GHz<br> Cache : '. $tai[$cache] .'Mo<br></p>';
+        } else {
+            echo'<p id="info">Mémoire vidéo: 24 Go <br>achitecture : Turing <br>bus: PCI express 3.0</p>';
+        }
+    }
+
+
+    foreach ($tab as $tav){
+
+    echo '  
+            <p id="marque" class="left">'.$tav[$nm].'<p/>
+            <p id="categorie" class="left">'.$tav[$c].'<p/>
+            <p id="disponibilite" class="left">en stock ('.$tav[$s].' disponible)<p/>
+            <input type="hidden" id="stock" value="'.$tav[$s].'">
+            <p id="prix-total" class="left">'.$tav[$p].' €<p/>
+            <p id="quantity" class="left">quantité :</p>
+            <form  method="Post" action="../controller/routeur.php">
+                <select id="select6" name="quantite">
+                </select>
+                <input type="hidden" id="id_produit" name="id_produit" value="'.$tav[$r].'">
+                <input type="hidden" name="action" value="ajoutPanier">
+                <button id="achat-btn" type="submit"><p>Ajouter</p></button>
+            </form>
+        </div>
+    ';
+    }
+
+        echo '
+            <div class="onglet" id="onglet1"><p>Commentaires des utilisateurs</p></div>
+            <div class="onglet" id="onglet2"><p>écrire un commentaire</p></div>
+            <div class="commentaire-container">
+                <div class="average-container">
+                    <p class="average">Note moyenne des utilisateurs:</p>
+                    <div id="global" class="rate">'.$avr.'
+                        </div>
+                    <p class="noteA ">'.$avr.'</p>
+                </div>';
+                foreach ($tabReview as $value){
+                    echo '
+                <div class="com">
+                    <img class="user-icon" src="https://img.icons8.com/ultraviolet/40/000000/guest-male.png">
+                    <p class="name">'.$value[$prenom].'</p>
+                    <div  class="rate">'.$value[$note].'
+                    </div>
+                    <p class="note">'.$value[$note].'</p>
+                    <div class="message-container">
+                        <p class="message">'.$value[$com].'</p>
+                    </div>
+                    </div>
+                    ';
+                     }
+                    echo  '
             </div>
-        <p class="noteA ">(2.38)</p>
-    </div>
-    <div class="com">
-        <img class="user-icon" src="https://img.icons8.com/ultraviolet/40/000000/guest-male.png">
-        <p class="name">Benjamin</p>
-        <div  class="rate">5
-        </div>
-        <p class="note">(5)</p>
-        <div class="message-container">
-            <p class="message">Ce produit c\'est le feu j\'arrive à faire tourner adibou en 12fps</p>
-        </div>
-    </div>
-</div>
+            
+            <div class="write-commentaire open">
+                <form method="post" action="../controller/routeur.php">
+                    <input type="hidden" name="refProduit" value="'.$r.'">
+                    <p class="mynote">votre note:</p>
+                    <select id="select7" name="note">
+                        <option value="0">0</option>
+                        <option value="0.5">0.5</option>
+                        <option value="1">1</option>
+                        <option value="1.5">1.5</option>
+                        <option value="2">2</option>
+                        <option value="2.5">2.5</option>
+                        <option value="3">3</option>
+                        <option value="3.5">3.5</option>
+                        <option value="4">4</option>
+                        <option value="4.5">4.5</option>
+                        <option value="5">5</option>
+                    </select>
+                    <textarea id="mycom" name="commentaire" placeholder="écrivez un commentaire"></textarea>
+                    <button id="achat-btn" type="submit"><p>Envoyer</p></button>
+                </form>
+            </div>
+    ';
 
-<div class="write-commentaire open">
-    <form method="post" action="../controller/routeur.php">
-        <input type="hidden" name="refProduit" value="$r">
-        <p class="mynote">votre note:</p>
-        <select id="select7" name="note">
-            <option value="0">0</option>
-            <option value="0.5">0.5</option>
-            <option value="1">1</option>
-            <option value="1.5">1.5</option>
-            <option value="2">2</option>
-            <option value="2.5">2.5</option>
-            <option value="3">3</option>
-            <option value="3.5">3.5</option>
-            <option value="4">4</option>
-            <option value="4.5">4.5</option>
-            <option value="5">5</option>
-        </select>
-        <textarea id="mycom" name="commentaire" placeholder="écrivez un commentaire"></textarea>
-        <button id="achat-btn" type="submit"><p>Envoyer</p></button>
-    </form>
-</div>
-';
+
 
 ?>
 

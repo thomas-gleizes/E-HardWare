@@ -162,6 +162,7 @@ setcookie("panier",$_SESSION["panier"]["quantiter"],time()+31570000)  ;
     }
     ?>
     <?php
+    $val = $_COOKIE["panier"];
     if(isset($_SESSION["panier"])){
         $val = $_SESSION["panier"]["quantiter"];
         echo'
@@ -181,7 +182,7 @@ setcookie("panier",$_SESSION["panier"]["quantiter"],time()+31570000)  ;
             <i id="cart-icon" class="material-icons">
                 shopping_cart
             </i>
-            <p>'.$_COOKIE["panier"].'</p>
+            <p>'.$val.'</p>
         </button>
     </form>
     ';

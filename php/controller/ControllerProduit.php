@@ -45,7 +45,7 @@ class ControllerProduit{
 
         $tab = [];
         $tab['refProduit'] = ModelProduit::getIdProduit($tabProd['nom'],$tabProd['categorie']);
-        echo $tab['refProduit'];
+
 
         if ($categorie == 'Processeur'){
             $tab['nbCoeur'] = $_POST['nbCoeur'];
@@ -98,14 +98,39 @@ class ControllerProduit{
             ModelProduit::insertAlimentation($tab);
 
         }
+
+
         header('Location:../view/vueRecherche.php?action=rechercheVide');
     }
 
 
     public static function infoVueProduit(){
-        $tab = ModelProduit::infoVueProduit($_POST['id_produit']);
-        //$tab += ModelProduit::getInfoCate($_POST['id_produit'],$tab[0]['categorie']);
+        $tab = ModelProduit::getProduit($_POST['id_produit']);
+        if ($tab[0]['categorie'] == 'Processeur'){
+            $tabProd = ModelProduit::getProcesseur($_POST['id_produit']);
+        } else if ($tab[0]['categorie'] == 'CarteGraphique'){
+            $tabProd = ModelProduit::getCarteGraphique($_POST['id_produit']);
+        } else if ($tab[0]['categorie'] == 'CarteMere'){
+            $tabProd = ModelProduit::getCarteMere($_POST['id_produit']);
+        } else if ($tab[0]['categorie'] == 'Memoire'){
+            $tabProd = ModelProduit::getMemoire($_POST['id_produit']);
+        } else if ($tab[0]['categorie'] == 'DisqueDur'){
+            $tabProd = ModelProduit::getDisqueDur($_POST['id_produit']);
+        } else if ($tab[0]['categorie'] == 'SSD'){
+            $tabProd = ModelProduit::getSSD($_POST['id_produit']);
+        } else if ($tab[0]['categorie'] == 'Alimentation') {
+            $tabProd = ModelProduit::getAlimentation($_POST['id_produit']);
+        }
+
+
+        $tabReview = ModelProduit::getReview($_POST['id_produit']);
+        $avr = ModelProduit::markAverage($_POST['id_produit']);
         require_once ('../view/vueProduit.php');
+    }
+
+    public static function displayReview(){
+        $ref = $_POST['refProduit'];
+        $tab = ModelProduit::review();
     }
 
     public static function addReview (){
