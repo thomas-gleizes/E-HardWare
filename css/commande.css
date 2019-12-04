@@ -81,3 +81,26 @@ p{
     cursor: pointer;
 }
 
+.validation {
+    background-color: transparent;
+    border: #0398a1 solid 2px;
+    width: 40%;
+    margin-left: 30%;
+    margin-top: 2rem;
+    height: 3rem;
+    border-radius: 0.3rem;
+}
+
+.validation p {
+    margin-top: 0;
+}
+
+.validation:hover{
+    cursor: pointer;
+    background-color: #0398a1;
+}
+
+.validation:hover p {
+    color: white;
+}
+
