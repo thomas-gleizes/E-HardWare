@@ -189,12 +189,11 @@ class ModelProduit {
         $avr = 0;
         $total = 0;
         foreach ($tab as $value){
-            echo $value;
             $avr += floatval($value);
             $total += 1;
         }
         $avr = $avr/$total;
-        var_dump($avr);
+        //var_dump($avr);
         return $avr;
 
 
@@ -224,6 +223,110 @@ class ModelProduit {
         }
         return $tab;
     }
+
+
+
+
+
+    //desc Produit
+    public static function getProduit($refProduit){
+        $sql = "SELECT * FROM Produits WHERE refProduit = :refProduit;";
+        $value['refProduit'] = $refProduit;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        if(empty($tab)){
+            return null;
+        }
+        return $tab;
+    }
+    public static function getProcesseur($refProduit){
+        $sql = "SELECT * FROM Processeur WHERE refProduit = :refProduit;";
+        $value['refProduit'] = $refProduit;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        if(empty($tab)){
+            return null;
+        }
+        return $tab;
+    }
+    public static function getCarteGraphique($refProduit){
+        $sql = "SELECT * FROM CarteGraphique WHERE refProduit = :refProduit;";
+        $value['refProduit'] = $refProduit;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        if(empty($tab)){
+            return null;
+        }
+        return $tab;
+    }
+    public static function getCarteMere($refProduit){
+        $sql = "SELECT * FROM CarteMere WHERE refProduit = :refProduit;";
+        $value['refProduit'] = $refProduit;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        if(empty($tab)){
+            return null;
+        }
+        return $tab;
+    }
+    public static function getMemoire($refProduit){
+        $sql = "SELECT * FROM Memoire WHERE refProduit = :refProduit;";
+        $value['refProduit'] = $refProduit;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        if(empty($tab)){
+            return null;
+        }
+        return $tab;
+    }
+    public static function getDisqueDur($refProduit){
+        $sql = "SELECT * FROM DisqueDur WHERE refProduit = :refProduit;";
+        $value['refProduit'] = $refProduit;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        if(empty($tab)){
+            return null;
+        }
+        return $tab;
+    }
+    public static function getSSD($refProduit){
+        $sql = "SELECT * FROM SSD WHERE refProduit = :refProduit;";
+        $value['refProduit'] = $refProduit;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        if(empty($tab)){
+            return null;
+        }
+        return $tab;
+    }
+    public static function getAlimentation($refProduit){
+        $sql = "SELECT * FROM Alimentation WHERE refProduit = :refProduit;";
+        $value['refProduit'] = $refProduit;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        if(empty($tab)){
+            return null;
+        }
+        return $tab;
+    }
+
+    //desc produit
 
 
 
