@@ -98,14 +98,23 @@ class ControllerProduit{
             ModelProduit::insertAlimentation($tab);
 
         }
+
+
         header('Location:../view/vueRecherche.php?action=rechercheVide');
     }
 
 
     public static function infoVueProduit(){
         $tab = ModelProduit::infoVueProduit($_POST['id_produit']);
-        //$tab += ModelProduit::getInfoCate($_POST['id_produit'],$tab[0]['categorie']);
+        $tab2 = ModelRecherche::infoProduit($_POST['id_produit']);
+        $tabReview = ModelProduit::getReview($_POST['id_produit']);
+        $avr = ModelProduit::markAverage($_POST['id_produit']);
         require_once ('../view/vueProduit.php');
+    }
+
+    public static function displayReview(){
+        $ref = $_POST['refProduit'];
+        $tab = ModelProduit::review();
     }
 
     public static function addReview (){

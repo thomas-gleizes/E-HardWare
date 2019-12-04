@@ -168,12 +168,36 @@ class ModelProduit {
     }
 
     public static function getReview($refProduit){
-        $sql = "SELECT Clients.prenomClient, Avis.note, Avis.commentaire, Avis.date FROM Avis, Clients WHERE Avis.idClient = Clients.idClient AND Avis.refProduit = :refProduit)";
+        $sql = "SELECT Clients.prenomClient, Avis.note, Avis.commentaire, Avis.date FROM Avis, Clients WHERE Avis.idClient = Clients.idClient AND Avis.refProduit = :refProduit";
         $value['refProduit'] = $refProduit;
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($value);
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
-        return $rec_prep->fetchAll();
+        $tab = $rec_prep->fetchAll();
+        if(empty($tab))
+            return null;
+        return $tab;
+    }
+
+    public static function markAverage($refProduit){
+        $sql = "SELECT note FROM Avis WHERE refProduit = :ref";
+        $value['ref'] = $refProduit;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        $avr = 0;
+        $total = 0;
+        foreach ($tab as $value){
+            echo $value;
+            $avr += floatval($value);
+            $total += 1;
+        }
+        $avr = $avr/$total;
+        var_dump($avr);
+        return $avr;
+
+
     }
 
     public static function insertReview($tab){
@@ -186,6 +210,19 @@ class ModelProduit {
         );
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($value);
+    }
+
+    public static function review($ref){
+        $sql = "SELECT * FROM Avis WHERE refProduit = :ref";
+        $value['ref'] = $ref;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        if(empty($tab)){
+            return null;
+        }
+        return $tab;
     }
 
 

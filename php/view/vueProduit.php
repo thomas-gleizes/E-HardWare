@@ -180,7 +180,8 @@ session_start();
 
 
 <?php
-$tab;
+//$tab;
+//$tab2;
 $u = "Url";
 $r ="refProduit";
 $n = "nom";
@@ -188,6 +189,10 @@ $nm = "nomMarque";
 $p = "prix";
 $s = "stock";
 $c = "categorie";
+$prenom = "prenomClient";
+$note = "note";
+$com = "commentaire";
+$date = "date";
 
 foreach ($tab as $tav){
     echo '
@@ -213,50 +218,58 @@ foreach ($tab as $tav){
     </div>
 ';
 }
-echo '
-<div class="onglet" id="onglet1"><p>Commentaires des utilisateurs</p></div>
-<div class="onglet" id="onglet2"><p>écrire un commentaire</p></div>
-<div class="commentaire-container">
-    <div class="average-container">
-        <p class="average">Note moyenne des utilisateurs:</p>
-        <div id="global" class="rate">2.38
-            </div>
-        <p class="noteA ">(2.38)</p>
-    </div>
-    <div class="com">
-        <img class="user-icon" src="https://img.icons8.com/ultraviolet/40/000000/guest-male.png">
-        <p class="name">Benjamin</p>
-        <div  class="rate">5
-        </div>
-        <p class="note">(5)</p>
-        <div class="message-container">
-            <p class="message">Ce produit c\'est le feu j\'arrive à faire tourner adibou en 12fps</p>
-        </div>
-    </div>
-</div>
 
-<div class="write-commentaire open">
-    <form method="post" action="../controller/routeur.php">
-        <input type="hidden" name="refProduit" value="$r">
-        <p class="mynote">votre note:</p>
-        <select id="select7" name="note">
-            <option value="0">0</option>
-            <option value="0.5">0.5</option>
-            <option value="1">1</option>
-            <option value="1.5">1.5</option>
-            <option value="2">2</option>
-            <option value="2.5">2.5</option>
-            <option value="3">3</option>
-            <option value="3.5">3.5</option>
-            <option value="4">4</option>
-            <option value="4.5">4.5</option>
-            <option value="5">5</option>
-        </select>
-        <textarea id="mycom" name="commentaire" placeholder="écrivez un commentaire"></textarea>
-        <button id="achat-btn" type="submit"><p>Envoyer</p></button>
-    </form>
-</div>
+    echo '
+        <div class="onglet" id="onglet1"><p>Commentaires des utilisateurs</p></div>
+        <div class="onglet" id="onglet2"><p>écrire un commentaire</p></div>
+        <div class="commentaire-container">
+            <div class="average-container">
+                <p class="average">Note moyenne des utilisateurs:</p>
+                <div id="global" class="rate">'.$avr.'
+                    </div>
+                <p class="noteA ">'.$avr.'</p>
+            </div>';
+            foreach ($tabReview as $value){
+                echo '
+            <div class="com">
+                <img class="user-icon" src="https://img.icons8.com/ultraviolet/40/000000/guest-male.png">
+                <p class="name">'.$value[$prenom].'</p>
+                <div  class="rate">'.$value[$note].'
+                </div>
+                <p class="note">'.$value[$note].'</p>
+                <div class="message-container">
+                    <p class="message">'.$value[$com].'</p>
+                </div>
+                </div>
+                ';
+                 }
+                echo  '
+        </div>
+        
+        <div class="write-commentaire open">
+            <form method="post" action="../controller/routeur.php">
+                <input type="hidden" name="refProduit" value="'.$r.'">
+                <p class="mynote">votre note:</p>
+                <select id="select7" name="note">
+                    <option value="0">0</option>
+                    <option value="0.5">0.5</option>
+                    <option value="1">1</option>
+                    <option value="1.5">1.5</option>
+                    <option value="2">2</option>
+                    <option value="2.5">2.5</option>
+                    <option value="3">3</option>
+                    <option value="3.5">3.5</option>
+                    <option value="4">4</option>
+                    <option value="4.5">4.5</option>
+                    <option value="5">5</option>
+                </select>
+                <textarea id="mycom" name="commentaire" placeholder="écrivez un commentaire"></textarea>
+                <button id="achat-btn" type="submit"><p>Envoyer</p></button>
+            </form>
+        </div>
 ';
+
+
 
 ?>
 
