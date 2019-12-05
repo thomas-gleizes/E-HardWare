@@ -98,13 +98,14 @@ class ModelRecherche{
             $sql=$requete;
             //echo $sql;
         }
-        echo "$sql <br>";
 
 
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($valeur);
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
         $tab = $rec_prep->fetchAll();
+        if(empty($tab))
+            return null;
         return $tab;
     }
 
@@ -117,10 +118,11 @@ class ModelRecherche{
                 $valeur = array(
                     "ref" => $v
                 );
+                //var_dump($v);
                 $rec_prep = Model::$pdo->prepare($sql);
                 $rec_prep->execute($valeur);
                 $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
-                $tab = array_merge($tab, $rec_prep->fetchAll());
+                $tab = array_merge($tab,$rec_prep->fetchAll());
             }
         }
         //var_dump($tab);
