@@ -1,4 +1,6 @@
 $(document).ready(()=>{
+    var  bool1 = false;
+    var bool2 = true;
     $(".rate").each(function () {
         var number = $(this).html();
         $(this).html('');
@@ -39,17 +41,30 @@ $(document).ready(()=>{
     }
 
     $("#onglet1").click(function () {
-        $(".commentaire-container").toggleClass("open");
-        $(".write-commentaire").toggleClass("open");
-        $("#onglet1").css('z-index', '1');
-        $("#onglet2").css('z-index', '-1');
+        if (bool1) {
+            $(".commentaire-container").toggleClass("open");
+            $(".write-commentaire").toggleClass("open");
+            $("#onglet1").css('z-index', '1');
+            $("#onglet2").css('z-index', '-1');
+            bool1 = false;
+            bool2 = true;
+        }
+
     });
 
     $("#onglet2").click(function () {
-        $(".commentaire-container").toggleClass("open");
-        $(".write-commentaire").toggleClass("open");
-        $("#onglet2").css('z-index', '1');
-        $("#onglet1").css('z-index', '-1');
+        if (bool2){
+            $(".commentaire-container").toggleClass("open");
+            $(".write-commentaire").toggleClass("open");
+            $("#onglet2").css('z-index', '1');
+            $("#onglet1").css('z-index', '-1');
+            bool1 = true;
+            bool2 = false;
+        }
+
     });
+
+    var url = $("#url").val();
+    $(".image-container").css('background-image','url('+url+')');
 
 });

@@ -307,15 +307,15 @@ session_start();
                     ';
                 }
     } else {
-        echo "<h2 id='firstAvis'> Soyez le premier à donnée votre avis !</h2>";
+        echo "<h2 class='firstAvis'> Soyez le premier à donnée votre avis !</h2>";
     }
-    if (isset($_SESSION['login'])){
-        echo '<h5> Connectez-vous pour donner votre avis !</h5>';
+    echo' </div>
+            
+            <div class="write-commentaire open">';
+    if (!isset($_SESSION['login'])){
+        echo '<h5 class="firstAvis"> Connectez-vous pour donner votre avis !</h5>';
     } else {
         echo '
-            </div>
-            
-            <div class="write-commentaire open">
                 <form method="post" action="../controller/routeur.php">
                     <input type="hidden" name="action" value="ajoutReview">
                     <input type="hidden" name="refProduit" value="' . $ref . '">
@@ -336,9 +336,10 @@ session_start();
                     <textarea id="mycom" name="commentaire" placeholder="écrivez un commentaire"></textarea>
                     <button id="achat-btn" type="submit"><p>Envoyer</p></button>
                 </form>
-            </div>
+           
     ';
     }
+    echo' </div>';
 
 
 

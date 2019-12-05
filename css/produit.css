@@ -209,11 +209,11 @@
     margin-left:0.5rem;
 }
 
-#firstAvis{
-    position: absolute;
-    left: 30rem;
-    top: 2rem;
+.firstAvis{
+    text-align: center;
+    margin-top: 2rem;
     font-family: 'Roboto';
+    font-size: 30px;
 }
 
 
