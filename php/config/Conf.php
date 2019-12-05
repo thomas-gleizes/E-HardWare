@@ -6,7 +6,7 @@ Class Conf{
     static private $databases = array(
         // Le nom d'hote est webinfo a l'IUT
         // ou localhost sur votre machine
-        'hostname' => 'webinfo',
+        'hostname' => 'localhost',
         // A l'IUT, vous avez une BDD nommee comme votre login
         // Sur votre machine, vous devrez creer une BDD
         'database' => 'gleizest',

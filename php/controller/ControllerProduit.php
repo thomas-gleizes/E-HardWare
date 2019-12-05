@@ -123,7 +123,7 @@ class ControllerProduit{
 
 
         $tabReview = ModelProduit::getReview($_POST['id_produit']);
-        $avr = ModelProduit::markAverage($_POST['id_produit']);
+        $avr = round(ModelProduit::markAverage($_POST['id_produit']),2);
         require_once ('../view/vueProduit.php');
     }
 
@@ -143,12 +143,13 @@ class ControllerProduit{
         }
         $tab = [];
         $tab['idClient'] = ModelUtilisateur::getIdUti($_SESSION['login']);
-        var_dump($tab);
+        //var_dump($tab);
         $tab['refProduit'] = $_POST['refProduit'];
         $tab['note'] = $note;
         $tab['commentaire'] = $_POST['commentaire'];
         $tab['date'] = date("o-n-d");
         ModelProduit::insertReview($tab);
+        //SELF::infoVueProduit();
     }
 
 
