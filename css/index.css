@@ -698,7 +698,7 @@ form {
     overflow: auto;
 }
 
-#ok {
+.ok {
     background-color: transparent;
     border: #06bcc7 2px solid;
     border-radius:0.2rem;
@@ -711,15 +711,15 @@ form {
     display:block;
 }
 
-#ok p{
+.ok p{
     margin-top: 0;
 }
 
-#ok:hover {
+.ok:hover {
     background-color: #06bcc7;
 }
 
-#ok:hover p {
+.ok:hover p {
     color: white;
 }
 
