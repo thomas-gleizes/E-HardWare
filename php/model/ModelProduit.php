@@ -186,8 +186,6 @@ class ModelProduit {
         $tab = $rec_prep->fetchAll();
         //var_dump($avr);
         return $tab[0]['MOY'];
-
-
     }
 
     public static function insertReview($tab){

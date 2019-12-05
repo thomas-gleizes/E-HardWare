@@ -1,6 +1,7 @@
 <?php
 
 require_once ("../model/ModelProduit.php");
+require_once ("../model/ModelUtilisateur.php");
 class ControllerProduit{
 
 
@@ -134,11 +135,12 @@ class ControllerProduit{
     public static function addReview (){
         session_start();
         $tab = [];
-        $tab['idClient'] = $_SESSION['login'];
+        $tab['idClient'] = ModelUtilisateur::getIdUti($_SESSION['login']);
+        var_dump($tab);
         $tab['refProduit'] = $_POST['refProduit'];
         $tab['note'] = $_POST['note'];
         $tab['commentaire'] = $_POST['commentaire'];
-        $tab['date'] = date("o-n-t");
+        $tab['date'] = date("o-n-d");
         ModelProduit::insertReview($tab);
     }
 

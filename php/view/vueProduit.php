@@ -195,6 +195,7 @@ session_start();
 
     foreach ($tab as $tav){
         $cat = $tav[$c];
+        $ref = $tav[$r];
         echo '
         <div class="image-container">
             <input type="hidden" id="url" value="'.$tav[$u].'">
@@ -234,7 +235,7 @@ session_start();
         $ecriture = "ecriture";
     } else if ($cat == 'DisqueDur'){
         $capacite = "capacite";
-        $interface = "initerface";
+        $interface = "interface";
         $vitesse = "vitesseRotation";
     } else if ($cat == 'Alimentation'){
         $puissance = "puissance";
@@ -306,15 +307,18 @@ session_start();
                     ';
                 }
     } else {
-        echo "<h2> Soyez le premier à donnée votre avis !</h2>";
+        echo "<h2 id='firstAvis'> Soyez le premier à donnée votre avis !</h2>";
     }
-                    echo  '
+    if (isset($_SESSION['login'])){
+        echo '<h5> Connectez-vous pour donner votre avis !</h5>';
+    } else {
+        echo '
             </div>
             
             <div class="write-commentaire open">
                 <form method="post" action="../controller/routeur.php">
                     <input type="hidden" name="action" value="ajoutReview">
-                    <input type="hidden" name="refProduit" value="'.$r.'">
+                    <input type="hidden" name="refProduit" value="' . $ref . '">
                     <p class="mynote">votre note:</p>
                     <select id="select7" name="note">
                         <option value="0">0</option>
@@ -334,6 +338,7 @@ session_start();
                 </form>
             </div>
     ';
+    }
 
 
 

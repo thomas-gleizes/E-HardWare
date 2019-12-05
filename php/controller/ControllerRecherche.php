@@ -11,6 +11,7 @@ class ControllerRecherche{
     }
 
     public static function rechercheVide(){
+        $tabvaleur = [];
         require_once ("../view/vueRecherche.php");
     }
 

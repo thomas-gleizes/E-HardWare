@@ -13,17 +13,15 @@
 
     }
     if(!$_POST==null){
-        if (isset($_POST['action']["ajoutProduit"])) {
+        if ($_POST['action']== ['ajoutProduit']) {
             ControllerProduit::ajoutProduit();
         } else if (isset($_POST['action']["createOrder"])) {
             $action = $_POST['action'];
             ControllerCommande::createOrder();
-        } else if (isset($_POST['action']['ajoutReview'])){
+        } else if ($_POST['action'] == 'ajoutReview'){
             ControllerProduit::addReview();
-        }
-        if ($_POST['produit']!=null){
-            $action = $_POST['produit'];
-            ControllerProduit::$action();
+        } else if ($_POST['action'] == 'infoVueProduit'){
+            ControllerProduit::infoVueProduit();
         } else {
             $action = $_POST["action"];
             ControllerUtilisateur::$action();

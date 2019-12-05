@@ -1,13 +1,12 @@
 <?php
 session_start();
-setcookie("panier","0",time()+31570000);
+if(!isset($_COOKIE["panier"])) {
+    setcookie("panier", "0", time() + 31570000);
+}
 //echo $_COOKIE["panier"];
 if (isset($_SESSION['login'])) {
     if ($_SESSION['admin'] == 1){
         header('Location:./php/controller/routeur.php?action=rechercheVide');
-    }
-    if(isset($_SESSION["panier"])){
-       setcookie("panier",$_SESSION["panier"]["quantiter"],time()+31570000) ;
     }
 }
 require ("php/lib/File.php");
