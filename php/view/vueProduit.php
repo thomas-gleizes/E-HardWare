@@ -22,35 +22,28 @@ session_start();
 <div id="nav-bar" class="nav">
     <div id="fermer" class="section">
         <p>Fermer</p>
-        <i class="material-icons navbaricons">clear</i>
+        <i  class="material-icons navbaricons">
+            clear
+        </i>
     </div>
-    <?php
-    if (isset($_SESSION['login'])) {
-        echo '<form  method="Post" action="../view/account.php">
-                <button type="submit" class="account-button">
-                    <i id="account-icon" class="material-icons">
-                        account_circle
-                    </i>
-                </button>
-            </form>';
-    } else {
-        echo '<form  method="Post" action="../view/connection.php">
-                <button type="submit" class="account-button">
-                    <i id="account-icon" class="material-icons">
-                        account_circle
-                    </i>
-                </button>
-            </form>';
-    }
-    ?>
+    <div class="section" id="moncompte">
+        <p>Mon compte</p>
+        <i  class="material-icons navbaricons">
+            account_circle
+        </i>
+    </div>
     <div class="section">
         <p>Mon panier</p>
-        <i class="material-icons navbaricons">shopping_cart</i>
+        <i  class="material-icons navbaricons">
+            shopping_cart
+        </i>
     </div>
     <div id="categories" class="section">
         <div class="section">
             <p>Catégories</p>
-            <i id="expand-icon" class="material-icons navbaricons">expand_more</i>
+            <i  id="expand-icon" class="material-icons navbaricons">
+                expand_more
+            </i>
         </div>
     </div>
     <form method="get" action="../controller/routeur.php">
@@ -151,7 +144,7 @@ session_start();
     <?php
     if (isset($_SESSION['login'])) {
         echo '<form  method="Post" action="../view/account.php">
-                <button type="submit" class="account-button">
+                <button type="submit" id="account-button">
                     <i id="account-icon" class="material-icons">
                         account_circle
                     </i>
@@ -159,7 +152,7 @@ session_start();
             </form>';
     } else {
         echo '<form  method="Post" action="../view/connection.php">
-                <button type="submit" class="account-button">
+                <button type="submit" id="account-button">
                     <i id="account-icon" class="material-icons">
                         account_circle
                     </i>
@@ -167,13 +160,36 @@ session_start();
             </form>';
     }
     ?>
-
-    <form  method="Post" action="PHP/view/Participant/preLobby.php">
+    <?php
+    $val = $_COOKIE["panier"];
+    if(isset($_SESSION["panier"])){
+        $val = $_SESSION["panier"]["quantiter"];
+        echo'
+        <form  method="Post" action="PHP/view/Participant/preLobby.php">
         <button type="submit" id="cart-button">
-            <i id="cart-icon" class="material-icons">shopping_cart</i>
-            <p>0</p>
+            <i id="cart-icon" class="material-icons">
+                shopping_cart
+            </i>
+            <p>'.$val.'</p>
         </button>
     </form>
+    ';
+    }else{
+        echo'
+        <form  method="Post" action="PHP/view/Participant/preLobby.php">
+        <button type="submit" id="cart-button">
+            <i id="cart-icon" class="material-icons">
+                shopping_cart
+            </i>
+            <p>'.$val.'</p>
+        </button>
+    </form>
+    ';
+    }
+
+
+    ?>
+
 </header>
 <div class="filtre-container open">
     <input class="check1" type="checkbox" id="croissant" >
@@ -269,11 +285,11 @@ session_start();
     foreach ($tab as $tav){
 
     echo '  
-            <p id="marque" class="left">'.$tav[$nm].'<p/>
-            <p id="categorie" class="left">'.$tav[$c].'<p/>
-            <p id="disponibilite" class="left">en stock ('.$tav[$s].' disponible)<p/>
+            <p id="marque" class="left">'.$tav[$nm].'</p>
+            <p id="categorie" class="left">'.$tav[$c].'</p>
+            <p id="disponibilite" class="left">en stock ('.$tav[$s].' disponible)</p>
             <input type="hidden" id="stock" value="'.$tav[$s].'">
-            <p id="prix-total" class="left">'.$tav[$p].' €<p/>
+            <p id="prix-total" class="left">'.$tav[$p].',00 €</p>
             <p id="quantity" class="left">quantité :</p>
             <form  method="Post" action="../controller/routeur.php">
                 <select id="select6" name="quantite">

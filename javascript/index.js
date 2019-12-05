@@ -150,7 +150,7 @@ $(document).ready(() => {
                 $('.container').append( '<div class="card"> <form  class="card-form"  method="POST" action="php/controller/routeur.php"> <button id="card'+nbcard+'" type="submit" class="img-container">' +
                     '<input type="hidden" name="id_produit" value="' + tabProduit[i] + '"><input type="hidden" name="action" value="infoVueProduit"' + tabProduit[i] + '"></button></form> <div class="description-container"><p class="marque">' + tabProduit[i+2] + '<p/>' +
                     '<p class="description">' + tabProduit[i+1] + '<p/>' +
-                    '<p class="prix">' + tabProduit[i+3] + ' €<p/><div class="rond"><p><input class="id" type="hidden" name="id_produit" value="' + tabProduit[i] + '"><i class="add-icon material-icons buy-icon">add_shopping_cart</i></p></div></div></div>');
+                    '<p class="prix">' + tabProduit[i+3] + ',00 €<p/><div class="rond"><p><input class="id" type="hidden" name="id_produit" value="' + tabProduit[i] + '"><i class="add-icon material-icons buy-icon">add_shopping_cart</i></p></div></div></div>');
                 var el = "#card" + nbcard;
                 $(el).css('background-image',"url(" +tabProduit[i+4]+")");
 
