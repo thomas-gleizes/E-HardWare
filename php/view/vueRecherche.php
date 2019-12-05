@@ -305,33 +305,35 @@ if (isset($_SESSION['admin'])){
                     <option class="val" value="Alimentation">Alimentation</option>
                 </select>
             </div>
-            <form method="post" action="../controller/routeur.php" class="alimentation open">
-                <h3> Alimentation <h3>
-                <input type="hidden" class="ajout-input" name="action" value="ajoutProduit" required>
-                <input type="hidden" class="ajout-input" name="categorie" value="Alimentation" required>
-                <input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>
-                <input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>
-                <input type="number" min="0" step="any" class="ajout-input" placeholder="Prix du produit" name="prix" required>
-                <input type="number" min="0" class="ajout-input" placeholder="Quantité de stock" name="stock" required>
-                <input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="Url" required>
-                <input type="number" min="0" step="any" class="ajout-input" placeholder="Puissance" name="puissance" required>
-                <input type="text" class="ajout-input" placeholder="Modularité" name="modularite" required>
-                <button id="ok" type="submit"><p>Ajout</p></button> </form>
+                <form method="post" action="../controller/routeur.php" class="alimentation open">
+                    <h3> Alimentation <h3>
+                    <input type="hidden" class="ajout-input" name="action" value="ajoutProduit" required>
+                    <input type="hidden" class="ajout-input" name="categorie" value="Alimentation" required>
+                    <input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>
+                    <input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>
+                    <input type="number" min="0" step="any" class="ajout-input" placeholder="Prix du produit" name="prix" required>
+                    <input type="number" min="0" class="ajout-input" placeholder="Quantité de stock" name="stock" required>
+                    <input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="Url" required>
+                    <input type="number" min="0" step="any" class="ajout-input" placeholder="Puissance" name="puissance" required>
+                    <input type="text" class="ajout-input" placeholder="Modularité" name="modularite" required>
+                    <button id="ok" type="submit"><p>Ajout</p></button> 
+                </form>
                 <form method="post" action="../controller/routeur.php" class="ssd open">
-                <h3> Solide State Drive <h3>
-                <input type="hidden" class="ajout-input" name="action" value="ajoutProduit" required>
-                <input type="hidden" class="ajout-input" name="categorie" value="SSD" required>
-                <input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>
-                <input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>
-                <input type="number" min="0" step="any" class="ajout-input" placeholder="Prix du produit" name="prix" required>
-                <input type="number" min="0" class="ajout-input" placeholder="Quantité de stock" name="stock" required>
-                <input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="Url" required>
-                <input type="text" class="ajout - input" placeholder="Format SSD" name="format" required>
-                <input type="number" min="0" class="ajout-input" placeholder="Capacite SSD" name="capacite" required>
-                <input type="text" class="ajout - input" placeholder="Interface SSD" name="interface" required>
-                <input type="number" min="0" class="ajout-input" placeholder="Vitesse de lecture" name="lecture" required>
-                <input type="number" min="0" step="any" class="ajout-input" placeholder="Vitesse d\'écriture" name="ecriture" required>
-                <button id="ok" type="submit"><p>Ajout</p></button> </form>
+                    <h3> Solide State Drive <h3>
+                    <input type="hidden" class="ajout-input" name="action" value="ajoutProduit" required>
+                    <input type="hidden" class="ajout-input" name="categorie" value="SSD" required>
+                    <input type="text" class="ajout-input" placeholder="Nom du produit" name="nom" required>
+                    <input type="text" class="ajout-input" placeholder="Marque du produit" name="nomMarque" required>
+                    <input type="number" min="0" step="any" class="ajout-input" placeholder="Prix du produit" name="prix" required>
+                    <input type="number" min="0" class="ajout-input" placeholder="Quantité de stock" name="stock" required>
+                    <input type="url" class="ajout-input" placeholder="Url de l\'image du produit" name="Url" required>
+                    <input type="text" class="ajout - input" placeholder="Format SSD" name="format" required>
+                    <input type="number" min="0" class="ajout-input" placeholder="Capacite SSD" name="capacite" required>
+                    <input type="text" class="ajout - input" placeholder="Interface SSD" name="interface" required>
+                    <input type="number" min="0" class="ajout-input" placeholder="Vitesse de lecture" name="lecture" required>
+                    <input type="number" min="0" step="any" class="ajout-input" placeholder="Vitesse d\'écriture" name="ecriture" required>
+                    <button id="ok" type="submit"><p>Ajout</p></button>
+                 </form>
         </div>
         ';
     }
