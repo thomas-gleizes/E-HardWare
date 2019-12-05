@@ -13,9 +13,9 @@
 
     }
     if(!$_POST==null){
-        if ($_POST['action']== ['ajoutProduit']) {
+        if ($_POST['action'] == 'ajoutProduit') {
             ControllerProduit::ajoutProduit();
-        } else if (isset($_POST['action']["createOrder"])) {
+        } else if ($_POST['action'] == "createOrder") {
             $action = $_POST['action'];
             ControllerCommande::createOrder();
         } else if ($_POST['action'] == 'ajoutReview'){

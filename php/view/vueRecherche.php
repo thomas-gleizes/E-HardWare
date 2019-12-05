@@ -258,7 +258,10 @@ setcookie("panier",$_SESSION["panier"]["quantiter"],time()+31570000)  ;
                 </div> ");
             if (isset($_SESSION['admin'])){
                 if ($_SESSION['admin'] == 1){
-                    echo "<form method='post' action=''><button id='mod'><p>Modifier le produit</p></button></form>";
+                    echo "<form method='post' action='../controller/routeur.php'>
+                    <input type=\"hidden\" name=\"action\" value=\"infoVueProduit\" > 
+                    <input type=\"hidden\" name=\"id_produit\" value=\"$v[$r]\">
+                    <button type='submit' id='mod'><p>Modifier le produit</p></button></form>";
                 }
 
             }
