@@ -134,11 +134,18 @@ class ControllerProduit{
 
     public static function addReview (){
         session_start();
+        if ($_POST['note'] > 5){
+            $note = 5;
+        } else if ($_POST['note'] < 0){
+            $note = 0;
+        } else {
+            $note = $_POST['note'];
+        }
         $tab = [];
         $tab['idClient'] = ModelUtilisateur::getIdUti($_SESSION['login']);
         var_dump($tab);
         $tab['refProduit'] = $_POST['refProduit'];
-        $tab['note'] = $_POST['note'];
+        $tab['note'] = $note;
         $tab['commentaire'] = $_POST['commentaire'];
         $tab['date'] = date("o-n-d");
         ModelProduit::insertReview($tab);

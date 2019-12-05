@@ -22,28 +22,35 @@ session_start();
 <div id="nav-bar" class="nav">
     <div id="fermer" class="section">
         <p>Fermer</p>
-        <i  class="material-icons navbaricons">
-            clear
-        </i>
+        <i class="material-icons navbaricons">clear</i>
     </div>
-    <div class="section" id="moncompte">
-        <p>Mon compte</p>
-        <i  class="material-icons navbaricons">
-            account_circle
-        </i>
-    </div>
+    <?php
+    if (isset($_SESSION['login'])) {
+        echo '<form  method="Post" action="../view/account.php">
+                <button type="submit" class="account-button">
+                    <i id="account-icon" class="material-icons">
+                        account_circle
+                    </i>
+                </button>
+            </form>';
+    } else {
+        echo '<form  method="Post" action="../view/connection.php">
+                <button type="submit" class="account-button">
+                    <i id="account-icon" class="material-icons">
+                        account_circle
+                    </i>
+                </button>
+            </form>';
+    }
+    ?>
     <div class="section">
         <p>Mon panier</p>
-        <i  class="material-icons navbaricons">
-            shopping_cart
-        </i>
+        <i class="material-icons navbaricons">shopping_cart</i>
     </div>
     <div id="categories" class="section">
         <div class="section">
             <p>Catégories</p>
-            <i  id="expand-icon" class="material-icons navbaricons">
-                expand_more
-            </i>
+            <i id="expand-icon" class="material-icons navbaricons">expand_more</i>
         </div>
     </div>
     <form method="get" action="../controller/routeur.php">
@@ -144,7 +151,7 @@ session_start();
     <?php
     if (isset($_SESSION['login'])) {
         echo '<form  method="Post" action="../view/account.php">
-                <button type="submit" id="account-button">
+                <button type="submit" class="account-button">
                     <i id="account-icon" class="material-icons">
                         account_circle
                     </i>
@@ -152,7 +159,7 @@ session_start();
             </form>';
     } else {
         echo '<form  method="Post" action="../view/connection.php">
-                <button type="submit" id="account-button">
+                <button type="submit" class="account-button">
                     <i id="account-icon" class="material-icons">
                         account_circle
                     </i>
@@ -163,9 +170,7 @@ session_start();
 
     <form  method="Post" action="PHP/view/Participant/preLobby.php">
         <button type="submit" id="cart-button">
-            <i id="cart-icon" class="material-icons">
-                shopping_cart
-            </i>
+            <i id="cart-icon" class="material-icons">shopping_cart</i>
             <p>0</p>
         </button>
     </form>
