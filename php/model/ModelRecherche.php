@@ -98,7 +98,7 @@ class ModelRecherche{
             $sql=$requete;
             //echo $sql;
         }
-        echo "$sql <br>";
+
 
 
         $rec_prep = Model::$pdo->prepare($sql);
