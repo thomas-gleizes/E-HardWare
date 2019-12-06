@@ -9,7 +9,8 @@ if (isset($_SESSION['login'])) {
         header('Location:./php/controller/routeur.php?action=rechercheVide');
     }
 }
-require ("php/lib/File.php");
+File::build_path(array('php','lib','File.php'));
+
 ?>
 
 

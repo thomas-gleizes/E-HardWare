@@ -1,5 +1,5 @@
 <?php
-require_once ('../model/Model.php');
+File::build_path(array('model','Model.php'));
 require_once ('../model/ModelRecherche.php');
 
 class ModelProduit {

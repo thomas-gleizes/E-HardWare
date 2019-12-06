@@ -1,6 +1,6 @@
 <?php
 
-require_once ("../model/ModelProduit.php");
+File::build_path(array('model','ModelProduit.php'));
 require_once ("../model/ModelUtilisateur.php");
 class ControllerProduit{
 
@@ -152,6 +152,8 @@ class ControllerProduit{
         //SELF::infoVueProduit();
     }
 
+        header('Location:../view/vueRecherche.php?action=rechercheVide');
+    }
 
 
 }
