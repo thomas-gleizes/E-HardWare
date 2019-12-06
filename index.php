@@ -52,18 +52,18 @@ if (isset($_SESSION['login'])) {
             </i>
         </div>
         <div class="section">
-            <p>Mon panier</p>
-            <i  class="material-icons navbaricons">
-                shopping_cart
-            </i>
+            <form method="post" action="./php/controller/routeur.php">
+                <input type="hidden" name="action" value="Panier">
+                <button type="submit">
+                    <p>Mon panier</p>
+                    <i class="material-icons navbaricons">shopping_cart</i>
+                </button>
+            </form>
         </div>
         <div id="categories" class="section">
             <div class="section">
                 <p>Catégories</p>
-                <i  id="expand-icon" class="material-icons navbaricons">
-                    expand_more
-                </i>
-
+                <i id="expand-icon" class="material-icons navbaricons">expand_more</i>
             </div>
         </div>
         <form method="get" action="php/controller/routeur.php">

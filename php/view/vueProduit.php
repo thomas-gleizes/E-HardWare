@@ -31,10 +31,13 @@
         </i>
     </div>
     <div class="section">
-        <p>Mon panier</p>
-        <i  class="material-icons navbaricons">
-            shopping_cart
-        </i>
+        <form method="post" action="./../controller/routeur.php">
+            <input type="hidden" name="action" value="Panier">
+            <button type="submit">
+                <p>Mon panier</p>
+                <i class="material-icons navbaricons">shopping_cart</i>
+            </button>
+        </form>
     </div>
     <div id="categories" class="section">
         <div class="section">
