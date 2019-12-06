@@ -203,7 +203,7 @@ session_start();
 </div>
 <div class="command-container">
 <?php
-    $refproduit = "refProduit";
+    $refProduit = "refProduit";
     $quantite = "quantiteProduit";
     $nom = "nom";
     $nomMarque = "nomMarque";
@@ -218,10 +218,10 @@ session_start();
             <div class="d">
                 <p class="name">'.$tab[$nom].'</p>
                 <p class="prix">'.$tab[$prix]*$tab[$quantite].'</p>
-                <p class="number">5</p>
+                <p class="number">'.$tab[$quantite].'</p>
                 <form method="post" action="../controller/routeur.php">
                     <input type="hidden" name="action" value="del">
-                    <input type="hidden" name="id_produit" value="">
+                    <input type="hidden" name="id_produit" value="'.$tab[$refProduit].'">
                     <button type="submit" class="clear-btn">
                         <i class="material-icons clear">
                             clear

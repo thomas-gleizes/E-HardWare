@@ -13,6 +13,16 @@ class ModelPanier{
         return $tab;
     }
 
+    public static function getNbProduit ($idClient){
+        $sql = "SELECT idClient, nbProduitPanier FROM Clients WHERE idClient = :idClient;";
+        $value['idClient'] = $idClient;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        return $tab;
+    }
+
     public static function deletePanier($idClient, $refProduit){
         $sql = "DELETE FROM Panier WHERE idClient = :idClient AND refProduit = :refProduit;)";
         $value['idClient'] = $idClient;
