@@ -160,15 +160,34 @@ session_start();
             </form>';
     }
     ?>
-
-    <form  method="Post" action="PHP/view/Participant/preLobby.php">
+    <?php
+    $val = $_COOKIE["panier"];
+    if(isset($_SESSION["panier"])){
+        $val = $_SESSION["panier"]["quantiter"];
+        echo'
+        <form  method="Post" action="PHP/view/Participant/preLobby.php">
         <button type="submit" id="cart-button">
             <i id="cart-icon" class="material-icons">
                 shopping_cart
             </i>
-            <p>0</p>
+            <p>'.$val.'</p>
         </button>
     </form>
+    ';
+    }else{
+        echo'
+        <form  method="Post" action="PHP/view/Participant/preLobby.php">
+        <button type="submit" id="cart-button">
+            <i id="cart-icon" class="material-icons">
+                shopping_cart
+            </i>
+            <p>'.$val.'</p>
+        </button>
+    </form>
+    ';
+    }
+    ?>
+
 </header>
 <div class="filtre-container open">
     <input class="check1" type="checkbox" id="croissant" >
@@ -180,95 +199,88 @@ session_start();
 
 
 <?php
-
-    $u = "Url";
-    $r ="refProduit";
-    $n = "nom";
-    $nm = "nomMarque";
-    $p = "prix";
-    $s = "stock";
-    $c = "categorie";
-    $prenom = "prenomClient";
-    $note = "note";
-    $com = "commentaire";
-    $date = "date";
-
-    foreach ($tab as $tav){
-        $cat = $tav[$c];
-        $ref = $tav[$r];
-        echo '
+$u = "Url";
+$r ="refProduit";
+$n = "nom";
+$nm = "nomMarque";
+$p = "prix";
+$s = "stock";
+$c = "categorie";
+$prenom = "prenomClient";
+$note = "note";
+$com = "commentaire";
+$date = "date";
+foreach ($tab as $tav){
+    $cat = $tav[$c];
+    $ref = $tav[$r];
+    echo '
         <div class="image-container">
             <input type="hidden" id="url" value="'.$tav[$u].'">
         </div>
             <div class="desc-container">
             <p id="produit" class="left">'.$tav[$n].'<p/>
             ';
-    }
-
+}
+if ($cat == 'Processeur'){
+    $nbCoeur = "nbCoeur";
+    $nbThreads = "nbThreads";
+    $socket = "socket";
+    $frequence = "frequence";
+    $boost = "boost";
+    $cache = "cache";
+} else if ($cat == 'CarteGraphique'){
+    $chipset = "chipset";
+    $memore = "memoire";
+    $architecture = "architecture";
+    $bus = "bus";
+} else if ($cat == 'CarteMere'){
+    $chipset = "chipset";
+    $socket = "socket";
+    $format = "format";
+} else if ($cat == 'Memoire'){
+    $type = "type";
+    $capacite = "capacite";
+    $frequence = "frequence";
+    $CAS = "CAS";
+    $nbBarrette = "nbBarrette";
+} else if ($cat == "SSD"){
+    $format = "format";
+    $capacite = "capacite";
+    $interface = "interface";
+    $lecture = "lecture";
+    $ecriture = "ecriture";
+} else if ($cat == 'DisqueDur'){
+    $capacite = "capacite";
+    $interface = "interface";
+    $vitesse = "vitesseRotation";
+} else if ($cat == 'Alimentation'){
+    $puissance = "puissance";
+    $modularite = "modularite";
+}
+foreach ($tabProd as $tai){
     if ($cat == 'Processeur'){
-        $nbCoeur = "nbCoeur";
-        $nbThreads = "nbThreads";
-        $socket = "socket";
-        $frequence = "frequence";
-        $boost = "boost";
-        $cache = "cache";
-    } else if ($cat == 'CarteGraphique'){
-        $chipset = "chipset";
-        $memore = "memoire";
-        $architecture = "architecture";
-        $bus = "bus";
+        echo'<p id="info">Nombre de Coeur : '. $tai[$nbCoeur] .'<br> Nombre de threads : '. $tai[$nbThreads] .'<br> Socket : '. $tai[$socket] .'<br> Fréquence : '. $tai[$frequence] .'GHz<br> Fréquence boost: '. $tai[$boost] .'GHz<br> Cache : '. $tai[$cache] .'Mo<br></p>';
+    } else if($cat == 'CarteGraphique'){
+        echo'<p id="info">Chipset Graphique : '. $tai[$chipset].' <br>Memoire vidéo : '. $tai[$memore].'Go <br>Architecture : '. $tai[$architecture].'<br> Bus : '. $tai[$bus].'</p>';
     } else if ($cat == 'CarteMere'){
-        $chipset = "chipset";
-        $socket = "socket";
-        $format = "format";
+        echo '<p id="info">Chipset : '. $tai[$chipset].'<br> Socket : '. $tai[$socket].'<br> Format : '. $tai[$format].' </p>';
     } else if ($cat == 'Memoire'){
-        $type = "type";
-        $capacite = "capacite";
-        $frequence = "frequence";
-        $CAS = "CAS";
-        $nbBarrette = "nbBarrette";
-    } else if ($cat == "SSD"){
-        $format = "format";
-        $capacite = "capacite";
-        $interface = "interface";
-        $lecture = "lecture";
-        $ecriture = "ecriture";
+        echo '<p id="info"> Type : '. $tai[$type].'<br> Capacité : '. $tai[$capacite].'Go <br> Fréquence : '. $tai[$frequence].'MHz<br> CAS : '. $tai[$CAS].' </p>';
+    } else if ($cat == 'SSD'){
+        echo'<p id="info"> Format : '. $tai[$format].'<br> Capacité : '. $tai[$capacite].'Go <br> Interface : '. $tai[$interface].' <br> Vitesse de Lecture : '. $tai[$lecture].'Mo/s<br> Vitesse d\'écriture : '. $tai[$ecriture].'Mo/s</p>';
     } else if ($cat == 'DisqueDur'){
-        $capacite = "capacite";
-        $interface = "interface";
-        $vitesse = "vitesseRotation";
+        echo '<p id="info"> Capacité : '. $tai[$capacite].'Go <br> Interface : '. $tai[$interface].' <br> Vitesse de rotation : '. $tai[$vitesse].'t/m</p>';
     } else if ($cat == 'Alimentation'){
-        $puissance = "puissance";
-        $modularite = "modularite";
+        echo '<p id="info"> Puissance ; '. $tai[$puissance].'W <br> Modularité : '. $tai[$modularite].' </p>';
     }
-
-    foreach ($tabProd as $tai){
-        if ($cat == 'Processeur'){
-            echo'<p id="info">Nombre de Coeur : '. $tai[$nbCoeur] .'<br> Nombre de threads : '. $tai[$nbThreads] .'<br> Socket : '. $tai[$socket] .'<br> Fréquence : '. $tai[$frequence] .'GHz<br> Fréquence boost: '. $tai[$boost] .'GHz<br> Cache : '. $tai[$cache] .'Mo<br></p>';
-        } else if($cat == 'CarteGraphique'){
-            echo'<p id="info">Chipset Graphique : '. $tai[$chipset].' <br>Memoire vidéo : '. $tai[$memore].'Go <br>Architecture : '. $tai[$architecture].'<br> Bus : '. $tai[$bus].'</p>';
-        } else if ($cat == 'CarteMere'){
-            echo '<p id="info">Chipset : '. $tai[$chipset].'<br> Socket : '. $tai[$socket].'<br> Format : '. $tai[$format].' </p>';
-        } else if ($cat == 'Memoire'){
-            echo '<p id="info"> Type : '. $tai[$type].'<br> Capacité : '. $tai[$capacite].'Go <br> Fréquence : '. $tai[$frequence].'MHz<br> CAS : '. $tai[$CAS].' </p>';
-        } else if ($cat == 'SSD'){
-            echo'<p id="info"> Format : '. $tai[$format].'<br> Capacité : '. $tai[$capacite].'Go <br> Interface : '. $tai[$interface].' <br> Vitesse de Lecture : '. $tai[$lecture].'Mo/s<br> Vitesse d\'écriture : '. $tai[$ecriture].'Mo/s</p>';
-        } else if ($cat == 'DisqueDur'){
-            echo '<p id="info"> Capacité : '. $tai[$capacite].'Go <br> Interface : '. $tai[$interface].' <br> Vitesse de rotation : '. $tai[$vitesse].'t/m</p>';
-        } else if ($cat == 'Alimentation'){
-            echo '<p id="info"> Puissance ; '. $tai[$puissance].'W <br> Modularité : '. $tai[$modularite].' </p>';
-        }
-    }
-
-
-    foreach ($tab as $tav){
-
+}
+foreach ($tab as $tav){
     echo '  
-            <p id="marque" class="left">'.$tav[$nm].'<p/>
-            <p id="categorie" class="left">'.$tav[$c].'<p/>
-            <p id="disponibilite" class="left">en stock ('.$tav[$s].' disponible)<p/>
+            <p id="marque" class="left">'.$tav[$nm].'</p>
+            <p id="categorie" class="left">'.$tav[$c].'</p>
+            <p id="disponibilite" class="left">en stock ('.$tav[$s].' disponible)</p>
             <input type="hidden" id="stock" value="'.$tav[$s].'">
-            <p id="prix-total" class="left">'.$tav[$p].' €<p/>
+            <p id="prix-total" class="left">'.$tav[$p].',00 €</p>
             <p id="quantity" class="left">quantité :</p>
             <form  method="Post" action="../controller/routeur.php">
                 <select id="select6" name="quantite">
@@ -279,9 +291,8 @@ session_start();
             </form>
         </div>
     ';
-    }
-
-        echo '
+}
+echo '
             <div class="onglet" id="onglet1"><p>Commentaires des utilisateurs</p></div>
             <div class="onglet" id="onglet2"><p>écrire un commentaire</p></div>
             <div class="commentaire-container">
@@ -291,31 +302,31 @@ session_start();
                         </div>
                     <p class="noteA ">'.$avr.'</p>
                 </div>';
-    if (!empty($tabReview)){
-                foreach ($tabReview as $value){
-                    echo '
+if (!empty($tabReview)){
+    foreach ($tabReview as $value){
+        echo '
                 <div class="com">
                     <img class="user-icon" src="https://img.icons8.com/ultraviolet/40/000000/guest-male.png">
                     <p class="name">'.$value[$prenom].'</p>
-                    <div  class="rate">'.$value[$note].'
-                    </div>
+                    <div  class="rate">'.$value[$note].'</div>
+                    <p>'.$value[$date].'</p>
                     <p class="note">'.$value[$note].'</p>
                     <div class="message-container">
                         <p class="message">'.$value[$com].'</p>
                     </div>
                     </div>
                     ';
-                }
-    } else {
-        echo "<h2 class='firstAvis'> Soyez le premier à donnée votre avis !</h2>";
     }
-    echo' </div>
+} else {
+    echo "<h2 class='firstAvis'> Soyez le premier à donnée votre avis !</h2>";
+}
+echo' </div>
             
             <div class="write-commentaire open">';
-    if (!isset($_SESSION['login'])){
-        echo '<h5 class="firstAvis"> Connectez-vous pour donner votre avis !</h5>';
-    } else {
-        echo '
+if (!isset($_SESSION['login'])){
+    echo '<h5 class="firstAvis"> Connectez-vous pour donner votre avis !</h5>';
+} else {
+    echo '
                 <form method="post" action="../controller/routeur.php">
                     <input type="hidden" name="action" value="ajoutReview">
                     <input type="hidden" name="refProduit" value="' . $ref . '">
@@ -338,11 +349,8 @@ session_start();
                 </form>
            
     ';
-    }
-    echo' </div>';
-
-
-
+}
+echo' </div>';
 ?>
 
 
@@ -352,5 +360,3 @@ session_start();
 
 </body>
 </html>
-
-
