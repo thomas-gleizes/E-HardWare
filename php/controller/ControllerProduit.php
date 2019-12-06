@@ -99,7 +99,8 @@ class ControllerProduit{
             ModelProduit::insertAlimentation($tab);
 
         }
-        header('Location:../view/vueRecherche.php?action=rechercheVide');
+        $tabvaleur = [];
+        require_once ('../view/vueRecherche.php');
     }
 
 
