@@ -170,8 +170,8 @@ require ("php/lib/File.php");
         if(isset($_SESSION["panier"])){
             $val = $_SESSION["panier"]["quantiter"];
             echo'
-            <form  method="Post" action="PHP/view/Participant/preLobby.php">
-                <button type="submit" id="cart-button">
+            <form  method="Post" action="./php/controller/routeur.php">
+                <input type="hidden" name="action" value="Panier">
                     <i id="cart-icon" class="material-icons">
                         shopping_cart
                     </i>
@@ -181,7 +181,8 @@ require ("php/lib/File.php");
         ';
         }else {
             echo'
-                <form  method="Post" action="PHP/view/Participant/preLobby.php">
+                <form  method="Post" action="./php/controller/routeur.php">
+                    <input type="hidden" name="action" value="Panier">
                     <button type="submit" id="cart-button">
                         <i id="cart-icon" class="material-icons">
                             shopping_cart
