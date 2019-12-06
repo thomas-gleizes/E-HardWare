@@ -8,7 +8,7 @@ $(document).ready(() => {
     });
 
     $("#revenir").click(function () {
-        window.location = "../../index.php";
+        window.location = "../../View.php";
     });
 
     $('#mdp2').bind('input', function() {
