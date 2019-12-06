@@ -17,7 +17,6 @@
         if ($_POST['action'] == 'ajoutProduit') {
             ControllerProduit::ajoutProduit();
         } else if ($_POST['action'] == "createOrder") {
-            $action = $_POST['action'];
             ControllerCommande::createOrder();
         } else if ($_POST['action'] == 'ajoutReview'){
             ControllerProduit::addReview();
@@ -25,6 +24,8 @@
             ControllerProduit::infoVueProduit();
         } else if ($_POST['action'] == 'del'){
             ControllerPanier::deletePanier();
+        } else  if ($_POST['action'] == 'Panier'){
+            ControllerPanier::displayPanier();
         } else {
             $action = $_POST["action"];
             ControllerUtilisateur::$action();

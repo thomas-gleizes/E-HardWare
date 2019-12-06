@@ -165,7 +165,7 @@ session_start();
     if(isset($_SESSION["panier"])){
         $val = $_SESSION["panier"]["quantiter"];
         echo'
-        <form  method="Post" action="PHP/view/Participant/preLobby.php">
+        <form  method="Post" action="PHP/view/Participant/preLobbyiyvjvhjhv.php">
         <button type="submit" id="cart-button">
             <i id="cart-icon" class="material-icons">
                 shopping_cart
@@ -176,7 +176,8 @@ session_start();
     ';
     }else{
         echo'
-        <form  method="Post" action="PHP/view/Participant/preLobby.php">
+        <form  method="Post" action="../controller/routeur.php">
+        <input type="hidden" name="action" value="Panier">
         <button type="submit" id="cart-button">
             <i id="cart-icon" class="material-icons">
                 shopping_cart
@@ -297,7 +298,7 @@ echo '
             <div class="onglet" id="onglet2"><p>écrire un commentaire</p></div>';
 if (isset($_SESSION['admin'])){
     if ($_SESSION['admin'] == 1){
-        echo '<div class="onglet" id="onglet3"><p>Partie admin</p></div>';
+        echo '<div class="onglet" id="onglet3"><p>Modification</p></div>';
     }}
             echo'<div class="commentaire-container">
                 <div class="average-container">
@@ -358,7 +359,19 @@ echo' </div>';
 if (isset($_SESSION['admin'])){
     if ($_SESSION['admin'] == 1){
         echo '<div class="admin-part open">
-            partie admin
+            <form class="stock-form">
+                <p>Changer le stock du produit:</p>
+                <input class="number" type="number" placeholder="nouveau stock" name="num" value="" required>
+                <button class="ok" type="submit">ok</button>
+            </form>
+            <form class="price-form">
+                <p>Changer le prix du produit:</p>
+                <input class="number" type="number" placeholder="nouveau prix" name="price" value="" required>
+                <button class="ok" type="submit">ok</button>
+            </form>
+            <form>
+                <button class="modif" type="submit">Suprimer le produit</button>
+            </form>
         </div>';
     }}
 ?>

@@ -216,20 +216,16 @@ session_start();
         <div class="commande">
             <div class="image-container"></div>
             <div class="d">
-                <p class="name">'.$tab[$nom].'</p>
-                <p class="prix">'.$tab[$prix]*$tab[$quantite].'</p>
-                <p class="number">'.$tab[$quantite].'</p>
+                <p class="name">'.$item[$nom].'</p>
+                <p class="prix">'.$item[$prix]*$item[$quantite].'</p>
+                <p class="number">'.$item[$quantite].'</p>
                 <form method="post" action="../controller/routeur.php">
                     <input type="hidden" name="action" value="del">
-                    <input type="hidden" name="id_produit" value="'.$tab[$refProduit].'">
+                    <input type="hidden" name="id_produit" value="'.$item[$refProduit].'">
                     <button type="submit" class="clear-btn">
-                        <i class="material-icons clear">
-                            clear
-                        </i>
+                        <i class="material-icons clear">clear</i>
                     </button>
-
                 </form>
-
             </div>
         </div>
     
@@ -237,28 +233,8 @@ session_start();
     }
 ?>
 </div>
-    <div class="command-container">
-        <div class="commande">
-            <div class="image-container"></div>
-            <div class="d">
-                <p class="name">Nvidia Rtx</p>
-                <p class="prix">1500</p>
-                <p class="number">5</p>
-                <form method="post" action="../controller/routeur.php">
-                    <input type="hidden" name="action" value="del">
-                    <input type="hidden" name="id_produit" value="">
-                    <button type="submit" class="clear-btn">
-                        <i class="material-icons clear">
-                            clear
-                        </i>
-                    </button>
 
-                </form>
 
-            </div>
-        </div>
-
-    </div>
     <div class="resume-container">
         <p class="total">Voici votre Panier!</p>
         <p class="total">Prix totale: 4500</p>
