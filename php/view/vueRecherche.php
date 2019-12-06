@@ -1,6 +1,8 @@
 <?php
 session_start();
-setcookie("panier",$_SESSION["panier"]["quantiter"],time()+31570000)  ;
+if(!isset($_COOKIE["panier"])){
+    setcookie("panier","0",time()+31570000)  ;
+}
 //echo "<br>".$_SESSION["panier"]["quantiter"];
 ?>
 
@@ -166,7 +168,7 @@ setcookie("panier",$_SESSION["panier"]["quantiter"],time()+31570000)  ;
     if(isset($_SESSION["panier"])){
         $val = $_SESSION["panier"]["quantiter"];
         echo'
-        <form  method="Post" action="PHP/view/Participant/preLobby.php">
+        <form  method="Post" action="php/controller/routeur.php">
         <button type="submit" id="cart-button">
             <i id="cart-icon" class="material-icons">
                 shopping_cart
@@ -177,7 +179,7 @@ setcookie("panier",$_SESSION["panier"]["quantiter"],time()+31570000)  ;
     ';
     }else{
         echo'
-        <form  method="Post" action="PHP/view/Participant/preLobby.php">
+        <form  method="Post" action="php/controller/routeur.php">
         <button type="submit" id="cart-button">
             <i id="cart-icon" class="material-icons">
                 shopping_cart
