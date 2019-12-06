@@ -225,6 +225,10 @@ $(document).ready(() => {
         });
     });
 
+    $("#revenir").click(function () {
+        window.location = "../../index.php";
+    });
+
     getMarque().then(function (value) {
         var marque = value;
         var tabMarque = marque.split('£');

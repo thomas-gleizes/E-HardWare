@@ -28,7 +28,7 @@ class ModelCommande{
         $value['idCommande'] = $idCommande;
         $value['refProduit'] = $refProduit;
         $value['quantite'] = $quantite;
-        $rec_prep = Model::$pdo->preapre($sql);
+        $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($value);
     }
 

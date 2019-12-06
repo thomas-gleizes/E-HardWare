@@ -58,9 +58,13 @@ class ModelPanier{
         return $tab;
     }
 
-
-
-
-
+    public static function addprodPanier($idClient, $refProduit, $quantiteProduit){
+        $sql = "INSERT INTO Panier VALUES (:idClient, :refProduit, :quantiteProduit)";
+        $value['idClient'] = $idClient;
+        $value['$refProduit'] = $refProduit;
+        $value['quantiteProduit'] = $quantiteProduit;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        }
 
 }

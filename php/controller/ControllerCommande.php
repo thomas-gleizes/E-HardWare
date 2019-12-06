@@ -23,7 +23,6 @@ class ControllerCommande {
     public static function createOrder(){
 
         if (!isset($_SESSION['login'])){
-            echo 1;
             session_start();
         }
         $tab = [];

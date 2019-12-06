@@ -14,6 +14,8 @@ class ControllerProduit{
 
         ModelProduit::ajouterPanier($tab);
 
+        require_once (File::build_path(array('view','vueCommande.php')));
+
     }
 
     public static function supprimemrPanier(){

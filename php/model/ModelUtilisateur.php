@@ -147,21 +147,17 @@ class ModelUtilisateur{
         if(isset($_SESSION["login"])){
             $login = $_SESSION["login"];
             $sql = "INSERT INTO Panier  (idClient,refProduit,quantiteProduit) VALUES (:login,:ref,:quantitier)";
-            echo $sql;
             $value = array(
                 "ref" => $ref,
                 "quantitier" => $quantiter,
                 "login" => $id
             );
             $valeur["login"] = $login;
-            //$rec_prep = Model::$pdo->prepare($sql2);
-            //$rec_prep->execute($valeur);
             $rec_prep = Model::$pdo->prepare($sql);
             $rec_prep->execute($value);
             $panier["reference"] = $ref;
             $_SESSION["panier"]["quantiter"] +=1;
-            var_dump($_SESSION);
-            //var_dump($_SESSION);
+            require_once (File::build_path(array('view','vueRecherche.php')));
         }
     }
 

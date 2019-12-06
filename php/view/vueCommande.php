@@ -260,9 +260,9 @@ if(!isset($_SESSION['login'])){
                     <input type="hidden" name="action" value="order">
                     <button class="validation"><p>Valider la commande</p></button>
                 </form> 
-                <button class="validation"><p>revenir à l\'acceuil</p></button>
+                <button id="revenir" ><p>revenir à l\'acceuil</p></button>
             </div>
-        ';
+            ';
     }
 
 
