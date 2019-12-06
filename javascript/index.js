@@ -28,15 +28,18 @@ $(document).ready(() => {
         if ($(this).val().length >= 2) {
             getResult($(this).val()).then(function (value) {
                 var produit = value;
-                var tabProduit = produit.split(',');
+                var tabProduit = produit.split('$');
                 for (var i = 0; i < tabProduit.length - 1; i++){
-                    $('.result').append( '<form  method="get" action="PHP/view/Participant/preLobby.php"><button type="submit" class="result-bar"><p>' + tabProduit[i] + '</p></button><input type="hidden" name="id_produit" value="' + tabProduit[i+1] + '"> </form>');
+                    $('.result').append( '<form  method="post" action="php/controller/routeur.php">' +
+                        '<button type="submit" class="result-bar"><p>' + tabProduit[i] + '</p>' +
+                        '</button><input type="hidden" name="id_produit" value="' + tabProduit[i+1] + '">' +
+                        '<input type="hidden" name="action" value="infoVueProduit"' + tabProduit[i+1] + '"> </form>');
                     resultSize += 2;
                     $(".result").css('display', "block");
                     $(".result").css('height', resultSize + "rem");
                     $('.result').width($('#reseach').width());
                     $('.result').offset($('#reseach').offset());
-                    $('.result').css("top", 31.5 + $('.result').offset().top) + "px";
+                    $('.result').css("top", "67px");
                     if( i + 1 < tabProduit.length - 1){
                         i++;
                     }
