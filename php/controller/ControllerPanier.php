@@ -16,9 +16,15 @@ class ControllerPanier{
 
     public static function displayPanier(){
 
-        session_start();
-        $idClient = ModelUtilisateur::getIdUti($_SESSION['login']);
-        $tab = ModelPanier::getPanier($idClient);
+
+        if(!isset($_SESSION)){
+            session_start();
+        }
+        if(isset($_SESSION['login'])){
+            $idClient = ModelUtilisateur::getIdUti($_SESSION['login']);
+            $tab = ModelPanier::getPanier($idClient);
+        }
+        $tab = [];
         require_once ('../view/vueCommande.php');
     }
 

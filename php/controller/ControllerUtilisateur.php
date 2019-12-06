@@ -110,8 +110,11 @@ class ControllerUtilisateur{
 
     public static function getId(){
         session_start();
-        $mail = $_SESSION['login'];
-        return ModelUtilisateur::getIdUti($mail);
+        if(isset($_SESSION['login'])){
+            $mail = $_SESSION['login'];
+            return ModelUtilisateur::getIdUti($mail);
+        }
+
     }
 
     public static function ajoutPanier(){

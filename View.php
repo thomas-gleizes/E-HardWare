@@ -1,9 +1,10 @@
 <?php
 
 
-File::build_path(array('index.php'));
-File::build_path(array('php','lib','File.php'));
-File::build_path(array('php','controller','routeur.php'));
+require('php/lib/File.php');
+
+require (File::build_path(array('view','index.php')));
+require(File::build_path(array('controller','routeur.php')));
 
 ?>
 
