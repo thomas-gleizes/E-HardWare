@@ -10,7 +10,9 @@ class ControllerCommande {
         session_start();
         $idClient = ModelUtilisateur::getIdUti($_SESSION['login']);
         $tab = ModelCommande::getOrder($idClient);
+        require_once ("../view/historique");
     }
+
 
     public static function createOrder(){
         sesssion_start();

@@ -16,7 +16,7 @@ class ControllerPanier{
         session_start();
         $idClient = ModelUtilisateur::getIdUti($_SESSION['login']);
         $tab = ModelPanier::getPanier($idClient);
-        require_once ('../view/vuePanier.php');
+        require_once ('../view/vueCommande.php');
     }
 
     public static function deletePanier(){
@@ -24,7 +24,7 @@ class ControllerPanier{
         $idClient = ModelUtilisateur::getIdUti($_SESSION['login']);
         ModelPanier::deletePanier($idClient, $_POST['id_produit']);
         $tab = ModelPanier::getPanier($idClient);
-        require_once ('../view/vuePanier.php');
+        require_once ('../view/vueCommande.php');
     }
 
 }

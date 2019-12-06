@@ -201,18 +201,54 @@ session_start();
 </div>
 <div class="result">
 </div>
-    <div class="command-container">
+<div class="command-container">
+<?php
+    $refproduit = "refProduit";
+    $quantite = "quantiteProduit";
+    $nom = "nom";
+    $nomMarque = "nomMarque";
+    $Url = "Url";
+    $prix = "prix";
+
+    foreach ($tab as $item) {
+        echo '
+        
         <div class="commande">
             <div class="image-container"></div>
             <div class="d">
-                <p class="name p">Nvidia Rtx</p>
-                <p class="prix p">1500</p>
-                <p class="number p">5</p>
+                <p class="name">'.$tab[$nom].'</p>
+                <p class="prix">'.$tab[$prix]*$tab[$quantite].'</p>
+                <p class="number">5</p>
                 <form method="post" action="../controller/routeur.php">
                     <input type="hidden" name="action" value="del">
                     <input type="hidden" name="id_produit" value="">
                     <button type="submit" class="clear-btn">
-                        <i class="material-icons clear1">
+                        <i class="material-icons clear">
+                            clear
+                        </i>
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+    
+    ';
+    }
+?>
+</div>
+    <div class="command-container">
+        <div class="commande">
+            <div class="image-container"></div>
+            <div class="d">
+                <p class="name">Nvidia Rtx</p>
+                <p class="prix">1500</p>
+                <p class="number">5</p>
+                <form method="post" action="../controller/routeur.php">
+                    <input type="hidden" name="action" value="del">
+                    <input type="hidden" name="id_produit" value="">
+                    <button type="submit" class="clear-btn">
+                        <i class="material-icons clear">
                             clear
                         </i>
                     </button>
@@ -224,15 +260,15 @@ session_start();
 
     </div>
     <div class="resume-container">
-        <p class="total p">Voici votre Panier!</p>
-        <p class="total p">Prix totale: 4500</p>
-        <p class="p">Livraison à:</p>
+        <p class="total">Voici votre Panier!</p>
+        <p class="total">Prix totale: 4500</p>
+        <p>Livraison à:</p>
         <i class="material-icons edit">
             edit
         </i>
-        <p class="adress p">340 rue Maurice et Katia Kraft, batiment A, apartement 245</p>
-        <button class="validation"><p class="p">Valider la commande</p></button>
-        <button class="validation"><p class="p">revenir à l'acceuil</p></button>
+        <p class="adress">340 rue Maurice et Katia Kraft, batiment A, apartement 245</p>
+        <button class="validation"><p>Valider la commande</p></button>
+        <button class="validation"><p>revenir à l'acceuil</p></button>
     </div>
 </body>
 </html>
