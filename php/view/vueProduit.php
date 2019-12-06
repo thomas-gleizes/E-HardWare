@@ -308,8 +308,8 @@ if (!empty($tabReview)){
                 <div class="com">
                     <img class="user-icon" src="https://img.icons8.com/ultraviolet/40/000000/guest-male.png">
                     <p class="name">'.$value[$prenom].'</p>
-                    <div  class="rate">'.$value[$note].'
-                    </div>
+                    <div  class="rate">'.$value[$note].'</div>
+                    <p>'.$value[$date].'</p>
                     <p class="note">'.$value[$note].'</p>
                     <div class="message-container">
                         <p class="message">'.$value[$com].'</p>
