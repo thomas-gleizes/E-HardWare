@@ -166,7 +166,8 @@ session_start();
     if(isset($_SESSION["panier"])){
         $val = $_SESSION["panier"]["quantiter"];
         echo'
-        <form  method="Post" action="PHP/view/Participant/preLobby.php">
+        <form  method="Post" action="../controller/routeur.php">
+        <input type="hidden" name="action" value="Panier">
         <button type="submit" id="cart-button">
             <i id="cart-icon" class="material-icons">
                 shopping_cart
@@ -177,7 +178,8 @@ session_start();
     ';
     }else{
         echo'
-        <form  method="Post" action="PHP/view/Participant/preLobby.php">
+        <form  method="Post" action="../controller/routeur.php">
+        <input type="hidden" name="action" value="Panier">
         <button type="submit" id="cart-button">
             <i id="cart-icon" class="material-icons">
                 shopping_cart
@@ -214,7 +216,9 @@ session_start();
         echo '
         
         <div class="commande">
-            <div class="image-container"></div>
+            <div class="image-container">
+                <input type="hidden" class="url" value="'.$item[$Url].'">
+            </div>
             <div class="d">
                 <p class="name">'.$item[$nom].'</p>
                 <p class="prix">'.$item[$prix]*$item[$quantite].'</p>

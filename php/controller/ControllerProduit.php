@@ -105,6 +105,8 @@ class ControllerProduit{
 
 
     public static function infoVueProduit(){
+
+
         $tab = ModelProduit::getProduit($_POST['id_produit']);
         if ($tab[0]['categorie'] == 'Processeur'){
             $tabProd = ModelProduit::getProcesseur($_POST['id_produit']);
@@ -125,6 +127,13 @@ class ControllerProduit{
 
         $tabReview = ModelProduit::getReview($_POST['id_produit']);
         $avr = round(ModelProduit::markAverage($_POST['id_produit']),2);
+        session_start();
+        if (isset($_SESSION['login'])){
+            $nbAvis = true;
+        } else {
+            $nbAvis = ModelProduit::countReview(ModelUtilisateur::getIdUti($_SESSION['login']));
+        }
+
         require_once ('../view/vueProduit.php');
     }
 

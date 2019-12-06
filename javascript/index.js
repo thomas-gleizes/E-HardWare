@@ -202,7 +202,7 @@ $(document).ready(() => {
         getAchatInfo(id).then(function (value) {
             var produit = value;
 
-            var tabProduit = produit.split('-');
+            var tabProduit = produit.split('£');
             console.log(tabProduit);
             $(".img2-container").css('background-image',"url(" +tabProduit[3]+")");
             $(".produit").html(tabProduit[0]);

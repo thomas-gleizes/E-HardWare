@@ -1,7 +1,14 @@
 <?php
-session_start();
-setcookie("panier",$_SESSION["panier"]["quantiter"],time()+31570000)  ;
-//echo "<br>".$_SESSION["panier"]["quantiter"];
+if(!isset($_SESSION)){
+    session_start();
+}
+if(!isset($_COOKIE["panier"])){
+    setcookie("panier","0",time()+31570000)  ;
+}
+if(isset($valCookie)){
+    setcookie("panier",strval($valCookie),time()+31570000)  ;
+}
+//echo "<br>".$_SESSION["panier"]["quantigit ter"];
 ?>
 
 <!DOCTYPE html>
@@ -162,11 +169,11 @@ setcookie("panier",$_SESSION["panier"]["quantiter"],time()+31570000)  ;
     }
     ?>
     <?php
-    $val = $_COOKIE["panier"];
-    if(isset($_SESSION["panier"])){
-        $val = $_SESSION["panier"]["quantiter"];
+    $val = 0;
+    if(isset($_COOKIE['panier'])){
+        $val = $_COOKIE["panier"];
         echo'
-        <form  method="Post" action="PHP/view/Participant/preLobby.php">
+        <form  method="Post" action="php/controller/routeur.php">
         <button type="submit" id="cart-button">
             <i id="cart-icon" class="material-icons">
                 shopping_cart
@@ -175,15 +182,17 @@ setcookie("panier",$_SESSION["panier"]["quantiter"],time()+31570000)  ;
         </button>
     </form>
     ';
-    }else{
+    }
+    else{
         echo'
-        <form  method="Post" action="../controller/routeur.php">
-            <input type="hidden" name="action" value="Panier">
-            <button type="submit" id="cart-button">
-             <i id="cart-icon" class="material-icons"> shopping_cart </i>
-             <p>'.$val.'</p>
-            </button>
-        </form>
+        <form  method="Post" action="php/controller/routeur.php">
+        <button type="submit" id="cart-button">
+            <i id="cart-icon" class="material-icons">
+                shopping_cart
+            </i>
+            <p>'.$val.'</p>
+        </button>
+    </form>
     ';
     }
 
@@ -252,7 +261,7 @@ setcookie("panier",$_SESSION["panier"]["quantiter"],time()+31570000)  ;
                 <div class=\"rond\">
                     <p>
                         <input class=\"id\" type=\"hidden\" name=\"id_produit\" value=\"$v[$r]\">
-                        <i class=\"add-icon material-icons remove-icon\">add_shopping_cart</i>
+                        <i class=\"add-icon material-icons buy-icon\">add_shopping_cart</i>
                     </p>
                 </div> ");
             if (isset($_SESSION['admin'])){
