@@ -111,3 +111,13 @@ p{
     color: white;
 }
 
+.edit  {
+    color: #aaaaaa;
+    font-size: 20px;
+    position: relative;
+    float: left;
+    margin-left: 1rem;
+    margin-top: 1.4rem;
+    cursor: pointer;
+}
+
