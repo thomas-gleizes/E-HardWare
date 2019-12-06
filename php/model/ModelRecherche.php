@@ -136,7 +136,7 @@ class ModelRecherche{
             $sql=$requete;
             //echo $sql;
         }
-        echo "$sql <br>";
+        //echo "$sql <br>";
 
 
         $rec_prep = Model::$pdo->prepare($sql);
@@ -151,18 +151,21 @@ class ModelRecherche{
     public static function getAllInfo($ref){
         $tab= [];
         //var_dump($ref);
-        foreach ($ref as $value){
-            foreach ($value as $v) {
-                $sql = "SELECT  distinct(refProduit) , Url,nom,nomMarque,prix FROM Produits where refProduit = :ref GROUP BY (refProduit)";
-                $valeur = array(
-                    "ref" => $v
-                );
-                $rec_prep = Model::$pdo->prepare($sql);
-                $rec_prep->execute($valeur);
-                $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
-                $tab = array_merge($tab,$rec_prep->fetchAll());
+        if(isset($ref)){
+            foreach ($ref as $value){
+                foreach ($value as $v) {
+                    $sql = "SELECT  distinct(refProduit) , Url,nom,nomMarque,prix FROM Produits where refProduit = :ref GROUP BY (refProduit)";
+                    $valeur = array(
+                        "ref" => $v
+                    );
+                    $rec_prep = Model::$pdo->prepare($sql);
+                    $rec_prep->execute($valeur);
+                    $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+                    $tab = array_merge($tab,$rec_prep->fetchAll());
+                }
             }
         }
+
         //var_dump($tab);
         return $tab;
     }

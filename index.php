@@ -2,8 +2,8 @@
 session_name("mlsfhvliusqfrbguilqdfjlqhdf");
 session_start();
 
-if(!isset($_COOKIE["panier"])) {
-    setcookie("panier", "0", time() + 31570000);
+if(!isset($_COOKIE["panier"])){
+    setcookie("panier","0",time()+31570000)  ;
 }
 //echo $_COOKIE["panier"];
 if (isset($_SESSION['login'])) {
@@ -168,20 +168,21 @@ require ("php/lib/File.php");
         }
         ?>
         <?php
-        $val = $_COOKIE["panier"];
-        if(isset($_SESSION["panier"])){
-            $val = $_SESSION["panier"]["quantiter"];
+        $val = 0;
+        if(isset($_COOKIE['panier'])){
+            $val = $_COOKIE["panier"];
             echo'
-            <form  method="Post" action="php/controller/routeur.php">
-                <button type="submit" id="cart-button">
-                    <i id="cart-icon" class="material-icons">
-                        shopping_cart
-                    </i>
-                    <p>'.$val.'</p>
-                </button>
-            </form>
-        ';
-        }else {
+                <form  method="Post" action="php/controller/routeur.php">
+                    <button type="submit" id="cart-button">
+                        <i id="cart-icon" class="material-icons">
+                            shopping_cart
+                        </i>
+                        <p>'.$val.'</p>
+                    </button>
+             </form>
+            ';
+        }
+        else {
             echo'
                 <form  method="Post" action="php/controller/routeur.php">
                     <button type="submit" id="cart-button">
