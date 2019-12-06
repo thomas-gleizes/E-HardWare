@@ -31,6 +31,8 @@
             ControllerPanier::deletePanier();
         } else  if ($_POST['action'] == 'Panier'){
             ControllerPanier::displayPanier();
+        } else if ($_POST['action'] == 'order') {
+            ControllerCommande::createOrder();
         } else {
             $action = $_POST["action"];
             ControllerUtilisateur::$action();

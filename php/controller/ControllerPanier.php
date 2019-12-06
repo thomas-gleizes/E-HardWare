@@ -24,18 +24,27 @@ class ControllerPanier{
         if(isset($_SESSION['login'])){
             $idClient = ModelUtilisateur::getIdUti($_SESSION['login']);
             $tab = ModelPanier::getPanier($idClient);
+            $tabClient = ModelUtilisateur::getInfoCommande($idClient);
+        } else {
+            $tab = [];
+            $tabClient = [];
         }
-        $tab = [];
-
         require_once (File::build_path(array('view','vueCommande.php')));
     }
 
     public static function deletePanier(){
-        session_start();
-        $idClient = ModelUtilisateur::getIdUti($_SESSION['login']);
-        ModelPanier::deletePanier($idClient, $_POST['id_produit']);
-
-        $tab = ModelPanier::getPanier($idClient);
+        if (!isset($_SESSION['login'])){
+            session_start();
+        }
+        if (isset($_SESSION['login'])){
+            $idClient = ModelUtilisateur::getIdUti($_SESSION['login']);
+            ModelPanier::deletePanier($idClient, $_POST['id_produit']);
+            $tab = ModelPanier::getPanier($idClient);
+            $tabClient = ModelUtilisateur::getInfoCommande($idClient);
+        } else {
+            $tab = [];
+            $tabClient = [];
+        }
         require_once (File::build_path(array('view','vueCommande.php')));
     }
 

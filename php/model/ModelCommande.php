@@ -13,13 +13,21 @@ class ModelCommande{
         $rec_prep->execute($value);
     }
 
-    public static function addOrder($tab){
+    public static function getLastIdCommandes($idClient){
+        $sql = "SELECT LAST_INSERT_ID(idCommande) as ID FROM Commandes WHERE idClient = :idClient;";
+        $value['idClient'] = $idClient;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        return $tab[0]['ID'];
+    }
+
+    public static function addOrder($idCommande, $refProduit, $quantite){
         $sql = "INSERT INTO ListeCommander VALUES (:idCommande, :refProduit, :quantite)";
-        $value = array(
-            "idCommande" => $tab['idCommande'],
-            'refProduit' => $tab['refProduit'],
-            'quantite' => $tab['quantite'],
-        );
+        $value['idCommande'] = $idCommande;
+        $value['refProduit'] = $refProduit;
+        $value['quantite'] = $quantite;
         $rec_prep = Model::$pdo->preapre($sql);
         $rec_prep->execute($value);
     }

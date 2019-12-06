@@ -1,5 +1,5 @@
 <?php
-if(!isset($_SESSION)){
+if(!isset($_SESSION['login'])){
     session_start();
 }
 ?>
@@ -25,9 +25,7 @@ if(!isset($_SESSION)){
 <div id="nav-bar" class="nav">
     <div id="fermer" class="section">
         <p>Fermer</p>
-        <i  class="material-icons navbaricons">
-            clear
-        </i>
+        <i class="material-icons navbaricons">clear</i>
     </div>
     <div class="section" id="moncompte">
         <p>Mon compte</p>
@@ -217,20 +215,23 @@ if(!isset($_SESSION)){
     $Url = "Url";
     $prix = "prix";
 
-    foreach ($tab as $item) {
-        echo '
+    if (!isset($tab)){
+        echo 'Votre Panier est Vide !';
+    } else {
+        foreach ($tab as $item) {
+            echo '
         
         <div class="commande">
             <div class="image-container">
-                <input type="hidden" class="url" value="'.$item[$Url].'">
+                <input type="hidden" class="url" value="' . $item[$Url] . '">
             </div>
             <div class="d">
-                <p class="name">'.$item[$nom].'</p>
-                <p class="prix">'.$item[$prix]*$item[$quantite].'</p>
-                <p class="number">'.$item[$quantite].'</p>
+                <p class="name">' . $item[$nom] . '</p>
+                <p class="prix">' . $item[$prix] * $item[$quantite] . '</p>
+                <p class="number">' . $item[$quantite] . '</p>
                 <form method="post" action="../controller/routeur.php">
                     <input type="hidden" name="action" value="del">
-                    <input type="hidden" name="id_produit" value="'.$item[$refProduit].'">
+                    <input type="hidden" name="id_produit" value="' . $item[$refProduit] . '">
                     <button type="submit" class="clear-btn">
                         <i class="material-icons clear">clear</i>
                     </button>
@@ -239,21 +240,34 @@ if(!isset($_SESSION)){
         </div>
     
     ';
+        }
     }
 ?>
 </div>
+<?php
+    $montant = "montantPanier";
+    $adresse = "adresseClient";
+    $ville = "villeClient";
+    foreach ($tabClient as $item) {
+        echo '
+            <div class="resume-container">
+                <p class="total">Voici votre Panier!</p>
+                <p class="total">Prix totale: ' . $item[$montant] . ',00€</p>
+                <p>Livraison à:</p>
+                <i class="material-icons edit">edit</i>
+                <p class="adress">' . $item[$ville] . ' - ' . $item[$adresse] . '</p>
+                <form method="post" action="../controller/routeur.php">
+                    <input type="hidden" name="action" value="order">
+                    <button class="validation"><p>Valider la commande</p></button>
+                </form> 
+                <button class="validation"><p>revenir à l\'acceuil</p></button>
+            </div>
+        ';
+    }
 
 
-    <div class="resume-container">
-        <p class="total">Voici votre Panier!</p>
-        <p class="total">Prix totale: 0€</p>
-        <p>Livraison à:</p>
-        <i class="material-icons edit">
-            edit
-        </i>
-        <p class="adress">saisissez votre adresse</p>
-        <button class="validation"><p>Valider la commande</p></button>
-        <button class="validation"><p>revenir à l'acceuil</p></button>
-    </div>
+?>
+
+
 </body>
 </html>

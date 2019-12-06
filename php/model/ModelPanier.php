@@ -48,6 +48,16 @@ class ModelPanier{
         $rec_prep->execute($value);
     }
 
+    public static function getRefproduit($idClient){
+        $sql = "SELECT refProduit, quantiteProduit FROM Panier WHERE idClient = :idClient";
+        $value['idClient'] = $idClient;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        return $tab;
+    }
+
 
 
 
