@@ -28,7 +28,7 @@ $(document).ready(() => {
         if ($(this).val().length >= 2) {
             getResult($(this).val()).then(function (value) {
                 var produit = value;
-                var tabProduit = produit.split('$');
+                var tabProduit = produit.split('£');
                 for (var i = 0; i < tabProduit.length - 1; i++){
                     $('.result').append( '<form  method="post" action="php/controller/routeur.php">' +
                         '<button type="submit" class="result-bar"><p>' + tabProduit[i] + '</p>' +
@@ -227,7 +227,7 @@ $(document).ready(() => {
 
     getMarque().then(function (value) {
         var marque = value;
-        var tabMarque = marque.split(' ');
+        var tabMarque = marque.split('£');
         for (var i = 0; i < tabMarque.length - 1; i++){
             $('.filtre-container').append( '<div class="div-marque" id="marque'+i+'"><p>'+tabMarque[i]+'</p> <i class="material-icons open"> check </i></div>');
             containerSize += 1.9;

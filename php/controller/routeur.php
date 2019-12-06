@@ -4,9 +4,13 @@
     require_once ('ControllerProduit.php');
     require_once ('ControllerCommande.php');
     require_once ('ControllerPanier.php');
+    require_once ('ControllerAjax.php');
     if(!$_GET==null){
         if ($_GET['action'] == "actionExt"){
             ControllerUtilisateur::myaccount();
+        }else if ($_GET['action'] == "ajax") {
+            $action = $_GET["control"];
+            ControllerAjax::$action();
         } else {
             $action = $_GET["action"];
             ControllerRecherche::$action();

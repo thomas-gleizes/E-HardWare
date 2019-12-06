@@ -2,9 +2,9 @@ async function getMarque(){
     var retour;
 
     await $.ajax({
-        url : 'php/model/marque-ajax.php',
+        url : 'php/controller/routeur.php',
         type : 'GET',
-        data : '',
+        data : 'action=ajax&control=marque',
         dataType : 'text',
         success : function(text, statut){
             retour = text;
@@ -17,9 +17,9 @@ async function getResult(result){
     var retour;
 
     await $.ajax({
-        url : 'php/model/result-ajax.php',
+        url : 'php/controller/routeur.php',
         type : 'GET',
-        data : 'result=' + result,
+        data : 'action=ajax&control=result&result=' + result,
         dataType : 'text',
         success : function(text, statut){
             retour = text;
@@ -32,9 +32,9 @@ async function getCardInfo(){
     var retour;
 
     await $.ajax({
-        url : 'php/model/card-ajax.php',
+        url : 'php/controller/routeur.php',
         type : 'GET',
-        data : '',
+        data : 'action=ajax&control=card',
         dataType : 'text',
         success : function(text, statut){
             retour = text;
@@ -47,9 +47,9 @@ async function getAchatInfo(id){
     var retour;
 
     await $.ajax({
-        url : 'php/model/add-ajax.php',
+        url : 'php/controller/routeur.php',
         type : 'GET',
-        data : 'id=' + id,
+        data : 'action=ajax&control=add&id=' + id,
         dataType : 'text',
         success : function(text, statut){
             retour = text;
