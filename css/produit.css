@@ -256,7 +256,7 @@
 .modif {
     margin-top:1rem;
     background-color: transparent;
-    border: #0398a1 2px solid;
+    border: #06bcc7 2px solid;
     border-radius: 0.2rem;
     width: 10%;
     height: 2rem;
@@ -265,7 +265,15 @@
 
 .number {
     margin-top: 0.5rem;
+    border: none;
+    border-bottom: #aaaaaa 1px solid;
+    height: 1.5rem;
+}
 
+.ok {
+    width:3rem !important;
+    height: 1.5rem !important;
+    margin-left: 35% !important;
 }
 
 
