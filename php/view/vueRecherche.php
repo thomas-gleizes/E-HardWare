@@ -177,14 +177,13 @@ setcookie("panier",$_SESSION["panier"]["quantiter"],time()+31570000)  ;
     ';
     }else{
         echo'
-        <form  method="Post" action="PHP/view/Participant/preLobby.php">
-        <button type="submit" id="cart-button">
-            <i id="cart-icon" class="material-icons">
-                shopping_cart
-            </i>
-            <p>'.$val.'</p>
-        </button>
-    </form>
+        <form  method="Post" action="../controller/routeur.php">
+            <input type="hidden" name="action" value="Panier">
+            <button type="submit" id="cart-button">
+             <i id="cart-icon" class="material-icons"> shopping_cart </i>
+             <p>'.$val.'</p>
+            </button>
+        </form>
     ';
     }
 
