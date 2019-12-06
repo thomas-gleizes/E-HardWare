@@ -172,19 +172,19 @@ require ("php/lib/File.php");
         if(isset($_COOKIE['panier'])){
             $val = $_COOKIE["panier"];
             echo'
-                <form  method="Post" action="php/controller/routeur.php">
-                    <button type="submit" id="cart-button">
-                        <i id="cart-icon" class="material-icons">
-                            shopping_cart
-                        </i>
-                        <p>'.$val.'</p>
-                    </button>
-             </form>
-            ';
-        }
-        else {
+            <form  method="Post" action="./php/controller/routeur.php">
+                <input type="hidden" name="action" value="Panier">
+                    <i id="cart-icon" class="material-icons">
+                        shopping_cart
+                    </i>
+                    <p>'.$val.'</p>
+                </button>
+            </form>
+        ';
+        }else {
             echo'
-                <form  method="Post" action="php/controller/routeur.php">
+                <form  method="Post" action="./php/controller/routeur.php">
+                    <input type="hidden" name="action" value="Panier">
                     <button type="submit" id="cart-button">
                         <i id="cart-icon" class="material-icons">
                             shopping_cart

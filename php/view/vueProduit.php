@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -330,7 +328,10 @@ echo' </div>
             <div class="write-commentaire open">';
 if (!isset($_SESSION['login'])){
     echo '<h5 class="firstAvis"> Connectez-vous pour donner votre avis !</h5>';
+} else if ($nbAvis == true) {
+    echo '<h5 class="firstAvis"> Vous ne pouvez pas noter deux fois un produit ! </h5>';
 } else {
+
     echo '
                 <form method="post" action="../controller/routeur.php">
                     <input type="hidden" name="action" value="ajoutReview">

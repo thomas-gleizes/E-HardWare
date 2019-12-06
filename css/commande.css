@@ -15,11 +15,11 @@ body {
     margin-left: 3%;
     margin-top: 8rem;
     border:solid #0398a1 1px;
-    border-bottom: none;
     border-radius: 0.1rem;
     width:60%;
     height: auto;
     max-height: 35rem;
+    overflow: auto;
 }
 
 .resume-container {
