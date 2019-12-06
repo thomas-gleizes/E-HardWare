@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 ?>
 
 <!DOCTYPE html>
@@ -241,12 +243,12 @@ session_start();
 
     <div class="resume-container">
         <p class="total">Voici votre Panier!</p>
-        <p class="total">Prix totale: 4500</p>
+        <p class="total">Prix totale: 0€</p>
         <p>Livraison à:</p>
         <i class="material-icons edit">
             edit
         </i>
-        <p class="adress">340 rue Maurice et Katia Kraft, batiment A, apartement 245</p>
+        <p class="adress">saisissez votre adresse</p>
         <button class="validation"><p>Valider la commande</p></button>
         <button class="validation"><p>revenir à l'acceuil</p></button>
     </div>
