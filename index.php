@@ -1,7 +1,9 @@
 <?php
+session_name("mlsfhvliusqfrbguilqdfjlqhdf");
 session_start();
-if(!isset($_COOKIE["panier"])) {
-    setcookie("panier", "0", time() + 31570000);
+
+if(!isset($_COOKIE["panier"])){
+    setcookie("panier","0",time()+31570000)  ;
 }
 //echo $_COOKIE["panier"];
 if (isset($_SESSION['login'])) {
@@ -167,9 +169,9 @@ File::build_path(array('php','lib','File.php'));
         }
         ?>
         <?php
-        $val = $_COOKIE["panier"];
-        if(isset($_SESSION["panier"])){
-            $val = $_SESSION["panier"]["quantiter"];
+        $val = 0;
+        if(isset($_COOKIE['panier'])){
+            $val = $_COOKIE["panier"];
             echo'
             <form  method="Post" action="./php/controller/routeur.php">
                 <input type="hidden" name="action" value="Panier">
