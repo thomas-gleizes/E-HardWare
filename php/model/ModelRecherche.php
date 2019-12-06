@@ -1,6 +1,6 @@
 <?php
 require_once ('../model/Model.php');
-
+File::build_path(array('model','Model.php'));
 class ModelRecherche{
 
     public static function afficherRecherche($nom){

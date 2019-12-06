@@ -1,8 +1,9 @@
 <?php
 
-require_once ("./../model/ModelPanier.php");
-require_once ("./../model/ModelUtilisateur.php");
-require_once ("./../model/ModelProduit.php");
+File::build_path(array('model','ModelPanier.php'));
+File::build_path(array('model','ModelProduit.php'));
+File::build_path(array('model','ModelUtilisateur.php'));
+
 class ControllerPanier{
 
     public static function addPanier(){
