@@ -23,7 +23,6 @@ class ModelRecherche{
 
     public static function afficheRechercheComplexe($nom,$prix,$marque,$categorie){
         $sql ="";
-        $dfbbd= explode(",",$marque);
         $requete = "";
         $valeur = [];
         $valeur["nom"] = "%".$nom."%";
@@ -137,8 +136,9 @@ class ModelRecherche{
             $sql=$requete;
             //echo $sql;
         }
+        echo "$sql <br>";
 
-        //echo $sql;
+
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($valeur);
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
@@ -162,7 +162,6 @@ class ModelRecherche{
                 $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
                 $tab = array_merge($tab,$rec_prep->fetchAll());
             }
-
         }
         //var_dump($tab);
         return $tab;

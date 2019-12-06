@@ -3,6 +3,7 @@
     require_once ('ControllerUtilisateur.php');
     require_once ('ControllerProduit.php');
     require_once ('ControllerCommande.php');
+    require_once ('ControllerPanier.php');
     if(!$_GET==null){
         if ($_GET['action'] == "actionExt"){
             ControllerUtilisateur::myaccount();
@@ -13,15 +14,17 @@
 
     }
     if(!$_POST==null){
-        if ($_POST['action']== ['ajoutProduit']) {
+        if ($_POST['action'] == 'ajoutProduit') {
             ControllerProduit::ajoutProduit();
-        } else if (isset($_POST['action']["createOrder"])) {
+        } else if ($_POST['action'] == "createOrder") {
             $action = $_POST['action'];
             ControllerCommande::createOrder();
         } else if ($_POST['action'] == 'ajoutReview'){
             ControllerProduit::addReview();
         } else if ($_POST['action'] == 'infoVueProduit'){
             ControllerProduit::infoVueProduit();
+        } else if ($_POST['action'] == 'del'){
+            ControllerPanier::deletePanier();
         } else {
             $action = $_POST["action"];
             ControllerUtilisateur::$action();

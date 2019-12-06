@@ -28,15 +28,18 @@ $(document).ready(() => {
         if ($(this).val().length >= 2) {
             getResult($(this).val()).then(function (value) {
                 var produit = value;
-                var tabProduit = produit.split(',');
+                var tabProduit = produit.split('$');
                 for (var i = 0; i < tabProduit.length - 1; i++){
-                    $('.result').append( '<form  method="get" action="PHP/view/Participant/preLobby.php"><button type="submit" class="result-bar"><p>' + tabProduit[i] + '</p></button><input type="hidden" name="id_produit" value="' + tabProduit[i+1] + '"> </form>');
+                    $('.result').append( '<form  method="post" action="php/controller/routeur.php">' +
+                        '<button type="submit" class="result-bar"><p>' + tabProduit[i] + '</p>' +
+                        '</button><input type="hidden" name="id_produit" value="' + tabProduit[i+1] + '">' +
+                        '<input type="hidden" name="action" value="infoVueProduit"' + tabProduit[i+1] + '"> </form>');
                     resultSize += 2;
                     $(".result").css('display', "block");
                     $(".result").css('height', resultSize + "rem");
                     $('.result').width($('#reseach').width());
                     $('.result').offset($('#reseach').offset());
-                    $('.result').css("top", 31.5 + $('.result').offset().top) + "px";
+                    $('.result').css("top", "67px");
                     if( i + 1 < tabProduit.length - 1){
                         i++;
                     }
@@ -150,7 +153,7 @@ $(document).ready(() => {
                 $('.container').append( '<div class="card"> <form  class="card-form"  method="POST" action="php/controller/routeur.php"> <button id="card'+nbcard+'" type="submit" class="img-container">' +
                     '<input type="hidden" name="id_produit" value="' + tabProduit[i] + '"><input type="hidden" name="action" value="infoVueProduit"' + tabProduit[i] + '"></button></form> <div class="description-container"><p class="marque">' + tabProduit[i+2] + '<p/>' +
                     '<p class="description">' + tabProduit[i+1] + '<p/>' +
-                    '<p class="prix">' + tabProduit[i+3] + ' €<p/><div class="rond"><p><input class="id" type="hidden" name="id_produit" value="' + tabProduit[i] + '"><i class="add-icon material-icons buy-icon">add_shopping_cart</i></p></div></div></div>');
+                    '<p class="prix">' + tabProduit[i+3] + ',00 €<p/><div class="rond"><p><input class="id" type="hidden" name="id_produit" value="' + tabProduit[i] + '"><i class="add-icon material-icons buy-icon">add_shopping_cart</i></p></div></div></div>');
                 var el = "#card" + nbcard;
                 $(el).css('background-image',"url(" +tabProduit[i+4]+")");
 

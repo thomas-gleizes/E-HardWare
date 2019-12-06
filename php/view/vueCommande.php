@@ -22,41 +22,31 @@ session_start();
                 <p class="name">Nvidia Rtx</p>
                 <p class="prix">1500</p>
                 <p class="number">5</p>
-                <i class="material-icons clear" >
-                    clear
-                </i>
-            </div>
-        </div>
-        <div class="commande">
-            <div class="image-container"></div>
-            <div class="d">
-                <p class="name">Nvidia Rtx</p>
-                <p class="prix">1500</p>
-                <p class="number">5</p>
-                <i class="material-icons clear">
-                    clear
-                </i>
-            </div>
-        </div>
-        <div class="commande">
-            <div class="image-container"></div>
-            <div class="d">
-                <p class="name">Nvidia Rtx</p>
-                <p class="prix">1500</p>
-                <p class="number">5</p>
-                <i class="material-icons clear">
-                    clear
-                </i>
+                <form method="post" action="../controller/routeur.php">
+                    <input type="hidden" name="action" value="del">
+                    <input type="hidden" name="id_produit" value="">
+                    <button type="submit" class="clear-btn">
+                        <i class="material-icons clear">
+                            clear
+                        </i>
+                    </button>
+
+                </form>
+
             </div>
         </div>
 
     </div>
     <div class="resume-container">
+        <p class="total">Voici votre Panier!</p>
         <p class="total">Prix totale: 4500</p>
         <p>Livraison à:</p>
+        <i class="material-icons edit">
+            edit
+        </i>
         <p class="adress">340 rue Maurice et Katia Kraft, batiment A, apartement 245</p>
-        <button class="validation"><p>Valider</p></button>
-        <button class="validation"><p>revenir au panier</p></button>
+        <button class="validation"><p>Valider la commande</p></button>
+        <button class="validation"><p>revenir à l'acceuil</p></button>
     </div>
 </body>
 </html>

@@ -2,7 +2,7 @@ async function getMarque(){
     var retour;
 
     await $.ajax({
-        url : 'php/controller/marque-ajax.php',
+        url : 'php/model/marque-ajax.php',
         type : 'GET',
         data : '',
         dataType : 'text',
@@ -17,7 +17,7 @@ async function getResult(result){
     var retour;
 
     await $.ajax({
-        url : 'php/controller/result-ajax.php',
+        url : 'php/model/result-ajax.php',
         type : 'GET',
         data : 'result=' + result,
         dataType : 'text',
@@ -32,7 +32,7 @@ async function getCardInfo(){
     var retour;
 
     await $.ajax({
-        url : 'php/controller/card-ajax.php',
+        url : 'php/model/card-ajax.php',
         type : 'GET',
         data : '',
         dataType : 'text',
@@ -47,7 +47,7 @@ async function getAchatInfo(id){
     var retour;
 
     await $.ajax({
-        url : 'php/controller/add-ajax.php',
+        url : 'php/model/add-ajax.php',
         type : 'GET',
         data : 'id=' + id,
         dataType : 'text',
