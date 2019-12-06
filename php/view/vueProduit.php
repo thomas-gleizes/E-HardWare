@@ -294,8 +294,12 @@ foreach ($tab as $tav){
 }
 echo '
             <div class="onglet" id="onglet1"><p>Commentaires des utilisateurs</p></div>
-            <div class="onglet" id="onglet2"><p>écrire un commentaire</p></div>
-            <div class="commentaire-container">
+            <div class="onglet" id="onglet2"><p>écrire un commentaire</p></div>';
+if (isset($_SESSION['admin'])){
+    if ($_SESSION['admin'] == 1){
+        echo '<div class="onglet" id="onglet3"><p>Partie admin</p></div>';
+    }}
+            echo'<div class="commentaire-container">
                 <div class="average-container">
                     <p class="average">Note moyenne des utilisateurs:</p>
                     <div id="global" class="rate">'.$avr.'
@@ -309,8 +313,8 @@ if (!empty($tabReview)){
                     <img class="user-icon" src="https://img.icons8.com/ultraviolet/40/000000/guest-male.png">
                     <p class="name">'.$value[$prenom].'</p>
                     <div  class="rate">'.$value[$note].'</div>
-                    <p>'.$value[$date].'</p>
                     <p class="note">'.$value[$note].'</p>
+                    <p class="date">'.$value[$date].'</p>
                     <div class="message-container">
                         <p class="message">'.$value[$com].'</p>
                     </div>
@@ -347,10 +351,16 @@ if (!isset($_SESSION['login'])){
                     <textarea id="mycom" name="commentaire" placeholder="écrivez un commentaire"></textarea>
                     <button id="achat-btn" type="submit"><p>Envoyer</p></button>
                 </form>
-           
+          
     ';
 }
 echo' </div>';
+if (isset($_SESSION['admin'])){
+    if ($_SESSION['admin'] == 1){
+        echo '<div class="admin-part open">
+            partie admin
+        </div>';
+    }}
 ?>
 
 

@@ -5,7 +5,7 @@
     height: 28rem;
     background-position:center center;
     background-repeat:no-repeat;
-    background-size: 40vw;
+    background-size:30vw;
     background-image: url("https://www.topachat.com/boutique/img/in/in1011/in10117193/in1011719302@2x.jpg");
 }
 .desc-container {
@@ -35,9 +35,18 @@
     width: 100%;
     height:auto;
     border-top: #0398a1 2px solid;
+    padding-bottom: 2rem;
 }
 
 .write-commentaire{
+    position: absolute;
+    margin-top: 35rem;
+    width: 100%;
+    height:auto;
+    border-top: #0398a1 2px solid;
+}
+
+.admin-part {
     position: absolute;
     margin-top: 35rem;
     width: 100%;
@@ -101,6 +110,7 @@
     box-shadow: inset 0px 0px 5px 0px rgba(97, 97, 97, 1);
     overflow: auto;
     padding: 0.5rem;
+    margin-bottom: 2rem;
 }
 .message {
     position:relative;
@@ -126,7 +136,7 @@
 .note {
     float: left;
     margin-left:0.3rem;
-    margin-top: 0.7rem;
+    margin-top: 0.8rem;
 }
 
 #num{
@@ -180,6 +190,11 @@
     margin-left: 12.7rem;
 }
 
+#onglet3 {
+    z-index: -1;
+    margin-left: 24.9rem;
+}
+
 #mycom {
     background-color: #e8f4ff;
     border-radius: 0.3rem;
@@ -218,6 +233,12 @@
 
 #prix-total{
     font-size: 25px;
+}
+
+.date {
+    float: right;
+    margin-right:20%;
+    margin-top: 0.7rem;
 }
 
 

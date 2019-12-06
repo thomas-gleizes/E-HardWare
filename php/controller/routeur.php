@@ -3,6 +3,7 @@
     require_once ('ControllerUtilisateur.php');
     require_once ('ControllerProduit.php');
     require_once ('ControllerCommande.php');
+    require_once ('ControllerPanier.php');
     if(!$_GET==null){
         if ($_GET['action'] == "actionExt"){
             ControllerUtilisateur::myaccount();
@@ -22,6 +23,8 @@
             ControllerProduit::addReview();
         } else if ($_POST['action'] == 'infoVueProduit'){
             ControllerProduit::infoVueProduit();
+        } else if ($_POST['action'] == 'del'){
+            ControllerPanier::deletePanier();
         } else {
             $action = $_POST["action"];
             ControllerUtilisateur::$action();
