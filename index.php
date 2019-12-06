@@ -172,6 +172,7 @@ require ("php/lib/File.php");
             echo'
             <form  method="Post" action="./php/controller/routeur.php">
                 <input type="hidden" name="action" value="Panier">
+                <button type="submit" id="cart-button">
                     <i id="cart-icon" class="material-icons">
                         shopping_cart
                     </i>
