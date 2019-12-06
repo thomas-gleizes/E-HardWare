@@ -8,7 +8,7 @@ if(!isset($_COOKIE["panier"])){
 if(isset($valCookie)){
     setcookie("panier",strval($valCookie),time()+31570000)  ;
 }
-//echo "<br>".$_SESSION["panier"]["quantiter"];
+//echo "<br>".$_SESSION["panier"]["quantigit ter"];
 ?>
 
 <!DOCTYPE html>
