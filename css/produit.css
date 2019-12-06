@@ -241,6 +241,41 @@
     margin-top: 0.7rem;
 }
 
+.stock-form {
+    float: left;
+    margin-top: 3rem;
+    margin-left: 20%;
+}
+
+.price-form {
+    float: right;
+    margin-top: 3rem;
+    margin-right: 20%;
+}
+
+.modif {
+    margin-top:1rem;
+    background-color: transparent;
+    border: #06bcc7 2px solid;
+    border-radius: 0.2rem;
+    width: 10%;
+    height: 2rem;
+    margin-left: 45%;
+}
+
+.number {
+    margin-top: 0.5rem;
+    border: none;
+    border-bottom: #aaaaaa 1px solid;
+    height: 1.5rem;
+}
+
+.ok {
+    width:3rem !important;
+    height: 1.5rem !important;
+    margin-left: 35% !important;
+}
+
 
 
 

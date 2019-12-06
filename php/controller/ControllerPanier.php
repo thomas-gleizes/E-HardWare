@@ -1,13 +1,16 @@
 <?php
 
-require_once ("./../model/ModelPanier.php");
-require_once ("./../model/ModelUtilisateur.php");
-require_once ("./../model/ModelProduit.php");
+File::build_path(array('model','ModelPanier.php'));
+File::build_path(array('model','ModelProduit.php'));
+File::build_path(array('model','ModelUtilisateur.php'));
+
 class ControllerPanier{
 
     public static function addPanier(){
         session_start();
         ModelPanier::insertPanier(ModelUtilisateur::getIdUti($_SESSION['login']),$_POST['id_produit'],$_POST['quantite']);
+        $tab = ModelPanier::getPanier(ModelUtilisateur::getIdUti($_SESSION['login']));
+        setcookie("panier",$tab['quantiteProduit'],time()+time()+31570000);
         require_once ('../view/vueRecherche.php?action=afficherRecherche&prix=&marque=&categorie=&research=');
     }
 

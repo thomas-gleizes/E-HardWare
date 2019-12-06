@@ -1,8 +1,8 @@
 <?php
 
-require_once ("../model/ModelCommande.php");
-require_once ("../model/ModelUtilisateur.php");
-require_once ("../model/ModelPanier.php");
+File::build_path(array('model','ModelCommande.php'));
+File::build_path(array('model','ModelUtilisateur.php'));
+File::build_path(array('model','ModelPanier.php'));
 
 class ControllerCommande {
 
