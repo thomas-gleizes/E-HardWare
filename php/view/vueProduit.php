@@ -365,6 +365,11 @@ if (isset($_SESSION['admin'])){
                 <input class="number" type="number" placeholder="nouveau stock" name="num" value="" required>
                 <button class="ok" type="submit">ok</button>
             </form>
+            <form class="name-form">
+                <p>Changer le nom du produit:</p>
+                <input class="number" type="number" placeholder="nouveau nom" name="name" value="" required>
+                <button class="ok" type="submit">ok</button>
+            </form>
             <form class="price-form">
                 <p>Changer le prix du produit:</p>
                 <input class="number" type="number" placeholder="nouveau prix" name="price" value="" required>
