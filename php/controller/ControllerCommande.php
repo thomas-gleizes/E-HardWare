@@ -10,7 +10,8 @@ class ControllerCommande {
         session_start();
         $idClient = ModelUtilisateur::getIdUti($_SESSION['login']);
         $tab = ModelCommande::getOrder($idClient);
-        require_once ("../view/historique");
+
+        require_once (File::build_path(array('view','historique')));
     }
 
 

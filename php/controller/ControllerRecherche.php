@@ -12,10 +12,13 @@ class ControllerRecherche{
         //var_dump($_GET);
         $tab = ModelRecherche::afficheRechercheComplexe($_GET["research"],$_GET["prix"],$_GET["marque"],$_GET["categorie"]);
         $tabvaleur = ModelRecherche::getAllinfo($tab);
-        $id = ModelUtilisateur::getIdUti($_SESSION['login']);
-        $valCookie = ModelPanier::getNbProduit($id);
-        $valCookie = $valCookie[0]['nbProduitPanier'];
-        File::build_path(array('view','vueRecherche.php'));
+        if(isset($_SESSION['login'])){
+            $id = ModelUtilisateur::getIdUti($_SESSION['login']);
+            $valCookie = ModelPanier::getNbProduit($id);
+            $valCookie = $valCookie[0]['nbProduitPanier'];
+        }
+
+        require_once (File::build_path(array('view','vueRecherche.php')));
     }
 
     public static function rechercheVide(){
@@ -26,7 +29,7 @@ class ControllerRecherche{
         $id = ModelUtilisateur::getIdUti($_SESSION['login']);
         $valCookie = ModelPanier::getNbProduit($id);
         $valCookie = $valCookie[0]['nbProduitPanier'];
-        File::build_path(array('view','vueRecherche.php'));
+        require_once (File::build_path(array('view','vueRecherche.php')));
     }
 
     public static function rechercherSidebar(){
@@ -38,6 +41,6 @@ class ControllerRecherche{
         $id = ModelUtilisateur::getIdUti($_SESSION['login']);
         $valCookie = ModelPanier::getNbProduit($id);
         $valCookie = $valCookie[0]['nbProduitPanier'];
-        File::build_path(array('view','vueRecherche.php'));
+        require_once (File::build_path(array('view','vueRecherche.php')));
     }
 }
