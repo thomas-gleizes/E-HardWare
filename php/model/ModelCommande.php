@@ -24,6 +24,16 @@ class ModelCommande{
         $rec_prep->execute($value);
     }
 
+    public static function getOrder($idClient){
+        $sql = "SELECT * FROM Commandes WEHRE idClient = :idClient GROUP BY (etatCommande);";
+        $value['idClient'] = $idClient;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        return $tab;
+    }
+
 
 
 }
