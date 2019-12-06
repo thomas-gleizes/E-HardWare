@@ -1,6 +1,7 @@
 <?php
 
-require_once ('../model/Model.php');
+require_once (File::build_path(array('model','Model.php')));
+
 class ModelPanier{
 
     public static function getPanier($idClient){

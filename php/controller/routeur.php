@@ -1,10 +1,10 @@
 <?php
-    require_once ('ControllerRecherche.php');
-    require_once ('ControllerUtilisateur.php');
-    require_once ('ControllerProduit.php');
-    require_once ('ControllerCommande.php');
-    require_once ('ControllerPanier.php');
-    require_once ('ControllerAjax.php');
+    require_once('../lib/File.php');
+    require_once (File::build_path(array('controller','ControllerRecherche.php')));
+    require_once (File::build_path(array('controller','ControllerUtilisateur.php')));
+    require_once (File::build_path(array('controller','ControllerProduit.php')));
+    require_once (File::build_path(array('controller','ControllerCommande.php')));
+    require_once (File::build_path(array('controller','ControllerPanier.php')));
     if(!$_GET==null){
         if ($_GET['action'] == "actionExt"){
             ControllerUtilisateur::myaccount();

@@ -1,8 +1,9 @@
 <?php
 
-require_once ("../model/ModelRecherche.php");
-require_once ("../model/ModelPanier.php");
-require_once ("../model/ModelUtilisateur.php");
+require_once (File::build_path(array('model','ModelRecherche.php')));
+require_once (File::build_path(array('model','ModelPanier.php')));
+require_once (File::build_path(array('model','ModelUtilisateur.php')));
+
 class ControllerRecherche{
     public static function afficherRecherche(){
         if(!isset($_SESSION)){
@@ -11,10 +12,13 @@ class ControllerRecherche{
         //var_dump($_GET);
         $tab = ModelRecherche::afficheRechercheComplexe($_GET["research"],$_GET["prix"],$_GET["marque"],$_GET["categorie"]);
         $tabvaleur = ModelRecherche::getAllinfo($tab);
-        $id = ModelUtilisateur::getIdUti($_SESSION['login']);
-        $valCookie = ModelPanier::getNbProduit($id);
-        $valCookie = $valCookie[0]['nbProduitPanier'];
-        require_once ("../view/vueRecherche.php");
+        if(isset($_SESSION['login'])){
+            $id = ModelUtilisateur::getIdUti($_SESSION['login']);
+            $valCookie = ModelPanier::getNbProduit($id);
+            $valCookie = $valCookie[0]['nbProduitPanier'];
+        }
+
+        require_once (File::build_path(array('view','vueRecherche.php')));
     }
 
     public static function rechercheVide(){
@@ -25,7 +29,7 @@ class ControllerRecherche{
         $id = ModelUtilisateur::getIdUti($_SESSION['login']);
         $valCookie = ModelPanier::getNbProduit($id);
         $valCookie = $valCookie[0]['nbProduitPanier'];
-        require_once ("../view/vueRecherche.php");
+        require_once (File::build_path(array('view','vueRecherche.php')));
     }
 
     public static function rechercherSidebar(){
@@ -37,6 +41,6 @@ class ControllerRecherche{
         $id = ModelUtilisateur::getIdUti($_SESSION['login']);
         $valCookie = ModelPanier::getNbProduit($id);
         $valCookie = $valCookie[0]['nbProduitPanier'];
-        require_once ("../view/vueRecherche.php");
+        require_once (File::build_path(array('view','vueRecherche.php')));
     }
 }

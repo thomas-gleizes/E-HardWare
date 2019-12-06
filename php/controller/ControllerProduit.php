@@ -1,7 +1,7 @@
 <?php
 
-require_once ("../model/ModelProduit.php");
-require_once ("../model/ModelUtilisateur.php");
+require_once(File::build_path(array('model','ModelProduit.php')));
+require_once (File::build_path(array('model','ModelUtilisateur.php')));
 class ControllerProduit{
 
 
@@ -45,7 +45,7 @@ class ControllerProduit{
         ModelProduit::insertProduit($tabProd);
 
         $tab = [];
-        $tab['refProduit'] = ModelProduit::getIdProduit($tabProd['nom'],$tabProd['categorie']);
+        $tab['refProduit'] = ModelProduit::getIdProduit($tabProd['nom']);
 
 
         if ($categorie == 'Processeur'){
@@ -100,7 +100,8 @@ class ControllerProduit{
 
         }
         $tabvaleur = [];
-        require_once ('../view/vueRecherche.php');
+
+        require_once (File::build_path(array('view','vueRecherche.php')));
     }
 
 
@@ -131,7 +132,7 @@ class ControllerProduit{
         if (isset($_SESSION['login'])){
             $nbAvis = true;
         } else {
-            $nbAvis = ModelProduit::countReview(ModelUtilisateur::getIdUti($_SESSION['login']));
+            $nbAvis = ModelProduit::countReview(ModelUtilisateur::getIdUti($_SESSION['login']),$_POST['id_produit']);
         }
 
         require_once ('../view/vueProduit.php');
@@ -162,6 +163,7 @@ class ControllerProduit{
         //SELF::infoVueProduit();
     }
 
+        //header('Location:../view/vueRecherche.php?action=rechercheVide')
 
 
 }

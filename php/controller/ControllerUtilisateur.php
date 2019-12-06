@@ -1,6 +1,6 @@
 <?php
 
-require_once ("../model/ModelUtilisateur.php");
+require_once (File::build_path(array('model','ModelUtilisateur.php')));
 
 class ControllerUtilisateur{
 
@@ -110,8 +110,11 @@ class ControllerUtilisateur{
 
     public static function getId(){
         session_start();
-        $mail = $_SESSION['login'];
-        return ModelUtilisateur::getIdUti($mail);
+        if(isset($_SESSION['login'])){
+            $mail = $_SESSION['login'];
+            return ModelUtilisateur::getIdUti($mail);
+        }
+
     }
 
     public static function ajoutPanier(){

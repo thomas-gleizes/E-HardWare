@@ -2,8 +2,14 @@
 session_name("mlsfhvliusqfrbguilqdfjlqhdf");
 session_start();
 
+if(!isset($_SESSION)){
+    session_start();
+}
 if(!isset($_COOKIE["panier"])){
     setcookie("panier","0",time()+31570000)  ;
+}
+if(isset($valCookie)){
+    setcookie("panier",strval($valCookie),time()+31570000)  ;
 }
 //echo $_COOKIE["panier"];
 if (isset($_SESSION['login'])) {
@@ -11,7 +17,8 @@ if (isset($_SESSION['login'])) {
         header('Location:./php/controller/routeur.php?action=rechercheVide');
     }
 }
-require ("php/lib/File.php");
+File::build_path(array('php','lib','File.php'));
+
 ?>
 
 
@@ -149,7 +156,7 @@ require ("php/lib/File.php");
         </div>
         <?php
         if (isset($_SESSION['login'])) {
-            echo '<form  method="Post" action="./php/controller/routeur.php">
+            echo '<form  method="Post" action="../controller/routeur.php">
                 <input type="hidden" name="action" value="myaccount">
                 <button type="submit" id="account-button">
                     <i id="account-icon" class="material-icons">

@@ -1,8 +1,8 @@
 <?php
 
-require_once ("../model/ModelCommande.php");
-require_once ("../model/ModelUtilisateur.php");
-require_once ("../model/ModelPanier.php");
+require_once(File::build_path(array('model','ModelCommande.php')));
+require_once(File::build_path(array('model','ModelUtilisateur.php')));
+require_once(File::build_path(array('model','ModelPanier.php')));
 
 class ControllerCommande {
 
@@ -10,7 +10,8 @@ class ControllerCommande {
         session_start();
         $idClient = ModelUtilisateur::getIdUti($_SESSION['login']);
         $tab = ModelCommande::getOrder($idClient);
-        require_once ("../view/historique");
+
+        require_once (File::build_path(array('view','historique')));
     }
 
 

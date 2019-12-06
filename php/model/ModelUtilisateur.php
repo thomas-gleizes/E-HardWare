@@ -1,6 +1,8 @@
 <?php
-require_once ('../model/Model.php');
-require_once ('../lib/Security.php');
+require_once (File::build_path(array('model','Model.php')));
+
+require_once (File::build_path(array('lib','Security.php')));
+
 
 class ModelUtilisateur{
 
