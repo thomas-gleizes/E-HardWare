@@ -5,6 +5,7 @@
     require_once (File::build_path(array('controller','ControllerProduit.php')));
     require_once (File::build_path(array('controller','ControllerCommande.php')));
     require_once (File::build_path(array('controller','ControllerPanier.php')));
+    require_once (File::build_path(array('controller','ControllerAjax.php')));
     if(!$_GET==null){
         if ($_GET['action'] == "actionExt"){
             ControllerUtilisateur::myaccount();
