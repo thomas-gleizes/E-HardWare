@@ -1,7 +1,7 @@
 <?php
 
-File::build_path(array('model','ModelProduit.php'));
-File::build_path(array('model','ModelUtilisateur.php'));
+require_once(File::build_path(array('model','ModelProduit.php')));
+require_once (File::build_path(array('model','ModelUtilisateur.php')));
 class ControllerProduit{
 
 

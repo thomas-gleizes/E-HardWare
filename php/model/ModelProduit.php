@@ -1,6 +1,6 @@
 <?php
-File::build_path(array('model','Model.php'));
-File::build_path(array('model','ModelRecherche.php'));
+require_once (File::build_path(array('model','Model.php')));
+require_once (File::build_path(array('model','ModelRecherche.php')));
 
 
 class ModelProduit {

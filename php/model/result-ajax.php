@@ -1,5 +1,5 @@
 <?php
-File::build_path(array('model','Model.php'));
+require_once (File::build_path(array('model','Model.php')));
 
 $result = $_GET['result'];
 $rep = Model::$pdo->query("SELECT nom,refProduit FROM Produits WHERE nom like '%$result%';");
