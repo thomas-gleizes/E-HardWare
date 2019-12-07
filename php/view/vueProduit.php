@@ -289,10 +289,10 @@ foreach ($tab as $tav){
             <p id="prix-total" class="left">'.$tav[$p].',00 €</p>
             <p id="quantity" class="left">quantité :</p>
             <form  method="Post" action="../controller/routeur.php">
-                <select id="select6" name="quantite">
+                <select id="select6" name="nombre">
                 </select>
-                <input type="hidden" id="id_produit" name="id_produit" value="'.$tav[$r].'">
-                <input type="hidden" name="action" value="addPanier">
+                <input type="hidden" id="id_produit" name="id_produit" value="'.$ref.'">
+                <input type="hidden" name="action" value="ajoutPanier">
                 <button id="achat-btn" type="submit"><p>Ajouter</p></button>
             </form>
         </div>

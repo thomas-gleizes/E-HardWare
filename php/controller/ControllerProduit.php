@@ -160,7 +160,9 @@ class ControllerProduit{
         $tab['note'] = $note;
         $tab['commentaire'] = $_POST['commentaire'];
         $tab['date'] = date("o-n-d");
-        ModelProduit::insertReview($tab);
+        if (ModelProduit::countReview($tab['idClient'], $tab['refProduit']) == 0){
+            ModelProduit::insertReview($tab);
+        }
         SELF::infoVueProduit();
     }
 
