@@ -3,6 +3,7 @@
 require_once(File::build_path(array('model','ModelPanier.php')));
 require_once(File::build_path(array('model','ModelProduit.php')));
 require_once(File::build_path(array('model','ModelUtilisateur.php')));
+require_once(File::build_path(array('controller','ControllerUtilisateur.php')));
 
 class ControllerPanier{
 
@@ -15,6 +16,18 @@ class ControllerPanier{
         setcookie("panier",$tab['quantiteProduit'],time()+time()+31570000);
 
         require_once (File::build_path(array('view','vueCommande')));
+    }
+
+    public static function ajoutPanier(){
+        $id = ControllerUtilisateur::getId();
+        $nb = ModelPanier::verifprodPanier($_POST['id_produit'], $id);
+        echo $nb;
+        if ($nb == 0){
+            ModelPanier::ajoutPanier($_POST["id_produit"],$_POST["nombre"],$id);
+        } else {
+            ModelPanier::upDatePanier($_POST['id_produit'],$id,$_POST['nombre']);
+        }
+        ControllerPanier::DisplayPanier();
     }
 
     public static function displayPanier(){

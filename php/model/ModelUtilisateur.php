@@ -143,23 +143,6 @@ class ModelUtilisateur{
         $rec_prep->execute($valeur);
     }
 
-    public static function ajoutPanier($ref,$quantiter,$id){
-        if(isset($_SESSION["login"])){
-            $login = $_SESSION["login"];
-            $sql = "INSERT INTO Panier  (idClient,refProduit,quantiteProduit) VALUES (:login,:ref,:quantitier)";
-            $value = array(
-                "ref" => $ref,
-                "quantitier" => $quantiter,
-                "login" => $id
-            );
-            $valeur["login"] = $login;
-            $rec_prep = Model::$pdo->prepare($sql);
-            $rec_prep->execute($value);
-            $panier["reference"] = $ref;
-            $_SESSION["panier"]["quantiter"] +=1;
-            require_once (File::build_path(array('view','vueRecherche.php')));
-        }
-    }
 
     public static function getInfoCommande($idClient){
         $sql = "SELECT montantPanier, villeClient, adresseClient FROM Clients WHERE idClient = :idClient;";

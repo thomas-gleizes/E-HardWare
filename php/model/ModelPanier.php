@@ -65,6 +65,43 @@ class ModelPanier{
         $value['quantiteProduit'] = $quantiteProduit;
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($value);
+    }
+
+    public static function ajoutPanier($ref,$quantiter,$id){
+        if(isset($_SESSION["login"])){
+            $login = $_SESSION["login"];
+            $sql = "INSERT INTO Panier  (idClient,refProduit,quantiteProduit) VALUES (:login,:ref,:quantitier)";
+            $value = array(
+                "ref" => $ref,
+                "quantitier" => $quantiter,
+                "login" => $id
+            );
+            $valeur["login"] = $login;
+            $rec_prep = Model::$pdo->prepare($sql);
+            $rec_prep->execute($value);
+            $panier["reference"] = $ref;
+            $_SESSION["panier"]["quantiter"] +=1;
         }
+    }
+
+    public static function verifprodPanier($refProduit, $idClient){
+        $sql = "SELECT COUNT(*) as NB FROM Panier WHERE refProduit = :refProduit AND idClient = :idClient";
+        $value['refProduit'] = $refProduit;
+        $value['idClient'] = $idClient;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        return $tab[0]['NB'];
+    }
+
+    public static function upDatePanier($refProduit, $idClient, $quantite){
+        $sql = "UPDATE Panier SET quantiteProduit = quantiteProduit + :quantite WHERE refProduit = :refProduit AND idClient = :idClient;";
+        $value['refProduit'] = $refProduit;
+        $value['idClient'] = $idClient;
+        $value['quantite'] = $quantite;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+    }
 
 }
