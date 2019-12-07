@@ -215,9 +215,7 @@ if(!isset($_SESSION['login'])){
     $Url = "Url";
     $prix = "prix";
 
-    if (!isset($tab)){
-        echo 'Votre Panier est Vide !';
-    } else {
+
         foreach ($tab as $item) {
             echo '
         
@@ -240,31 +238,41 @@ if(!isset($_SESSION['login'])){
         </div>
     
     ';
-        }
-    }
-?>
-</div>
-<?php
-    $montant = "montantPanier";
-    $adresse = "adresseClient";
-    $ville = "villeClient";
-    foreach ($tabClient as $item) {
-        echo '
-            <div class="resume-container">
-                <p class="total">Voici votre Panier!</p>
-                <p class="total">Prix totale: ' . $item[$montant] . ',00€</p>
-                <p>Livraison à:</p>
-                <i class="material-icons edit">edit</i>
-                <p class="adress">' . $item[$ville] . ' - ' . $item[$adresse] . '</p>
-                <form method="post" action="../controller/routeur.php">
-                    <input type="hidden" name="action" value="order">
-                    <button class="validation"><p>Valider la commande</p></button>
-                </form> 
-                <button id="revenir" ><p>revenir à l\'acceuil</p></button>
-            </div>
-            ';
+
     }
 
+ echo '</div>';
+    if (empty($tabClient)){
+        echo '<div class="resume-container">
+                    <form method="post" action="../view/connection.php">
+                        <button class="validation" id="account-button">Conectez vous</button>
+                    </form>
+             </div>';
+    } else {
+        $montant = "montantPanier";
+        $adresse = "adresseClient";
+        $ville = "villeClient";
+        foreach ($tabClient as $item) {
+            echo '
+                <div class="resume-container">
+                    <p class="total">Voici votre Panier!</p>
+                    <p class="total">Prix totale: ' . $item[$montant] . ',00€</p>
+                    <p>Livraison à:</p>
+                    <i class="material-icons edit">edit</i>
+                    <p class="adress">' . $item[$ville] . ' - ' . $item[$adresse] . '</p>
+                    ';
+            if (!empty($tab)){
+                echo '<form method="post" action="../controller/routeur.php">
+                        <input type="hidden" name="action" value="order">
+                        <button class="validation"><p>Valider la commande</p></button>
+                      </form>';
+            }
+            echo '
+                    <button id="revenir" ><p>revenir à l\'acceuil</p></button>
+                </div>
+                ';
+        }
+    }
 
 ?>
 

@@ -213,7 +213,7 @@ class ModelProduit {
     }
 
     public static function countReview($idClient, $refProduit){
-        $sql = "SELECT COUNT() AS nb FROM AVIS WHERE idClient = :idClient, refProduit = :refProduit;";
+        $sql = "SELECT COUNT(*) AS nb FROM Avis WHERE idClient = :idClient AND refProduit = :refProduit;";
         $value['idClient'] = $idClient;
         $value['refProduit'] = $refProduit;
         $rec_prep = Model::$pdo->prepare($sql);
@@ -221,11 +221,10 @@ class ModelProduit {
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
         $tab = $rec_prep->fetchAll();
         if ($tab[0]['nb'] == 1){
-            return true;
+            return 1;
         } else {
-            return false;
+            return 0;
         }
-
     }
 
 

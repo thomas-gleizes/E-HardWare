@@ -130,14 +130,13 @@ class ControllerProduit{
 
         $tabReview = ModelProduit::getReview($_POST['id_produit']);
         $avr = round(ModelProduit::markAverage($_POST['id_produit']),2);
-        session_start();
-        if (isset($_SESSION['login'])){
-            $nbAvis = true;
-        } else {
-            $nbAvis = ModelProduit::countReview(ModelUtilisateur::getIdUti($_SESSION['login']),$_POST['id_produit']);
-        }
 
-        require_once ('../view/vueProduit.php');
+        if (!isset($_SESSION['login'])){
+            session_start();
+        }
+        $nbAvis = ModelProduit::countReview(ModelUtilisateur::getIdUti($_SESSION['login']),$_POST['id_produit']);
+
+        require_once (File::build_path(array('view','vueProduit.php')));
     }
 
     public static function displayReview(){
@@ -162,7 +161,7 @@ class ControllerProduit{
         $tab['commentaire'] = $_POST['commentaire'];
         $tab['date'] = date("o-n-d");
         ModelProduit::insertReview($tab);
-        //SELF::infoVueProduit();
+        SELF::infoVueProduit();
     }
 
         //header('Location:../view/vueRecherche.php?action=rechercheVide')

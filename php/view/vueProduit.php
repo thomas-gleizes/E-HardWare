@@ -162,32 +162,36 @@
     }
     ?>
     <?php
-    $val = $_COOKIE["panier"];
-    if(isset($_SESSION["panier"])){
-        $val = $_SESSION["panier"]["quantiter"];
+    $val = 0;
+    if(isset($_COOKIE['panier'])){
+        $val = $_COOKIE["panier"];
         echo'
-        <form  method="Post" action="PHP/view/Participant/preLobbyiyvjvhjhv.php">
-        <button type="submit" id="cart-button">
-            <i id="cart-icon" class="material-icons">
-                shopping_cart
-            </i>
-            <p>'.$val.'</p>
-        </button>
-    </form>
-    ';
-    }else{
-        echo'
-        <form  method="Post" action="../controller/routeur.php">
-        <input type="hidden" name="action" value="Panier">
-        <button type="submit" id="cart-button">
-            <i id="cart-icon" class="material-icons">
-                shopping_cart
-            </i>
-            <p>'.$val.'</p>
-        </button>
-    </form>
+        <form  method="Post" action="./../controller/routeur.php">
+                    <input type="hidden" name="action" value="Panier">
+                    <button type="submit" id="cart-button">
+                        <i id="cart-icon" class="material-icons">
+                            shopping_cart
+                        </i>
+                        <p>'.$val.'</p>
+                    </button>
+             </form>
     ';
     }
+    else{
+        echo'
+       <form  method="Post" action="./../controller/routeur.php">
+                    <input type="hidden" name="action" value="Panier">
+                    <button type="submit" id="cart-button">
+                        <i id="cart-icon" class="material-icons">
+                            shopping_cart
+                        </i>
+                        <p>'.$val.'</p>
+                    </button>
+             </form>
+    ';
+    }
+
+
     ?>
 
 </header>
@@ -261,19 +265,19 @@ if ($cat == 'Processeur'){
 }
 foreach ($tabProd as $tai){
     if ($cat == 'Processeur'){
-        echo htmlspecialchars('<p id="info">Nombre de Coeur : '. $tai[$nbCoeur] .'<br> Nombre de threads : '. $tai[$nbThreads] .'<br> Socket : '. $tai[$socket] .'<br> Fréquence : '. $tai[$frequence] .'GHz<br> Fréquence boost: '. $tai[$boost] .'GHz<br> Cache : '. $tai[$cache] .'Mo<br></p>');
+        echo '<p id="info">Nombre de Coeur : '. $tai[$nbCoeur] .'<br> Nombre de threads : '. $tai[$nbThreads] .'<br> Socket : '. $tai[$socket] .'<br> Fréquence : '. $tai[$frequence] .'GHz<br> Fréquence boost: '. $tai[$boost] .'GHz<br> Cache : '. $tai[$cache] .'Mo<br></p>';
     } else if($cat == 'CarteGraphique'){
-        echo htmlspecialchars('<p id="info">Chipset Graphique : '. $tai[$chipset].' <br>Memoire vidéo : '. $tai[$memore].'Go <br>Architecture : '. $tai[$architecture].'<br> Bus : '. $tai[$bus].'</p>');
+        echo '<p id="info">Chipset Graphique : '. $tai[$chipset].' <br>Memoire vidéo : '. $tai[$memore].'Go <br>Architecture : '. $tai[$architecture].'<br> Bus : '. $tai[$bus].'</p>';
     } else if ($cat == 'CarteMere'){
-        echo htmlspecialchars('<p id="info">Chipset : '. $tai[$chipset].'<br> Socket : '. $tai[$socket].'<br> Format : '. $tai[$format].' </p>');
+        echo '<p id="info">Chipset : '. $tai[$chipset].'<br> Socket : '. $tai[$socket].'<br> Format : '. $tai[$format].' </p>';
     } else if ($cat == 'Memoire'){
-        echo htmlspecialchars('<p id="info"> Type : '. $tai[$type].'<br> Capacité : '. $tai[$capacite].'Go <br> Fréquence : '. $tai[$frequence].'MHz<br> CAS : '. $tai[$CAS].' </p>');
+        echo '<p id="info"> Type : '. $tai[$type].'<br> Capacité : '. $tai[$capacite].'Go <br> Fréquence : '. $tai[$frequence].'MHz<br> CAS : '. $tai[$CAS].' </p>';
     } else if ($cat == 'SSD'){
-        echo htmlspecialchars('<p id="info"> Format : '. $tai[$format].'<br> Capacité : '. $tai[$capacite].'Go <br> Interface : '. $tai[$interface].' <br> Vitesse de Lecture : '. $tai[$lecture].'Mo/s<br> Vitesse d\'écriture : '. $tai[$ecriture].'Mo/s</p>');
+        echo '<p id="info"> Format : '. $tai[$format].'<br> Capacité : '. $tai[$capacite].'Go <br> Interface : '. $tai[$interface].' <br> Vitesse de Lecture : '. $tai[$lecture].'Mo/s<br> Vitesse d\'écriture : '. $tai[$ecriture].'Mo/s</p>';
     } else if ($cat == 'DisqueDur'){
-        echo htmlspecialchars('<p id="info"> Capacité : '. $tai[$capacite].'Go <br> Interface : '. $tai[$interface].' <br> Vitesse de rotation : '. $tai[$vitesse].'t/m</p>');
+        echo '<p id="info"> Capacité : '. $tai[$capacite].'Go <br> Interface : '. $tai[$interface].' <br> Vitesse de rotation : '. $tai[$vitesse].'t/m</p>';
     } else if ($cat == 'Alimentation'){
-        echo htmlspecialchars('<p id="info"> Puissance ; '. $tai[$puissance].'W <br> Modularité : '. $tai[$modularite].' </p>');
+        echo '<p id="info"> Puissance ; '. $tai[$puissance].'W <br> Modularité : '. $tai[$modularite].' </p>';
     }
 }
 foreach ($tab as $tav){
@@ -288,7 +292,7 @@ foreach ($tab as $tav){
                 <select id="select6" name="quantite">
                 </select>
                 <input type="hidden" id="id_produit" name="id_produit" value="'.$tav[$r].'">
-                <input type="hidden" name="action" value="ajoutPanier">
+                <input type="hidden" name="action" value="addPanier">
                 <button id="achat-btn" type="submit"><p>Ajouter</p></button>
             </form>
         </div>
@@ -331,10 +335,9 @@ echo' </div>
             <div class="write-commentaire open">';
 if (!isset($_SESSION['login'])){
     echo '<h5 class="firstAvis"> Connectez-vous pour donner votre avis !</h5>';
-} else if ($nbAvis == true) {
+} else if ($nbAvis == 1) {
     echo '<h5 class="firstAvis"> Vous ne pouvez pas noter deux fois un produit ! </h5>';
 } else {
-
     echo '
                 <form method="post" action="../controller/routeur.php">
                     <input type="hidden" name="action" value="ajoutReview">

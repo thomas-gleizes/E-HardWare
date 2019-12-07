@@ -1,6 +1,7 @@
 <?php
 
 require_once (File::build_path(array('model','ModelUtilisateur.php')));
+require_once (File::build_path(array('controller','ControllerPanier.php')));
 
 class ControllerUtilisateur{
 
@@ -119,6 +120,7 @@ class ControllerUtilisateur{
     public static function ajoutPanier(){
         $id = ControllerUtilisateur::getId();
         ModelUtilisateur::ajoutPanier($_POST["id_produit"],$_POST["nombre"],$id);
+        ControllerPanier::displayPanier();
     }
 
 

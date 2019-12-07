@@ -7,16 +7,17 @@ require_once(File::build_path(array('model','ModelUtilisateur.php')));
 class ControllerPanier{
 
     public static function addPanier(){
-        session_start();
+        if (!isset($_SESSION['login'])){
+            session_start();
+        }
         ModelPanier::insertPanier(ModelUtilisateur::getIdUti($_SESSION['login']),$_POST['id_produit'],$_POST['quantite']);
         $tab = ModelPanier::getPanier(ModelUtilisateur::getIdUti($_SESSION['login']));
         setcookie("panier",$tab['quantiteProduit'],time()+time()+31570000);
 
-        require_once (File::build_path(array('view','vueRecherche.php?action=afficherRecherche&prix=&marque=&categorie=&research=')));
+        require_once (File::build_path(array('view','vueCommande')));
     }
 
     public static function displayPanier(){
-
 
         if(!isset($_SESSION)){
             session_start();
