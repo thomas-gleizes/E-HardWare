@@ -157,7 +157,7 @@ if (isset($_SESSION['login'])) {
         </div>
         <?php
         if (isset($_SESSION['login'])) {
-            echo '<form  method="Post" action="../controller/routeur.php">
+            echo '<form  method="Post" action="./php/view/account.php">
                 <input type="hidden" name="action" value="myaccount">
                 <button type="submit" id="account-button">
                     <i id="account-icon" class="material-icons">
