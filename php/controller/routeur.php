@@ -35,6 +35,14 @@
             ControllerCommande::createOrder();
         } else if ($_POST['action'] == 'ajoutPanier') {
             ControllerPanier::ajoutPanier();
+        } else if ($_POST['action'] == 'stock'){
+            ControllerProduit::ajouterStock();
+        } else if ($_POST['action'] == 'name'){
+            ControllerProduit::changerNom();
+        } else if ($_POST['action'] == 'prix') {
+            ControllerProduit::changerPrix();
+        } else if ($_POST['action'] == 'supprProduit') {
+            ControllerProduit::supprProduit();
         } else {
             $action = $_POST["action"];
             ControllerUtilisateur::$action();

@@ -164,6 +164,28 @@ class ControllerProduit{
         SELF::infoVueProduit();
     }
 
+    public static function supprProduit(){
+        ModelProduit::deleteProduit($_POST['id_produit']);
+        require_once (File::build_path(array('view','vueRecherche.php')));
+    }
+
+    public static function changerPrix(){
+        ModelProduit::upDatePrice($_POST['id_produit'], $_POST['price']);
+        SELF::infoVueProduit();
+    }
+
+    public static function changerNom(){
+        ModelProduit::upDateName($_POST['id_produit'], $_POST['name']);
+        SELF::infoVueProduit();
+    }
+
+    public static function ajouterStock(){
+        ModelProduit::upDateStock($_POST['id_produit'], $_POST['stock']);
+        SELF::infoVueProduit();
+    }
+
+
+
         //header('Location:../view/vueRecherche.php?action=rechercheVide')
 
 

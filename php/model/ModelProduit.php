@@ -227,6 +227,37 @@ class ModelProduit {
         }
     }
 
+    public static function deleteProduit($refProduit){
+        $sql = "DELETE FROM Produits WHERE refProduit = :refProduit;";
+        $value['refProduit'] = $refProduit;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+    }
+
+    public static function upDatePrice($refProduit, $price){
+        $sql = "UPDATE Produits SET prix = :price WHERE refProduit = :refProduit;";
+        $value['refProduit'] = $refProduit;
+        $value['price'] = $price;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+    }
+
+    public static function upDateName($refProduit, $name){
+        $sql = "UPDATE Produits SET nom = :nom WHERE refProduit = :refProduit;";
+        $value['refProduit'] = $refProduit;
+        $value['nom'] = $name;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+    }
+
+    public static function upDateStock($refProduit, $stock){
+        $sql = "UPDATE Produits SET stock = stock + :stock WHERE refProduit = :refProduit;";
+        $value['refProduit'] = $refProduit;
+        $value['stock'] = $stock;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+    }
+
 
     //desc Produit
     public static function getProduit($refProduit){

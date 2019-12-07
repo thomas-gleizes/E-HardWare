@@ -41,6 +41,13 @@ class ControllerCommande {
         }
     }
 
+    public static function displayAllOrder(){
+        if (!isset($_SESSION['login'])){
+            session_start();
+        }
+        $idClient = ModelUtilisateur::getIdUti($_SESSION['login']);
+        $tab = ModelCommande::getAllOrder($idClient);
 
+    }
 
 }

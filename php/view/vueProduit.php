@@ -366,23 +366,31 @@ echo' </div>';
 if (isset($_SESSION['admin'])){
     if ($_SESSION['admin'] == 1){
         echo '<div class="admin-part open">
-            <form class="stock-form">
-                <p>Changer le stock du produit:</p>
-                <input class="number" type="number" placeholder="nouveau stock" name="num" value="" required>
+            <form class="stock-form" method="post" action="./../controller/routeur.php">
+                <p>Ajouter du stock du produit:</p>
+                <input class="number" type="number" min="0" placeholder="nouveau stock" name="stock" required>
+                <input type="hidden" name="action" value="stock">
+                <input type="hidden" name="id_produit" value="'. $ref .'">
                 <button class="ok" type="submit">ok</button>
             </form>
-            <form class="name-form">
+            <form class="name-form" method="post" action="./../controller/routeur.php">
                 <p>Changer le nom du produit:</p>
-                <input class="number" type="number" placeholder="nouveau nom" name="name" value="" required>
+                <input class="number" type="text" placeholder="nouveau nom" name="name" required>
+                <input type="hidden" name="id_produit" value="'. $ref .'">
+                <input type="hidden" name="action" value="name"> 
                 <button class="ok" type="submit">ok</button>
             </form>
-            <form class="price-form">
+            <form class="price-form" method="post" action="./../controller/routeur.php">
                 <p>Changer le prix du produit:</p>
-                <input class="number" type="number" placeholder="nouveau prix" name="price" value="" required>
+                <input class="number" type="number" min="0" placeholder="nouveau prix" name="price" required>
+                <input type="hidden" name="id_produit" value="'. $ref .'">
+                <input type="hidden" name="action" value="prix">
                 <button class="ok" type="submit">ok</button>
             </form>
-            <form>
+            <form method="post" action="./../controller/routeur.php">
                 <button class="modif" type="submit">Suprimer le produit</button>
+                <input type="hidden" name="id_produit" value="'. $ref .'">
+                <input type="hidden" name="action" value="supprProduit"
             </form>
         </div>';
     }}
