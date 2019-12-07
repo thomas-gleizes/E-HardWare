@@ -101,7 +101,7 @@ class ModelPanier{
         $value['idClient'] = $idClient;
         $value['quantite'] = $quantite;
         $rec_prep = Model::$pdo->prepare($sql);
-        $rec_prep->execute($value);
+        $rec_prep->execute($value) ;
     }
 
 }

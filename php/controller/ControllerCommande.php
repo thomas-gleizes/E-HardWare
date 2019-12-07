@@ -32,10 +32,6 @@ class ControllerCommande {
         $idCommande = ModelCommande::getLastIdCommandes($tab['idClient']);
         $tabref = ModelPanier::getRefproduit($tab['idClient']);
         foreach ($tabref as $value){
-            echo $value['refProduit'];
-            echo "= refProduit <br>";
-            echo $value['quantiteProduit'];
-            echo "= Quantiter <br>";
             ModelCommande::addOrder($idCommande, $value['refProduit'], $value['quantiteProduit']);
         }
         ModelPanier::deleteAllPanier($tab['idClient']);

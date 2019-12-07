@@ -20,7 +20,10 @@ class ModelCommande{
         $rec_prep->execute($value);
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
         $tab = $rec_prep->fetchAll();
-        return $tab[0]['ID'];
+        foreach ($tab as $item) {
+            $ID = $item['ID'];
+        }
+        return $ID;
     }
 
     public static function addOrder($idCommande, $refProduit, $quantite){

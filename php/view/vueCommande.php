@@ -225,7 +225,7 @@ if(!isset($_SESSION['login'])){
             </div>
             <div class="d">
                 <p class="name">' . $item[$nom] . '</p>
-                <p class="prix">' . $item[$prix] * $item[$quantite] . '</p>
+                <p class="prix">' . $item[$prix] * $item[$quantite] . ',00€</p>
                 <p class="number">' . $item[$quantite] . '</p>
                 <form method="post" action="../controller/routeur.php">
                     <input type="hidden" name="action" value="del">

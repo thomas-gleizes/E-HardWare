@@ -21,13 +21,12 @@ class ControllerPanier{
     public static function ajoutPanier(){
         $id = ControllerUtilisateur::getId();
         $nb = ModelPanier::verifprodPanier($_POST['id_produit'], $id);
-        echo $nb;
         if ($nb == 0){
             ModelPanier::ajoutPanier($_POST["id_produit"],$_POST["nombre"],$id);
         } else {
             ModelPanier::upDatePanier($_POST['id_produit'],$id,$_POST['nombre']);
         }
-        ControllerPanier::DisplayPanier();
+        require_once (File::build_path(array('view','vueRecherche.php')));
     }
 
     public static function displayPanier(){
