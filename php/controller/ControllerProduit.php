@@ -156,7 +156,7 @@ class ControllerProduit{
         $tab = [];
         $tab['idClient'] = ModelUtilisateur::getIdUti($_SESSION['login']);
         //var_dump($tab);
-        $tab['refProduit'] = $_POST['refProduit'];
+        $tab['refProduit'] = $_POST['id_produit'];
         $tab['note'] = $note;
         $tab['commentaire'] = $_POST['commentaire'];
         $tab['date'] = date("o-n-d");

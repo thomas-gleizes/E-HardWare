@@ -341,7 +341,7 @@ if (!isset($_SESSION['login'])){
     echo '
                 <form method="post" action="../controller/routeur.php">
                     <input type="hidden" name="action" value="ajoutReview">
-                    <input type="hidden" name="refProduit" value="' . $ref . '">
+                    <input type="hidden" name="id_produit" value="' . $ref . '">
                     <p class="mynote">votre note:</p>
                     <select id="select7" name="note">
                         <option value="0">0</option>
@@ -388,9 +388,9 @@ if (isset($_SESSION['admin'])){
                 <button class="ok" type="submit">ok</button>
             </form>
             <form method="post" action="./../controller/routeur.php">
-                <button class="modif" type="submit">Suprimer le produit</button>
                 <input type="hidden" name="id_produit" value="'. $ref .'">
-                <input type="hidden" name="action" value="supprProduit"
+                <input type="hidden" name="action" value="supprProduit">
+                <button class="modif" type="submit">Suprimer le produit</button>
             </form>
         </div>';
     }}
