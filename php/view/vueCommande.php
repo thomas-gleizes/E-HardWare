@@ -261,11 +261,16 @@ if(!isset($_SESSION['login'])){
                     <i class="material-icons edit">edit</i>
                     <p class="adress">' . $item[$ville] . ' - ' . $item[$adresse] . '</p>
                     ';
-            if (!empty($tab)){
+            if (!empty($tab) && $code == 0){
                 echo '<form method="post" action="../controller/routeur.php">
                         <input type="hidden" name="action" value="order">
                         <button class="validation"><p>Valider la commande</p></button>
                       </form>';
+            } else if ($code != 0){
+                echo '<p>Veuillez confirmez votre compte avant de passer commande</p>
+                        <form  method="Post" action="../view/account.php">
+                            <button type="submit" id="account-button"> Connexion </button>
+                        </form>';
             }
             echo '
                     <button id="revenir" ><p>revenir à l\'acceuil</p></button>

@@ -154,6 +154,16 @@ class ModelUtilisateur{
         return $tab;
     }
 
+    public static function getNbProdPanier ($idClient){
+        $sql = "SELECT nbProduitPanier FROM Clients WHERE idClient = :idClient";
+        $value['idClient'] = $idClient;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        return $tab[0]['nbProduitPanier'];
+    }
+
 
 
 

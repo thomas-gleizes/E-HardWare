@@ -85,7 +85,7 @@ class ModelPanier{
     }
 
     public static function verifprodPanier($refProduit, $idClient){
-        $sql = "SELECT COUNT(*) as NB FROM Panier WHERE refProduit = :refProduit AND idClient = :idClient";
+        $sql = "SELECT COUNT(*) AS NB FROM Panier WHERE refProduit = :refProduit AND idClient = :idClient";
         $value['refProduit'] = $refProduit;
         $value['idClient'] = $idClient;
         $rec_prep = Model::$pdo->prepare($sql);
@@ -94,6 +94,7 @@ class ModelPanier{
         $tab = $rec_prep->fetchAll();
         return $tab[0]['NB'];
     }
+
 
     public static function upDatePanier($refProduit, $idClient, $quantite){
         $sql = "UPDATE Panier SET quantiteProduit = quantiteProduit + :quantite WHERE refProduit = :refProduit AND idClient = :idClient;";

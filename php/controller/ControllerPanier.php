@@ -38,9 +38,11 @@ class ControllerPanier{
             $idClient = ModelUtilisateur::getIdUti($_SESSION['login']);
             $tab = ModelPanier::getPanier($idClient);
             $tabClient = ModelUtilisateur::getInfoCommande($idClient);
+            $code = ModelUtilisateur::getCodeConf($_SESSION['login']);
         } else {
             $tab = [];
             $tabClient = [];
+            $code = 0;
         }
         require_once (File::build_path(array('view','vueCommande.php')));
     }

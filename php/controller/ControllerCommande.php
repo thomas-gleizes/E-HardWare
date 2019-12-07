@@ -28,14 +28,19 @@ class ControllerCommande {
         $tab = [];
         $tab['date'] = date("o-n-d");
         $tab['idClient'] = ModelUtilisateur::getIdUti($_SESSION['login']);
-        ModelCommande::CreateOrder($tab);
-        $idCommande = ModelCommande::getLastIdCommandes($tab['idClient']);
-        $tabref = ModelPanier::getRefproduit($tab['idClient']);
-        foreach ($tabref as $value){
-            ModelCommande::addOrder($idCommande, $value['refProduit'], $value['quantiteProduit']);
+        if (ModelUtilisateur::getNbProdPanier($tab['idClient']) > 0){
+            ModelCommande::CreateOrder($tab);
+            $idCommande = ModelCommande::getLastIdCommandes($tab['idClient']);
+            $tabref = ModelPanier::getRefproduit($tab['idClient']);
+            foreach ($tabref as $value){
+                ModelCommande::addOrder($idCommande, $value['refProduit'], $value['quantiteProduit']);
+            }
+            ModelPanier::deleteAllPanier($tab['idClient']);
+        } else {
+            require_once (File::build_path(array('view','vueRecherche.php')));
         }
-        ModelPanier::deleteAllPanier($tab['idClient']);
     }
+
 
 
 }

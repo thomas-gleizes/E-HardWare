@@ -45,6 +45,16 @@ class ModelCommande{
         return $tab;
     }
 
+    public static function getAllOrder($idClient){
+        $sql = "SELECT * FROM Commandes WHERE idClient = :idClient;";
+        $value['idClient'] = $idClient;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        return $tab;
+    }
+
 
 
 }
