@@ -317,12 +317,12 @@ if (!empty($tabReview)){
         echo '
                 <div class="com">
                     <img class="user-icon" src="https://img.icons8.com/ultraviolet/40/000000/guest-male.png">
-                    <p class="name">'.$value[$prenom].'</p>
+                    <p class="name">'.htmlspecialchars($value[$prenom]).'</p>
                     <div  class="rate">'.$value[$note].'</div>
                     <p class="note">'.$value[$note].'</p>
                     <p class="date">'.$value[$date].'</p>
                     <div class="message-container">
-                        <p class="message">'.$value[$com].'</p>
+                        <p class="message">'.htmlspecialchars($value[$com]).'</p>
                     </div>
                     </div>
                     ';
