@@ -6,10 +6,10 @@ require_once (File::build_path(array('model','ModelUtilisateur.php')));
 
 class ControllerRecherche{
     public static function afficherRecherche(){
+        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
         if(!isset($_SESSION)){
             session_start();
         }
-        //var_dump($_GET);
         $tab = ModelRecherche::afficheRechercheComplexe($_GET["research"],$_GET["prix"],$_GET["marque"],$_GET["categorie"]);
         $tabvaleur = ModelRecherche::getAllinfo($tab);
         if(isset($_SESSION['login'])){
@@ -22,6 +22,7 @@ class ControllerRecherche{
     }
 
     public static function rechercheVide(){
+        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
         if(!isset($_SESSION)){
             session_start();
         }
@@ -33,6 +34,7 @@ class ControllerRecherche{
     }
 
     public static function rechercherSidebar(){
+        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
         if(!isset($_SESSION)){
             session_start();
         }

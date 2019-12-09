@@ -1,3 +1,9 @@
+<?php
+session_name("mlsfhvliusqfrbguilqdfjlqhdf");
+if(!isset($_SESSION['login'])){
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

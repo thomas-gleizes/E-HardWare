@@ -53,7 +53,7 @@ class ControllerUtilisateur{
     }
 
     public static function Valider(){
-
+        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
         session_start();
         $tab['codeConf'] = $_POST['codeConf'];
         $tab['mail'] = $_SESSION['login'];
@@ -75,6 +75,7 @@ class ControllerUtilisateur{
     }
 
     public static function disconnect(){
+        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
         session_start();
         session_unset();
         session_destroy();
@@ -100,6 +101,7 @@ class ControllerUtilisateur{
     }
 
     public static function changerMdp(){
+        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
         Session_start();
 
         $tab = [];
@@ -117,6 +119,7 @@ class ControllerUtilisateur{
     }
 
     public static function getId(){
+        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
         session_start();
         if(isset($_SESSION['login'])){
             $mail = $_SESSION['login'];

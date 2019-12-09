@@ -131,6 +131,7 @@ class ControllerProduit{
         $tabReview = ModelProduit::getReview($_POST['id_produit']);
         $avr = round(ModelProduit::markAverage($_POST['id_produit']),2);
 
+        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
         if (!isset($_SESSION['login'])){
             session_start();
         }
@@ -145,6 +146,7 @@ class ControllerProduit{
     }
 
     public static function addReview (){
+        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
         session_start();
         if ($_POST['note'] > 5){
             $note = 5;
@@ -163,7 +165,7 @@ class ControllerProduit{
         if (ModelProduit::countReview($tab['idClient'], $tab['refProduit']) == 0){
             ModelProduit::insertReview($tab);
         }
-        SELF::infoVueProduit();
+        self::infoVueProduit();
     }
 
     public static function supprProduit(){
@@ -173,17 +175,17 @@ class ControllerProduit{
 
     public static function changerPrix(){
         ModelProduit::upDatePrice($_POST['id_produit'], $_POST['price']);
-        SELF::infoVueProduit();
+        self::infoVueProduit();
     }
 
     public static function changerNom(){
         ModelProduit::upDateName($_POST['id_produit'], $_POST['name']);
-        SELF::infoVueProduit();
+        self::infoVueProduit();
     }
 
     public static function ajouterStock(){
         ModelProduit::upDateStock($_POST['id_produit'], $_POST['stock']);
-        SELF::infoVueProduit();
+        self::infoVueProduit();
     }
 
 

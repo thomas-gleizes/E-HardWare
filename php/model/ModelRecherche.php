@@ -7,9 +7,6 @@ class ModelRecherche{
         $sql = "SELECT * FROM Produits where nom like :nom ";
         $valeur  =array(
             "nom" => "%".$nom."%"
-            /*"prix" => $prix,
-            "marque" => $marque,
-            "categorie" => $categorie*/
         );
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($valeur);
@@ -134,11 +131,7 @@ class ModelRecherche{
             }
 
             $sql=$requete;
-            //echo $sql;
         }
-        //echo "$sql <br>";
-
-
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($valeur);
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
@@ -149,8 +142,7 @@ class ModelRecherche{
     }
 
     public static function getAllInfo($ref){
-        $tab= [];
-        //var_dump($ref);
+        $tab = [];
         if(isset($ref)){
             foreach ($ref as $value){
                 foreach ($value as $v) {

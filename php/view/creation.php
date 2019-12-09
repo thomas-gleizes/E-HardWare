@@ -1,3 +1,12 @@
+<?php
+session_name("mlsfhvliusqfrbguilqdfjlqhdf");
+if(!isset($_SESSION['login'])){
+    session_start();
+}
+if (isset($_SESSION['login'])) {
+    header("Location:../view/account.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

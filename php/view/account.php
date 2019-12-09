@@ -1,5 +1,5 @@
 <?php
-
+session_name("mlsfhvliusqfrbguilqdfjlqhdf");
 if (!isset($_SESSION['login'])) {
     session_start();
     if (!isset($_SESSION['login'])) {
@@ -11,8 +11,6 @@ if (!isset($_SESSION['login'])) {
 if (!isset($resClient)) {
     header('Location:../controller/routeur.php?action=actionExt');
 }
-
-
 ?>
 
 
