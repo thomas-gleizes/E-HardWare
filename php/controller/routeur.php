@@ -45,6 +45,8 @@
             ControllerProduit::supprProduit();
         } else if ($_POST['action'] == 'commande') {
             ControllerCommande::displayAllOrder();
+        } else if ($_POST['action'] == 'affCommande') {
+            ControllerCommande::DisplayOrder();
         } else {
             $action = $_POST["action"];
             ControllerUtilisateur::$action();

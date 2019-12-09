@@ -232,7 +232,7 @@ if(!isset($_SESSION['login'])){
                     <input type="hidden" name="action" value="del">
                     <input type="hidden" name="id_produit" value="' . $item[$refProduit] . '">
                     <button type="submit" class="clear-btn">
-                        <i class="material-icons clear">clear</i>
+                        <i class="material-icons clear1">clear</i>
                     </button>
                 </form>
             </div>

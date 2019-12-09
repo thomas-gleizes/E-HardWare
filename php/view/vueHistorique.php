@@ -214,9 +214,9 @@ if(!isset($_SESSION['login'])){
         echo '
         <div class="historique-card">
             <p class="date">Commande passer le : '.$item[$date].'</p>
-            <p class="number-commande">contenant '.$item[$nbProduit].' articles</p>
+            <p class="number-commande">Contenant '.$item[$nbProduit].' articles</p>
             <p class="prix-commande">Prix totale: '.$item[$montant].',00€</p>
-            <p>Etat de la Commande'.$item[$etat].'</p>
+            <p>Etat de la Commande : '.$item[$etat].'</p>
             <form class="command-form" method="post" action="../controller/routeur.php">
                 <input type="hidden" name="action" value="affCommande">
                 <input type="hidden" name="idCommande" value="'. $item[$idCommande].'">
@@ -233,6 +233,7 @@ if(!isset($_SESSION['login'])){
         <p class="date">Commande livré le : 10/08/2018</p>
         <p class="number-commande">contenant 3 articles</p>
         <p class="prix-commande">Prix totale: 4500,00€</p>
+        <p>Etat de la Commande : Livré</p>
         <form class="command-form" method="post" action="../controller/routeur.php">
             <input type="hidden" name="action" value="">
             <button class="command-btn" type="submit"></button>
