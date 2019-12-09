@@ -182,7 +182,7 @@ if(!isset($_SESSION['login'])){
              </form>
     ';
     }
-    else{
+    else {
         echo'
        <form  method="Post" action="./../controller/routeur.php">
                     <input type="hidden" name="action" value="Panier">
@@ -218,6 +218,8 @@ $p = "prix";
 $s = "stock";
 $c = "categorie";
 $prenom = "prenomClient";
+$idClient = "idClient";
+$login = "Email";
 $note = "note";
 $com = "commentaire";
 $date = "date";
@@ -325,7 +327,28 @@ if (!empty($tabReview)){
                     <p class="name">'.htmlspecialchars($value[$prenom]).'</p>
                     <div  class="rate">'.$value[$note].'</div>
                     <p class="note">'.$value[$note].'</p>
-                    <p class="date">'.$value[$date].'</p>
+                    <p class="date">'.$value[$date].'</p>';
+        if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1){
+           // if ($_SESSION['admin'] == 1){
+                echo '  <form class="date" method="post" action="./../controller/routeur.php">
+                        <input type="hidden" name="action" value="supprReview">
+                        <input type="hidden" name="id_produit" value="' . $ref . '">
+                        <input type="hidden" name="idClient" value="'. $value[$idClient].'">
+                        <button type="submit"><i class="material-icons">clear</i></button>
+                    </form>';
+            //}
+        } else if (isset($_SESSION['login'])){
+            if ($value[$login] == $_SESSION['login']) {
+                echo '<form class="date" method="post" action="./../controller/routeur.php">
+                    <input type="hidden" name="action" value="supprReview">
+                    <input type="hidden" name="id_produit" value="' . $ref . '">
+                    <input type="hidden" name="idClient" value="' . $value[$idClient] . '">
+                    <button type="submit"><i class="material-icons">clear</i></button>
+                  </form>';
+            }
+        }
+
+        echo '
                     <div class="message-container">
                         <p class="message">'.htmlspecialchars($value[$com]).'</p>
                     </div>
@@ -345,7 +368,7 @@ if (!isset($_SESSION['login'])){
 } else {
     echo '
                 <form method="post" action="../controller/routeur.php">
-                    <input type="hidden" name="action" value="ajoutReview">
+                    <input type="hidden" name="action" value="ajoutReview">                
                     <input type="hidden" name="id_produit" value="' . $ref . '">
                     <p class="mynote">votre note:</p>
                     <select id="select7" name="note">

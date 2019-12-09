@@ -169,7 +169,7 @@ class ModelProduit {
     }
 
     public static function getReview($refProduit){
-        $sql = "SELECT Clients.prenomClient, Avis.note, Avis.commentaire, Avis.date FROM Avis, Clients WHERE Avis.idClient = Clients.idClient AND Avis.refProduit = :refProduit ORDER  BY (date) DESC";
+        $sql = "SELECT Clients.Email, Clients.idClient, Clients.prenomClient, Avis.note, Avis.commentaire, Avis.date FROM Avis, Clients WHERE Avis.idClient = Clients.idClient AND Avis.refProduit = :refProduit ORDER  BY (date) DESC";
         $value['refProduit'] = $refProduit;
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($value);
@@ -226,6 +226,16 @@ class ModelProduit {
             return 0;
         }
     }
+
+    public static function deleteReview($idClient, $refProduit){
+        $sql = "DELETE FROM Avis WHERE idClient = :idClient AND refProduit = :refProduit";
+        $value['idClient'] = $idClient;
+        $value['refProduit'] = $refProduit;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+    }
+
+
 
     public static function deleteProduit($refProduit){
         $sql = "DELETE FROM Produits WHERE refProduit = :refProduit;";

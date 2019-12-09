@@ -136,6 +136,14 @@ class ControllerProduit{
             session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }
+
+        if (isset($_SESSION['login'])){
+            $login = $_SESSION['login'];
+        } else {
+            $login = "lkf,nd¤&\"&é";
+        }
+
+
         $nbAvis = ModelProduit::countReview(ModelUtilisateur::getIdUti($_SESSION['login']),$_POST['id_produit']);
 
         require_once (File::build_path(array('view','vueProduit.php')));
@@ -189,9 +197,11 @@ class ControllerProduit{
         self::infoVueProduit();
     }
 
+    public static function supprReview (){
+        ModelProduit::deleteReview($_POST['idClient'], $_POST['id_produit']);
+        self::infoVueProduit();
+    }
 
-
-        //header('Location:../view/vueRecherche.php?action=rechercheVide')
 
 
 }

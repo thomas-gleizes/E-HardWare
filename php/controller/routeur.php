@@ -51,6 +51,8 @@
             ControllerCommande::displayAllOrder();
         } else if ($_POST['action'] == 'affCommande') {
             ControllerCommande::DisplayOrder();
+        } else if ($_POST['action'] == 'supprReview') {
+            ControllerProduit::supprReview();
         } else {
             $action = $_POST["action"];
             ControllerUtilisateur::$action();
