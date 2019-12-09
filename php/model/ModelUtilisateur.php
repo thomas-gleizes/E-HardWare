@@ -32,16 +32,26 @@ class ModelUtilisateur{
     }
 
     public static function connectionCompte($tab){
-        $mail = $tab['mail'];
-        $rep = Model::$pdo->query("SELECT mdp FROM Clients WHERE Email = '$mail'");
-        $rep -> setFetchMode(PDO::FETCH_CLASS, 'Client');
-        $res = $rep->fetchAll(PDO::FETCH_ASSOC);
+        $sql = "SELECT mdp FROM Clients WHERE Email = :mail";
+        $valeur  =array(
+            "mail" => $tab['mail']
+        );
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($valeur);
+        $rec_prep -> setFetchMode(PDO::FETCH_CLASS, 'Client');
+        $res = $rec_prep->fetchAll(PDO::FETCH_ASSOC);
         $mdp = ModelUtilisateur::chiffrer($tab['mdp'].Security::getSeed());
-        $rep1 = Model::$pdo->query("SELECT prioriter FROM Clients WHERE Email = '$mail'");
-        $rep1 -> setFetchMode(PDO::FETCH_CLASS, 'Client');
-        $res1 = $rep1->fetchAll(PDO::FETCH_ASSOC);
+        $sql = "SELECT prioriter FROM Clients WHERE Email = :mail";
+        $valeur  =array(
+            "mail" => $tab['mail']
+        );
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($valeur);
+        $rec_prep -> setFetchMode(PDO::FETCH_CLASS, 'Client');
+        $res1 = $rec_prep->fetchAll(PDO::FETCH_ASSOC);
+        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
         session_start();
-        $_SESSION['login'] = $mail;
+        $_SESSION['login'] = $tab['mail'];
         $_SESSION['admin'] = $res1[0]['prioriter'];
         if ($res[0]['mdp'] == $mdp){
             return true;
@@ -52,12 +62,18 @@ class ModelUtilisateur{
 
     public static function myaccount(){
         if (!isset($_SESSION['login'])) {
+            session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }
         $mail = $_SESSION['login'];
-        $rep = Model::$pdo->query("SELECT * FROM Clients WHERE Email = '$mail'");
-        $rep -> setFetchMode(PDO::FETCH_CLASS, 'Client');
-        $resClient = $rep->fetchAll(PDO::FETCH_ASSOC);
+        $sql = "SELECT * FROM Clients WHERE Email = :mail";
+        $valeur  =array(
+            "mail" => $mail
+        );
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($valeur);
+        $rec_prep -> setFetchMode(PDO::FETCH_CLASS, 'Client');
+        $resClient = $rec_prep->fetchAll(PDO::FETCH_ASSOC);
         return $resClient;
     }
 
@@ -71,7 +87,7 @@ class ModelUtilisateur{
         );
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($valeur);
-
+        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
         session_start();
 
         $mail = $tab['mail'];
@@ -81,7 +97,6 @@ class ModelUtilisateur{
             $stmt->execute();
             ControllerUtilisateur::reValiderMail($mail);
         }
-
         $_SESSION['login'] = $tab['mail'];
     }
 
@@ -91,13 +106,19 @@ class ModelUtilisateur{
     }
 
     public static function getCodeConf($mail){
-        $rep = Model::$pdo->query("SELECT codeConfirmation FROM Clients Where Email = '$mail'");
-        $rep -> setFetchMode(PDO::FETCH_CLASS, 'Client');
-        $res = $rep->fetchAll(PDO::FETCH_ASSOC);
+        $sql = "SELECT codeConfirmation FROM Clients Where Email = :mail";
+        $valeur  =array(
+            "mail" => $mail
+        );
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($valeur);
+        $rec_prep-> setFetchMode(PDO::FETCH_CLASS, 'Client');
+        $res = $rec_prep->fetchAll(PDO::FETCH_ASSOC);
         return $res[0]['codeConfirmation'];
     }
 
     public static function validerCompte($codeValid){
+        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
         session_start();
         $mail = $_SESSION['login'];
         $code = self::getCodeConf($mail);
