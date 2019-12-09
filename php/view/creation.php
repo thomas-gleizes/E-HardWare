@@ -52,7 +52,7 @@
                 </div>
                 <?php
                     if (!$_GET == null) {
-                        echo "<input type=\"prenom\" placeholder=\"Prénom\" name=\"nom\" value=\"".$_GET['prenom']."\" required>";
+                        echo "<input type=\"prenom\" placeholder=\"Prénom\" name=\"prenom\" value=\"".$_GET['prenom']."\" required>";
                     } else {
                         echo '<input placeholder="Prénom" name="prenom" required>';
                     }
@@ -82,7 +82,7 @@
                 </div>
                 <?php
                     if (!$_GET == null) {
-                        echo "<input type=\"adresse\" placeholder=\"Adresse\" name=\"nom\" value=\"".$_GET['adresse']."\" required>";
+                        echo "<input type=\"adresse\" placeholder=\"Adresse\" name=\"adresse\" value=\"".$_GET['adresse']."\" required>";
                     } else {
                         echo '<input name="adresse" placeholder="Adresse" required>';
                     }
@@ -96,7 +96,7 @@
                 </div>
                 <?php
                     if (!$_GET == null) {
-                        echo "<input type=\"ville\" placeholder=\"Ville\" name=\"nom\" value=\"".$_GET['ville']."\" required>";
+                        echo "<input type=\"ville\" placeholder=\"Ville\" name=\"ville\" value=\"".$_GET['ville']."\" required>";
                     } else {
                         echo '<input name="ville" placeholder="Ville" required>';
                     }
@@ -107,12 +107,16 @@
             <p id="error">Les mots de passes ne sont pas les mêmes !</p>
             <?php
             if (!$_GET == null) {
-                if ($_GET['error'] = 1){
+                if ($_GET['error'] == 1){
                     echo'<p id="error10">Les mots de passes ne sont pas les mêmes !</p>';
-                } else if($_GET['error'] = 0) {
+                } else if($_GET['error'] == 0) {
                     echo'<p id="error10">L\'un des champs est vide !</p>';
-                } else if($_GET['error'] = 2) {
+                } else if($_GET['error'] == 2) {
                     echo'<p id="error10">L\'email est invalide !</p>';
+                } else if($_GET['error'] == 3) {
+                    echo'<p id="error10">Mot de passe trop court !</p>';
+                } else if($_GET['error'] == 4) {
+                    echo'<p id="error10">L\'un des champs contient un emoji !</p>';
                 }
             }
             ?>

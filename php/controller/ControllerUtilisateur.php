@@ -15,9 +15,13 @@ class ControllerUtilisateur{
         $tab['mdp2'] = $_POST['mdp2'];
         $tab['adresse'] = $_POST['adresse'];
         $tab['ville'] = $_POST['ville'];
-        if ($_POST['mail'] == "" || $_POST['nom'] == "" || $_POST['prenom'] == "" || $_POST['mdp1'] == "" || $_POST['adresse'] == "" || $_POST['ville'] == ""){
+        if (self::containsEmoji($_POST['mail']) || self::containsEmoji($_POST['nom']) || self::containsEmoji($_POST['prenom']) || self::containsEmoji($_POST['mdp1']) || self::containsEmoji($_POST['adresse']) || self::containsEmoji($_POST['ville'])){
+            header("Location:../view/creation.php?mail=".$tab['mail']."&nom=".$tab['nom']."&prenom=".$tab['prenom']."&adresse=".$tab['adresse']."&ville=".$tab['ville']."&error=4");
+        } else if (strlen($_POST['mdp1']) < 8) {
+            header("Location:../view/creation.php?mail=".$tab['mail']."&nom=".$tab['nom']."&prenom=".$tab['prenom']."&adresse=".$tab['adresse']."&ville=".$tab['ville']."&error=3");
+        } else if ($_POST['mail'] == "" || $_POST['nom'] == "" || $_POST['prenom'] == "" || $_POST['mdp1'] == "" || $_POST['adresse'] == "" || $_POST['ville'] == ""){
             header("Location:../view/creation.php?mail=".$tab['mail']."&nom=".$tab['nom']."&prenom=".$tab['prenom']."&adresse=".$tab['adresse']."&ville=".$tab['ville']."&error=0");
-        } else if (filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)){
+        } else if (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)){
             header("Location:../view/creation.php?mail=".$tab['mail']."&nom=".$tab['nom']."&prenom=".$tab['prenom']."&adresse=".$tab['adresse']."&ville=".$tab['ville']."&error=2");
         } else if ($tab['mdp1'] == $tab['mdp2']){
             ModelUtilisateur::creationCompte($tab);
@@ -31,6 +35,7 @@ class ControllerUtilisateur{
         } else {
             header("Location:../view/creation.php?mail=".$tab['mail']."&nom=".$tab['nom']."&prenom=".$tab['prenom']."&adresse=".$tab['adresse']."&ville=".$tab['ville']."&error=1");
         }
+
 
     }
 
@@ -117,6 +122,14 @@ class ControllerUtilisateur{
             $mail = $_SESSION['login'];
             return ModelUtilisateur::getIdUti($mail);
         }
+    }
+
+    public static function containsEmoji( $string ) {
+
+        preg_match( '/[\x{1F600}-\x{1F64F}]/u', $string, $matches_emo );
+
+        return !empty( $matches_emo[0] ) ? true : false;
+
     }
 
 
