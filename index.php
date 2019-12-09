@@ -1,9 +1,9 @@
 <?php
 session_name("mlsfhvliusqfrbguilqdfjlqhdf");
-session_start();
+
 require('php/lib/File.php');
 
-if(!isset($_SESSION)){
+if(!isset($_SESSION['login'])){
     session_start();
 }
 if(!isset($_COOKIE["panier"])){
@@ -12,7 +12,7 @@ if(!isset($_COOKIE["panier"])){
 if(isset($valCookie)){
     setcookie("panier",strval($valCookie),time()+31570000)  ;
 }
-//echo $_COOKIE["panier"];
+
 if (isset($_SESSION['login'])) {
     if ($_SESSION['admin'] == 1){
         header('Location:./php/controller/routeur.php?action=rechercheVide');
