@@ -107,6 +107,13 @@ button:hover p {
     margin-top: 4rem;
 }
 
+#command {
+    width:30%;
+    height: 2.5rem;
+    margin-left: 35%;
+    margin-top: 4rem;
+}
+
 #container-spe {
     height:63rem ;
     margin-top: 3%;

@@ -47,7 +47,7 @@ class ControllerCommande {
         }
         $idClient = ModelUtilisateur::getIdUti($_SESSION['login']);
         $tab = ModelCommande::getAllOrder($idClient);
-
+        require_once (File::build_path(array('view','vueHistorique.php')));
     }
 
 }

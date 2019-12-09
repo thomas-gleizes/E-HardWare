@@ -359,7 +359,6 @@ if (!isset($_SESSION['login'])){
                     <textarea id="mycom" name="commentaire" placeholder="écrivez un commentaire"></textarea>
                     <button id="achat-btn" type="submit"><p>Envoyer</p></button>
                 </form>
-          
     ';
 }
 echo' </div>';

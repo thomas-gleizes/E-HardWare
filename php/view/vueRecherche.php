@@ -1,7 +1,9 @@
 <?php
-if(!isset($_SESSION)){
+if(!isset($_SESSION['login'])){
     session_start();
+
 }
+
 if(!isset($_COOKIE["panier"])){
     setcookie("panier","0",time()+31570000)  ;
 }

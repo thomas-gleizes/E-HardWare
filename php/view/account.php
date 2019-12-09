@@ -51,9 +51,9 @@ if (!isset($resClient)) {
     </form>';
     } else {
         echo'<form method="post" action="../controller/routeur.php">
-        <input type="hidden" name="action" value="command" >
-        <button id="revenir" ><p>Mes commandes</p></button>
-        </form>';
+                <input type="hidden" name="action" value="commande" >
+                <button id="command" type="submit" ><p>Mes commandes</p></button>
+             </form>';
     }
 
     ?>
