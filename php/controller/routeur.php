@@ -43,6 +43,8 @@
             ControllerProduit::changerPrix();
         } else if ($_POST['action'] == 'supprProduit') {
             ControllerProduit::supprProduit();
+        } else if ($_POST['action'] == 'commande') {
+            ControllerCommande::displayAllOrder();
         } else {
             $action = $_POST["action"];
             ControllerUtilisateur::$action();
