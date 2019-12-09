@@ -12,6 +12,8 @@
         }else if ($_GET['action'] == "ajax") {
             $action = $_GET["control"];
             ControllerAjax::$action();
+        } else if ($_GET['action'] == 'panier') {
+            ControllerPanier::displayPanier();
         } else {
             $action = $_GET["action"];
             ControllerRecherche::$action();

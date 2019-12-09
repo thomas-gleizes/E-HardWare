@@ -169,7 +169,7 @@ class ModelProduit {
     }
 
     public static function getReview($refProduit){
-        $sql = "SELECT Clients.prenomClient, Avis.note, Avis.commentaire, Avis.date FROM Avis, Clients WHERE Avis.idClient = Clients.idClient AND Avis.refProduit = :refProduit GROUP BY (date)";
+        $sql = "SELECT Clients.prenomClient, Avis.note, Avis.commentaire, Avis.date FROM Avis, Clients WHERE Avis.idClient = Clients.idClient AND Avis.refProduit = :refProduit ORDER  BY (date) DESC";
         $value['refProduit'] = $refProduit;
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($value);

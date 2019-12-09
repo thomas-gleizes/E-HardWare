@@ -27,8 +27,8 @@ class ControllerPanier{
         } else {
             ModelPanier::upDatePanier($_POST['id_produit'],$id,$_POST['nombre']);
         }
-        //require_once (File::build_path(array('view','vueRecherche.php')));
-        SELF::displayPanier(); // ajouter les produit au panier a chaque refresh de la page))
+        header("Location:./routeur.php?action=panier");
+        //SELF::displayPanier(); // ajouter les produit au panier a chaque refresh de la page))
     }
 
     public static function displayPanier(){
