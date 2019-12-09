@@ -8,15 +8,12 @@ class ControllerCommande {
 
     public static function DisplayOrder(){
 
-        if (isset($_SESSION['login'])){
-            $idClient = ModelUtilisateur::getIdUti($_SESSION['login']);
-            $tab = ModelCommande::getOrder($idClient);
-            $tabClient = ModelUtilisateur::getInfoCommande($idClient);
-        } else {
-            $tab = [];
-            $tabClient = [];
+        if (!isset($_SESSION['login'])){
+            session_start();
         }
-        require_once (File::build_path(array('view','historique')));
+        $tab = ModelCommande::getProdOrder($_POST['idCommande']);
+        $tabClient = ModelUtilisateur::getInfoCommande(ModelUtilisateur::getIdUti($_SESSION['login']));
+        require_once (File::build_path(array('view','vueCommandeHistorique.php')));
     }
 
 

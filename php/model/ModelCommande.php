@@ -35,9 +35,9 @@ class ModelCommande{
         $rec_prep->execute($value);
     }
 
-    public static function getOrder($idClient){
-        $sql = "SELECT * FROM Commandes WEHRE idClient = :idClient GROUP BY (etatCommande);";
-        $value['idClient'] = $idClient;
+    public static function getProdOrder($idCommande){
+        $sql = "SELECT p.refProduit, lp.quantiteProduit, p.nom, p.nomMarque, p.Url, p.prix FROM ListeCommander lp, Produits p WHERE p.refProduit = lp.refProduit AND idCommande = :idCommande;";
+        $value['idCommande'] = $idCommande;
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($value);
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);

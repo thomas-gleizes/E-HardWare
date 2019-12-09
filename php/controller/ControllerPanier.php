@@ -32,7 +32,7 @@ class ControllerPanier{
 
     public static function displayPanier(){
 
-        if(!isset($_SESSION)){
+        if(!isset($_SESSION['login'])){
             session_start();
         }
         if(isset($_SESSION['login'])){

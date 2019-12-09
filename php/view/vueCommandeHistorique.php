@@ -235,7 +235,7 @@ if(!isset($_SESSION['login'])){
     foreach ($tabClient as $item) {
         echo '
             <div class="resume-container">
-                <p class="total">Commande du 10/08/2018</p>
+                <p class="total">Commande passer le : 10/08/2018</p>
                 <p class="total">Prix totale: ' . $item[$montant] . ',00€</p>
                 ';
         echo '
