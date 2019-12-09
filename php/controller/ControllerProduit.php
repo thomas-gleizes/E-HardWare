@@ -131,8 +131,9 @@ class ControllerProduit{
         $tabReview = ModelProduit::getReview($_POST['id_produit']);
         $avr = round(ModelProduit::markAverage($_POST['id_produit']),2);
 
-        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
+
         if (!isset($_SESSION['login'])){
+            session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }
         $nbAvis = ModelProduit::countReview(ModelUtilisateur::getIdUti($_SESSION['login']),$_POST['id_produit']);

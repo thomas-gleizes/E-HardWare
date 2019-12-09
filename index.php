@@ -1,9 +1,9 @@
 <?php
-session_name("mlsfhvliusqfrbguilqdfjlqhdf");
 
 require('php/lib/File.php');
 
 if(!isset($_SESSION['login'])){
+    session_name("mlsfhvliusqfrbguilqdfjlqhdf");
     session_start();
 }
 if(!isset($_COOKIE["panier"])){

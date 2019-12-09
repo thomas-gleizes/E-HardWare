@@ -7,8 +7,8 @@ require_once(File::build_path(array('model','ModelPanier.php')));
 class ControllerCommande {
 
     public static function DisplayOrder(){
-        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
         if (!isset($_SESSION['login'])){
+            session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }
         $tab = ModelCommande::getProdOrder($_POST['idCommande']);
@@ -18,8 +18,8 @@ class ControllerCommande {
 
 
     public static function createOrder(){
-        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
         if (!isset($_SESSION['login'])){
+            session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }
         $tab = [];
@@ -39,8 +39,8 @@ class ControllerCommande {
     }
 
     public static function displayAllOrder(){
-        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
         if (!isset($_SESSION['login'])){
+            session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }
         $idClient = ModelUtilisateur::getIdUti($_SESSION['login']);

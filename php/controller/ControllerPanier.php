@@ -8,8 +8,8 @@ require_once(File::build_path(array('controller','ControllerUtilisateur.php')));
 class ControllerPanier{
 
     public static function addPanier(){
-        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
         if (!isset($_SESSION['login'])){
+            session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }
         ModelPanier::insertPanier(ModelUtilisateur::getIdUti($_SESSION['login']),$_POST['id_produit'],$_POST['quantite']);
@@ -32,8 +32,8 @@ class ControllerPanier{
     }
 
     public static function displayPanier(){
-        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
         if(!isset($_SESSION)){
+            session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }
         if(isset($_SESSION['login'])){
@@ -50,8 +50,8 @@ class ControllerPanier{
     }
 
     public static function deletePanier(){
-        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
         if (!isset($_SESSION['login'])){
+            session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }
         if (isset($_SESSION['login'])){
