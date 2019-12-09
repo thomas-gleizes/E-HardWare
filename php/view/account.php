@@ -49,6 +49,11 @@ if (!isset($resClient)) {
         <input id="code-input" type="text" name="code" >
         <button id="ok1" ><p>Ok</p></button>
     </form>';
+    } else {
+        echo'<form method="post" action="../controller/routeur.php">
+        <input type="hidden" name="action" value="command" >
+        <button id="revenir" ><p>Mes commandes</p></button>
+        </form>';
     }
 
     ?>
