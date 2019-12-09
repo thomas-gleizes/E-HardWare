@@ -164,6 +164,14 @@ class ModelUtilisateur{
         return $token;
     }
 
+    public static function changePassword($id, $mdp){
+        $sql = "UPDATE Clients SET mdp = :mdp, token = 0 WHERE idClient = :idClient;";
+        $value['mdp'] = self::chiffrer($mdp.Security::getSeed());
+        $value['idClient'] = $id;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+    }
+
 
     public static function getInfoCommande($idClient){
         $sql = "SELECT montantPanier, villeClient, adresseClient FROM Clients WHERE idClient = :idClient;";
@@ -183,6 +191,17 @@ class ModelUtilisateur{
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
         $tab = $rec_prep->fetchAll();
         return $tab[0]['nbProduitPanier'];
+    }
+
+    public static function getToken($id){
+        $sql = "SELECT token FROM Clients WHERE idClient = :id";
+        $valeur = array(
+            "id" => $id
+        );
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($valeur);
+        $res = $rec_prep->fetchAll(PDO::FETCH_ASSOC);
+        return $res[0]['token'];
     }
 
 

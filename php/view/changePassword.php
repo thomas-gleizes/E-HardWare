@@ -3,7 +3,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Compte créé</title>
+    <title>Changement de mot de passe</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=no">
     <link rel="icon" type="image/png" href="../../image/Logo.png"/>
     <link href="../../css/connection.css" rel="stylesheet" type="text/css">
@@ -16,9 +16,22 @@
 <div class="container">
     <?php
     if (!$_GET == null) {
+        if (isset($_GET['error'])) {
+            if ($_GET['error'] == 0) {
+                echo'<p id="error10">votre confirmation de mot de passe comporte une erreur !</p>';
+            } else if ($_GET['error'] == 1) {
+                header('Location:https://www.cybermalveillance.gouv.fr/');
+            } else if ($_GET['error'] == 2) {
+                header('Location:https://www.cybermalveillance.gouv.fr/');
+            } else if ($_GET['error'] == 3) {
+                echo'<p id="error10">vous n\'avez pas fait de demande de changement de mot de passe !</p>';
+            }
+        }
         echo '
             <form method="post" action="../controller/routeur.php">
-            <input type="hidden" name="action" value="connection">
+            <input type="hidden" name="action" value="changePassword">
+            <input type="hidden" name="mail" value="'.$_GET['mail'].'">
+            <input type="hidden" name="token" value="'.$_GET['token'].'">
             <div class="under-container1">
                 <div class="i-container">
                     <i class="material-icons i">
@@ -35,7 +48,7 @@
                 </div>
                 <input type="password" id="mdp2" name="mdp2" placeholder="Confirmez Mot de passe" required>
             </div>
-            <button id="Confirmer"><p>Confirmer</p></button>
+            <button type="submit" id="ok" ><p>Confirmer</p></button>
         </form>
         ';
     } else {

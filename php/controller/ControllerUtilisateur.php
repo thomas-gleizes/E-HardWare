@@ -106,11 +106,29 @@ class ControllerUtilisateur{
             session_start();
         }
         $token = ModelUtilisateur::securedLink();
-        $lien = 'http://webinfo.iutmontp.univ-montp2.fr/~gleizest/Cours/php/ProjetPHP/php/view/changePassword.php?token='.$token.'&mail='.$_SESSION['login'];
+        $lien = 'http://webinfo.iutmontp.univ-montp2.fr/~savouretb/travail/ProjetPHP/php/view/changePassword.php?token='.$token.'&mail='.$_SESSION['login'];
         $message = "pour changer le mot de passe cliquer sur le lien ci-dessous: \n $lien";
         $header = 'From : " . "thomas.gleizes@etu.umontpellier.fr';
         mail($_SESSION['login'], 'demande de changement de mot de passe',$message,$header);
         header('Location:../view/confirmationChanged.php');
+    }
+
+    public static function changePassword(){
+        if (!isset($_POST['token'])){
+            header('Location:../view/changePassword.php?error=2');
+        } else if ($_POST['mdp1'] == $_POST['mdp2']){
+            $id = ModelUtilisateur::getIdUti($_POST['mail']);
+            if (ModelUtilisateur::getToken($id) == 0) {
+                header('Location:../view/changePassword.php?error=3&token='.$_POST['token'].'&mail='.$_POST['mail']);
+            } else if (ModelUtilisateur::getToken($id) == $_POST['token']){
+                ModelUtilisateur::changePassword($id, $_POST['mdp1']);
+                header('Location:../view/changePassword.php?success=1');
+            } else {
+                header('Location:../view/changePassword.php?error=1');
+            }
+        } else {
+            header('Location:../view/changePassword.php?error=0&token='.$_POST['token'].'&mail='.$_POST['mail']);
+        }
     }
 
     public static function myaccount(){
