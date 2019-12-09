@@ -230,16 +230,18 @@ if(!isset($_SESSION['login'])){
     }
 
     echo '</div>';
-    $montant = "montantPanier";
-    $adresse = "adresseClient";
-    $ville = "villeClient";
+    $montant = "montantCommande";
+    $date = "dateCommande";
+    $nbProduit = "nbProduit";
+    $etat = "ettaCommande";
+
     foreach ($tabClient as $item) {
         echo '
             <div class="resume-container">
-                <p class="total">Commande passer le : 10/08/2018</p>
-                <p class="total">Prix totale: ' . $item[$montant] . ',00€</p>
-                ';
-        echo '
+                <p class="total">Commande passer le : '. $item[$date].'</p>
+                <p class="total">Prix totale : ' . $item[$montant] . ',00€</p>
+                <p class="total">Quantité de produit : ' . $item[$nbProduit] . '</p>
+                <p class="total">Etat de la commande : ' . $item[$etat] . '</p>
                 <button id="revenir" ><p>revenir à l\'acceuil</p></button>
             </div>
             ';

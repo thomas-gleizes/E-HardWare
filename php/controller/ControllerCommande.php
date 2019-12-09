@@ -12,7 +12,7 @@ class ControllerCommande {
             session_start();
         }
         $tab = ModelCommande::getProdOrder($_POST['idCommande']);
-        $tabClient = ModelUtilisateur::getInfoCommande(ModelUtilisateur::getIdUti($_SESSION['login']));
+        $tabClient = ModelCommande::getInfoCommande($_POST['idCommande']);
         require_once (File::build_path(array('view','vueCommandeHistorique.php')));
     }
 
@@ -33,6 +33,7 @@ class ControllerCommande {
                 ModelCommande::addOrder($idCommande, $value['refProduit'], $value['quantiteProduit']);
             }
             ModelPanier::deleteAllPanier($tab['idClient']);
+            self::displayAllOrder();
         } else {
             require_once (File::build_path(array('view','vueRecherche.php')));
         }

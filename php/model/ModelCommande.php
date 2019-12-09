@@ -55,6 +55,17 @@ class ModelCommande{
         return $tab;
     }
 
+    public static function getInfoCommande($idCommande){
+        $sql = "SELECT dateCommande, nbProduit, montantCommande, etatCommande FROM Commandes WHERE idCommande = :idCommande;";
+        $value['idCommande'] = $idCommande;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        return $tab;
+
+    }
+
 
 
 }
