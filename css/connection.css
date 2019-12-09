@@ -132,6 +132,12 @@ p{
     font-size: 25px;
 }
 
+#error10 {
+    color:red;
+    margin-top: 2rem;
+    font-size: 25px;
+}
+
 #error1 {
     color:red;
     margin-top: 1rem;

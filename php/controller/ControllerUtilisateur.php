@@ -15,9 +15,11 @@ class ControllerUtilisateur{
         $tab['mdp2'] = $_POST['mdp2'];
         $tab['adresse'] = $_POST['adresse'];
         $tab['ville'] = $_POST['ville'];
-
-
-        if ($tab['mdp1'] == $tab['mdp2']){
+        if ($_POST['mail'] == "" || $_POST['nom'] == "" || $_POST['prenom'] == "" || $_POST['mdp1'] == "" || $_POST['adresse'] == "" || $_POST['ville'] == ""){
+            header("Location:../view/creation.php?mail=".$tab['mail']."&nom=".$tab['nom']."&prenom=".$tab['prenom']."&adresse=".$tab['adresse']."&ville=".$tab['ville']."&error=0");
+        } else if (filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)){
+            header("Location:../view/creation.php?mail=".$tab['mail']."&nom=".$tab['nom']."&prenom=".$tab['prenom']."&adresse=".$tab['adresse']."&ville=".$tab['ville']."&error=2");
+        } else if ($tab['mdp1'] == $tab['mdp2']){
             ModelUtilisateur::creationCompte($tab);
             $mail = $tab['mail'];
             $code = ModelUtilisateur::getCodeConf($mail);
@@ -27,7 +29,7 @@ class ControllerUtilisateur{
 
             header('Location:../view/compteCréé.php');
         } else {
-            header("Location:../view/creation.php?mail=".$tab['mail']."&nom=".$tab['nom']."&prenom=".$tab['prenom']."&adresse=".$tab['adresse']."&ville=".$tab['ville']);
+            header("Location:../view/creation.php?mail=".$tab['mail']."&nom=".$tab['nom']."&prenom=".$tab['prenom']."&adresse=".$tab['adresse']."&ville=".$tab['ville']."&error=1");
         }
 
     }

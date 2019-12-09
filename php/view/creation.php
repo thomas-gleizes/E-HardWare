@@ -105,6 +105,17 @@
 
             <button id="ok" type="submit"><p>Inscription</p></button>
             <p id="error">Les mots de passes ne sont pas les mêmes !</p>
+            <?php
+            if (!$_GET == null) {
+                if ($_GET['error'] = 1){
+                    echo'<p id="error10">Les mots de passes ne sont pas les mêmes !</p>';
+                } else if($_GET['error'] = 0) {
+                    echo'<p id="error10">L\'un des champs est vide !</p>';
+                } else if($_GET['error'] = 2) {
+                    echo'<p id="error10">L\'email est invalide !</p>';
+                }
+            }
+            ?>
         </form>
 
         <button id="connect"><p>se connecter</p></button>
