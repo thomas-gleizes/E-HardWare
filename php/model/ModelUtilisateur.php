@@ -22,7 +22,7 @@ class ModelUtilisateur{
         $sql = "CALL GenereCodeConfirmation('$mail')";
         $stmt = Model::$pdo->prepare($sql);
         $stmt->execute();
-
+        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
         session_start();
         $_SESSION['login'] = $mail;
         $panier["quantiter"]=0;
@@ -151,16 +151,17 @@ class ModelUtilisateur{
         return $res[0]['idClient'];
     }
 
-    public static function modifMdp($tab){
-        $mdp = $tab['mdp'];
-        $mdp = ModelUtilisateur::chiffrer($tab['mdp'].Security::getSeed());
-        $sql = "UPDATE Clients SET mdp = :mdp WHERE Email = :mail";
+    public static function securedLink(){
+        $id = self::getIdUti($_SESSION['login']);
+        $token = ModelUtilisateur::chiffrer(Security::getSeedLink().$mail.Security::getSeedLinkEnd());
+        $sql = "UPDATE Clients SET token = :token WHERE idClient = :id";
         $valeur = array(
-            "mdp" => $mdp,
-            "mail" => $tab['mail']
+            "token" => $token,
+            "id" => $id
         );
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($valeur);
+        return $token;
     }
 
 

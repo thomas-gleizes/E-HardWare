@@ -98,7 +98,7 @@ if (!isset($resClient)) {
         <button id="ok" ><p>Changer</p></button>
     </form>
     <div class="mdp">
-        <a href="#"><p>Changer de mot de passe</p></a>
+        <a href="../controller/routeur.php?action=askChangeMdp"><p>Changer de mot de passe</p></a>
     </div>
     <form method="post" action="../controller/routeur.php">
         <input type="hidden" name="action" value="disconnect" >

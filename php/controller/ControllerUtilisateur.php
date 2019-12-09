@@ -100,21 +100,21 @@ class ControllerUtilisateur{
         }
     }
 
-    public static function changerMdp(){
-        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
-        Session_start();
-
-        $tab = [];
-        $tab['id'] = $_POST['id'];
-        $tab['mail'] = $_SESSION['login'];
-
-        //ModelUtilisateur::mailMdp($tab);
-        ModelUtilisateur::modifMdp($tab);
+    public static function askChangeMdp(){
+        if (!isset($_SESSION['login'])){
+            session_name("mlsfhvliusqfrbguilqdfjlqhdf");
+            session_start();
+        }
+        $token = ModelUtilisateur::securedLink();
+        $lien = 'http://webinfo.iutmontp.univ-montp2.fr/~gleizest/Cours/php/ProjetPHP/php/view/changePassword.php?token='.$token.'&mail='.$_SESSION['login'];
+        $message = "pour changer le mot de passe cliquer sur le lien ci-dessous: \n $lien";
+        $header = 'From : " . "thomas.gleizes@etu.umontpellier.fr';
+        mail($_SESSION['login'], 'demande de changement de mot de passe',$message,$header);
+        header('Location:../view/confirmationChanged.php');
     }
 
     public static function myaccount(){
         $resClient = ModelUtilisateur::myaccount();
-
         require_once ("../view/account.php");
     }
 

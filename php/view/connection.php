@@ -55,7 +55,7 @@ if(!isset($_SESSION['login'])){
             <button id="ok" type="submit"><p>Connexion</p></button>
         </form>
         <div class="mdp">
-            <a href="#"><p>Mot de passe oublié ?</p></a>
+            <a href="../controller/routeur.php?action=askChangeMdp"><p>Mot de passe oublié ?</p></a>
         </div>
         <button id="new"><p>créer un nouveau compte</p></button>
         <button id="revenir"><p>revenir à l'acceuil</p></button>

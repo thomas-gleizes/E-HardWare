@@ -19,7 +19,7 @@ if(!isset($_SESSION['login'])){
 </head>
 <body>
 <div class="container">
-    <p id="info">Votre compte a été créé avec succès !</p>
+    <p id="info">Un mail de changement de mot de passe vous a été envoyé !</p>
     <button id="revenir"><p>Revenir à l'acceuil</p></button>
 </div>
 </body>

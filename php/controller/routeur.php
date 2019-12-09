@@ -14,6 +14,8 @@
             ControllerAjax::$action();
         } else if ($_GET['action'] == 'panier') {
             ControllerPanier::displayPanier();
+        } else if ($_GET['action'] == 'askChangeMdp') {
+            ControllerUtilisateur::askChangeMdp();
         } else {
             $action = $_GET["action"];
             ControllerRecherche::$action();

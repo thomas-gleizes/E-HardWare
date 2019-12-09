@@ -29,7 +29,7 @@ p{
 
 #nav-bar {
     position: fixed;
-    z-index: 3;
+    z-index: 4;
     width: 250px;
     height: 100vh;
     background-color: #06bcc7;
@@ -38,7 +38,7 @@ p{
 
 #nav-bar-comp {
     position: fixed;
-    z-index: 2;
+    z-index: 3;
     width: 100vw;
     height: 100vh;
     background-color: black;
@@ -745,7 +745,7 @@ form {
 
 .cache-ajout {
     position: fixed;
-    z-index: 2;
+    z-index: 3;
     background-color: black;
     opacity: 0.9;
     cursor: pointer;
