@@ -68,6 +68,10 @@ class ModelPanier{
     }
 
     public static function ajoutPanier($ref,$quantiter,$id){
+        if (session_status() == PHP_SESSION_NONE) {
+            session_name("mlsfhvliusqfrbguilqdfjlqhdf");
+            session_start();
+        }
         if(isset($_SESSION["login"])){
             $login = $_SESSION["login"];
             $sql = "INSERT INTO Panier  (idClient,refProduit,quantiteProduit) VALUES (:login,:ref,:quantitier)";

@@ -118,7 +118,7 @@
     position: relative;
     float: left;
     margin-left: 1rem;
-    margin-top: 1.9rem;
+    margin-top: 1.5rem;
     cursor: pointer;
 }
 
@@ -170,5 +170,22 @@
     margin: 0;
     cursor: pointer;
 }
+
+#revenir {
+    width:30%;
+    height: 2.5rem;
+    margin-left: 35%;
+    margin-top: 4rem;
+    border: 2px #06bcc7 solid;
+    border-radius: 0.2rem;
+    background-color: transparent;
+}
+
+#revenir:hover {
+    background-color: #06bcc7;
+    color: white;
+}
+
+
 
 

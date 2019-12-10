@@ -37,7 +37,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <div class="section">
         <form method="post" action="./../controller/routeur.php">
             <input type="hidden" name="action" value="Panier">
-            <button type="submit">
+            <button class="pan-btn" type="submit">
                 <p>Mon panier</p>
                 <i class="material-icons navbaricons">shopping_cart</i>
             </button>
