@@ -53,8 +53,10 @@ class ControllerUtilisateur{
     }
 
     public static function Valider(){
-        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_name("mlsfhvliusqfrbguilqdfjlqhdf");
+            session_start();
+        }
         $tab['codeConf'] = $_POST['codeConf'];
         $tab['mail'] = $_SESSION['login'];
 
@@ -75,8 +77,10 @@ class ControllerUtilisateur{
     }
 
     public static function disconnect(){
-        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_name("mlsfhvliusqfrbguilqdfjlqhdf");
+            session_start();
+        }
         session_unset();
         session_destroy();
 
@@ -101,7 +105,7 @@ class ControllerUtilisateur{
     }
 
     public static function askChangeMdp(){
-        if (!isset($_SESSION['login'])){
+        if (session_status() == PHP_SESSION_NONE) {
             session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }
@@ -139,9 +143,9 @@ class ControllerUtilisateur{
     public static function getId(){
         session_name("mlsfhvliusqfrbguilqdfjlqhdf");
         session_start();
-        if(isset($_SESSION['login'])){
-            $mail = $_SESSION['login'];
-            return ModelUtilisateur::getIdUti($mail);
+        if (session_status() == PHP_SESSION_NONE) {
+            session_name("mlsfhvliusqfrbguilqdfjlqhdf");
+            session_start();
         }
     }
 

@@ -8,7 +8,7 @@ require_once(File::build_path(array('controller','ControllerUtilisateur.php')));
 class ControllerPanier{
 
     public static function addPanier(){
-        if (!isset($_SESSION['login'])){
+        if (session_status() == PHP_SESSION_NONE) {
             session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }
@@ -32,7 +32,7 @@ class ControllerPanier{
     }
 
     public static function displayPanier(){
-        if(!isset($_SESSION)){
+        if (session_status() == PHP_SESSION_NONE) {
             session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }
@@ -50,7 +50,7 @@ class ControllerPanier{
     }
 
     public static function deletePanier(){
-        if (!isset($_SESSION['login'])){
+        if (session_status() == PHP_SESSION_NONE) {
             session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }

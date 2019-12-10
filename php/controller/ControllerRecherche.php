@@ -6,7 +6,7 @@ require_once (File::build_path(array('model','ModelUtilisateur.php')));
 
 class ControllerRecherche{
     public static function afficherRecherche(){
-        if(!isset($_SESSION)){
+        if (session_status() == PHP_SESSION_NONE) {
             session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }
@@ -22,7 +22,7 @@ class ControllerRecherche{
     }
 
     public static function rechercheVide(){
-        if(!isset($_SESSION)){
+        if (session_status() == PHP_SESSION_NONE) {
             session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }
@@ -34,7 +34,7 @@ class ControllerRecherche{
     }
 
     public static function rechercherSidebar(){
-        if(!isset($_SESSION)){
+        if (session_status() == PHP_SESSION_NONE) {
             session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }

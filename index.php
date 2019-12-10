@@ -2,7 +2,7 @@
 
 require('php/lib/File.php');
 
-if(!isset($_SESSION['login'])){
+if (session_status() == PHP_SESSION_NONE) {
     session_name("mlsfhvliusqfrbguilqdfjlqhdf");
     session_start();
 }
