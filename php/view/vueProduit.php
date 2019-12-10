@@ -44,7 +44,7 @@ if(!isset($_SESSION['login'])){
     <div class="section">
         <form method="post" action="./../controller/routeur.php">
             <input type="hidden" name="action" value="Panier">
-            <button type="submit">
+            <button class="pan-btn" type="submit">
                 <p>Mon panier</p>
                 <i class="material-icons navbaricons">shopping_cart</i>
             </button>
@@ -336,20 +336,20 @@ if (!empty($tabReview)){
                     <p class="date">'.$value[$date].'</p>';
         if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1){
            // if ($_SESSION['admin'] == 1){
-                echo '  <form class="date" method="post" action="./../controller/routeur.php">
+                echo '  <form method="post" action="./../controller/routeur.php">
                         <input type="hidden" name="action" value="supprReview">
                         <input type="hidden" name="id_produit" value="' . $ref . '">
                         <input type="hidden" name="idClient" value="'. $value[$idClient].'">
-                        <button type="submit"><i class="material-icons">clear</i></button>
+                        <button class="sup-btn" type="submit"><i class="material-icons">clear</i></button>
                     </form>';
             //}
         } else if (isset($_SESSION['login'])){
             if ($value[$login] == $_SESSION['login']) {
-                echo '<form class="date" method="post" action="./../controller/routeur.php">
+                echo '<form method="post" action="./../controller/routeur.php">
                     <input type="hidden" name="action" value="supprReview">
                     <input type="hidden" name="id_produit" value="' . $ref . '">
                     <input type="hidden" name="idClient" value="' . $value[$idClient] . '">
-                    <button type="submit"><i class="material-icons">clear</i></button>
+                    <button class="sup-btn" type="submit"><i class="material-icons">clear</i></button>
                   </form>';
             }
         }

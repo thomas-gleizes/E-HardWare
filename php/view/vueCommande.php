@@ -51,7 +51,7 @@ setcookie("elementpanier",$string,time()+time()+31570000);
     <div class="section">
         <form method="post" action="./../controller/routeur.php">
             <input type="hidden" name="action" value="Panier">
-            <button type="submit">
+            <button class="pan-btn" type="submit">
                 <p>Mon panier</p>
                 <i class="material-icons navbaricons">shopping_cart</i>
             </button>
@@ -278,7 +278,7 @@ setcookie("elementpanier",$string,time()+time()+31570000);
                         </form>';
             }
             echo '
-                    <button id="revenir" ><p>revenir à l\'acceuil</p></button>
+                    <button id="revenir" >revenir à l\'acceuil</button>
                 </div>
                 ';
         }

@@ -132,7 +132,7 @@ class ControllerProduit{
         $avr = round(ModelProduit::markAverage($_POST['id_produit']),2);
 
 
-        if (!isset($_SESSION['login'])){
+        if (session_status() == PHP_SESSION_NONE) {
             session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }
@@ -155,8 +155,10 @@ class ControllerProduit{
     }
 
     public static function addReview (){
-        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_name("mlsfhvliusqfrbguilqdfjlqhdf");
+            session_start();
+        }
         if ($_POST['note'] > 5){
             $note = 5;
         } else if ($_POST['note'] < 0){

@@ -7,7 +7,7 @@ require_once(File::build_path(array('model','ModelPanier.php')));
 class ControllerCommande {
 
     public static function DisplayOrder(){
-        if (!isset($_SESSION['login'])){
+        if (session_status() == PHP_SESSION_NONE) {
             session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }
@@ -18,7 +18,7 @@ class ControllerCommande {
 
 
     public static function createOrder(){
-        if (!isset($_SESSION['login'])){
+        if (session_status() == PHP_SESSION_NONE) {
             session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }
@@ -40,7 +40,7 @@ class ControllerCommande {
     }
 
     public static function displayAllOrder(){
-        if (!isset($_SESSION['login'])){
+        if (session_status() == PHP_SESSION_NONE) {
             session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }

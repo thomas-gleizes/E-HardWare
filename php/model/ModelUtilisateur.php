@@ -22,8 +22,10 @@ class ModelUtilisateur{
         $sql = "CALL GenereCodeConfirmation('$mail')";
         $stmt = Model::$pdo->prepare($sql);
         $stmt->execute();
-        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_name("mlsfhvliusqfrbguilqdfjlqhdf");
+            session_start();
+        }
         $_SESSION['login'] = $mail;
         $panier["quantiter"]=0;
         $_SESSION["panier"] = $panier;
@@ -48,8 +50,10 @@ class ModelUtilisateur{
         $rec_prep->execute($valeur);
         $rec_prep -> setFetchMode(PDO::FETCH_CLASS, 'Client');
         $res1 = $rec_prep->fetchAll(PDO::FETCH_ASSOC);
-        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_name("mlsfhvliusqfrbguilqdfjlqhdf");
+            session_start();
+        }
         $_SESSION['login'] = $tab['mail'];
         $_SESSION['admin'] = $res1[0]['prioriter'];
         if ($res[0]['mdp'] == $mdp){
@@ -60,7 +64,7 @@ class ModelUtilisateur{
     }
 
     public static function myaccount(){
-        if (!isset($_SESSION['login'])) {
+        if (session_status() == PHP_SESSION_NONE) {
             session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }
@@ -86,9 +90,10 @@ class ModelUtilisateur{
         );
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($valeur);
-        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
-        session_start();
-
+        if (session_status() == PHP_SESSION_NONE) {
+            session_name("mlsfhvliusqfrbguilqdfjlqhdf");
+            session_start();
+        }
         $mail = $tab['mail'];
         if ($mail != $_SESSION['login']){
             $sqll = "CALL GenereCodeConfirmation('$mail')";
@@ -117,8 +122,10 @@ class ModelUtilisateur{
     }
 
     public static function validerCompte($codeValid){
-        session_name("mlsfhvliusqfrbguilqdfjlqhdf");
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_name("mlsfhvliusqfrbguilqdfjlqhdf");
+            session_start();
+        }
         $mail = $_SESSION['login'];
         $code = self::getCodeConf($mail);
         if ($code == $codeValid){

@@ -196,7 +196,7 @@
 }
 
 #mycom {
-    background-color: #e8f4ff;
+    background-color: #e8f3ff;
     border-radius: 0.3rem;
     width: 60%;
     height: 10rem;
@@ -242,15 +242,17 @@
 }
 
 .stock-form {
-    float: left;
-    margin-top: 3rem;
+    position: absolute;
+    transform: translate(-50%);
+    margin-top: 5rem;
     margin-left: 20%;
 }
 
 .price-form {
-    float: right;
-    margin-top: 3rem;
-    margin-right: 20%;
+    position: absolute;
+    transform: translate(-50%);
+    margin-top: 5rem;
+    margin-left: 80%;
 }
 
 .modif {
@@ -258,9 +260,13 @@
     background-color: transparent;
     border: #06bcc7 2px solid;
     border-radius: 0.2rem;
-    width: 10%;
+    width: 20%;
     height: 2rem;
-    margin-left: 45%;
+    margin-left: 40%;
+}
+
+.modif:hover {
+    background-color: #06bcc7;
 }
 
 .number {
@@ -277,9 +283,33 @@
 }
 
 .name-form {
-    float: left;
-    margin-top: 3.2rem;
-    margin-left: 10%;
+    position: absolute;
+    transform: translate(-50%);
+    margin-top: 5rem;
+    margin-left: 50%;
+}
+
+.sup-btn {
+    float: right;
+    margin-right: 1%;
+    margin-top: 0.7rem;
+    border-top-right-radius: 0.3rem;
+    border-top-left-radius: 0.3rem;
+    border: none;
+    background-color: #e8f4ff;
+    transition: 0.1s ease-in-out;
+    -webkit-box-shadow: inset 0px 0px 5px 0px rgba(97, 97, 97, 1);
+    -moz-box-shadow: inset 0px 0px 5px 0px rgba(97, 97, 97, 1);
+    box-shadow: inset 0px 0px 5px 0px rgba(97, 97, 97, 1);
+    height: 2.2rem;
+    width: 2rem;
+}
+
+.sup-btn:hover {
+    -webkit-box-shadow: inset 0px 0px 8px 0px rgba(97, 97, 97, 1);
+    -moz-box-shadow: inset 0px 0px 8px 0px rgba(97, 97, 97, 1);
+    box-shadow: inset 0px 0px 8px 0px rgba(97, 97, 97, 1);
+    color: black;
 }
 
 
