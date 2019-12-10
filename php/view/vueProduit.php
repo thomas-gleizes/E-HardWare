@@ -1,4 +1,10 @@
 <?php
+if(!isset($quantierpanier)){
+    $quantierpanier = 0;
+    $elementpanier = [];
+}else{
+
+}
 if(!isset($_SESSION['login'])){
     session_name("mlsfhvliusqfrbguilqdfjlqhdf");
     session_start();

@@ -1,8 +1,22 @@
 <?php
-if(!isset($_SESSION['login'])){
+if(!isset($quantierpanier)){
+    $quantierpanier = 0;
+    $elementpanier = [];
+}
+var_dump($quantierpanier);
+var_dump($elementpanier);
+if(!isset($_SESSION)){
     session_name("mlsfhvliusqfrbguilqdfjlqhdf");
     session_start();
 }
+$t = count($tab);
+$string ="";
+foreach ($tab as $v){
+    $string =  $string. $v['refProduit'].",";
+}
+setcookie("nbpanier",$t,time()+time()+31570000);
+setcookie("elementpanier",$string,time()+time()+31570000);
+
 ?>
 
 <!DOCTYPE html>
@@ -166,21 +180,11 @@ if(!isset($_SESSION['login'])){
     }
     ?>
     <?php
-    $val = $_COOKIE["panier"];
-    if(isset($_SESSION["panier"])){
-        $val = $_SESSION["panier"]["quantiter"];
-        echo'
-        <form  method="Post" action="../controller/routeur.php">
-        <input type="hidden" name="action" value="Panier">
-        <button type="submit" id="cart-button">
-            <i id="cart-icon" class="material-icons">
-                shopping_cart
-            </i>
-            <p>'.$val.'</p>
-        </button>
-    </form>
-    ';
-    }else{
+    $val = 0;
+    if(isset($_COOKIE['nbpanier'])){
+        $val = $_COOKIE["nbpanier"];
+    }
+    {
         echo'
         <form  method="Post" action="../controller/routeur.php">
         <input type="hidden" name="action" value="Panier">

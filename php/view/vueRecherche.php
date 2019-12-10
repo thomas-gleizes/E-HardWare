@@ -1,15 +1,27 @@
 <?php
+if(!isset($quantierpanier)){
+    $quantierpanier = 0;
+    $elementpanier = [];
+}//else{
+
+//}
 if(!isset($_SESSION['login'])){
     session_name("mlsfhvliusqfrbguilqdfjlqhdf");
     session_start();
 }
+if(!isset($quantierpanier)){
+    $quantierpanier = 0;
+    $elementpanier = [];
+}
 
-if(!isset($_COOKIE["panier"])){
-    setcookie("panier","0",time()+31570000)  ;
-}
-if(isset($valCookie)){
-    setcookie("panier",strval($valCookie),time()+31570000)  ;
-}
+//$t = count($tab);
+//$string;
+//foreach ($tab as $v){
+//    $string =  $string. $v['refProduit'].",";
+//}
+//echo $string;
+//setcookie("nbpanier",$t,time()+time()+31570000);
+//setcookie("elementpanier",$string,time()+time()+31570000);
 //echo "<br>".$_SESSION["panier"]["quantigit ter"];
 ?>
 
@@ -175,8 +187,8 @@ if(isset($valCookie)){
     ?>
     <?php
     $val = 0;
-    if(isset($_COOKIE['panier'])){
-        $val = $_COOKIE["panier"];
+    if(isset($_COOKIE['nbpanier'])){
+        $val = $_COOKIE["nbpanier"];
         echo'
         <form  method="Post" action="./../controller/routeur.php">
                     <input type="hidden" name="action" value="Panier">

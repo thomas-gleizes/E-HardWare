@@ -13,9 +13,6 @@ class ControllerPanier{
             session_start();
         }
         ModelPanier::insertPanier(ModelUtilisateur::getIdUti($_SESSION['login']),$_POST['id_produit'],$_POST['quantite']);
-        $tab = ModelPanier::getPanier(ModelUtilisateur::getIdUti($_SESSION['login']));
-        setcookie("panier",$tab['quantiteProduit'],time()+time()+31570000);
-
         require_once (File::build_path(array('view','vueCommande')));
     }
 
@@ -27,6 +24,11 @@ class ControllerPanier{
         } else {
             ModelPanier::upDatePanier($_POST['id_produit'],$id,$_POST['nombre']);
         }
+        $tab = ModelPanier::getNbProduit(ModelUtilisateur::getIdUti($_SESSION['login']));
+        //setcookie("panier",$tab['quantiteProduit'],time()+time()+31570000);
+        $quantierpanier += 1;
+        $elementpanier = array_push($elementpanier,$_POST['id_produit']);
+
         header("Location:./routeur.php?action=panier");
         //SELF::displayPanier(); // ajouter les produit au panier a chaque refresh de la page))
     }
