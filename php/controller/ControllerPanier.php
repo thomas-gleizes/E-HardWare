@@ -20,7 +20,11 @@ class ControllerPanier{
     }
 
     public static function ajoutPanier(){
-        $id = ControllerUtilisateur::getId();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_name("mlsfhvliusqfrbguilqdfjlqhdf");
+            session_start();
+        }
+        $id = ModelUtilisateur::getIdUti($_SESSION['login']);
         $nb = ModelPanier::verifprodPanier($_POST['id_produit'], $id);
         if ($nb == 0){
             ModelPanier::ajoutPanier($_POST["id_produit"],$_POST["nombre"],$id);

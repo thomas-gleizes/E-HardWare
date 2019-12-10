@@ -83,9 +83,9 @@
     width: 2rem;
     height: 2rem;
     border: none;
-    position: absolute;
-    margin-top:-1.6rem;
-    margin-left:27%;
+    float:right;
+    margin-top:0.5rem;
+    margin-right:5rem;
     cursor: pointer;
 }
 
