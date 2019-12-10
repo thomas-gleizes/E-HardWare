@@ -23,6 +23,7 @@ class ModelRecherche{
         $requete = "";
         $valeur = [];
         $valeur["nom"] = "%".$nom."%";
+        $dfbbd = explode(",",$marque);
         if ($prix == 1){
             //echo"1";
             if($marque==null && $categorie==null){
@@ -132,6 +133,7 @@ class ModelRecherche{
 
             $sql=$requete;
         }
+        var_dump($sql);
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($valeur);
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
@@ -153,7 +155,14 @@ class ModelRecherche{
                     $rec_prep = Model::$pdo->prepare($sql);
                     $rec_prep->execute($valeur);
                     $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
-                    $tab = array_merge($tab,$rec_prep->fetchAll());
+                    if(!in_array($value,$tab)){
+                        //echo"pas dedans";
+                        //echo"<br>";
+                        $tab = array_merge($tab,$rec_prep->fetchAll());
+                    }/*else{
+                        //echo"dedans";
+                        //echo"<br>";
+                    }*/
                 }
             }
         }
