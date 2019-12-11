@@ -171,11 +171,15 @@ class ModelUtilisateur{
     }
 
     public static function verifEmail($mail){
-        $sql = "SELECT Email FROM Clients where Email = :mail ";
-        $value['mail'] = $mail;
+        $sql = "SELECT COUNT(Email) AS testEmail FROM Clients WHERE Email = :mail";
+        $value = array(
+            "mail" => $mail
+        );
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($value);
-        return $rec_prep;
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        return $tab[0]['testEmail'];
     }
 
 
