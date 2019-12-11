@@ -5,7 +5,7 @@ require_once (File::build_path(array('model','Model.php')));
 class ModelPanier{
 
     public static function getPanier($idClient){
-        $sql = "SELECT pa.refProduit, pa.quantiteProduit , nom, nomMarque, Url, prix, categorie FROM Panier pa, Produits p WHERE pa.refProduit = p.refProduit AND pa.idClient = :idClient;";
+        $sql = "SELECT pa.refProduit, pa.quantiteProduit , nom, nomMarque, Url, prix, stock, categorie FROM Panier pa, Produits p WHERE pa.refProduit = p.refProduit AND pa.idClient = :idClient;";
         $value['idClient'] = $idClient;
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($value);
@@ -102,5 +102,6 @@ class ModelPanier{
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($value) ;
     }
+
 
 }

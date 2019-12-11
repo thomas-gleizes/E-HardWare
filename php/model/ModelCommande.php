@@ -63,7 +63,6 @@ class ModelCommande{
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
         $tab = $rec_prep->fetchAll();
         return $tab;
-
     }
 
 

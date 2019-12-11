@@ -168,6 +168,17 @@ class ModelProduit {
         return $tab;
     }
 
+    public static function getStock($refProduit){
+        $sql = "SELECT stock FROM Produits WHERE refProduit = :refProduit;";
+        $value['refProduit'] = $refProduit;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        return $tab[0]['stock'];
+    }
+
+
     public static function getReview($refProduit){
         $sql = "SELECT Clients.Email, Clients.idClient, Clients.prenomClient, Avis.note, Avis.commentaire, Avis.date FROM Avis, Clients WHERE Avis.idClient = Clients.idClient AND Avis.refProduit = :refProduit ORDER  BY (date) DESC";
         $value['refProduit'] = $refProduit;

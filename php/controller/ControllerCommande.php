@@ -30,9 +30,17 @@ class ControllerCommande {
             $idCommande = ModelCommande::getLastIdCommandes($tab['idClient']);
             $tabref = ModelPanier::getRefproduit($tab['idClient']);
             foreach ($tabref as $value){
-                ModelCommande::addOrder($idCommande, $value['refProduit'], $value['quantiteProduit']);
+                $stock = ModelProduit::getStock($value['refProduit']);
+                if ($stock > $value['quantiteProduit']){
+                    ModelCommande::addOrder($idCommande, $value['refProduit'], $stock);
+                    ModelPanier::deletePanier($tab['idClient'], $value['refProduit']);
+                } else if ($stock > 0){
+                    ModelCommande::addOrder($idCommande, $value['refProduit'], $value['quantiteProduit']);
+                    ModelPanier::deletePanier($tab['idClient'], $value['refProduit']);
+                } else {
+
+                }
             }
-            ModelPanier::deleteAllPanier($tab['idClient']);
             self::displayAllOrder();
         } else {
             require_once (File::build_path(array('view','vueRecherche.php')));

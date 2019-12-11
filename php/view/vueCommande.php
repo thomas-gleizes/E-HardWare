@@ -219,6 +219,7 @@ setcookie("elementpanier",$string,time()+time()+31570000);
     $nomMarque = "nomMarque";
     $Url = "Url";
     $prix = "prix";
+    $stock = "stock";
 
 
         foreach ($tab as $item) {
@@ -231,7 +232,14 @@ setcookie("elementpanier",$string,time()+time()+31570000);
             <div class="d">
                 <p class="name">' . $item[$nom] . '</p>
                 <p class="prix">' . $item[$prix] * $item[$quantite] . ',00€</p>
-                <p class="number">' . $item[$quantite] . '</p>
+                ';
+            if ($item[$stock] == 0){
+                echo '<p class="name"> Le produit est en rupture de stock, il ne poura donc par etre ajouter a la commande, un mail vous sera envoyer quand il y aura a nouveau du stock ! </p>';
+            } else {
+                echo '<p class="number">' . $item[$quantite] . '</p>';
+            }
+           echo '
+                
                 <form method="post" action="../controller/routeur.php">
                     <input type="hidden" name="action" value="del">
                     <input type="hidden" name="id_produit" value="' . $item[$refProduit] . '">
