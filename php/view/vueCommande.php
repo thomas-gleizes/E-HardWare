@@ -232,6 +232,13 @@ setcookie("elementpanier",$string,time()+time()+31570000);
             <div class="d">
                 <p class="name">' . $item[$nom] . '</p>
                 <p class="prix">' . $item[$prix] * $item[$quantite] . ',00€</p>
+                <form method="post" action="../controller/routeur.php">
+                    <input type="hidden" name="action" value="del">
+                    <input type="hidden" name="id_produit" value="' . $item[$refProduit] . '">
+                    <button type="submit" class="clear-btn">
+                        <i class="material-icons clear1">clear</i>
+                    </button>
+                </form>
                 ';
             if ($item[$stock] == 0){
                 echo '<p class="name"> Le produit est en rupture de stock, il ne poura donc par etre ajouter a la commande, un mail vous sera envoyer quand il y aura a nouveau du stock ! </p>';
@@ -240,15 +247,7 @@ setcookie("elementpanier",$string,time()+time()+31570000);
             } else {
                 echo '<p class="number">' . $item[$quantite] . '</p>';
             }
-           echo '
-                
-                <form method="post" action="../controller/routeur.php">
-                    <input type="hidden" name="action" value="del">
-                    <input type="hidden" name="id_produit" value="' . $item[$refProduit] . '">
-                    <button type="submit" class="clear-btn">
-                        <i class="material-icons clear1">clear</i>
-                    </button>
-                </form>
+            echo'
             </div>
         </div>
     
