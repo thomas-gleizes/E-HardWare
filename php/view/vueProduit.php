@@ -5,7 +5,7 @@ if(!isset($quantierpanier)){
 }else{
 
 }
-if(!isset($_SESSION['login'])){
+if(!isset($_SESSION)){
     session_name("mlsfhvliusqfrbguilqdfjlqhdf");
     session_start();
 }

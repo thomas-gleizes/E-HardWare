@@ -139,13 +139,11 @@ class ControllerProduit{
 
         if (isset($_SESSION['login'])){
             $login = $_SESSION['login'];
+            $nbAvis = ModelProduit::countReview(ModelUtilisateur::getIdUti($_SESSION['login']),$_POST['id_produit']);
         } else {
             $login = "lkf,nd¤&\"&é";
+            $nbAvis = 0;
         }
-
-
-        $nbAvis = ModelProduit::countReview(ModelUtilisateur::getIdUti($_SESSION['login']),$_POST['id_produit']);
-
         require_once (File::build_path(array('view','vueProduit.php')));
     }
 
