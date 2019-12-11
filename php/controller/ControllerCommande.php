@@ -37,8 +37,6 @@ class ControllerCommande {
                 } else if ($stock > 0){
                     ModelCommande::addOrder($idCommande, $value['refProduit'], $value['quantiteProduit']);
                     ModelPanier::deletePanier($tab['idClient'], $value['refProduit']);
-                } else {
-
                 }
             }
             self::displayAllOrder();
@@ -46,6 +44,10 @@ class ControllerCommande {
             require_once (File::build_path(array('view','vueRecherche.php')));
         }
     }
+/*
+$sql = "CALL GenereCodeConfirmation('$mail')";
+$stmt = Model::$pdo->prepare($sql);
+$stmt->execute();*/
 
     public static function displayAllOrder(){
         if (session_status() == PHP_SESSION_NONE) {

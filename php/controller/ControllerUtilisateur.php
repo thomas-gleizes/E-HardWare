@@ -150,11 +150,8 @@ class ControllerUtilisateur{
     }
 
     public static function containsEmoji( $string ) {
-
         preg_match( '/[\x{1F600}-\x{1F64F}]/u', $string, $matches_emo );
-
         return !empty( $matches_emo[0] ) ? true : false;
-
     }
 
 
