@@ -39,15 +39,20 @@ class ControllerCommande {
                     ModelPanier::deletePanier($tab['idClient'], $value['refProduit']);
                 }
             }
+            /*
+            $sql = "CALL CHECKORDER";
+            $stmt = Model::$pdo->prepare($sql);
+            $stmt->execute();*/
             self::displayAllOrder();
         } else {
+            /*
+            $sql = "CALL CHECKORDER";
+            $stmt = Model::$pdo->prepare($sql);
+            $stmt->execute();*/
             require_once (File::build_path(array('view','vueRecherche.php')));
         }
     }
-/*
-$sql = "CALL GenereCodeConfirmation('$mail')";
-$stmt = Model::$pdo->prepare($sql);
-$stmt->execute();*/
+
 
     public static function displayAllOrder(){
         if (session_status() == PHP_SESSION_NONE) {
