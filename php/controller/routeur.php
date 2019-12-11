@@ -16,6 +16,8 @@
             ControllerPanier::displayPanier();
         } else if ($_GET['action'] == 'askChangeMdp') {
             ControllerUtilisateur::askChangeMdp();
+        } else if ($_GET['action'] == 'VueProduit'){
+            ControllerProduit::infoVueProduit();
         } else {
             $action = $_GET["action"];
             ControllerRecherche::$action();

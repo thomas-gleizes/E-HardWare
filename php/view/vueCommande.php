@@ -235,6 +235,8 @@ setcookie("elementpanier",$string,time()+time()+31570000);
                 ';
             if ($item[$stock] == 0){
                 echo '<p class="name"> Le produit est en rupture de stock, il ne poura donc par etre ajouter a la commande, un mail vous sera envoyer quand il y aura a nouveau du stock ! </p>';
+            } else if ($item[$stock] < $item[$quantite]){
+                echo '<p class="name"> Vous ne pourez commendez que '.$item[$stock].' produits<p>';
             } else {
                 echo '<p class="number">' . $item[$quantite] . '</p>';
             }

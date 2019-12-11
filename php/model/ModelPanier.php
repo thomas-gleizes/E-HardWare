@@ -103,5 +103,15 @@ class ModelPanier{
         $rec_prep->execute($value) ;
     }
 
+    public static function getMailPanier($refProduit){
+        $sql = "SELECT Email FROM Clients c, Panier pa, Produits p WHERE c.idClient = pa.idClient AND pa.refProduit = p.refProduit AND p.refProduit = :refProduit AND p.stock = 0; ";
+        $value['refProduit'] = $refProduit;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        return $tab;
+    }
+
 
 }

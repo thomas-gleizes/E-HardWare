@@ -127,7 +127,6 @@ class ControllerProduit{
             $tabProd = ModelProduit::getAlimentation($_POST['id_produit']);
         }
 
-
         $tabReview = ModelProduit::getReview($_POST['id_produit']);
         $avr = round(ModelProduit::markAverage($_POST['id_produit']),2);
 
@@ -177,6 +176,16 @@ class ControllerProduit{
         self::infoVueProduit();
     }
 
+    public static function getName($refProduit){
+        $sql = "SELECT nom FROM Produits WHERE refProduit = :refProduit;";
+        $value['refProduit'] = $refProduit;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $tab = $rec_prep->fetchAll();
+        return $tab[0]['nom'];
+    }
+
     public static function supprProduit(){
         ModelProduit::deleteProduit($_POST['id_produit']);
         require_once (File::build_path(array('view','vueRecherche.php')));
@@ -193,6 +202,15 @@ class ControllerProduit{
     }
 
     public static function ajouterStock(){
+
+        $tab = ModelPanier::getMailPanier($_POST['id_produit']);
+        $header = "From : " . "thomas.gleizes@etu.umontpellier.fr";
+        $nom = self::getName($_POST['id_produit']);
+        foreach ($tab as $item) {
+            $mail = $item['Email'];
+            echo $mail;
+            mail($mail,"$nom en stock sur E-HardWare !" , "Le produit : $nom est enfin en stock !", "From : " . "$header" );
+        }
         ModelProduit::upDateStock($_POST['id_produit'], $_POST['stock']);
         self::infoVueProduit();
     }
