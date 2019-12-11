@@ -131,6 +131,20 @@ h3 {
 
 .under {
     display:none;
+    color:white;
+    text-align: left;
+    padding-top:0;
+    padding-bottom: 0;
+    padding-left: 0.5rem;
+    font-size: 20px;
+}
+
+.under i {
+    margin-top: 0.2rem;
+}
+
+.under:hover {
+    color:#06bcc7;
 }
 
 .section:hover .navbaricons {
@@ -172,6 +186,7 @@ h3 {
     border-radius: 0.2rem;
     border: 2px solid #06bcc7;
     overflow: auto;
+    padding-bottom: 0.5rem;
 }
 
 .open {
@@ -218,6 +233,10 @@ input[type=checkbox] + label {
     margin: 0.2em;
     cursor: pointer;
     padding: 0.2em;
+    font-size: 0.9rem;
+    text-align: center;
+    padding-top: 1.7rem;
+    font-family: 'Oswald', sans-serif;
 }
 
 input[type=checkbox] {
@@ -357,26 +376,19 @@ label p {
 #cart-button {
     margin-right: 3vw;
     margin-top: 0.2rem;
-    width: 7rem;
+    width: 6rem;
     height: 5rem;
     background-color: transparent;
     border: none;
     cursor:pointer;
-}
-
-#cart-button p{
     color: #06bcc7;
-    margin-top: 7.5%;
     font-size: 25px;
-    margin-right:1rem;
+    padding-right:1rem;
     transition: .2s ease-in-out;
-    float: right;
+    text-align: right;
 }
 
-#cart-button:hover #cart-icon {
-    transform: scale(1.2);
-}
-#cart-button:hover p {
+#cart-button:hover {
     transform: scale(1.2);
 }
 
@@ -814,6 +826,20 @@ form {
     height: 100%;
     background-color: transparent;
     border: none;
+    color:white;
+    text-align: left;
+    padding-top: 1rem;
+    padding-bottom: 0;
+    padding-left: 0.5rem;
+    font-size: 20px;
+}
+
+.pan-btn i {
+    margin-top: 0.2rem;
+}
+
+.pan-btn:hover {
+    color: #06bcc7;
 }
 
 

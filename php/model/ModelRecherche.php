@@ -133,7 +133,6 @@ class ModelRecherche{
 
             $sql=$requete;
         }
-        var_dump($sql);
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($valeur);
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
