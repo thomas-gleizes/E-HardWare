@@ -39,16 +39,11 @@ class ControllerCommande {
                     ModelPanier::deletePanier($tab['idClient'], $value['refProduit']);
                 }
             }
-            /*
-            $sql = "CALL CHECKORDER";
+            $sql = "CALL CHECKORDER('$idCommande')";
             $stmt = Model::$pdo->prepare($sql);
-            $stmt->execute();*/
+            $stmt->execute();
             self::displayAllOrder();
         } else {
-            /*
-            $sql = "CALL CHECKORDER";
-            $stmt = Model::$pdo->prepare($sql);
-            $stmt->execute();*/
             require_once (File::build_path(array('view','vueRecherche.php')));
         }
     }
