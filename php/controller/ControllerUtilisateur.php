@@ -17,6 +17,8 @@ class ControllerUtilisateur{
         $tab['ville'] = $_POST['ville'];
         if (self::containsEmoji($_POST['mail']) || self::containsEmoji($_POST['nom']) || self::containsEmoji($_POST['prenom']) || self::containsEmoji($_POST['mdp1']) || self::containsEmoji($_POST['adresse']) || self::containsEmoji($_POST['ville'])){
             header("Location:../view/creation.php?mail=".$tab['mail']."&nom=".$tab['nom']."&prenom=".$tab['prenom']."&adresse=".$tab['adresse']."&ville=".$tab['ville']."&error=4");
+        } else if (self::verifEmail($_POST['mail'])) {
+            header("Location:../view/creation.php?mail=".$tab['mail']."&nom=".$tab['nom']."&prenom=".$tab['prenom']."&adresse=".$tab['adresse']."&ville=".$tab['ville']."&error=5");
         } else if (strlen($_POST['mdp1']) < 8) {
             header("Location:../view/creation.php?mail=".$tab['mail']."&nom=".$tab['nom']."&prenom=".$tab['prenom']."&adresse=".$tab['adresse']."&ville=".$tab['ville']."&error=3");
         } else if (strlen(trim($_POST['mail'])) == 0 || strlen(trim($_POST['nom'])) == 0 || strlen(trim($_POST['prenom'])) == 0 || strlen(trim($_POST['mdp1'])) == 0 || strlen(trim($_POST['adresse'])) == 0 || strlen(trim($_POST['ville'])) == 0){
@@ -82,6 +84,15 @@ class ControllerUtilisateur{
         }
 
 
+    }
+
+    public static function verifEmail($mail){
+        $BaseMail = ModelUtilisateur::verifEmail($mail);
+        if ($BaseMail[0]['Email'] != ""){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static function disconnect(){

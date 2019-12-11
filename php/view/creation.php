@@ -126,6 +126,8 @@ if (isset($_SESSION['login'])) {
                     echo'<p id="error10">Mot de passe trop court !</p>';
                 } else if($_GET['error'] == 4) {
                     echo'<p id="error10">L\'un des champs contient un emoji !</p>';
+                } else if($_GET['error'] == 5) {
+                    echo'<p id="error10">Ce mail est déjà pris !</p>';
                 }
             }
             ?>

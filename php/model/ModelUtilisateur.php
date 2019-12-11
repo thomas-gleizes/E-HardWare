@@ -170,6 +170,14 @@ class ModelUtilisateur{
         $rec_prep->execute($value);
     }
 
+    public static function verifEmail($mail){
+        $sql = "SELECT Email FROM Clients where Email = :mail ";
+        $value['mail'] = $mail;
+        $rec_prep = Model::$pdo->prepare($sql);
+        $rec_prep->execute($value);
+        return $rec_prep;
+    }
+
 
     public static function getInfoCommande($idClient){
         $sql = "SELECT montantPanier, villeClient, adresseClient FROM Clients WHERE idClient = :idClient;";
