@@ -69,6 +69,9 @@ class ModelPanier{
 
     public static function ajoutPanier($ref,$quantiter,$id){
         if(isset($_SESSION["login"])){
+            if ($quantiter == null){
+                $quantiter = 0;
+            }
             $sql = "INSERT INTO Panier  (idClient,refProduit,quantiteProduit) VALUES (:id,:ref,:quantitier)";
             $value = array(
                 "ref" => $ref,

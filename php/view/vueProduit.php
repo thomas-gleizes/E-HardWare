@@ -282,12 +282,15 @@ foreach ($tabProd as $tai){
     }
 }
 foreach ($tab as $tav){
-    echo '  
-            <p id="marque" class="left">'.$tav[$nm].'</p>
+    echo '  <p id="marque" class="left">'.$tav[$nm].'</p>
             <p id="categorie" class="left">'.$tav[$c].'</p>
             <p id="disponibilite" class="left">en stock ('.$tav[$s].' disponible)</p>
             <input type="hidden" id="stock" value="'.$tav[$s].'">
-            <p id="prix-total" class="left">'.$tav[$p].',00 €</p>
+            <p id="prix-total" class="left">'.$tav[$p].',00 €</p>';
+    if ($tav[$s] == 0){
+        echo '<p> Ce produit est en rupture de stock ! </p>';
+    } else {
+        echo '
             <p id="quantity" class="left">quantité :</p>
             <form  method="Post" action="../controller/routeur.php">
                 <select id="select6" name="nombre">
@@ -295,9 +298,9 @@ foreach ($tab as $tav){
                 <input type="hidden" id="id_produit" name="id_produit" value="'.$ref.'">
                 <input type="hidden" name="action" value="ajoutPanier">
                 <button id="achat-btn" type="submit">Ajouter</button>
-            </form>
-        </div>
-    ';
+            </form>';
+    }
+        echo '</div>';
 }
 echo '
             <div class="onglet" id="onglet1"><p>Commentaires des utilisateurs</p></div>
@@ -323,7 +326,6 @@ if (!empty($tabReview)){
                     <p class="note">'.$value[$note].'</p>
                     <p class="date">'.$value[$date].'</p>';
         if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1){
-           // if ($_SESSION['admin'] == 1){
                 echo '  <form method="post" action="./../controller/routeur.php">
                         <input type="hidden" name="action" value="supprReview">
                         <input type="hidden" name="id_produit" value="' . $ref . '">
