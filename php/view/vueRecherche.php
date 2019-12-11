@@ -9,10 +9,7 @@ if(session_status() == PHP_SESSION_NONE){
     session_name("mlsfhvliusqfrbguilqdfjlqhdf");
     session_start();
 }
-if(!isset($quantierpanier)){
-    $quantierpanier = 0;
-    $elementpanier = [];
-}
+
 
 //$t = count($tab);
 //$string;

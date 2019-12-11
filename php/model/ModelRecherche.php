@@ -25,114 +25,17 @@ class ModelRecherche{
         $valeur["nom"] = "%".$nom."%";
         $dfbbd = explode(",",$marque);
         if ($prix == 1){
-            //echo"1";
-            if($marque==null && $categorie==null){
-                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits where nom like :nom ";
-            }
-            if($marque==null && $categorie!=null){
-                //echo"1.2";
-                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits where categorie = :categorie AND nom like :nom";
-                $valeur["categorie"] = $categorie;
-            }
-            if($marque!=null && $categorie == null){
-                //echo"1.3";
-                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits where nomMarque = :marque ";
-                foreach ($dfbbd as $m){
-                    $str = $m;
-                    $requete = $requete."OR nomMarque = :$str ";
-                    $valeur[$str] = $m;
-                }
-                $requete = $requete."and nom like :nom";
-                $valeur["marque"] = $marque;
-
-            }
-            if($marque!=null && $categorie != null){
-                //echo"1.4";
-                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits where categorie = :categorie AND nomMarque = :marque ";
-                foreach ($dfbbd as $m){
-                    $str = $m;
-                    $requete = $requete."OR nomMarque = :$str ";
-                    $valeur[$str] = $m;
-                }
-                $requete = $requete."and nom like :nom";
-                $valeur["marque"] = $marque;
-                $valeur["categorie"] = $categorie;
-            }
-            $sql = $requete." GROUP BY(Produits.refProduit) ORDER BY Produits.prix ASC";
+            $sql =self::search($nom,$prix,$marque,$categorie)[0]." GROUP BY(Produits.refProduit) ORDER BY Produits.prix ASC";
 
         }
         if ($prix == 2){
-            //echo"2";
-            if($marque==null && $categorie==null){
-                //echo"2.1";
-                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE nom like :nom ";
-            }
-            if($marque==null && $categorie!=null){
-                //echo"2.2";
-                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE categorie = :categorie AND nom like :nom";
-            }
-            if($marque!=null && $categorie == null){
-                //echo"2.3";
-                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits where nomMarque = :marque ";
-                foreach ($dfbbd as $m){
-                    $str = $m;
-                    $requete = $requete."OR nomMarque = :$str ";
-                    $valeur[$str] = $m;
-                }
-                $requete = $requete."and nom like :nom";
-                $valeur["marque"] = $marque;
-            }
-            if($marque!=null && $categorie != null){
-                //echo"2.4";
-                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits where categorie = :categorie AND nomMarque = :marque ";
-                foreach ($dfbbd as $m){
-                    $str = $m;
-                    $requete = $requete."OR nomMarque = :$str ";
-                    $valeur[$str] = $m;
-                }
-                $requete = $requete."and nom like :nom";
-                $valeur["marque"] = $marque;
-                $valeur["categorie"] = $categorie;
-            }
-            $sql = $requete." GROUP BY(Produits.refProduit) ORDER BY Produits.prix DESC";
+            $sql = self::search($nom,$prix,$marque,$categorie)[0]." GROUP BY(Produits.refProduit) ORDER BY Produits.prix DESC";
 
         } if($prix == null) {
-
-            if($marque==null && $categorie==null){
-                //echo"3.1";
-                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE nom like :nom ";
-            }
-            if($marque==null && $categorie!=null){
-                //echo"3.2";
-                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits WHERE categorie = :categorie AND nom like :nom";
-                $valeur["categorie"] = $categorie;
-            }
-            if($marque!=null && $categorie == null){
-                //echo"3.3";
-                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits where nomMarque = :marque ";
-                foreach ($dfbbd as $m){
-                    $str = $m;
-                    $requete = $requete."OR nomMarque = :$str ";
-                    $valeur[$str] = $m;
-                }
-                $requete = $requete."and nom like :nom";
-                $valeur["marque"] = $marque;
-            }
-            if($marque!=null && $categorie != null){
-                //echo"3.4";
-                $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits where categorie = :categorie AND nomMarque = :marque ";
-                foreach ($dfbbd as $m){
-                    $str = $m;
-                    $requete = $requete."OR nomMarque = :$str ";
-                    $valeur[$str] = $m;
-                }
-                $requete = $requete."and nom like :nom";
-                $valeur["marque"] = $marque;
-                $valeur["categorie"] = $categorie;
-            }
-
-            $sql=$requete;
+            $sql=self::search($nom,$prix,$marque,$categorie)[0];
         }
+
+        $valeur = self::search($nom,$prix,$marque,$categorie)[1];
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($valeur);
         $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
@@ -211,5 +114,46 @@ class ModelRecherche{
         if(empty($tab))
             return null;
         return $tab;
+    }
+
+    public static function search($nom,$prix,$marque,$categorie){
+        $sql ="";
+        $requete = "";
+        $valeur = [];
+        $valeur["nom"] = "%".$nom."%";
+        $dfbbd = explode(",",$marque);
+        if($marque==null && $categorie==null){
+            $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits where nom like :nom ";
+        }
+        if($marque==null && $categorie!=null){
+            //echo"1.2";
+            $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits where categorie = :categorie AND nom like :nom";
+            $valeur["categorie"] = $categorie;
+        }
+        if($marque!=null && $categorie == null){
+            //echo"1.3";
+            $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits where nomMarque = :marque ";
+            foreach ($dfbbd as $m){
+                $str = $m;
+                $requete = $requete."OR nomMarque = :$str ";
+                $valeur[$str] = $m;
+            }
+            $requete = $requete."and nom like :nom";
+            $valeur["marque"] = $marque;
+
+        }
+        if($marque!=null && $categorie != null){
+            //echo"1.4";
+            $requete = "SELECT Url,refProduit,nom,nomMarque,prix FROM Produits where categorie = :categorie AND nomMarque = :marque ";
+            foreach ($dfbbd as $m){
+                $str = $m;
+                $requete = $requete."OR nomMarque = :$str ";
+                $valeur[$str] = $m;
+            }
+            $requete = $requete."and nom like :nom";
+            $valeur["marque"] = $marque;
+            $valeur["categorie"] = $categorie;
+        }
+        return array($requete,$valeur);
     }
 }
