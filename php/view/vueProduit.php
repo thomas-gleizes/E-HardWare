@@ -403,7 +403,7 @@ if (isset($_SESSION['admin'])){
             </form>
             <form class="price-form" method="post" action="./../controller/routeur.php">
                 <p>Changer le prix du produit:</p>
-                <input class="number" type="number" min="0" placeholder="nouveau prix" name="price" required>
+                <input class="number" type="number" min="1" placeholder="nouveau prix" name="price" required>
                 <input type="hidden" name="id_produit" value="'. $ref .'">
                 <input type="hidden" name="action" value="prix">
                 <button class="ok" type="submit">ok</button>

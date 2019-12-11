@@ -43,6 +43,9 @@ class ControllerUtilisateur{
         $tab = [];
         $tab['mail'] = $_POST['mail'];
         $tab['mdp'] = $_POST['mdp'];
+        if (isset($_POST['error'])){
+            $_GET['error'] = $_POST['error'];
+        }
 
         if (ModelUtilisateur::connectionCompte($tab)) {
             $resClient = ModelUtilisateur::myaccount();
@@ -68,10 +71,16 @@ class ControllerUtilisateur{
         $tab['id'] = $_POST['id'];
         $tab['adresse'] = $_POST['adresse'];
         $tab['ville'] = $_POST['ville'];
+        if (self::containsEmoji($_POST['mail']) || self::containsEmoji($_POST['nom']) || self::containsEmoji($_POST['prenom']) || self::containsEmoji($_POST['mdp1']) || self::containsEmoji($_POST['adresse']) || self::containsEmoji($_POST['ville'])){
+            header("Location:../view/account.php?error=0");
+        }  else if ($_POST['adresse'] == "" || $_POST['ville'] == "" ){
+            header("Location:../view/account.php?error=1");
+        } else {
+            ModelUtilisateur::editCompte($tab);
 
-        ModelUtilisateur::editCompte($tab);
+            header('Location:../view/account.php');
+        }
 
-        header('Location:../view/account.php');
 
     }
 
@@ -91,7 +100,7 @@ class ControllerUtilisateur{
         if(ModelUtilisateur::validerCompte($code)){
             header('Location:../view/account.php');
         } else {
-            header('Location:../view/account.php?error=1');
+            header('Location:../view/account.php?error=2');
         }
     }
 

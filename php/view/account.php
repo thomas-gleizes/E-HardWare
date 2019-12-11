@@ -9,7 +9,11 @@ if (!isset($_SESSION['login'])) {
     }
 }
 if (!isset($resClient)) {
-    header('Location:../controller/routeur.php?action=actionExt');
+    if(!$_GET==null){
+        header('Location:../controller/routeur.php?action=actionExt&error='.$_GET['error']);
+    } else {
+        header('Location:../controller/routeur.php?action=actionExt');
+    }
 }
 ?>
 
@@ -35,8 +39,16 @@ if (!isset($resClient)) {
      echo '<p id="bonjour">Bonjour '.$prenom.' !</p>';
     ?>
     <?php
-    if($_GET=="error"){
-        echo "<p id=\"error2\">Ce code n'est pas bon !</p>";
+    if(!$_GET==null){
+        if(isset($_GET['error'])) {
+            if ($_GET['error'] == 0) {
+                echo "<p id=\"error2\">vous ne pouvez pas mettre d'émoji dans votre adresse ou votre ville !</p>";
+            } else if ($_GET['error'] == 1) {
+                echo "<p id=\"error2\">L'un des champs est vide !</p>";
+            } else if ($_GET['error'] == 2) {
+                echo "<p id=\"error2\">Ce code n'est pas bon !</p>";
+            }
+        }
     }
     ?>
     <?php
