@@ -68,17 +68,6 @@ if (!isset($resClient)) {
                 </i>
             </div>
             <?php
-            $mail = $resClient[0]['Email'];
-            echo '<input class="changeable" type="email" name="mail" value="'.$mail.'"required>';
-            ?>
-        </div>
-        <div class="under-container2 edit-div">
-            <div class="i-container">
-                <i class="material-icons i edit">
-                    edit
-                </i>
-            </div>
-            <?php
             $adresse = $resClient[0]['adresseClient'];
             echo '<input class="changeable" name="adresse" value="'.$adresse.'" required>';
             ?>

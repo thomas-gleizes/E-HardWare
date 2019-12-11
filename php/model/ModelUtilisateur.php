@@ -81,9 +81,8 @@ class ModelUtilisateur{
     }
 
     public static function editCompte($tab){
-        $sql = "UPDATE Clients SET Email = :mail, villeClient = :ville, adresseClient = :adresse where idClient = :id";
+        $sql = "UPDATE Clients SET villeClient = :ville, adresseClient = :adresse where idClient = :id";
         $valeur  =array(
-            "mail" => $tab['mail'],
             "ville" => $tab['ville'],
             "adresse" => $tab['adresse'],
             "id" => $tab['id']
@@ -94,14 +93,6 @@ class ModelUtilisateur{
             session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }
-        $mail = $tab['mail'];
-        if ($mail != $_SESSION['login']){
-            $sqll = "CALL GenereCodeConfirmation('$mail')";
-            $stmt = Model::$pdo->prepare($sqll);
-            $stmt->execute();
-            ControllerUtilisateur::reValiderMail($mail);
-        }
-        $_SESSION['login'] = $tab['mail'];
     }
 
     public static function chiffrer($mdp){

@@ -66,7 +66,6 @@ class ControllerUtilisateur{
     public static function edit(){
         $tab = [];
         $tab['id'] = $_POST['id'];
-        $tab['mail'] = $_POST['mail'];
         $tab['adresse'] = $_POST['adresse'];
         $tab['ville'] = $_POST['ville'];
 
@@ -85,14 +84,6 @@ class ControllerUtilisateur{
         session_destroy();
 
         header('Location:../../index.php');
-    }
-
-    public static function reValiderMail($mail){
-        $code = ModelUtilisateur::getCodeConf($mail);
-        $lien = 'http://webinfo.iutmontp.univ-montp2.fr/~gleizest/Cours/php/projetPHP/php/view/account.php';
-        $message = "Veuillez confirmez votre changement de mail en entrant le code suivant : $code dans le liens suivant $lien";
-        $header = 'From : " . "thomas.gleizes@etu.umontpellier.fr';
-        mail($mail, 'Demande de reConfirmation de Email suite a un chengement de celui-ci',$message,$header);
     }
 
     public static function validation(){
