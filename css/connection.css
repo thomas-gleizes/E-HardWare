@@ -217,3 +217,17 @@ p{
     margin-left: 45%;
     float: none;
 }
+
+@media(max-width: 900px) {
+
+    .container-spe {
+        width:95%;
+        margin-left: 2.5%;
+    }
+
+    .container {
+        width:95%;
+        margin-left: 2.5%;
+    }
+}
+

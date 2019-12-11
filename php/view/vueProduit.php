@@ -288,7 +288,7 @@ foreach ($tab as $tav){
             <input type="hidden" id="stock" value="'.$tav[$s].'">
             <p id="prix-total" class="left">'.$tav[$p].',00 €</p>';
     if ($tav[$s] == 0){
-        echo '<p> Ce produit est en rupture de stock ! </p>';
+        echo '<p class="rupture"> Ce produit est en rupture de stock ! </p>';
     } else {
         echo '
             <p id="quantity" class="left">quantité :</p>

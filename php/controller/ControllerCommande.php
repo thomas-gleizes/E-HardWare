@@ -31,10 +31,10 @@ class ControllerCommande {
             $tabref = ModelPanier::getRefproduit($tab['idClient']);
             foreach ($tabref as $value){
                 $stock = ModelProduit::getStock($value['refProduit']);
-                if ($stock > $value['quantiteProduit']){
+                if ($stock < $value['quantiteProduit']){
                     ModelCommande::addOrder($idCommande, $value['refProduit'], $stock);
                     ModelPanier::deletePanier($tab['idClient'], $value['refProduit']);
-                } else if ($stock > 0){
+                } else if ($stock >= $value['quantiteProduit']){
                     ModelCommande::addOrder($idCommande, $value['refProduit'], $value['quantiteProduit']);
                     ModelPanier::deletePanier($tab['idClient'], $value['refProduit']);
                 }

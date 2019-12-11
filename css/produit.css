@@ -313,6 +313,41 @@
     color: black;
 }
 
+.rupture {
+    color:red;
+    font-size: larger;
+}
+
+@media(max-width: 900px) {
+    .image-container {
+        float: none;
+        width:100%;
+        background-size: 100vw;
+    }
+
+    .desc-container {
+        float: none;
+        width:100%;
+        margin-top: 1rem;
+    }
+
+    .commentaire-container {
+        margin-top:3rem;
+    }
+
+    .write-commentaire {
+        margin-top:3rem;
+    }
+
+    .admin-part {
+        margin-top:3rem;
+    }
+
+    .onglet {
+        top:55.7rem;
+    }
+}
+
 
 
 

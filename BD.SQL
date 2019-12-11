@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  mer. 11 déc. 2019 à 21:22
+-- Généré le :  mer. 11 déc. 2019 à 22:43
 -- Version du serveur :  5.5.47-0+deb8u1
 -- Version de PHP :  7.2.22-1+0~20190902.26+debian8~1.gbpd64eb7
 
@@ -28,7 +28,7 @@ DELIMITER $$
 --
 CREATE DEFINER=`gleizest`@`%` PROCEDURE `CHECKORDER` (IN `lastIdCom` INT(5))  NO SQL
 BEGIN
-  DECLARE nbProd int(5);
+	DECLARE nbProd int(5);
     DECLARE ID int(5);
    
     SELECT nbProduit INTO nbProd
@@ -43,25 +43,25 @@ END$$
 CREATE DEFINER=`gleizest`@`%` PROCEDURE `GenereCodeConfirmation` (IN `p_mail` VARCHAR(60))  NO SQL
     DETERMINISTIC
 BEGIN
-  DECLARE r int(5);
+	DECLARE r int(5);
     DECLARE test int(1);
    
     
     SET test = 0;
     
     WHILE test = 0 DO
-      SELECT ROUND( RAND() * 9999 ) INTO r;
+    	SELECT ROUND( RAND() * 9999 ) INTO r;
         IF r > 1000 THEN
-          SELECT COUNT(idClient) INTO test
+        	SELECT COUNT(idClient) INTO test
             FROM Clients
             WHERE codeConfirmation = r;
             IF test = 0 THEN
-              SET test = 1;
+            	SET test = 1;
             END IF;
         END IF;
-  END WHILE;
+	END WHILE;
 
-  UPDATE Clients
+	UPDATE Clients
     SET codeConfirmation = r
     WHERE Email = p_mail;
 END$$
@@ -219,21 +219,24 @@ CREATE TABLE `Clients` (
 --
 
 INSERT INTO `Clients` (`idClient`, `Email`, `nomClient`, `prenomClient`, `villeClient`, `adresseClient`, `nbProduitPanier`, `montantPanier`, `prioriter`, `mdp`, `codeConfirmation`, `token`) VALUES
-(1, 'latak@yopmail.com', 'Kalat', 'latak', 'SoftCity', '457 rue de l\'hardware', 1, 0, 1, 'a84bc7b0a6da1394928f3e67855e501340c59226d48b7fd890c102616f0615a5', 0, ''),
+(1, 'latak@yopmail.com', 'Kalat', 'latak', 'SoftCity', '457 rue de l\'hardware', 4, 4820, 1, 'a84bc7b0a6da1394928f3e67855e501340c59226d48b7fd890c102616f0615a5', 0, ''),
 (2, 'test@gmail.com', 'Savouret', 'Basile', 'Montpellier', '354 rue Maurice et Katia Kraft', 0, 0, 1, 'ca59e81db6c1e76b22441f52d88189eb618b02afaecba10ffa9cbcae8b64d4e6', 7893, '89e0663fccf3e6278ca24937b7e2c435c8f5c69c79429756db1d83b8e5875361'),
 (3, 'latadjkfbjskk@yopmail.com', 'Gleizes', 'Thomas', 'SoftCity', '123 rue du Hardware', 5, 2816, 1, '96f824ba8d74669d6c98e995cbae8561e212bdeb1d8c55cec9289636c9449592', 0, '0'),
-(79, 'socialempire971@hotmail.fr', 'Viator', 'Davio', 'Montpellier', '1101 avenue agropolis', 10, 43675, 1, '8fe6fdf88faad74a7000423b5e1dd217f0cf29a0092b9d03cd1d48e2cd3f3929', 0, '0'),
+(79, 'socialempire971@hotmail.fr', 'Viator', 'Davio', 'Montpellier', '1101 avenue agropolis', 11, 44475, 1, '8fe6fdf88faad74a7000423b5e1dd217f0cf29a0092b9d03cd1d48e2cd3f3929', 0, '0'),
 (80, 'ijissaxec-4098@yopmail.com', 'gleizes', 'Thomas', 'fabregues', '457 chemin des coureches', 0, 0, 0, '96f824ba8d74669d6c98e995cbae8561e212bdeb1d8c55cec9289636c9449592', 0, '0'),
 (81, 'KALAT@gmail.com', 'gleizes', 'Thomas', 'fabregues', '457 chemin des coureches', 0, 0, 0, '1da570e2dd5cfb984ad6de680732da77e5f071d409d30d14d0cc5f68272f96b8', 0, '0'),
 (82, 'emaildebonsoir@yopmail.com', 'bonsoir', 'bonsoir', 'bonsoir', 'bonsoir', 1, 1035, 0, '260f1eb4ac24588bd3b96db543e41697ddd5ea9d4fe56af4aa9f799da9d6302f', 0, '0'),
 (83, 'Ange.Clement@gmail.com', 'Ange', 'Clement', 'Montpelleier', '458 rue de l\'avenue', 0, 0, 0, '7e25cc37b288e4f4ffff44909fa431b05fbc03d445139ead8e732e6c300b2ea6', 0, '0'),
 (85, 'emaildebonsoir2@yopmail.com', 'Ange', 'Clément', 'Mont', 'Avenye', 0, 0, 0, '7e25cc37b288e4f4ffff44909fa431b05fbc03d445139ead8e732e6c300b2ea6', 0, '0'),
 (86, 'emaildebonsoir3@yopmail.com', 'JGHF', 'COYC', 'njkf', 'hdhf', 0, 0, 0, 'da18af0a6e33ed34a59da4050154801f90180223e9afae5093cca84fe6fe6465', 0, '0'),
-(87, 'savouret.basile@gmail.com', 'Savouret', 'Basile', 'Montpellier', '354 rue Maurice et Katia Kraft', 2, 2280, 1, 'ca59e81db6c1e76b22441f52d88189eb618b02afaecba10ffa9cbcae8b64d4e6', 0, '0'),
+(87, 'savouret.basile@gmail.com', 'Savouret', 'Basile', 'Montpellier', '354 rue Maurice et Katia Kraft', 0, 0, 1, 'ca59e81db6c1e76b22441f52d88189eb618b02afaecba10ffa9cbcae8b64d4e6', 0, '0'),
 (88, 'zilver@yopmail.com', 'gleizes', 'Thomas', 'fabregues', '457 chemin des coureches', 1, 1500, 0, 'df03b3adc8e04a0e94967f5852456e0c7a72903724ddf3579a248e036f1bb67f', 0, '0'),
 (89, 'eduzylluf-3548@yopmail.com', 'test', 'testMdp', 'Montpellier', '354 rue Maurice et Katia Kraft', 0, 0, 0, 'e7cc2d8629edfca1a6f43461ff1e272fad5128cab7cdfc280484aaec3e1ae6f6', 0, '0'),
 (90, 'kalat@yopmail.com', 'latak', 'kalat', 'fabregues', '457 chemin des coureches', 0, 0, 0, 'a8108248e3b13f5b7604b0f4a386ac334bd0bd745ebf053afc56755f210fcdd2', 0, '0'),
-(93, 'thomasgleizes34@gmail.com', 'gleizes', 'Kalat', 'fabregues', '457 chemin des coureches', 0, 0, 0, 'adaeba8ad960ee2c0a855bb9806f85b91cc36aa8a5a20fc836bffd2b7f0a8364', 0, '0');
+(93, 'thomasgleizes34@gmail.com', 'gleizes', 'Kalat', 'fabregues', '457 chemin des coureches', 0, 0, 0, 'adaeba8ad960ee2c0a855bb9806f85b91cc36aa8a5a20fc836bffd2b7f0a8364', 0, '0'),
+(95, 'COuCOU@yopmail.com', 'gleizes', 'Thomas', 'fabregues', '457 chemin des coureches', 2, 640, 0, 'a84bc7b0a6da1394928f3e67855e501340c59226d48b7fd890c102616f0615a5', 4850, '0'),
+(98, 'konog@yopmail.com', 'konog', 'gonok', 'fabregues', '457 chemin des coureches', 0, 0, 0, '8f1316969bbc5c26402ee0da2893e21f8ccaad57278f7dc24b7b0646d7372847', 8857, ''),
+(100, 'yopou@gmail.com', 'QSDG', 'DSFQSD', 'QFqfS', 'sdfqsdf', 0, 0, 0, '31fb30a39958412c6722613158915a143e4a0a9f3a7f9a521fb66ed326ba1a1c', 4784, '');
 
 -- --------------------------------------------------------
 
@@ -265,7 +268,9 @@ INSERT INTO `Commandes` (`idCommande`, `dateCommande`, `idClient`, `nbProduit`, 
 (39, '2019-12-09', 88, 4, 4560, 'En attente'),
 (44, '2019-12-09', 3, 1, 40, 'En attente'),
 (45, '2019-12-11', 1, 1, 100, 'En attente'),
-(49, '2019-12-11', 1, 7, 700, 'En attente');
+(49, '2019-12-11', 1, 7, 700, 'En attente'),
+(57, '2019-12-11', 87, 14, 1120, 'En attente'),
+(61, '2019-12-11', 1, 2, 5400, 'En attente');
 
 -- --------------------------------------------------------
 
@@ -331,40 +336,42 @@ INSERT INTO `ListeCommander` (`idCommande`, `refProduit`, `quantiteProduit`) VAL
 (39, 28, 2),
 (44, 26, 1),
 (45, 5, 1),
-(49, 4, 7);
+(49, 4, 7),
+(57, 7, 14),
+(61, 2, 2);
 
 --
 -- Déclencheurs `ListeCommander`
 --
 DELIMITER $$
 CREATE TRIGGER `IncreCommande` AFTER INSERT ON `ListeCommander` FOR EACH ROW BEGIN
-  DECLARE vprix int(11);
-  
-  SELECT prix INTO vprix
-  FROM Produits
-  WHERE refProduit = NEW.refProduit;
+	DECLARE vprix int(11);
+	
+	SELECT prix INTO vprix
+	FROM Produits
+	WHERE refProduit = NEW.refProduit;
 
-  UPDATE Commandes
-  SET montantCommande = montantCommande + vprix * NEW.quantiteProduit, nbProduit = nbProduit + NEW.quantiteProduit
-  WHERE idCommande = NEW.idCommande;
+	UPDATE Commandes
+	SET montantCommande = montantCommande + vprix * NEW.quantiteProduit, nbProduit = nbProduit + NEW.quantiteProduit
+	WHERE idCommande = NEW.idCommande;
 END
 $$
 DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `UpdateCommande` AFTER UPDATE ON `ListeCommander` FOR EACH ROW BEGIN
-  DECLARE vprix int(15);
+	DECLARE vprix int(15);
     
     SELECT prix INTO vprix
     FROM Produits
-  WHERE refProduit = NEW.refProduit;
+	WHERE refProduit = NEW.refProduit;
     
     UPDATE Commandes
     SET montantCommande = montantCommande + vprix * NEW.quantiteProduit, nbProduit = nbproduit + NEW.quantiteProduit
     WHERE idCommande = NEW.idCommande;
     
     UPDATE Commandes
-  SET montantCommande = montantCommande - vprix * OLD.quantiteProduit, nbProduit = nbProduit - OLD.quantiteProduit
-  WHERE idCommande = OLD.idCommande;
+	SET montantCommande = montantCommande - vprix * OLD.quantiteProduit, nbProduit = nbProduit - OLD.quantiteProduit
+	WHERE idCommande = OLD.idCommande;
    
 
 END
@@ -372,66 +379,66 @@ $$
 DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `UpdateStock` BEFORE UPDATE ON `ListeCommander` FOR EACH ROW BEGIN
-  DECLARE vStock int (10);
+	DECLARE vStock int (10);
 
-  SELECT stock INTO vStock
-  FROM Produits
-  WHERE refProduit = NEW.refProduit;
+	SELECT stock INTO vStock
+	FROM Produits
+	WHERE refProduit = NEW.refProduit;
 
-  IF (vStock < NEW.quantiteProduit) THEN
-    SIGNAL SQLSTATE '20001'
-      SET MESSAGE_TEXT = 'Stock dépasser';
-  ELSE 
-    UPDATE Produits
-    SET stock = stock - NEW.quantiteProduit
-    WHERE refProduit = NEW.refProduit;
+	IF (vStock < NEW.quantiteProduit) THEN
+		SIGNAL SQLSTATE '20001'
+    	SET MESSAGE_TEXT = 'Stock dépasser';
+	ELSE 
+		UPDATE Produits
+		SET stock = stock - NEW.quantiteProduit
+		WHERE refProduit = NEW.refProduit;
 
-    UPDATE Produits
-    SET stock = stock + OLD.quantiteProduit
-    WHERE refProduit = OLD.refProduit;
-  END IF;
+		UPDATE Produits
+		SET stock = stock + OLD.quantiteProduit
+		WHERE refProduit = OLD.refProduit;
+	END IF;
 END
 $$
 DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `delCommande` AFTER DELETE ON `ListeCommander` FOR EACH ROW BEGIN
-  DECLARE
-  vprix int(11);
-  
-  SELECT prix INTO vprix
-  FROM Produits
-  WHERE refProduit = OLD.refProduit;
+	DECLARE
+	vprix int(11);
+	
+	SELECT prix INTO vprix
+	FROM Produits
+	WHERE refProduit = OLD.refProduit;
 
-  UPDATE Commandes
-  SET montantCommande = montantCommande - vprix * OLD.quantiteProduit, nbProduit = nbProduit - OLD.quantiteProduit
-  WHERE idCommande = OLD.idCommande;
+	UPDATE Commandes
+	SET montantCommande = montantCommande - vprix * OLD.quantiteProduit, nbProduit = nbProduit - OLD.quantiteProduit
+	WHERE idCommande = OLD.idCommande;
 END
 $$
 DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `delStock` BEFORE DELETE ON `ListeCommander` FOR EACH ROW BEGIN
-  UPDATE Produits
-  SET stock = stock + OLD.quantiteProduit
-  WHERE refProduit = OLD.refProduit;
+	UPDATE Produits
+	SET stock = stock + OLD.quantiteProduit
+	WHERE refProduit = OLD.refProduit;
 END
 $$
 DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `increStock` BEFORE INSERT ON `ListeCommander` FOR EACH ROW BEGIN
-  DECLARE vStock int (10);
+	DECLARE vStock int (10);
 
-  SELECT stock INTO vStock
-  FROM Produits
-  WHERE refProduit = NEW.refProduit;
+	SELECT stock INTO vStock
+	FROM Produits
+	WHERE refProduit = NEW.refProduit;
 
-  IF (vStock < NEW.quantiteProduit) THEN
-    SIGNAL SQLSTATE '20001'
-      SET MESSAGE_TEXT = 'Stock dépasser';
-  ELSE 
-    UPDATE Produits
-    SET stock = stock - NEW.quantiteProduit
-    WHERE refProduit = NEW.refProduit;
-  END IF;
+	IF (vStock < NEW.quantiteProduit) THEN
+		SIGNAL SQLSTATE '20001'
+    	SET MESSAGE_TEXT = 'Stock dépasser';
+	ELSE 
+		UPDATE Produits
+		SET stock = stock - NEW.quantiteProduit
+		WHERE refProduit = NEW.refProduit;
+	END IF;
 END
 $$
 DELIMITER ;
@@ -481,7 +488,10 @@ CREATE TABLE `Panier` (
 --
 
 INSERT INTO `Panier` (`idClient`, `refProduit`, `quantiteProduit`) VALUES
-(1, 1, 0),
+(1, 1, 1),
+(1, 2, 1),
+(1, 7, 1),
+(1, 8, 1),
 (3, 10, 1),
 (3, 23, 1),
 (3, 30, 1),
@@ -489,6 +499,7 @@ INSERT INTO `Panier` (`idClient`, `refProduit`, `quantiteProduit`) VALUES
 (3, 51, 1),
 (79, 2, 4),
 (79, 7, 3),
+(79, 10, 4),
 (79, 24, 1),
 (79, 32, 2),
 (79, 42, 3),
@@ -497,60 +508,60 @@ INSERT INTO `Panier` (`idClient`, `refProduit`, `quantiteProduit`) VALUES
 (79, 52, 7),
 (79, 53, 3),
 (82, 31, 3),
-(87, 3, 4),
-(87, 4, 2),
-(88, 8, 1);
+(88, 8, 1),
+(95, 1, 1),
+(95, 5, 1);
 
 --
 -- Déclencheurs `Panier`
 --
 DELIMITER $$
 CREATE TRIGGER `DeincrePanierClient` AFTER DELETE ON `Panier` FOR EACH ROW BEGIN
-  DECLARE vprix int(11);
-  
-  SELECT prix INTO vprix
-  FROM Produits
-  WHERE refProduit = OLD.refProduit;
+	DECLARE vprix int(11);
+	
+	SELECT prix INTO vprix
+	FROM Produits
+	WHERE refProduit = OLD.refProduit;
 
-  UPDATE Clients
-  SET montantPanier = montantPanier - (vprix * OLD.quantiteProduit), nbProduitPanier = nbProduitPanier - 1
-  WHERE idClient = OLD.idClient;
+	UPDATE Clients
+	SET montantPanier = montantPanier - (vprix * OLD.quantiteProduit), nbProduitPanier = nbProduitPanier - 1
+	WHERE idClient = OLD.idClient;
 END
 $$
 DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `UpdatePanierClient` AFTER UPDATE ON `Panier` FOR EACH ROW BEGIN
-  DECLARE vprix int(15);
+	DECLARE vprix int(15);
 
-  SELECT prix INTO vprix
-  FROM Produits
-  WHERE refProduit = NEW.refProduit;
+	SELECT prix INTO vprix
+	FROM Produits
+	WHERE refProduit = NEW.refProduit;
 
-  UPDATE Clients
-  SET montantPanier = montantPanier + (vprix * NEW.quantiteProduit), nbProduitPanier = nbProduitPanier + 1
-  WHERE idClient = NEW.idClient;
+	UPDATE Clients
+	SET montantPanier = montantPanier + (vprix * NEW.quantiteProduit), nbProduitPanier = nbProduitPanier + 1
+	WHERE idClient = NEW.idClient;
     
     SELECT prix INTO vprix
-  FROM Produits
-  WHERE refProduit = OLD.refProduit;
+	FROM Produits
+	WHERE refProduit = OLD.refProduit;
 
-  UPDATE Clients
-  SET montantPanier = montantPanier - (vprix * OLD.quantiteProduit), nbProduitPanier = nbProduitPanier - 1
-  WHERE idClient = OLD.idClient;
+	UPDATE Clients
+	SET montantPanier = montantPanier - (vprix * OLD.quantiteProduit), nbProduitPanier = nbProduitPanier - 1
+	WHERE idClient = OLD.idClient;
 END
 $$
 DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `increPanierClient` AFTER INSERT ON `Panier` FOR EACH ROW BEGIN 
-  DECLARE vprix int(11);
-  
-  SELECT prix INTO vprix
-  FROM Produits
-  WHERE refProduit = NEW.refProduit;
+	DECLARE vprix int(11);
+	
+	SELECT prix INTO vprix
+	FROM Produits
+	WHERE refProduit = NEW.refProduit;
 
-  UPDATE Clients
-  SET montantPanier = montantPanier + (vprix * NEW.quantiteProduit), nbProduitPanier = nbProduitPanier + 1
-  WHERE idClient = NEW.idClient;
+	UPDATE Clients
+	SET montantPanier = montantPanier + (vprix * NEW.quantiteProduit), nbProduitPanier = nbProduitPanier + 1
+	WHERE idClient = NEW.idClient;
 END
 $$
 DELIMITER ;
@@ -612,12 +623,12 @@ CREATE TABLE `Produits` (
 
 INSERT INTO `Produits` (`refProduit`, `nom`, `nomMarque`, `categorie`, `prix`, `stock`, `Url`) VALUES
 (1, 'Intel Core i9-9900K (3.6 GHz)', 'Intel', 'Processeur', 540, 0, 'https://www.topachat.com/boutique/img/in/in1011/in10114555/in1011455502@2x.jpg'),
-(2, 'Nvidia TITAN RTX, 24 Go', 'Nvidia', 'CarteGraphique', 2700, 13, 'https://www.topachat.com/boutique/img/in/in1011/in10117193/in1011719302@2x.jpg'),
+(2, 'Nvidia TITAN RTX, 24 Go', 'Nvidia', 'CarteGraphique', 2700, 0, 'https://www.topachat.com/boutique/img/in/in1011/in10117193/in1011719302@2x.jpg'),
 (3, 'Gigabyte X299X AORUS MASTER', 'Gigabyte', 'CarteMere', 520, 4, 'https://www.topachat.com/boutique/img/in/in1101/in11019804/in1101980402@2x.jpg'),
 (4, 'Seagate BarraCuda 4 To', 'Seagate', 'DisqueDur', 100, 0, 'https://www.topachat.com/boutique/img/in/in1010/in10106812/in1010681202@2x.jpg'),
 (5, 'DDR4 Corsair Vengeance RGB PRO, Noir, 16 Go (2 x 8 Go)', 'Corsair', 'Memoire', 100, 11, 'https://www.topachat.com/boutique/img/in/in1011/in10112576/in1011257602@2x.jpg'),
 (6, 'AMD Ryzen Threadripper 3970X (3.7 GHz)', 'AMD', 'Processeur', 2350, 3, 'https://www.topachat.com/boutique/img/in/in1101/in11019635/in1101963502@2x.jpg'),
-(7, 'PNY CS3030, 500 Go, M.2', 'PNY', 'SSD', 80, 14, 'https://www.topachat.com/boutique/img/in/in1011/in10118184/in1011818402.jpg'),
+(7, 'PNY CS3030, 500 Go, M.2', 'PNY', 'SSD', 80, 0, 'https://www.topachat.com/boutique/img/in/in1011/in10118184/in1011818402.jpg'),
 (8, 'EVGA GeForce RTX 2080 Ti FTW3 ULTRA GAMING, 11 Go', 'EVGA', 'CarteGraphique', 1500, 6, 'https://www.topachat.com/boutique/img/in/in1011/in10114249/in1011424902@2x.jpg'),
 (9, 'Intel Core i9-9900KS (4.0 GHz)', 'Intel', 'Processeur', 640, 6, 'https://www.topachat.com/boutique/img/in/in1101/in11019445/in1101944502@2x.jpg'),
 (10, 'Intel Core i5-9600KF (3.7 GHz)', 'Intel', 'Processeur', 200, 9, 'https://www.topachat.com/boutique/img/in/in1011/in10116767/in1011676702.jpg'),
@@ -817,13 +828,13 @@ ALTER TABLE `CarteMere`
 -- AUTO_INCREMENT pour la table `Clients`
 --
 ALTER TABLE `Clients`
-  MODIFY `idClient` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `idClient` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT pour la table `Commandes`
 --
 ALTER TABLE `Commandes`
-  MODIFY `idCommande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `idCommande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT pour la table `DisqueDur`

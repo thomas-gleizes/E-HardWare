@@ -211,7 +211,7 @@ if (session_status() == PHP_SESSION_NONE) {
             <p class="date">Commande passer le : '.$item[$date].'</p>
             <p class="number-commande">Contenant '.$item[$nbProduit].' articles</p>
             <p class="prix-commande">Prix totale: '.$item[$montant].',00€</p>
-            <p>Etat de la Commande : '.$item[$etat].'</p>
+            <p class="etat-commande">Etat de la Commande : '.$item[$etat].'</p>
             <form class="command-form" method="post" action="../controller/routeur.php">
                 <input type="hidden" name="action" value="affCommande">
                 <input type="hidden" name="idCommande" value="'. $item[$idCommande].'">
