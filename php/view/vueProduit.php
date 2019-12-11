@@ -168,7 +168,7 @@ if(!isset($_SESSION)){
     if(isset($_COOKIE['nbpanier'])){
         $val = $_COOKIE["nbpanier"];
         echo'
-            <form  method="Post" action="./php/controller/routeur.php">
+            <form  method="Post" action="../controller/routeur.php">
                 <input type="hidden" name="action" value="Panier">
                 <button type="submit" id="cart-button">
                     <i id="cart-icon" class="material-icons">
@@ -180,7 +180,7 @@ if(!isset($_SESSION)){
         ';
     }else {
         echo'
-                <form  method="Post" action="./php/controller/routeur.php">
+                <form  method="Post" action="../controller/routeur.php">
                     <input type="hidden" name="action" value="Panier">
                     <button type="submit" id="cart-button">
                         <i id="cart-icon" class="material-icons">
