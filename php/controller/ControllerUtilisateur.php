@@ -19,7 +19,7 @@ class ControllerUtilisateur{
             header("Location:../view/creation.php?mail=".$tab['mail']."&nom=".$tab['nom']."&prenom=".$tab['prenom']."&adresse=".$tab['adresse']."&ville=".$tab['ville']."&error=4");
         } else if (strlen($_POST['mdp1']) < 8) {
             header("Location:../view/creation.php?mail=".$tab['mail']."&nom=".$tab['nom']."&prenom=".$tab['prenom']."&adresse=".$tab['adresse']."&ville=".$tab['ville']."&error=3");
-        } else if ($_POST['mail'] == "" || $_POST['nom'] == "" || $_POST['prenom'] == "" || $_POST['mdp1'] == "" || $_POST['adresse'] == "" || $_POST['ville'] == ""){
+        } else if (strlen(trim($_POST['mail'])) == 0 || strlen(trim($_POST['nom'])) == 0 || strlen(trim($_POST['prenom'])) == 0 || strlen(trim($_POST['mdp1'])) == 0 || strlen(trim($_POST['adresse'])) == 0 || strlen(trim($_POST['ville'])) == 0){
             header("Location:../view/creation.php?mail=".$tab['mail']."&nom=".$tab['nom']."&prenom=".$tab['prenom']."&adresse=".$tab['adresse']."&ville=".$tab['ville']."&error=0");
         } else if (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)){
             header("Location:../view/creation.php?mail=".$tab['mail']."&nom=".$tab['nom']."&prenom=".$tab['prenom']."&adresse=".$tab['adresse']."&ville=".$tab['ville']."&error=2");
@@ -73,7 +73,7 @@ class ControllerUtilisateur{
         $tab['ville'] = $_POST['ville'];
         if (self::containsEmoji($_POST['mail']) || self::containsEmoji($_POST['nom']) || self::containsEmoji($_POST['prenom']) || self::containsEmoji($_POST['mdp1']) || self::containsEmoji($_POST['adresse']) || self::containsEmoji($_POST['ville'])){
             header("Location:../view/account.php?error=0");
-        }  else if ($_POST['adresse'] == "" || $_POST['ville'] == "" ){
+        }  else if (strlen(trim($_POST['adresse'])) == 0 || strlen(trim($_POST['ville'])) == 0 ){
             header("Location:../view/account.php?error=1");
         } else {
             ModelUtilisateur::editCompte($tab);

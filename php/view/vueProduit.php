@@ -415,6 +415,9 @@ if (isset($_SESSION['admin'])){
             </form>
         </div>';
     }}
+    if ($error != ""){
+        echo'<input class="error" type="hidden" value="'.$error.'">';
+    }
 ?>
 
 

@@ -102,4 +102,8 @@ $(document).ready(()=>{
     var url = $("#url").val();
     $(".image-container").css('background-image','url('+url+')');
 
+
+    if (typeof($(".error").position()) !== 'undefined') {
+        alert($(".error").val());
+    }
 });

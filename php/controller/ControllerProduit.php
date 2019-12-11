@@ -3,8 +3,7 @@
 require_once(File::build_path(array('model','ModelProduit.php')));
 require_once (File::build_path(array('model','ModelUtilisateur.php')));
 class ControllerProduit{
-
-
+    public static $error = "";
     public static function ajouterPanier (){
 
         $tab = [];
@@ -108,8 +107,7 @@ class ControllerProduit{
 
 
     public static function infoVueProduit(){
-
-
+        $error = self::$error;
         $tab = ModelProduit::getProduit($_POST['id_produit']);
         if ($tab[0]['categorie'] == 'Processeur'){
             $tabProd = ModelProduit::getProcesseur($_POST['id_produit']);
@@ -144,6 +142,7 @@ class ControllerProduit{
             $nbAvis = 0;
         }
         require_once (File::build_path(array('view','vueProduit.php')));
+        self::$error = "";
     }
 
     public static function displayReview(){
@@ -152,6 +151,7 @@ class ControllerProduit{
     }
 
     public static function addReview (){
+
         if (session_status() == PHP_SESSION_NONE) {
             session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
@@ -170,7 +170,11 @@ class ControllerProduit{
         $tab['note'] = $note;
         $tab['commentaire'] = $_POST['commentaire'];
         $tab['date'] = date("o-n-d");
-        if (ModelProduit::countReview($tab['idClient'], $tab['refProduit']) == 0){
+        if (strlen(trim($_POST['commentaire'])) == 0) {
+            self::$error = "vous ne pouvez pas créer de commentaire vide";
+        } else if (self::containsEmoji($_POST['commentaire'])){
+            self::$error = "vous ne pouvez pas mettre d'emoji dans un commentaire";
+        } else if (ModelProduit::countReview($tab['idClient'], $tab['refProduit']) == 0){
             ModelProduit::insertReview($tab);
         }
         self::infoVueProduit();
@@ -218,6 +222,11 @@ class ControllerProduit{
     public static function supprReview (){
         ModelProduit::deleteReview($_POST['idClient'], $_POST['id_produit']);
         self::infoVueProduit();
+    }
+
+    public static function containsEmoji( $string ) {
+        preg_match( '/[\x{1F600}-\x{1F64F}]/u', $string, $matches_emo );
+        return !empty( $matches_emo[0] ) ? true : false;
     }
 
 
