@@ -26,8 +26,8 @@ if (session_status() == PHP_SESSION_NONE) {
             <input type="text" placeholder="Votre code de confirmation" name="codeConf" required>
         </div>
     </form>
-    <button id="Confirmer"><p>Confirmez</p></button>
-    <button id="revenir"><p>Revenir à l'acceuil</p></button>
+    <button id="Confirmer">Confirmez</button>
+    <button id="revenir">Revenir à l'acceuil</button>
 </div>
 </body>
 </html>

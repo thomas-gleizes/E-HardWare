@@ -294,7 +294,7 @@ foreach ($tab as $tav){
                 </select>
                 <input type="hidden" id="id_produit" name="id_produit" value="'.$ref.'">
                 <input type="hidden" name="action" value="ajoutPanier">
-                <button id="achat-btn" type="submit"><p>Ajouter</p></button>
+                <button id="achat-btn" type="submit">Ajouter</button>
             </form>
         </div>
     ';
@@ -379,7 +379,7 @@ if (!isset($_SESSION['login'])){
                         <option value="5">5</option>
                     </select>
                     <textarea id="mycom" name="commentaire" placeholder="écrivez un commentaire"></textarea>
-                    <button id="achat-btn" type="submit"><p>Envoyer</p></button>
+                    <button id="achat-btn" type="submit">Envoyer</button>
                 </form>
     ';
 }

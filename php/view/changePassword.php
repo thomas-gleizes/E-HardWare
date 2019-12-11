@@ -48,7 +48,7 @@
                 </div>
                 <input type="password" id="mdp2" name="mdp2" placeholder="Confirmez Mot de passe" required>
             </div>
-            <button type="submit" id="ok" ><p>Confirmer</p></button>
+            <button type="submit" id="ok" >Confirmer</button>
         </form>
         ';
     } else {

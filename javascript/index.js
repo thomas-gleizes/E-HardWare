@@ -284,7 +284,7 @@ $(document).ready(() => {
 
     $("#moncompte").click(function () {
         window.location = "./php/view/connection.php";
-        if(window.location.href.includes('Recherche')){
+        if(window.location.href.includes('routeur')){
             window.location = "../view/connection.php";
         }
     });

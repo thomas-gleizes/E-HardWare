@@ -20,7 +20,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <body>
 <div class="container">
     <p id="info">Votre compte a été créé avec succès !</p>
-    <button id="revenir"><p>Revenir à l'acceuil</p></button>
+    <button id="revenir">Revenir à l'acceuil</button>
 </div>
 </body>
 </html>

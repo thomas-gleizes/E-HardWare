@@ -2,10 +2,10 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_name("mlsfhvliusqfrbguilqdfjlqhdf");
     session_start();
-    if (!isset($_SESSION['login'])) {
-        if (!isset($resClient)) {
-            header('Location:./connection.php');
-        }
+}
+if (!isset($_SESSION['login'])) {
+    if (!isset($resClient)) {
+        header('Location:./connection.php');
     }
 }
 if (!isset($resClient)) {
@@ -45,12 +45,12 @@ if (!isset($resClient)) {
         <p class="p-code">Code de validation reçu par mail :</p>
         <input type="hidden" name="action" value="validation" >
         <input id="code-input" type="text" name="code" >
-        <button id="ok1" ><p>Ok</p></button>
+        <button id="ok1" >Ok</button>
     </form>';
     } else {
         echo'<form method="post" action="../controller/routeur.php">
                 <input type="hidden" name="action" value="commande" >
-                <button id="command" type="submit" ><p>Mes commandes</p></button>
+                <button id="command" type="submit" >Mes commandes</button>
              </form>';
     }
 
@@ -95,16 +95,16 @@ if (!isset($resClient)) {
             ?>
 
         </div>
-        <button id="ok" ><p>Changer</p></button>
+        <button id="ok" >Changer</button>
     </form>
     <div class="mdp">
         <a href="../controller/routeur.php?action=askChangeMdp"><p>Changer de mot de passe</p></a>
     </div>
     <form method="post" action="../controller/routeur.php">
         <input type="hidden" name="action" value="disconnect" >
-        <button id="connect" type="submit"><p>se déconnecter</p></button>
+        <button id="connect" type="submit">se déconnecter</button>
     </form>
-    <button id="revenir" ><p>revenir à l'acceuil</p></button>
+    <button id="revenir" >revenir à l'acceuil</button>
 </div>
 </body>
 </html>

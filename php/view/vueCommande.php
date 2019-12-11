@@ -36,11 +36,12 @@ setcookie("elementpanier",$string,time()+time()+31570000);
     <script src="../../javascript/commande.js"></script>
 </head>
 <body>
-<div class="cache-ajout open"></div>
 <div id="nav-bar" class="nav">
     <div id="fermer" class="section">
         <p>Fermer</p>
-        <i class="material-icons navbaricons">clear</i>
+        <i  class="material-icons navbaricons">
+            clear
+        </i>
     </div>
     <div class="section" id="moncompte">
         <p>Mon compte</p>
@@ -49,10 +50,10 @@ setcookie("elementpanier",$string,time()+time()+31570000);
         </i>
     </div>
     <div class="section">
-        <form method="post" action="./../controller/routeur.php">
+        <form method="post" action="../controller/routeur.php">
             <input type="hidden" name="action" value="Panier">
             <button class="pan-btn" type="submit">
-                <p>Mon panier</p>
+                Mon panier
                 <i class="material-icons navbaricons">shopping_cart</i>
             </button>
         </form>
@@ -60,57 +61,49 @@ setcookie("elementpanier",$string,time()+time()+31570000);
     <div id="categories" class="section">
         <div class="section">
             <p>Catégories</p>
-            <i  id="expand-icon" class="material-icons navbaricons">
-                expand_more
-            </i>
+            <i id="expand-icon" class="material-icons navbaricons">expand_more</i>
         </div>
     </div>
     <form method="get" action="../controller/routeur.php">
         <input type="hidden" name="action" value="rechercherSidebar" >
-        <button type="submit" name="categorie" value="Processeur" class="section under"> <p>Processeur</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
+        <button type="submit" name="categorie" value="Processeur" class="section under"> Processeur <i  class="material-icons navbaricons"> chevron_right </i> </button>
     </form>
 
 
     <form method="get" action="../controller/routeur.php">
         <input type="hidden" name="action" value="rechercherSidebar" >
-        <button type="submit" name="categorie" value="CarteMere" class="section under"> <p>Carte mère</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
+        <button type="submit" name="categorie" value="CarteMere" class="section under"> Carte mère <i  class="material-icons navbaricons"> chevron_right </i> </button>
     </form>
 
 
     <form method="get" action="../controller/routeur.php">
         <input type="hidden" name="action" value="rechercherSidebar" >
-        <button type="submit" name="categorie" value="Memoire" class="section under"> <p>Mémoire</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
+        <button type="submit" name="categorie" value="Memoire" class="section under"> Mémoire <i  class="material-icons navbaricons"> chevron_right </i> </button>
     </form>
 
 
     <form method="get" action="../controller/routeur.php">
         <input type="hidden" name="action" value="rechercherSidebar" >
-        <button type="submit" name="categorie" value="CarteGraphique" class="section under"> <p>Carte graphique</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
+        <button type="submit" name="categorie" value="CarteGraphique" class="section under"> Carte graphique <i  class="material-icons navbaricons"> chevron_right </i> </button>
     </form>
 
 
     <form method="get" action="../controller/routeur.php">
         <input type="hidden" name="action" value="rechercherSidebar" >
-        <button type="submit" name="categorie" value="SSD" class="section under"> <p>SSD</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
+        <button type="submit" name="categorie" value="SSD" class="section under"> SSD <i  class="material-icons navbaricons"> chevron_right </i> </button>
     </form>
 
 
     <form method="get" action="../controller/routeur.php">
         <input type="hidden" name="action" value="rechercherSidebar" >
-        <button type="submit" name="categorie" value="DisqueDur" class="section under"> <p>Disque Dur</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
+        <button type="submit" name="categorie" value="DisqueDur" class="section under"> Disque Dur <i  class="material-icons navbaricons"> chevron_right </i> </button>
     </form>
 
 
     <form method="get" action="../controller/routeur.php">
         <input type="hidden" name="action" value="rechercherSidebar" >
-        <button type="submit" name="categorie" value="Alimentation" class="section under"> <p>Alimentation</p> <i  class="material-icons navbaricons"> chevron_right </i> </button>
+        <button type="submit" name="categorie" value="Alimentation" class="section under"> Alimentation <i  class="material-icons navbaricons"> chevron_right </i> </button>
     </form>
-
-
-
-
-
-
 </div>
 <div id="nav-bar-comp" class="navcomp">
 </div>
@@ -121,7 +114,7 @@ setcookie("elementpanier",$string,time()+time()+31570000);
         menu
     </i>
     <div id="search-bar">
-        <form method="Get" id="research-form" action="../controller/routeur.php">
+        <form method="get" id="research-form" action="../controller/routeur.php">
             <input type="hidden" name="action" value="afficherRecherche" >
             <div id="selection">
                 <div id="filtrer">
@@ -183,34 +176,41 @@ setcookie("elementpanier",$string,time()+time()+31570000);
     $val = 0;
     if(isset($_COOKIE['nbpanier'])){
         $val = $_COOKIE["nbpanier"];
-    }
-    {
         echo'
-        <form  method="Post" action="../controller/routeur.php">
-        <input type="hidden" name="action" value="Panier">
-        <button type="submit" id="cart-button">
-            <i id="cart-icon" class="material-icons">
-                shopping_cart
-            </i>
-            <p>'.$val.'</p>
-        </button>
-    </form>
-    ';
+            <form  method="Post" action="../controller/routeur.php">
+                <input type="hidden" name="action" value="Panier">
+                <button type="submit" id="cart-button">
+                    <i id="cart-icon" class="material-icons">
+                        shopping_cart
+                    </i>
+                    '.$val.'
+                </button>
+            </form>
+        ';
+    }else {
+        echo'
+                <form  method="Post" action="../controller/routeur.php">
+                    <input type="hidden" name="action" value="Panier">
+                    <button type="submit" id="cart-button">
+                        <i id="cart-icon" class="material-icons">
+                            shopping_cart
+                        </i>
+                        '.$val.'
+                    </button>
+             </form>
+            ';
     }
-
 
     ?>
-
 </header>
 <div class="filtre-container open">
     <input class="check1" type="checkbox" id="croissant" >
-    <label for="croissant"><p class="p">Prix par ordre croissant</p></label>
+    <label for="croissant">Prix par ordre croissant</label>
     <input class="check2" type="checkbox" id="decroissant" >
-    <label for="decroissant"><p class="p">Prix par ordre décroissant</p></label>
+    <label for="decroissant">Prix par ordre décroissant</label>
     <p id="marque-p">Trier par marque:</p>
 </div>
-<div class="result">
-</div>
+<div class="result"></div>
 <div class="command-container">
 <?php
     $refProduit = "refProduit";

@@ -24,7 +24,7 @@ if (isset($_SESSION['login'])) {
 <body>
     <div id="container-spe" class="container">
         <form method="post" action="../controller/routeur.php">
-            <input type="hidden" name="action" value="creation" required>
+            <input type="hidden" name="action" value="creation">
             <div class="under-container1">
                 <div class="i-container">
                     <i class="material-icons i">
@@ -112,7 +112,7 @@ if (isset($_SESSION['login'])) {
                 ?>
             </div>
 
-            <button id="ok" type="submit"><p>Inscription</p></button>
+            <button id="ok" type="submit">Inscription</button>
             <p id="error">Les mots de passes ne sont pas les mêmes !</p>
             <?php
             if (!$_GET == null) {
@@ -131,8 +131,8 @@ if (isset($_SESSION['login'])) {
             ?>
         </form>
 
-        <button id="connect"><p>se connecter</p></button>
-        <button id="revenir"><p>revenir à l'acceuil</p></button>
+        <button id="connect">se connecter</button>
+        <button id="revenir">revenir à l'acceuil</button>
     </div>
 </body>
 </html>

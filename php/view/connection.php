@@ -3,6 +3,11 @@ if (session_status() == PHP_SESSION_NONE) {
     session_name("mlsfhvliusqfrbguilqdfjlqhdf");
     session_start();
 }
+if (isset($_SESSION['login'])) {
+    if (!isset($resClient)) {
+        header('Location:./account.php');
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -52,13 +57,13 @@ if (session_status() == PHP_SESSION_NONE) {
                 </div>
                 <input type="password" placeholder="Votre mot de passe" name="mdp" required>
             </div>
-            <button id="ok" type="submit"><p>Connexion</p></button>
+            <button id="ok" type="submit">Connexion</button>
         </form>
         <div class="mdp">
             <a href="../controller/routeur.php?action=askChangeMdp"><p>Mot de passe oublié ?</p></a>
         </div>
-        <button id="new"><p>créer un nouveau compte</p></button>
-        <button id="revenir"><p>revenir à l'acceuil</p></button>
+        <button id="new">créer un nouveau compte</button>
+        <button id="revenir">revenir à l'acceuil</button>
     </div>
 </body>
 </html>

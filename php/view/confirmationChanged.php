@@ -26,7 +26,7 @@ if (session_status() == PHP_SESSION_NONE) {
             echo'<p id="info">Un mail de changement de mot de passe vous a été envoyé !</p>';
         }
     ?>
-    <button id="revenir"><p>Revenir à l'acceuil</p></button>
+    <button id="revenir">Revenir à l'acceuil</button>
 </div>
 </body>
 </html>
