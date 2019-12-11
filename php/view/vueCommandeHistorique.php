@@ -228,7 +228,7 @@ if (session_status() == PHP_SESSION_NONE) {
     $montant = "montantCommande";
     $date = "dateCommande";
     $nbProduit = "nbProduit";
-    $etat = "ettaCommande";
+    $etat = "etatCommande";
 
     foreach ($tabClient as $item) {
         echo '
