@@ -19,11 +19,15 @@
         } else if ($_GET['action'] == 'VueProduit'){
             ControllerProduit::infoVueProduit();
         } else {
-            $action = $_GET["action"];
-            ControllerRecherche::$action();
+            try {
+                $action = $_GET["action"];
+                ControllerRecherche::$action();
+            } catch (Exception $e) {
+                header('Location: ../view/vueErreur.php');
+            }
         }
-
     }
+
     if(!$_POST==null){
         if ($_POST['action'] == 'ajoutProduit') {
             ControllerProduit::ajoutProduit();
@@ -56,8 +60,16 @@
         } else if ($_POST['action'] == 'supprReview') {
             ControllerProduit::supprReview();
         } else {
-            $action = $_POST["action"];
-            ControllerUtilisateur::$action();
+            try {
+                $action = $_POST["action"];
+                ControllerUtilisateur::$action();
+            } catch (Exception $e) {
+                header('Location: ../view/vueErreur.php');
+            }
         }
+    }
+
+    if ($_GET==null && $_POST==null){
+        header('Location: ../view/vueErreur.php');
     }
 ?>
