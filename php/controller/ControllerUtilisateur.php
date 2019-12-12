@@ -138,7 +138,7 @@ class ControllerUtilisateur{
                 header('Location:../view/changePassword.php?error=3&token='.$_POST['token'].'&mail='.$_POST['mail']);
             } else if (ModelUtilisateur::getToken($id) == $_POST['token']){
                 ModelUtilisateur::changePassword($id, $_POST['mdp1']);
-                header('Location:../view/changePassword.php?success=1');
+                header('Location:../view/confirmationChanged?success=1');
             } else {
                 header('Location:../view/changePassword.php?error=1');
             }
