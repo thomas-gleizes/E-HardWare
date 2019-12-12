@@ -54,9 +54,9 @@ class ModelUtilisateur{
             session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }
-        $_SESSION['login'] = $tab['mail'];
-        $_SESSION['admin'] = $res1[0]['prioriter'];
         if ($res[0]['mdp'] == $mdp){
+            $_SESSION['login'] = $tab['mail'];
+            $_SESSION['admin'] = $res1[0]['prioriter'];
             return true;
         } else {
             return false;
