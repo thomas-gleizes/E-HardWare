@@ -29,10 +29,10 @@ class ControllerUtilisateur{
             ModelUtilisateur::creationCompte($tab);
             $mail = $tab['mail'];
             $code = ModelUtilisateur::getCodeConf($mail);
-            $message = "Veuillez confirmer votre inscription sur E-HardWare, dans la section Compte,  avec le code suivant : $code .\n Merci de votre Inscription.";
+            $message = "Veuillez confirmer votre inscription sur E-HardWare avec le code suivant : $code .\n Merci de votre Inscription. Dans le lien suivant: ";
+            $lien = "http://webinfo.iutmontp.univ-montp2.fr/~savouretb/travail/ProjetPHP/php/view/account.php";
             $header = "From : " . "thomas.gleizes@etu.umontpellier.fr";
-            mail($mail,'Demande de confirmation de confirmation E-HardWare.', $message, $header);
-
+            mail($mail,'Demande de confirmation de confirmation E-HardWare.', $message.$lien, $header);
             header('Location:../view/compteCréé.php');
         } else {
             header("Location:../view/creation.php?mail=".$tab['mail']."&nom=".$tab['nom']."&prenom=".$tab['prenom']."&adresse=".$tab['adresse']."&ville=".$tab['ville']."&error=1");
