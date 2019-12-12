@@ -1,6 +1,6 @@
 <?php
 
-require_once ("../model/ModelAjax.php");
+require_once (File::build_path(array('model','ModelAjax.php')));
 
 
 class ControllerAjax {

@@ -51,7 +51,7 @@ class ControllerUtilisateur{
 
         if (ModelUtilisateur::connectionCompte($tab)) {
             $resClient = ModelUtilisateur::myaccount();
-            require ("../view/account.php");
+            require (File::build_path(array('view','account.php')));
         } else {
             header("Location:../view/connection.php?mail=".$tab['mail']);
         }
@@ -149,7 +149,7 @@ class ControllerUtilisateur{
 
     public static function myaccount(){
         $resClient = ModelUtilisateur::myaccount();
-        require_once ("../view/account.php");
+        require_once (File::build_path(array('view','account.php')));
     }
 
     public static function getId(){
