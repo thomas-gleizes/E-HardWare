@@ -52,7 +52,7 @@ class ControllerPanier{
         } else {
             if (isset($_COOKIE['elementpanier'])){
                 $string = $_COOKIE['elementpanier'];
-                $tab = explode("%2C",$string);
+                $tab = explode(",",$string);
                 $tab = ModelPanier::getIdProduitPanier($tab);
             } else {
                 $tab = [] ;

@@ -15,27 +15,14 @@ if(isset($tab) && isset($_SESSION)){
     //echo "test debug";
     //var_dump($tab);
     foreach ($tab as $v){
-        $string =  $string. $v['refProduit'].",";
+        $string =  $string.$v['refProduit']."-";
     }
 //echo $string;
     setcookie("nbpanier",$t,time()+time()+31570000);
-    setcookie("elementpanier",$string,time()+time()+31570000);
-}
+    setcookie("elementpanier",rawurlencode($string),time()+time()+31570000);
 
-/*if(!empty($tab) || isset($_SESSION)){
-    echo"debug 3";
-    $t = count($tab);
-    var_dump($tab);
-    $string = "";
-    foreach ($tab as $v){
-        $string =  $string. $v['refProduit'].",";
-    }
-    var_dump($string);
-    setcookie("nbpanier",$t,time()+time()+31570000);
-    setcookie("elementpanier",$string,time()+time()+31570000);
-}*/
 
-else{
+} else {
     var_dump($tab);
     echo"debug 2";
     setcookie("nbpanier",0,time()+time()+31570000);

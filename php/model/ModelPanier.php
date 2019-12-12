@@ -143,7 +143,7 @@ class ModelPanier{
                         $prod = array_merge($prod,$rec_prep->fetchAll());
                     }
                     echo"value <br>";
-                    var_dump($value);
+                    //var_dump($value);
             }
         }
         echo"tab <br>";
