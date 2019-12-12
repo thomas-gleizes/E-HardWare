@@ -8,16 +8,36 @@
     require_once (File::build_path(array('controller','ControllerAjax.php')));
     if(!$_GET==null){
         if ($_GET['action'] == "actionExt"){
-            ControllerUtilisateur::myaccount();
+            try {
+                ControllerUtilisateur::myaccount();
+            } catch (Exception $e) {
+                header('Location: ../view/vueErreur.php');
+            }
         }else if ($_GET['action'] == "ajax") {
-            $action = $_GET["control"];
-            ControllerAjax::$action();
+            try {
+                $action = $_GET["control"];
+                ControllerAjax::$action();
+            } catch (Exception $e) {
+                header('Location: ../view/vueErreur.php');
+            }
         } else if ($_GET['action'] == 'panier') {
-            ControllerPanier::displayPanier();
+            try {
+                ControllerPanier::displayPanier();
+            } catch (Exception $e) {
+                header('Location: ../view/vueErreur.php');
+            }
         } else if ($_GET['action'] == 'askChangeMdp') {
-            ControllerUtilisateur::askChangeMdp();
+            try {
+                ControllerUtilisateur::askChangeMdp();
+            } catch (Exception $e) {
+                header('Location: ../view/vueErreur.php');
+            }
         } else if ($_GET['action'] == 'VueProduit'){
-            ControllerProduit::infoVueProduit();
+            try {
+                ControllerProduit::infoVueProduit();
+            } catch (Exception $e) {
+                header('Location: ../view/vueErreur.php');
+            }
         } else {
             try {
                 $action = $_GET["action"];
@@ -30,35 +50,95 @@
 
     if(!$_POST==null){
         if ($_POST['action'] == 'ajoutProduit') {
-            ControllerProduit::ajoutProduit();
+            try {
+                ControllerProduit::ajoutProduit();
+            } catch (Exception $e) {
+                header('Location: ../view/vueErreur.php');
+            }
         } else if ($_POST['action'] == "createOrder") {
-            ControllerCommande::createOrder();
+            try {
+                ControllerCommande::createOrder();
+            } catch (Exception $e) {
+                header('Location: ../view/vueErreur.php');
+            }
         } else if ($_POST['action'] == 'ajoutReview'){
-            ControllerProduit::addReview();
+            try {
+                ControllerProduit::addReview();
+            } catch (Exception $e) {
+                header('Location: ../view/vueErreur.php');
+            }
         } else if ($_POST['action'] == 'infoVueProduit'){
-            ControllerProduit::infoVueProduit();
+            try {
+                ControllerProduit::infoVueProduit();
+            } catch (Exception $e) {
+                header('Location: ../view/vueErreur.php');
+            }
         } else if ($_POST['action'] == 'del'){
-            ControllerPanier::deletePanier();
+            try {
+                ControllerPanier::deletePanier();
+            } catch (Exception $e) {
+                header('Location: ../view/vueErreur.php');
+            }
         } else  if ($_POST['action'] == 'Panier'){
-            ControllerPanier::displayPanier();
+            try {
+                ControllerPanier::displayPanier();
+            } catch (Exception $e) {
+                header('Location: ../view/vueErreur.php');
+            }
         } else if ($_POST['action'] == 'order') {
-            ControllerCommande::createOrder();
+            try {
+                ControllerCommande::createOrder();
+            } catch (Exception $e) {
+                header('Location: ../view/vueErreur.php');
+            }
         } else if ($_POST['action'] == 'ajoutPanier') {
-            ControllerPanier::ajoutPanier();
+            try {
+                ControllerPanier::ajoutPanier();
+            } catch (Exception $e) {
+                header('Location: ../view/vueErreur.php');
+            }
         } else if ($_POST['action'] == 'stock'){
-            ControllerProduit::ajouterStock();
+            try {
+                ControllerProduit::ajouterStock();
+            } catch (Exception $e) {
+                header('Location: ../view/vueErreur.php');
+            }
         } else if ($_POST['action'] == 'name'){
-            ControllerProduit::changerNom();
+            try {
+                ControllerProduit::changerNom();
+            } catch (Exception $e) {
+                header('Location: ../view/vueErreur.php');
+            }
         } else if ($_POST['action'] == 'prix') {
-            ControllerProduit::changerPrix();
+            try {
+                ControllerProduit::changerPrix();
+            } catch (Exception $e) {
+                header('Location: ../view/vueErreur.php');
+            }
         } else if ($_POST['action'] == 'supprProduit') {
-            ControllerProduit::supprProduit();
+            try {
+                ControllerProduit::supprProduit();
+            } catch (Exception $e) {
+                header('Location: ../view/vueErreur.php');
+            }
         } else if ($_POST['action'] == 'commande') {
-            ControllerCommande::displayAllOrder();
+            try {
+                ControllerCommande::displayAllOrder();
+            } catch (Exception $e) {
+                header('Location: ../view/vueErreur.php');
+            }
         } else if ($_POST['action'] == 'affCommande') {
-            ControllerCommande::DisplayOrder();
+            try {
+                ControllerCommande::DisplayOrder();
+            } catch (Exception $e) {
+                header('Location: ../view/vueErreur.php');
+            }
         } else if ($_POST['action'] == 'supprReview') {
-            ControllerProduit::supprReview();
+            try {
+                ControllerProduit::supprReview();
+            } catch (Exception $e) {
+                header('Location: ../view/vueErreur.php');
+            }
         } else {
             try {
                 $action = $_POST["action"];
