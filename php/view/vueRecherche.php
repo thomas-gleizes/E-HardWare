@@ -3,6 +3,7 @@ if(!isset($quantierpanier)){
     $quantierpanier = 0;
     $elementpanier = [];
 }//else{
+var_dump($_COOKIE);
 
 //}
 if(session_status() == PHP_SESSION_NONE){
@@ -10,16 +11,16 @@ if(session_status() == PHP_SESSION_NONE){
     session_start();
 }
 
-
-//$t = count($tab);
-//$string;
-//foreach ($tab as $v){
-//    $string =  $string. $v['refProduit'].",";
-//}
+$t = count($tab);
+$string;
+foreach ($tab as $v){
+    $string =  $string. $v['refProduit'].",";
+}
 //echo $string;
-//setcookie("nbpanier",$t,time()+time()+31570000);
-//setcookie("elementpanier",$string,time()+time()+31570000);
+setcookie("nbpanier",$t,time()+time()+31570000);
+setcookie("elementpanier",$string,time()+time()+31570000);
 //echo "<br>".$_SESSION["panier"]["quantigit ter"];
+var_dump($_COOKIE);
 ?>
 
 <!DOCTYPE html>

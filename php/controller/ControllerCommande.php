@@ -31,12 +31,15 @@ class ControllerCommande {
             $tabref = ModelPanier::getRefproduit($tab['idClient']);
             foreach ($tabref as $value){
                 $stock = ModelProduit::getStock($value['refProduit']);
-                if ($stock < $value['quantiteProduit']){
+                if ($stock < $value['quantiteProduit'] && $stock > 0){
                     ModelCommande::addOrder($idCommande, $value['refProduit'], $stock);
                     ModelPanier::deletePanier($tab['idClient'], $value['refProduit']);
+                    $quantierpanier -= 1;
+
                 } else if ($stock >= $value['quantiteProduit']){
                     ModelCommande::addOrder($idCommande, $value['refProduit'], $value['quantiteProduit']);
                     ModelPanier::deletePanier($tab['idClient'], $value['refProduit']);
+                    $quantierpanier -= 1;
                 }
             }
             $sql = "CALL CHECKORDER('$idCommande')";
@@ -56,6 +59,7 @@ class ControllerCommande {
         }
         $idClient = ModelUtilisateur::getIdUti($_SESSION['login']);
         $tab = ModelCommande::getAllOrder($idClient);
+        $tabValeur = [];
         require_once (File::build_path(array('view','vueHistorique.php')));
     }
 
