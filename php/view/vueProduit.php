@@ -2,12 +2,20 @@
 if(!isset($quantierpanier)){
     $quantierpanier = 0;
     $elementpanier = [];
-}else{
-
 }
 if(!isset($_SESSION)){
     session_name("mlsfhvliusqfrbguilqdfjlqhdf");
     session_start();
+}
+if(!empty($tab)){
+    $t = count($tab);
+    $string = "";
+    foreach ($tab as $v){
+        $string =  $string. $v['refProduit'].",";
+    }
+
+    setcookie("nbpanier",$t,time()+time()+31570000);
+    setcookie("elementpanier",$string,time()+time()+31570000);
 }
 ?>
 <!DOCTYPE html>

@@ -48,20 +48,20 @@ class ModelRecherche{
     public static function getAllInfo($ref){
         $tab = [];
         if(isset($ref)){
-            foreach ($ref as $value){
-                foreach ($value as $v) {
-                    $sql = "SELECT  distinct(refProduit) , Url,nom,nomMarque,prix FROM Produits where refProduit = :ref GROUP BY (refProduit)";
-                    $valeur = array(
-                        "ref" => $v
-                    );
-                    $rec_prep = Model::$pdo->prepare($sql);
-                    $rec_prep->execute($valeur);
-                    $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
-                    if(!in_array($value,$tab)){
-                        //echo"pas dedans";
-                        //echo"<br>";
-                        $tab = array_merge($tab,$rec_prep->fetchAll());
-                    }/*else{
+                    foreach ($ref as $value){
+                        foreach ($value as $v) {
+                            $sql = "SELECT  distinct(refProduit) , Url,nom,nomMarque,prix FROM Produits where refProduit = :ref GROUP BY (refProduit)";
+                            $valeur = array(
+                                "ref" => $v
+                            );
+                            $rec_prep = Model::$pdo->prepare($sql);
+                            $rec_prep->execute($valeur);
+                            $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+                            if(!in_array($value,$tab)){
+                                //echo"pas dedans";
+                                //echo"<br>";
+                                $tab = array_merge($tab,$rec_prep->fetchAll());
+                            }/*else{
                         //echo"dedans";
                         //echo"<br>";
                     }*/

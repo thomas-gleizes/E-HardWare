@@ -3,24 +3,48 @@ if(!isset($quantierpanier)){
     $quantierpanier = 0;
     $elementpanier = [];
 }
-var_dump($quantierpanier);
-var_dump($elementpanier);
 if(!isset($_SESSION)){
     session_name("mlsfhvliusqfrbguilqdfjlqhdf");
     session_start();
 }
-$t = count($tab);
-$string ="";
-foreach ($tab as $v){
-    $string =  $string. $v['refProduit'].",";
+if(isset($tab) && isset($_SESSION)){
+    //echo"debug 1";
+    //var_dump($tab);
+    $t = count($tab);
+    $string = "2";
+    //echo "test debug";
+    //var_dump($tab);
+    foreach ($tab as $v){
+        $string =  $string. $v['refProduit'].",";
+    }
+//echo $string;
+    setcookie("nbpanier",$t,time()+time()+31570000);
+    setcookie("elementpanier",$string,time()+time()+31570000);
 }
-setcookie("nbpanier",$t,time()+time()+31570000);
-setcookie("elementpanier",$string,time()+time()+31570000);
 
+/*if(!empty($tab) || isset($_SESSION)){
+    echo"debug 3";
+    $t = count($tab);
+    var_dump($tab);
+    $string = "";
+    foreach ($tab as $v){
+        $string =  $string. $v['refProduit'].",";
+    }
+    var_dump($string);
+    setcookie("nbpanier",$t,time()+time()+31570000);
+    setcookie("elementpanier",$string,time()+time()+31570000);
+}*/
+
+else{
+    var_dump($tab);
+    echo"debug 2";
+    setcookie("nbpanier",0,time()+time()+31570000);
+    setcookie("elementpanier",0,time()+time()+31570000);
+}
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>E-HardWare</title>
@@ -220,7 +244,6 @@ setcookie("elementpanier",$string,time()+time()+31570000);
     $Url = "Url";
     $prix = "prix";
     $stock = "stock";
-
 
         foreach ($tab as $item) {
             echo '

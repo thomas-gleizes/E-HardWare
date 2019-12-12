@@ -212,7 +212,7 @@ class ControllerProduit{
         $nom = self::getName($_POST['id_produit']);
         foreach ($tab as $item) {
             $mail = $item['Email'];
-            echo $mail;
+            //echo $mail;
             mail($mail,"$nom en stock sur E-HardWare !" , "Le produit : $nom est enfin en stock !", "From : " . "$header" );
         }
         ModelProduit::upDateStock($_POST['id_produit'], $_POST['stock']);

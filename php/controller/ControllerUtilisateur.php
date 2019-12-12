@@ -88,7 +88,7 @@ class ControllerUtilisateur{
 
     public static function verifEmail($mail){
         $BaseMail = ModelUtilisateur::verifEmail($mail);
-        var_dump($BaseMail);
+        //var_dump($BaseMail);
         if ($BaseMail > 0){
             return true;
         } else {

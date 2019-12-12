@@ -11,15 +11,16 @@ if (session_status() == PHP_SESSION_NONE) {
     session_name("mlsfhvliusqfrbguilqdfjlqhdf");
     session_start();
 }
-/*$t = count($tab);
-$string;
-foreach ($tab as $v){
-    $string =  $string. $v['refProduit'].",";
+if(!empty($tab)){
+    $t = count($tab);
+    $string = "";
+    foreach ($tab as $v){
+        $string =  $string. $v['refProduit'].",";
+    }
+//echo $string;
+    setcookie("nbpanier",$t,time()+time()+31570000);
+    setcookie("elementpanier",$string,time()+time()+31570000);
 }
-echo $string;
-setcookie("nbpanier",$t,time()+time()+31570000);
-setcookie("elementpanier",$string,time()+time()+31570000);*/
-
 if (isset($_SESSION['login'])) {
     if ($_SESSION['admin'] == 1){
         header('Location:./php/controller/routeur.php?action=rechercheVide');

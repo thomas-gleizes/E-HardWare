@@ -4,9 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 if (isset($_SESSION['login'])) {
-    if (!isset($resClient)) {
         header('Location:./account.php');
-    }
 }
 ?>
 <!DOCTYPE html>

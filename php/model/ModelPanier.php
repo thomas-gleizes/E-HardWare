@@ -116,5 +116,42 @@ class ModelPanier{
         return $tab;
     }
 
+    public static function getIdProduitPanier($tab){
+        $prod = [];
+        /*var_dump($tab);
+        foreach ($tab as $item) {
+            $sql = "SELECT pa.refProduit, pa.quantiteProduit , nom, nomMarque, Url, prix, stock, categorie FROM Panier pa, Produits p WHERE pa.refProduit = p.refProduit AND p.refProduit = :refProduit; ";
+            $value['refProduit'] = $item;
+            $rec_prep = Model::$pdo->prepare($sql);
+            $rec_prep->execute($value);
+            $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+            $prod = array_push( $prod,$rec_prep->fetchAll());
+        }*/
+        $prod = explode(",",$tab[0]);
+        if(isset($tab)){
+            foreach ($tab as $value){
+                    $sql = "SELECT pa.refProduit, pa.quantiteProduit , nom, nomMarque, Url, prix, stock, categorie FROM Panier pa, Produits p WHERE pa.refProduit = p.refProduit AND p.refProduit = :refProduit; ";
+                    $valeur = array(
+                        "refProduit" => $value
+                    );
+                    $rec_prep = Model::$pdo->prepare($sql);
+                    $rec_prep->execute($valeur);
+                    $rec_prep->setFetchMode(PDO::FETCH_ASSOC);
+                    if(!in_array($value,$prod)){
+                        //echo"pas dedans";
+                        //echo"<br>";
+                        $prod = array_merge($prod,$rec_prep->fetchAll());
+                    }
+                    echo"value <br>";
+                    var_dump($value);
+            }
+        }
+        echo"tab <br>";
+        var_dump($tab);
+        echo"prod <br>";
+        var_dump($prod);
+        return $prod;
+    }
+
 
 }

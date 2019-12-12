@@ -21,15 +21,17 @@ class ControllerPanier{
             session_name("mlsfhvliusqfrbguilqdfjlqhdf");
             session_start();
         }
-        $id = ModelUtilisateur::getIdUti($_SESSION['login']);
-        $nb = ModelPanier::verifprodPanier($_POST['id_produit'], $id);
-        if ($nb == 0){
-            ModelPanier::ajoutPanier($_POST["id_produit"],$_POST["nombre"],$id);
-        } else {
-            ModelPanier::upDatePanier($_POST['id_produit'],$id,$_POST['nombre']);
+        if (isset($_SESSION['login'])){
+            $id = ModelUtilisateur::getIdUti($_SESSION['login']);
+            $nb = ModelPanier::verifprodPanier($_POST['id_produit'], $id);
+            if ($nb == 0){
+                ModelPanier::ajoutPanier($_POST["id_produit"],$_POST["nombre"],$id);
+            } else {
+                ModelPanier::upDatePanier($_POST['id_produit'],$id,$_POST['nombre']);
+            }
+            //$tab = ModelPanier::getNbProduit(ModelUtilisateur::getIdUti($_SESSION['login']));
+            //var_dump($tab);
         }
-        $tab = ModelPanier::getNbProduit(ModelUtilisateur::getIdUti($_SESSION['login']));
-
         $quantierpanier += 1;
         $elementpanier = array_push($elementpanier,$_POST['id_produit']);
 
@@ -48,9 +50,15 @@ class ControllerPanier{
             $tabClient = ModelUtilisateur::getInfoCommande($idClient);
             $code = ModelUtilisateur::getCodeConf($_SESSION['login']);
         } else {
-            $tab = [];
-            $tabClient = [];
-            $code = 0;
+            if (isset($_COOKIE['elementpanier'])){
+                $string = $_COOKIE['elementpanier'];
+                $tab = explode("%2C",$string);
+                $tab = ModelPanier::getIdProduitPanier($tab);
+            } else {
+                $tab = [] ;
+                $tabClient = [];
+                $code = 0;
+            }
         }
         require_once (File::build_path(array('view','vueCommande.php')));
     }
@@ -67,9 +75,13 @@ class ControllerPanier{
             $tabClient = ModelUtilisateur::getInfoCommande($idClient);
             $code = ModelUtilisateur::getCodeConf($_SESSION['login']);
         } else {
-            $tab = [];
+            if($tab == null){
+                $tab = [];
+            }
             $tabClient = [];
             $code = 0;
+
+
         }
         require_once (File::build_path(array('view','vueCommande.php')));
     }
