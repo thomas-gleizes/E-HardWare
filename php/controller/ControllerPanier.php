@@ -29,7 +29,7 @@ class ControllerPanier{
             ModelPanier::upDatePanier($_POST['id_produit'],$id,$_POST['nombre']);
         }
         $tab = ModelPanier::getNbProduit(ModelUtilisateur::getIdUti($_SESSION['login']));
-        //setcookie("panier",$tab['quantiteProduit'],time()+time()+31570000);
+
         $quantierpanier += 1;
         $elementpanier = array_push($elementpanier,$_POST['id_produit']);
 
