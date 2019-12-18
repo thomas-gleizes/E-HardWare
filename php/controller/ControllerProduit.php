@@ -220,7 +220,13 @@ class ControllerProduit{
     }
 
     public static function supprReview (){
-        ModelProduit::deleteReview($_POST['idClient'], $_POST['id_produit']);
+
+        if ($_SESSION['admin'] == 1){
+            ModelProduit::deleteReview($_POST['idClient'], $_POST['id_produit']);
+        } else {
+            ModelProduit::deleteReview(ModelUtilisateur::getIdUti($_SESSION['login']), $_POST['id_produit']);
+        }
+
         self::infoVueProduit();
     }
 
