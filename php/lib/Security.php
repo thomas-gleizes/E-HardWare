@@ -20,4 +20,8 @@ class Security{
     static public function getSeedLinkEnd(){
         return self::$seedLinkEnd;
     }
+
+    static public function chiffrer($mdp){
+        return hash("sha256", $mdp);
+    }
 }

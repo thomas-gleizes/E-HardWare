@@ -6,7 +6,7 @@ require_once (File::build_path(array('lib','Security.php')));
 class ModelUtilisateur{
 
     public static function creationCompte($tab){
-        $mdp = ModelUtilisateur::chiffrer($tab['mdp1'].Security::getSeed());
+        $mdp = Security::chiffrer($tab['mdp1'].Security::getSeed());
         $sql = "INSERT INTO Clients values( '',:mail,:nom,:prenom,:ville,:adresse,0,0,0,:mdp,0,'0')";
         $valeur  =array(
             "mail" => $tab['mail'],
@@ -41,7 +41,7 @@ class ModelUtilisateur{
         $rec_prep->execute($valeur);
         $rec_prep -> setFetchMode(PDO::FETCH_CLASS, 'Client');
         $res = $rec_prep->fetchAll(PDO::FETCH_ASSOC);
-        $mdp = ModelUtilisateur::chiffrer($tab['mdp'].Security::getSeed());
+        $mdp = Security::chiffrer($tab['mdp'].Security::getSeed());
         $sql = "SELECT prioriter FROM Clients WHERE Email = :mail";
         $valeur  =array(
             "mail" => $tab['mail']
@@ -95,11 +95,6 @@ class ModelUtilisateur{
         }
     }
 
-    public static function chiffrer($mdp){
-        $mdp_chiffre = hash('sha256', $mdp);
-        return $mdp_chiffre;
-    }
-
     public static function getCodeConf($mail){
         $sql = "SELECT codeConfirmation FROM Clients Where Email = :mail";
         $valeur  =array(
@@ -134,7 +129,7 @@ class ModelUtilisateur{
     }
 
     public static function mailMdp($tab){
-        $id = ModelUtilisateur::chiffrer($tab['id'].Security::getSeedMail());
+        $id = Security::chiffrer($tab['id'].Security::getSeedMail());
     }
 
     public static function getIdUti($mail){
@@ -151,7 +146,7 @@ class ModelUtilisateur{
 
     public static function securedLink(){
         $id = self::getIdUti($_SESSION['login']);
-        $token = ModelUtilisateur::chiffrer(Security::getSeedLink().$mail.Security::getSeedLinkEnd());
+        $token = Security::chiffrer(Security::getSeedLink().$mail.Security::getSeedLinkEnd());
         $sql = "UPDATE Clients SET token = :token WHERE idClient = :id";
         $valeur = array(
             "token" => $token,
@@ -164,7 +159,7 @@ class ModelUtilisateur{
 
     public static function changePassword($id, $mdp){
         $sql = "UPDATE Clients SET mdp = :mdp, token = 0 WHERE idClient = :idClient;";
-        $value['mdp'] = self::chiffrer($mdp.Security::getSeed());
+        $value['mdp'] = Security::chiffrer($mdp.Security::getSeed());
         $value['idClient'] = $id;
         $rec_prep = Model::$pdo->prepare($sql);
         $rec_prep->execute($value);
